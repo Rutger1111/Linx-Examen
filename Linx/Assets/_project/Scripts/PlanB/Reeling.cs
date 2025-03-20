@@ -1,3 +1,5 @@
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _project.Scripts.PlanB
@@ -6,11 +8,13 @@ namespace _project.Scripts.PlanB
     {
         private GameObject _hook;
         private GameObject _fishingRod;
+        
+        [SerializeField] private float lineLength;
+        [SerializeField] private float reelingSpeed;
+        [SerializeField] private float distance;
+        [SerializeField] private float resistance;
 
-        private float _resistance;
-        public float maxDepth;
-
-        private bool _reachedMaxDepth;
+        public int weightOfFish;
 
         private LineRenderer _lineRenderer;
 
@@ -26,24 +30,48 @@ namespace _project.Scripts.PlanB
             _lineRenderer.SetPosition(0, _fishingRod.transform.position);
             _lineRenderer.SetPosition(1, _hook.transform.position);
         
+            MaxLineLength();
             ResistanceCalculation();
 
             if (Input.GetKey(KeyCode.W))
             {
-                _hook.transform.position += new Vector3(0, _resistance, 0) * Time.deltaTime;
+                MoveToRod();
+                //_hook.transform.position += new Vector3(0, 10, 0) * Time.deltaTime;
             }
         
-            if (Input.GetKey(KeyCode.S) && !_reachedMaxDepth)
+            if (Input.GetKey(KeyCode.S))
             {
-                _hook.transform.position -= new Vector3(0, _resistance, 0) * Time.deltaTime;
+                _hook.transform.position -= new Vector3(0, 10, 0) * Time.deltaTime;
             }
         }
 
-        private void ResistanceCalculation()
+        private void MoveToRod()
         {
-            _resistance = maxDepth + _hook.transform.position.y;
+            _hook.transform.position = Vector3.Lerp(_hook.transform.position, _fishingRod.transform.position, 0.01f);
+        }
 
-            _reachedMaxDepth = _resistance <= 2;
+        private void MaxLineLength()
+        {
+            var rodPosition = _fishingRod.transform.position;
+            distance = Vector3.Distance(_hook.transform.position, rodPosition);
+
+            if (distance > lineLength)
+            {
+                
+                Vector3 fromOriginToObject = _hook.transform.position - rodPosition;
+                fromOriginToObject *= lineLength / distance;
+                _hook.transform.position = rodPosition + fromOriginToObject;
+            }
+        }
+        //doesn't work.
+        protected void ResistanceCalculation()
+        {
+            for ( resistance = 0; resistance < distance; resistance++)
+            {
+                reelingSpeed = 10 -  resistance;
+            }
+            //resistance = _hook.transform.position.y + lineLength;
+            
         }
     }
 }
