@@ -17,8 +17,8 @@ The goal is to get as many big fishes as possible, sell them for a huge profit a
 Rutger van de laar (Lead Developer)
 - Fish system
 Renzo Reemer (game Designer)
-- Reeling
-- Swimming
+- Reeling [Funcional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#fisher)[Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#Reeling)
+- Swimming [Functional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#bait)[Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#swimming)
 - Skill-check
 
 Ruben Kossen
