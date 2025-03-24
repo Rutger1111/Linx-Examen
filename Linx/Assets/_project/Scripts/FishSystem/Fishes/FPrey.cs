@@ -13,7 +13,7 @@ public class FPrey : Fish
     {
         switch(state){
             case (EStates.Roaming):
-                roamingCommand.Invoke();
+                roamingCommand.Invoke(this);
                 break;
         }
     }
