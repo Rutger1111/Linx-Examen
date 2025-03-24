@@ -26,17 +26,17 @@ namespace _project.Scripts.PlanB
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _image.value = Random.Range(0, 100);
-                //_setSliderValue = _slider.value;
-                //_sliderOn = false;
-                //Debug.Log(_setSliderValue);
+                //_image.value = Random.Range(0, 100);
+                _setSliderValue = _slider.value;
+                _sliderOn = false;
+                Debug.Log(_setSliderValue);
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
                 _sliderOn = true;
             }
             
-            if (_slider.value >= 1)
+            if (_slider.value >= 100)
             {
                 _sliderFull = true;
             }

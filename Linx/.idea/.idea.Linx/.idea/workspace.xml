@@ -7,8 +7,11 @@
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_project/Scenes/PlanB/PlanB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scenes/PlanB/PlanB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/MovingHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/MovingHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Reeling.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Reeling.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/MovingHook.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/MovingHook.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Reeling.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Reeling.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +22,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/MovingHook.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Arrow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Destination.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -113,7 +117,8 @@
       <workItem from="1742294303674" duration="4088000" />
       <workItem from="1742372597747" duration="6787000" />
       <workItem from="1742463953736" duration="10482000" />
-      <workItem from="1742476737903" duration="2983000" />
+      <workItem from="1742476737903" duration="3620000" />
+      <workItem from="1742803709424" duration="14941000" />
     </task>
     <servers />
   </component>

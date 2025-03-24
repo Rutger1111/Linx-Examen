@@ -1,5 +1,3 @@
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _project.Scripts.PlanB
@@ -10,7 +8,6 @@ namespace _project.Scripts.PlanB
         private GameObject _fishingRod;
         
         [SerializeField] private float lineLength;
-        [SerializeField] private float reelingSpeed;
         [SerializeField] private float distance;
         [SerializeField] private float resistance;
 
@@ -41,7 +38,7 @@ namespace _project.Scripts.PlanB
         
             if (Input.GetKey(KeyCode.S))
             {
-                _hook.transform.position -= new Vector3(0, 10, 0) * Time.deltaTime;
+                _hook.transform.position -= new Vector3(0, resistance, 0) * Time.deltaTime;
             }
         }
 
@@ -66,12 +63,7 @@ namespace _project.Scripts.PlanB
         //doesn't work.
         protected void ResistanceCalculation()
         {
-            for ( resistance = 0; resistance < distance; resistance++)
-            {
-                reelingSpeed = 10 -  resistance;
-            }
-            //resistance = _hook.transform.position.y + lineLength;
-            
+            resistance = distance + _hook.transform.position.y;
         }
     }
 }
