@@ -5,12 +5,12 @@ namespace FishSystem
 
     public class Roaming : ICommand
     {
-        bool gotWaypoint = false;
-        Vector3 waypoint;
+        bool _gotWaypoint = false;
+        Vector3 _waypoint;
 
         public override void Invoke(Fish fish)
         {
-            if (gotWaypoint){
+            if (_gotWaypoint){
                 MoveToWaypoint(fish.speed);
             }
             else{
@@ -19,16 +19,16 @@ namespace FishSystem
             
         }
         private void ChooseWaypoint(Fish fish){
-            waypoint = new Vector3(Random.Range(fish.fishmaxLeft, fish.fishmaxRight),Random.Range(fish.fishmaxLow, fish.fishmaxHeight),transform.position.z);
-            gotWaypoint = true;
+            _waypoint = new Vector3(Random.Range(fish.fishmaxLeft, fish.fishmaxRight),Random.Range(fish.fishmaxLow, fish.fishmaxHeight),transform.position.z);
+            _gotWaypoint = true;
         }
         void OnDrawGizmosSelected()
         {
-            Gizmos.DrawSphere(waypoint, 0.5f);
+            Gizmos.DrawSphere(_waypoint, 0.5f);
         }
         private void MoveToWaypoint(float speed){
-            transform.position = Vector3.MoveTowards(transform.position ,waypoint, speed * Time.deltaTime) ;
-            Vector3 diff = waypoint - transform.position;
+            transform.position = Vector3.MoveTowards(transform.position ,_waypoint, speed * Time.deltaTime) ;
+            Vector3 diff = _waypoint - transform.position;
             float angle = Mathf.Atan2(diff.y, diff.x);
             angle *= Mathf.Rad2Deg;
             if (angle >= -90  && angle <= 90){
@@ -38,8 +38,8 @@ namespace FishSystem
                 GetComponent<SpriteRenderer>().flipY = true;
             }
             transform.rotation = Quaternion.Euler(0, 0, angle);
-            if(Vector3.Distance(transform.position, waypoint) < 0.1f){
-                gotWaypoint = false;
+            if(Vector3.Distance(transform.position, _waypoint) < 0.1f){
+                _gotWaypoint = false;
             }
         }
 
