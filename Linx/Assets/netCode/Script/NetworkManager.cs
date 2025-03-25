@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 
 public class NetworkManager : MonoBehaviour
 {
+    
     [SerializeField] 
     private string _gameplayScene = "Game";
     
@@ -16,7 +17,9 @@ public class NetworkManager : MonoBehaviour
     private string _ipAddress = "0.0.0.0";
     private ushort _port = 7777;
 
-    
+    ///</>summary>
+    /// Start host is connectable for a button
+    ///</>summary>
     public void StartHost()
     {
         try
@@ -33,7 +36,9 @@ public class NetworkManager : MonoBehaviour
             throw;
         }
     }
-
+    ///</>summary>
+    /// Start server is connectable for a button
+    ///</>summary>
     public void StartServer()
     {
         try
@@ -50,7 +55,9 @@ public class NetworkManager : MonoBehaviour
             throw;
         }
     }
-    
+    ///</>summary>
+    /// Start client is connectable for a button
+    ///</>summary>
     public void StartClient()
     {
         try
