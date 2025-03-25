@@ -1,6 +1,8 @@
 using UnityEngine;
-
-public abstract class ICommand : MonoBehaviour
+namespace FishSystem
 {
-    public abstract void Invoke(Fish fish);
+    public abstract class ICommand : MonoBehaviour
+    {
+        public abstract void Invoke(Fish fish);
+    }
 }
