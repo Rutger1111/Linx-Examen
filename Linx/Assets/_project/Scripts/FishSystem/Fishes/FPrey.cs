@@ -1,3 +1,4 @@
+using System.Buffers.Text;
 using UnityEngine;
 
 public class FPrey : Fish
@@ -9,12 +10,8 @@ public class FPrey : Fish
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
-        switch(state){
-            case (EStates.Roaming):
-                roamingCommand.Invoke(this);
-                break;
-        }
+        base.Update(); 
     }
 }

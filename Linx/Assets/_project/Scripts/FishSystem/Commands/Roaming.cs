@@ -8,7 +8,6 @@ public class Roaming : ICommand
 
     public override void Invoke(Fish fish)
     {
-        print(waypoint);
         if (gotWaypoint){
             MoveToWaypoint(fish.speed);
         }
@@ -30,7 +29,6 @@ public class Roaming : ICommand
         Vector3 diff = waypoint - transform.position;
         float angle = Mathf.Atan2(diff.y, diff.x);
         angle *= Mathf.Rad2Deg;
-        print(angle);
         if (angle >= -90  && angle <= 90){
             GetComponent<SpriteRenderer>().flipY = false;
         }
