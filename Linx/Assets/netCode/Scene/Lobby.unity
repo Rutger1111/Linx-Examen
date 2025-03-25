@@ -2240,7 +2240,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 896737907}
         m_TargetAssemblyTypeName: MainMenuDisplay, Assembly-CSharp
-        m_MethodName: startHost
+        m_MethodName: StartHost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
