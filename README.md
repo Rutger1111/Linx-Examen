@@ -26,6 +26,7 @@ Renzo Reemer (game Designer)
 Ruben Kossen
 - Multiplayer
 - Dialogue System
+- Spawning
   
 # Artists
 - elanora 
