@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ClientNetworkAnimator.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ClientNetworkAnimator.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/NetworkManager.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/NetworkManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/FishSystem/Fish.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/FishSystem/Fish.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/netCode/Prefab/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Prefab/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/serverManager.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/serverManager.cs.meta" beforeDir="false" />
