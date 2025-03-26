@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8484118413449274431}
   - component: {fileID: 7034033183980597285}
   m_Layer: 0
-  m_Name: fish
+  m_Name: TemperatyFish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
