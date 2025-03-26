@@ -15,11 +15,8 @@ public class FishSpawnerManager : MonoBehaviour
     void Update()
     {
        SpawnHandle();
-
     }
-
-   
-
+    
     void SpawnHandle()
     {
         foreach (SpawnContainer con in spawnInformation)
@@ -56,7 +53,7 @@ public class FishSpawnerManager : MonoBehaviour
             {
                 InitializeSpawning();
             }
-            else
+            else 
             {
                 con.hasStartedSpawn = true;
             }
