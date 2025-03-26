@@ -19,6 +19,7 @@ namespace FishSystem
 
         public ICommand roamingCommand;
         public ICommand alluredCommand;
+        public ICommand huntingCommand;
 
         protected void Update()
         {
@@ -37,25 +38,26 @@ namespace FishSystem
                     case (EStates.Allured):
                         alluredCommand.Invoke(this);
                         break;
+                    case (EStates.Hunting):
+                        huntingCommand.Invoke(this);
+                        break;
                 }            
             }
         }
-        private void CheckState(){
-            print("ben aangeroepen" + Vector3.Distance(transform.position, bait.transform.position) );
-
+        public virtual void CheckState(){
             if(Vector3.Distance(transform.position, bait.transform.position) < alluredDistance && state == EStates.Roaming){
-                bool rolled = Roll(50);
+                bool rolled = P_Roll(50);
                 state = rolled == true ? EStates.Allured : EStates.Roaming;
                 
-                if (rolled == true){
+                if (state == EStates.Allured){
                     return;
                 }
             }
             if(state == EStates.Allured){
-                state = Roll(50) == true ? EStates.Allured : EStates.Roaming;
+                state = P_Roll(50) == true ? EStates.Allured : EStates.Roaming;
             }
         }
-        private bool Roll(int percentageChance){
+        protected bool P_Roll(int percentageChance){
             return Random.Range(0, 100) <= percentageChance;
         }
     }
