@@ -24,9 +24,9 @@ Renzo Reemer (game Designer)
 - Skill-check
 
 Ruben Kossen
-- Multiplayer  [code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/netCode/Script), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/multiplayer-explanation)
-- Dialogue System  [code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/netCode/Script), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Dialogue-System)
-- Spawning  [code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/netCode/Script), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Spawning)
+- Multiplayer  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/netCode/Script/NetworkManager.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/multiplayer-explanation)
+- Dialogue System  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/StoryBased/DialogueSystem.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Dialogue-System)
+- Spawning  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/FishSpawner/FishSpawnerManager.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Spawning)
   
 # Artists
 - elanora 
