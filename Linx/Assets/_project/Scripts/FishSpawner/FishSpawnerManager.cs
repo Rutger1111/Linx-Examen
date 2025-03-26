@@ -22,8 +22,8 @@ namespace FishSpawner
             foreach (SpawnContainer con in spawnInformation)
             {
                 con.enemiesSpawned.RemoveAll(enemy => enemy == null);
-                if (Vector3.Distance(con.spawnPoint.transform.position, _playerRefence.transform.position) > 10f &&
-                    con.hasStartedSpawn == true)
+                
+                if (Vector3.Distance(con.spawnPoint.transform.position, _playerRefence.transform.position) > 10f && con.hasStartedSpawn == true)
                 {
                     if (con.enemiesSpawned.Count + 1 <= con.maxEnemies)
                     {
