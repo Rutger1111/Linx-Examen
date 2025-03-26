@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class FishSpawnerManager : MonoBehaviour
 {
     [SerializeField] 
-    private List<SpawnContainer> spawnInformation = new List<SpawnContainer>();
+    private List<SpawnContainer> _spawnInformation = new List<SpawnContainer>();
     
     [SerializeField] 
     private GameObject _playerRefence;
@@ -19,7 +19,7 @@ public class FishSpawnerManager : MonoBehaviour
     
     void SpawnHandle()
     {
-        foreach (SpawnContainer con in spawnInformation)
+        foreach (SpawnContainer con in _spawnInformation)
         {
             con.enemiesSpawned.RemoveAll(enemy => enemy == null);
             if (Vector3.Distance(con.spawnPoint.transform.position, _playerRefence.transform.position) > 10f && con.hasStartedSpawn == true)
@@ -45,7 +45,7 @@ public class FishSpawnerManager : MonoBehaviour
     
     void StartSpawnHandle()
     {
-        foreach (SpawnContainer con in spawnInformation)
+        foreach (SpawnContainer con in _spawnInformation)
         {
             con.enemiesSpawned.RemoveAll(enemy => enemy == null);
            
@@ -62,7 +62,7 @@ public class FishSpawnerManager : MonoBehaviour
 
     void InitializeSpawning()
     {
-        foreach (SpawnContainer con in spawnInformation)
+        foreach (SpawnContainer con in _spawnInformation)
         {
             if (con.enemiesSpawned.Count + 1 <= con.maxEnemies)
             {
@@ -80,7 +80,7 @@ public class FishSpawnerManager : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        foreach (SpawnContainer con in spawnInformation)
+        foreach (SpawnContainer con in _spawnInformation)
         {
             Gizmos.DrawWireCube(con.spawnPoint.transform.position, con.spawnArea);    
         }
