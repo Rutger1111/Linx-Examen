@@ -9,7 +9,6 @@ namespace FishSystem
         [SerializeField] private float timer = 1;        
         [SerializeField] private int alluredChance = 50;
         [SerializeField] private int roamingChance = 50;
-        public bool caught = false;
         public float alluredDistance = 5;
         public EStates state;
         public GameObject bait;
@@ -22,6 +21,8 @@ namespace FishSystem
         public ICommand roamingCommand;
         public ICommand alluredCommand;
         public ICommand huntingCommand;
+
+        public ICommand caught;
         protected void Start()
         {
             bait = GameObject.Find("Player2");
@@ -36,19 +37,21 @@ namespace FishSystem
             else{
                 timer -= Time.deltaTime;
             }
-            if (caught == false){
-                switch(state){
-                    case (EStates.Roaming):
-                        roamingCommand.Invoke(this);
-                        break;
-                    case (EStates.Allured):
-                        alluredCommand.Invoke(this);
-                        break;
-                    case (EStates.Hunting):
-                        huntingCommand.Invoke(this);
-                        break;
-                }            
-            }
+            switch(state){
+                case (EStates.Roaming):
+                    roamingCommand.Invoke(this);
+                    break;
+                case (EStates.Allured):
+                    alluredCommand.Invoke(this);
+                    break;
+                case (EStates.Hunting):
+                    huntingCommand.Invoke(this);
+                    break;
+                case (EStates.Caught):
+                    caught.Invoke(this);
+                    break;
+            }            
+
         }
         public virtual void CheckState(){
             if(Vector3.Distance(transform.position, bait.transform.position) < alluredDistance && state == EStates.Roaming){
