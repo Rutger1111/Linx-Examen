@@ -5,8 +5,9 @@ namespace FishSystem
 {
     public abstract class Fish : MonoBehaviour
     {
+        [SerializeField] private float timer = 1;
+        
         public bool caught = false;
-        private float timer = 1;
         public float alluredDistance = 5;
         public EStates state;
         public GameObject bait;
@@ -45,6 +46,7 @@ namespace FishSystem
             if(Vector3.Distance(transform.position, bait.transform.position) < alluredDistance && state == EStates.Roaming){
                 bool rolled = Roll(50);
                 state = rolled == true ? EStates.Allured : EStates.Roaming;
+                
                 if (rolled == true){
                     return;
                 }

@@ -31,12 +31,14 @@ namespace FishSystem
             Vector3 diff = _waypoint - transform.position;
             float angle = Mathf.Atan2(diff.y, diff.x);
             angle *= Mathf.Rad2Deg;
+            
             if (angle >= -90  && angle <= 90){
                 GetComponent<SpriteRenderer>().flipY = false;
             }
             else{
                 GetComponent<SpriteRenderer>().flipY = true;
             }
+            
             transform.rotation = Quaternion.Euler(0, 0, angle);
             if(Vector3.Distance(transform.position, _waypoint) < 0.1f){
                 _gotWaypoint = false;
