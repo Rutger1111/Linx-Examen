@@ -1,20 +1,44 @@
 using System;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace FishSpawner
 {
-    public class FishSpawnerManager : MonoBehaviour
+    public class FishSpawnerManager : NetworkBehaviour
     {
         [SerializeField] private List<SpawnContainer> spawnInformation = new List<SpawnContainer>();
         
         [SerializeField] private GameObject _playerRefence; // Reference to the player to check proximity
 
+
+        private void Start()
+        {
+            if (IsServer)
+            {
+                foreach (SpawnContainer con in spawnInformation)
+                {
+                    if (con != null) 
+                    {
+                        con.containerBehaviour.spawnCoolDown.Value = con.spawnCoolDownReset;
+                    }
+                    else
+                    {
+                        Debug.LogError("SpawnContainer is null in spawnInformation list!");
+                    }
+                }
+            }
+        }
+
         void Update()
         {
-            SpawnHandle();
+            if (IsServer)
+            {
+                
+                SpawnHandle();    
+            }
         }
 
         void SpawnHandle()
@@ -30,12 +54,12 @@ namespace FishSpawner
                     // Ensure the number of spawned fish does not exceed the max limit
                     if (con.enemiesSpawned.Count + 1 <= con.maxEnemies)
                     {
-                        con.spawnCoolDown -= Time.deltaTime;
+                        con.containerBehaviour.spawnCoolDown.Value -= Time.deltaTime;
                         
                         // Spawn a fish when cooldown reaches zero
-                        if (con.spawnCoolDown <= 0)
+                        if (con.containerBehaviour.spawnCoolDown.Value <= 0)
                         {
-                            con.spawnCoolDown = con.spawnCoolDownReset; //reset cooldown
+                            con.containerBehaviour.spawnCoolDown.Value = con.spawnCoolDownReset; //reset cooldown
                             
                             InitializeSpawning(con);
                         }
@@ -78,8 +102,13 @@ namespace FishSpawner
 
                 // Instantiate the enemy and set hierarchy
                 GameObject enemy = Instantiate(con.enemyPrefab, randomPosition, Quaternion.identity);
-                con.enemiesSpawned.Add(enemy); 
+                enemy.GetComponent<NetworkObject>().Spawn();
+                con.enemiesSpawned.Add(enemy);
+
+                NetworkObject enemyNetworkObject = enemy.GetComponent<NetworkObject>();
+                
                 enemy.transform.parent = con.spawnParent.transform;
+                enemyNetworkObject.TrySetParent(con.spawnParent);
             }
         }
 
@@ -100,7 +129,7 @@ namespace FishSpawner
         public GameObject enemyPrefab; // Prefab of the enemy to spawn
         public Vector2 spawnArea; // Size of the spawnable area
 
-        public float spawnCoolDown; // Current cooldown timer for spawning
+        public SpawnContainerBehaviour containerBehaviour;
         public float spawnCoolDownReset; // Time to reset the cooldown
 
         public List<GameObject> enemiesSpawned = new List<GameObject>(); // List of currently spawned enemies
@@ -108,6 +137,7 @@ namespace FishSpawner
 
         public GameObject spawnParent; // Parent object to keep hierarchy organized
 
-        [HideInInspector] public bool hasStartedSpawn; // Flag to check if initial spawning is done
+        public bool hasStartedSpawn; // Flag to check if initial spawning is done
+        
     }
 }
