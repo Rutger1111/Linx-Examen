@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/CameraFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/CameraFollow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/netCode/Prefab/Player.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/netCode/Prefab/Player.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/netCode/Scene/NetCode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Scene/NetCode.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scenes/PlanB/PlanB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scenes/PlanB/PlanB.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/MovingHook.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/MovingHook.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Reeling.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Reeling.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/SpawnContainerBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/FishSpawner/FishSpawnerManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/netCode/debugger/DebugTextCollector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@f2477a6c90fe/Runtime/NetworkVariable/NetworkVariable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Arrow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Destination.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2uUDWFf1kzul0DsiODmYk3upzzO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -34,29 +44,35 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;PlanB&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ReSpellerSettingsId&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\ruben\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\ruben\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\ruben\\AppData\\Local\\Symbols\\src&quot;
+      &quot;C:\\Users\\reeme\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\reeme\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\reeme\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
-    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../build\Linx.exe" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\ruben\Desktop\build" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <method v="2" />
-    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.37f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\ruben\Desktop\LinxGames\Linx-Examen\Linx -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ruben\Desktop\LinxGames\Linx-Examen\Linx" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.37f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\reeme\MA\Examen-Linx\Game\Linx-Examen\Linx -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\reeme\MA\Examen-Linx\Game\Linx-Examen\Linx" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -99,10 +115,10 @@
       <option name="presentableId" value="Default" />
       <updated>1742294298863</updated>
       <workItem from="1742294303674" duration="4088000" />
-      <workItem from="1742822843881" duration="936000" />
-      <workItem from="1742823897929" duration="1834000" />
-      <workItem from="1742890943436" duration="8478000" />
-      <workItem from="1743407165988" duration="7867000" />
+      <workItem from="1742372597747" duration="6787000" />
+      <workItem from="1742463953736" duration="10482000" />
+      <workItem from="1742476737903" duration="3620000" />
+      <workItem from="1742803709424" duration="14941000" />
     </task>
     <servers />
   </component>
