@@ -5,8 +5,10 @@ namespace FishSystem
 {
     public abstract class Fish : MonoBehaviour
     {
-        [SerializeField] private float timer = 1;
-        
+        [SerializeField] private float timerReset = 1;
+        [SerializeField] private float timer = 1;        
+        [SerializeField] private int alluredChance = 50;
+        [SerializeField] private int roamingChance = 50;
         public bool caught = false;
         public float alluredDistance = 5;
         public EStates state;
@@ -20,7 +22,11 @@ namespace FishSystem
         public ICommand roamingCommand;
         public ICommand alluredCommand;
         public ICommand huntingCommand;
-
+        protected void Start()
+        {
+            bait = GameObject.Find("Player2");
+            state = EStates.Roaming;
+        }
         protected void Update()
         {
             if(timer - Time.deltaTime <= 0){
@@ -46,7 +52,7 @@ namespace FishSystem
         }
         public virtual void CheckState(){
             if(Vector3.Distance(transform.position, bait.transform.position) < alluredDistance && state == EStates.Roaming){
-                bool rolled = P_Roll(50);
+                bool rolled = P_Roll(alluredChance);
                 state = rolled == true ? EStates.Allured : EStates.Roaming;
                 
                 if (state == EStates.Allured){
@@ -54,7 +60,7 @@ namespace FishSystem
                 }
             }
             if(state == EStates.Allured){
-                state = P_Roll(50) == true ? EStates.Allured : EStates.Roaming;
+                state = P_Roll(roamingChance) == true ? EStates.Allured : EStates.Roaming;
             }
         }
         protected bool P_Roll(int percentageChance){

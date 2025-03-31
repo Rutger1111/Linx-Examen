@@ -6,9 +6,9 @@ namespace FishSystem
     public class FPredator : Fish
     {
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        new void Start()
         {
-            state = EStates.Roaming;
+            base.Start();
         }
 
         // Update is called once per frame
