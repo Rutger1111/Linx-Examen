@@ -1,4 +1,5 @@
 using System;
+using PlanB;
 using UnityEngine;
 using UnityEngine.UIElements;
 namespace FishSystem
@@ -33,6 +34,7 @@ namespace FishSystem
                 isbool = true;
                 
                 _fishList.caughtFish.Add(fish.gameObject);
+                fish.bait.GetComponent<Catch>().Invoke(fish);
             }
         }
     }

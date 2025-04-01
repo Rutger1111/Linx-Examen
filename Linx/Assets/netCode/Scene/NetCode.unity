@@ -1238,7 +1238,7 @@ MonoBehaviour:
     containerBehaviour: {fileID: 1816128554}
     spawnCoolDownReset: 1
     enemiesSpawned: []
-    maxEnemies: 1
+    maxEnemies: 10
     spawnParent: {fileID: 104435527}
     hasStartedSpawn: 1
   _playerRefence: {fileID: 685741787}
@@ -3654,6 +3654,7 @@ GameObject:
   - component: {fileID: 4676087085623760546}
   - component: {fileID: 7677624246488110581}
   - component: {fileID: 7677624246488110580}
+  - component: {fileID: 7677624246488110582}
   m_Layer: 0
   m_Name: Hook
   m_TagString: Untagged
@@ -3722,6 +3723,18 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &7677624246488110582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677624246488110579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3d079d307b7684bbf3d0e0fb6a5a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7845050583938622818
 GameObject:
   m_ObjectHideFlags: 0

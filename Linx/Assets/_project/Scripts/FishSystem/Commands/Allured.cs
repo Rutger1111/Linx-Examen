@@ -1,3 +1,4 @@
+using PlanB;
 using UnityEngine;
 namespace FishSystem
 {
@@ -27,7 +28,7 @@ namespace FishSystem
             
             transform.rotation = Quaternion.Euler(0, 0, angle);
             if(Vector3.Distance(transform.position, position) < 0.1f){
-                _thisFish.state = EStates.Caught;
+                bait.GetComponent<Catch>().Invoke(_thisFish);
             }
         }
     }
