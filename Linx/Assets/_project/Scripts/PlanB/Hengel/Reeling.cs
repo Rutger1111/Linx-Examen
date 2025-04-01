@@ -77,7 +77,7 @@ namespace _project.Scripts.PlanB
         [ClientRpc]
         private void MoveHookClientRpc(Vector3 newPos)
         {
-            if (!IsOwner) _hook.transform.position = newPos; 
+            if (!IsOwner) _hook.transform.position = newPos;
         }
         
         public void MoveToRod()

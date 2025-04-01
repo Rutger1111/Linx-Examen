@@ -1483,8 +1483,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _hook: {fileID: 7677624246488110579}
   _fishingRod: {fileID: 0}
-  hookposition: {fileID: 627805562}
-  lineLength: 20
+  lineLength: 100
   distance: 100
   resistance: 10
   weightOfFish: 5
