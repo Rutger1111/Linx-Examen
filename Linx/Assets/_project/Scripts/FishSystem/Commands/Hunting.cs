@@ -1,9 +1,15 @@
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 namespace FishSystem
 {
-    public class Allured : ICommand
+    public class Hunting : ICommand
     {
         private Fish _thisFish;
+        private ICommand Death;
+        void Start()
+        {
+            Death = GameObject.Find("Player2").GetComponent<Death>();
+        }
         public override void Invoke(Fish fish)
         {
             _thisFish = fish;
@@ -27,7 +33,8 @@ namespace FishSystem
             
             transform.rotation = Quaternion.Euler(0, 0, angle);
             if(Vector3.Distance(transform.position, position) < 0.1f){
-                _thisFish.state = EStates.Caught;
+                _thisFish.state = EStates.Roaming;
+                Death.Invoke(_thisFish);
             }
         }
     }

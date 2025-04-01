@@ -5,5 +5,6 @@ public enum EStates
     Roaming,
     Distracted,
     Allured,
-    Hunting
+    Hunting,
+    Caught
 }
