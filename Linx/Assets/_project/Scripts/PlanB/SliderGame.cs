@@ -1,4 +1,8 @@
+using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using Slider = UnityEngine.UI.Slider;
 
 namespace _project.Scripts.PlanB
@@ -7,21 +11,30 @@ namespace _project.Scripts.PlanB
     {
         [SerializeField] private Slider _slider;
         [SerializeField] private Slider _sliderValueSetter;
+        public GameObject canvas;
+
+        public FishList _fishList;
+        
+        
 
         private bool _sliderOn = true;
         private int _sliderDirection = 1;
 
-        private void Start()
-        {
-            _sliderValueSetter.value = Random.Range(0, 100);
-        }
-
         private void Update()
         {
-            HandleInput();
             UpdateSlider();
+            HandleInput();
         }
 
+        public void StartMiniGame()
+        {
+            canvas.SetActive(true);
+            
+            _sliderValueSetter.value = Random.Range(0, 100);
+
+            
+        }
+        
         private void HandleInput()
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -46,9 +59,23 @@ namespace _project.Scripts.PlanB
             {
                 Debug.Log("success");
                 // Add success logic here
+                
+                _fishList.CaughtFish();
+                
+                ResetMiniGame();
+            }
+            else
+            {
+                Debug.Log("fail");
+
+                _fishList.FailedFish();
+                
+                ResetMiniGame();
             }
         }
 
+        
+        
         private void UpdateSlider()
         {
             if (!_sliderOn) return;
@@ -59,6 +86,13 @@ namespace _project.Scripts.PlanB
             {
                 _sliderDirection *= -1;
             }
+        }
+
+        private void ResetMiniGame()
+        {
+            _sliderOn = true;
+            
+            canvas.SetActive(false);
         }
     }
 }

@@ -23,9 +23,11 @@ namespace FishSystem
         public ICommand huntingCommand;
 
         public ICommand caught;
+
+        private bool toSkillChack;
         protected void Start()
         {
-            bait = GameObject.Find("Player2");
+            bait = GameObject.Find("Hook");
             state = EStates.Roaming;
         }
         protected void Update()
