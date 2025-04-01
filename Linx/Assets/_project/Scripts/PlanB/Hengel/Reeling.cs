@@ -1,48 +1,86 @@
 using UnityEngine;
+using Unity.Netcode;
 
 namespace _project.Scripts.PlanB
 {
-    public class Reeling : MonoBehaviour
+    public class Reeling : NetworkBehaviour
     {
-        private GameObject _hook;
-        private GameObject _fishingRod;
+        public GameObject _hook;
+        public GameObject _fishingRod;
+
+        //public GameObject hookposition;
         
         [SerializeField] private float lineLength;
         [SerializeField] private float distance;
-        [SerializeField] private float resistance;
+        [SerializeField] public float resistance;
 
         public int weightOfFish;
 
         private LineRenderer _lineRenderer;
+        
+        public ulong horizontalPlayerId = 0;
+        public ulong verticalPlayerId = 1;
 
         private void Start()
         {
-            _hook = GameObject.Find("HookStartLine");
+            //_hook = GameObject.Find("HookStartLine");
             _fishingRod = GameObject.Find("LineStartPoint");
             _lineRenderer = FindAnyObjectByType<LineRenderer>();
+
+            if (IsServer)
+            {
+                horizontalPlayerId = NetworkManager.ConnectedClientsList[0].ClientId; 
+                verticalPlayerId = NetworkManager.ConnectedClientsList[1].ClientId;
+            }
         }
 
         void Update()
         {
+            
+            
             _lineRenderer.SetPosition(0, _fishingRod.transform.position);
             _lineRenderer.SetPosition(1, _hook.transform.position);
         
             MaxLineLength();
             ResistanceCalculation();
+            
+            Vector3 moveDirection = Vector3.zero;
+            ulong localClientId = NetworkManager.LocalClientId;
+            
+            if (localClientId == horizontalPlayerId)
+            {
+                if (Input.GetKey(KeyCode.W)) moveDirection.y += 10 * Time.deltaTime;
+                if (Input.GetKey(KeyCode.S)) moveDirection.y -= 10 * Time.deltaTime;
+            }
+            else if (localClientId == verticalPlayerId)
+            {
+                if (Input.GetKey(KeyCode.A)) moveDirection.x -= 10 * Time.deltaTime;
+                if (Input.GetKey(KeyCode.D)) moveDirection.x += 10 * Time.deltaTime;
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                MoveToRod();
-                //_hook.transform.position += new Vector3(0, 10, 0) * Time.deltaTime;
+                ResistanceCalculation();
             }
-        
-            if (Input.GetKey(KeyCode.S))
+
+            if (moveDirection != Vector3.zero)
             {
-                _hook.transform.position -= new Vector3(0, resistance, 0) * Time.deltaTime;
+                MoveHookServerRpc(moveDirection);
             }
+            
         }
-
-        private void MoveToRod()
+        
+        [ServerRpc(RequireOwnership = false)]
+        private void MoveHookServerRpc(Vector3 move, ServerRpcParams rpcParams = default)
+        {
+            _hook.transform.position += move; 
+            MoveHookClientRpc(_hook.transform.position);
+        }
+        
+        [ClientRpc]
+        private void MoveHookClientRpc(Vector3 newPos)
+        {
+            if (!IsOwner) _hook.transform.position = newPos; 
+        }
+        
+        public void MoveToRod()
         {
             _hook.transform.position = Vector3.Lerp(_hook.transform.position, _fishingRod.transform.position, 0.01f);
         }

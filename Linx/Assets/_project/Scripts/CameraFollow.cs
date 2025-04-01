@@ -5,63 +5,37 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public GameObject player;
-
     public float speed;
-
     public float distanceForMovement;
-
-    public Vector3 newPosition;
+    public float notmovingTime = 3f; 
     public float notmoving;
-
-    public Vector3 movetoPlayerPos;
-
-    public bool isnotmoving;
-
 
     private void Start()
     {
-        newPosition.z = -10f;
-        movetoPlayerPos.z = -10f;
+        transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
+        notmoving = notmovingTime;
     }
 
     void Update()
     {
         Vector3 direction = player.transform.position - transform.position;
 
+        notmoving -= Time.deltaTime;
+        
         if (Mathf.Abs(direction.x) > distanceForMovement || Mathf.Abs(direction.y) > distanceForMovement)
         {
-            newPosition = transform.position + new Vector3(direction.x, direction.y, 0) * speed * Time.deltaTime;
-        
+            notmoving = notmovingTime;
             
-            newPosition.z = transform.position.z;
-
-            isnotmoving = false;
-
+            
+            transform.position = Vector3.MoveTowards(transform.position, 
+                new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z), speed * Time.deltaTime);
+            
+            
         }
-
-        if ( transform.position != newPosition && isnotmoving == false && notmoving >= 0)
+        else if (notmoving <= 0)
         {
-            
-            transform.position = newPosition;
-            
-            if (notmoving <= 5f)
-            {
-                notmoving++;
-            }
-
-        }
-        else if(transform.position == newPosition && notmoving >= 0)
-        {
-            notmoving -= Time.deltaTime;
-
-            if (notmoving <= 0)
-            { 
-                notmoving++;
-               
-                movetoPlayerPos = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z), speed * Time.deltaTime);
-
-                transform.position = movetoPlayerPos;
-            }
+            transform.position = Vector3.Lerp(transform.position, 
+                    new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z), speed * Time.deltaTime);
         }
     }
 }
