@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using Slider = UnityEngine.UI.Slider;
 
 namespace _project.Scripts.PlanB
