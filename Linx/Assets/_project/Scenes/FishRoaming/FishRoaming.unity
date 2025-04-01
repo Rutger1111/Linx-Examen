@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 195879054}
   - component: {fileID: 195879053}
   - component: {fileID: 195879057}
+  - component: {fileID: 195879058}
   m_Layer: 0
   m_Name: Ruben (1)
   m_TagString: Untagged
@@ -288,7 +289,6 @@ MonoBehaviour:
   timer: 1
   alluredChance: 20
   roamingChance: 80
-  caught: 0
   alluredDistance: 3.5
   state: 0
   bait: {fileID: 1651502946}
@@ -300,6 +300,7 @@ MonoBehaviour:
   roamingCommand: {fileID: 195879053}
   alluredCommand: {fileID: 195879057}
   huntingCommand: {fileID: 0}
+  caught: {fileID: 195879058}
 --- !u!212 &195879055
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -382,6 +383,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a9ce09af2c1da4e8c568f04431669f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &195879058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195879052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aef887f3967aa2479bed5c324a32566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &272104182
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +443,7 @@ GameObject:
   - component: {fileID: 480964900}
   - component: {fileID: 480964903}
   - component: {fileID: 480964904}
+  - component: {fileID: 480964905}
   m_Layer: 0
   m_Name: Ruben
   m_TagString: Untagged
@@ -453,7 +467,6 @@ MonoBehaviour:
   timer: 1
   alluredChance: 20
   roamingChance: 80
-  caught: 0
   alluredDistance: 3.5
   state: 0
   bait: {fileID: 1651502946}
@@ -465,6 +478,7 @@ MonoBehaviour:
   roamingCommand: {fileID: 480964903}
   alluredCommand: {fileID: 480964904}
   huntingCommand: {fileID: 0}
+  caught: {fileID: 480964905}
 --- !u!212 &480964901
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -557,6 +571,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88a9ce09af2c1da4e8c568f04431669f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &480964905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480964899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aef887f3967aa2479bed5c324a32566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &696588155
@@ -695,7 +721,6 @@ MonoBehaviour:
   timer: 1
   alluredChance: 50
   roamingChance: 50
-  caught: 0
   alluredDistance: 3.5
   state: 0
   bait: {fileID: 0}
@@ -707,6 +732,7 @@ MonoBehaviour:
   roamingCommand: {fileID: 888089185}
   alluredCommand: {fileID: 888089184}
   huntingCommand: {fileID: 888089182}
+  caught: {fileID: 0}
 --- !u!114 &888089184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,6 +840,7 @@ GameObject:
   - component: {fileID: 1019651047}
   - component: {fileID: 1019651046}
   - component: {fileID: 1019651050}
+  - component: {fileID: 1019651051}
   m_Layer: 0
   m_Name: Ruben (2)
   m_TagString: Untagged
@@ -849,7 +876,6 @@ MonoBehaviour:
   timer: 1
   alluredChance: 20
   roamingChance: 80
-  caught: 0
   alluredDistance: 3.5
   state: 0
   bait: {fileID: 1651502946}
@@ -861,6 +887,7 @@ MonoBehaviour:
   roamingCommand: {fileID: 1019651046}
   alluredCommand: {fileID: 1019651050}
   huntingCommand: {fileID: 0}
+  caught: {fileID: 1019651051}
 --- !u!212 &1019651048
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -941,6 +968,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88a9ce09af2c1da4e8c568f04431669f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1019651051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019651045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aef887f3967aa2479bed5c324a32566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1280075619
