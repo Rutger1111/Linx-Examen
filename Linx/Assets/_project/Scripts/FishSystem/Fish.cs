@@ -5,9 +5,10 @@ namespace FishSystem
 {
     public abstract class Fish : MonoBehaviour
     {
-        [SerializeField] private float timer = 1;
-        
-        public bool caught = false;
+        [SerializeField] private float _timerReset = 1;
+        [SerializeField] private float _timer = 1;        
+        [SerializeField] private int alluredChance = 50;
+        [SerializeField] private int roamingChance = 50;
         public float alluredDistance = 5;
         public EStates state;
         public GameObject bait;
@@ -19,43 +20,53 @@ namespace FishSystem
 
         public ICommand roamingCommand;
         public ICommand alluredCommand;
+        public ICommand huntingCommand;
 
+        public ICommand caught;
+        protected void Start()
+        {
+            bait = GameObject.Find("Player2");
+            state = EStates.Roaming;
+        }
         protected void Update()
         {
-            if(timer - Time.deltaTime <= 0){
-                timer = 1;
+            if(_timer - Time.deltaTime <= 0){
+                _timer = 1;
                 CheckState();
             }
             else{
-                timer -= Time.deltaTime;
+                _timer -= Time.deltaTime;
             }
-            if (caught == false){
-                switch(state){
-                    case (EStates.Roaming):
-                        roamingCommand.Invoke(this);
-                        break;
-                    case (EStates.Allured):
-                        alluredCommand.Invoke(this);
-                        break;
-                }            
-            }
-        }
-        private void CheckState(){
-            print("ben aangeroepen" + Vector3.Distance(transform.position, bait.transform.position) );
+            switch(state){
+                case (EStates.Roaming):
+                    roamingCommand.Invoke(this);
+                    break;
+                case (EStates.Allured):
+                    alluredCommand.Invoke(this);
+                    break;
+                case (EStates.Hunting):
+                    huntingCommand.Invoke(this);
+                    break;
+                case (EStates.Caught):
+                    caught.Invoke(this);
+                    break;
+            }            
 
+        }
+        public virtual void CheckState(){
             if(Vector3.Distance(transform.position, bait.transform.position) < alluredDistance && state == EStates.Roaming){
-                bool rolled = Roll(50);
+                bool rolled = P_Roll(alluredChance);
                 state = rolled == true ? EStates.Allured : EStates.Roaming;
                 
-                if (rolled == true){
+                if (state == EStates.Allured){
                     return;
                 }
             }
             if(state == EStates.Allured){
-                state = Roll(50) == true ? EStates.Allured : EStates.Roaming;
+                state = P_Roll(roamingChance) == true ? EStates.Allured : EStates.Roaming;
             }
         }
-        private bool Roll(int percentageChance){
+        protected bool P_Roll(int percentageChance){
             return Random.Range(0, 100) <= percentageChance;
         }
     }
