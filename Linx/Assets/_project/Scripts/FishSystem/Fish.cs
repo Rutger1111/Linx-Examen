@@ -25,7 +25,7 @@ namespace FishSystem
         public ICommand caught;
         protected void Start()
         {
-            bait = GameObject.Find("Player2");
+            bait = GameObject.Find("Hook");
             state = EStates.Roaming;
         }
         protected void Update()

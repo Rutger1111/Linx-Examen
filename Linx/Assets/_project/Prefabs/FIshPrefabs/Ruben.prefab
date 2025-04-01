@@ -104,18 +104,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e347b7af10d92e44592479436cc4ea01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 1
-  caught: 0
+  _timerReset: 1
+  _timer: 1
+  alluredChance: 50
+  roamingChance: 50
   alluredDistance: 3.5
   state: 0
   bait: {fileID: 0}
   fishmaxHeight: 2
-  fishmaxLow: -3.21
-  fishmaxLeft: -6
-  fishmaxRight: 6
+  fishmaxLow: -10
+  fishmaxLeft: -10
+  fishmaxRight: 10
   speed: 1
   roamingCommand: {fileID: 7512003805857294034}
   alluredCommand: {fileID: 6639881183619809706}
+  huntingCommand: {fileID: 0}
+  caught: {fileID: 0}
 --- !u!114 &7512003805857294034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3480092593
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 2598441755
+  InScenePlacedSourceGlobalObjectIdHash: 3480092593
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
