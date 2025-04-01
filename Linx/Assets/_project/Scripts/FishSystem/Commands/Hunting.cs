@@ -5,10 +5,11 @@ namespace FishSystem
     public class Hunting : ICommand
     {
         private Fish _thisFish;
-        private ICommand Death;
+        private ICommand _death;
+
         void Start()
         {
-            Death = GameObject.Find("Player2").GetComponent<Death>();
+            _death = GameObject.Find("Player2").GetComponent<Death>();
         }
         public override void Invoke(Fish fish)
         {
@@ -34,7 +35,7 @@ namespace FishSystem
             transform.rotation = Quaternion.Euler(0, 0, angle);
             if(Vector3.Distance(transform.position, position) < 0.1f){
                 _thisFish.state = EStates.Roaming;
-                Death.Invoke(_thisFish);
+                _death.Invoke(_thisFish);
             }
         }
     }
