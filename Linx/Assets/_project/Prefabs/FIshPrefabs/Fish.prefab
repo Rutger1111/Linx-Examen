@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6214113972047192479}
   - component: {fileID: 6831030642940556737}
+  - component: {fileID: 5990047239893247930}
+  - component: {fileID: 1240206095476503426}
   - component: {fileID: 6590760894888243765}
   - component: {fileID: 7512003805857294034}
   - component: {fileID: 6639881183619809706}
-  - component: {fileID: 5990047239893247930}
-  - component: {fileID: 1240206095476503426}
+  - component: {fileID: -173831177086647572}
   m_Layer: 0
-  m_Name: Ruben
+  m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,58 +93,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6590760894888243765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8587830050116830086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e347b7af10d92e44592479436cc4ea01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timerReset: 1
-  _timer: 1
-  alluredChance: 50
-  roamingChance: 50
-  alluredDistance: 3.5
-  state: 0
-  bait: {fileID: 0}
-  fishmaxHeight: 2
-  fishmaxLow: -10
-  fishmaxLeft: -10
-  fishmaxRight: 10
-  speed: 1
-  roamingCommand: {fileID: 7512003805857294034}
-  alluredCommand: {fileID: 6639881183619809706}
-  huntingCommand: {fileID: 0}
-  caught: {fileID: 0}
---- !u!114 &7512003805857294034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8587830050116830086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c196245b5bd7214980257349017ea0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6639881183619809706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8587830050116830086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a9ce09af2c1da4e8c568f04431669f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5990047239893247930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2598441755
+  GlobalObjectIdHash: 3480092593
   InScenePlacedSourceGlobalObjectIdHash: 3480092593
   DeferredDespawnTick: 0
   Ownership: 1
@@ -205,3 +154,67 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &6590760894888243765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587830050116830086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e347b7af10d92e44592479436cc4ea01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timerReset: 1
+  _timer: 1
+  alluredChance: 50
+  roamingChance: 50
+  alluredDistance: 3.5
+  state: 0
+  bait: {fileID: 0}
+  fishmaxHeight: 2
+  fishmaxLow: -10
+  fishmaxLeft: -10
+  fishmaxRight: 10
+  speed: 1
+  roamingCommand: {fileID: 7512003805857294034}
+  alluredCommand: {fileID: 6639881183619809706}
+  huntingCommand: {fileID: 0}
+  caught: {fileID: -173831177086647572}
+--- !u!114 &7512003805857294034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587830050116830086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c196245b5bd7214980257349017ea0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6639881183619809706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587830050116830086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a9ce09af2c1da4e8c568f04431669f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-173831177086647572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587830050116830086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aef887f3967aa2479bed5c324a32566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

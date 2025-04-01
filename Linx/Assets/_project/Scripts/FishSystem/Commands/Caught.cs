@@ -10,7 +10,9 @@ namespace FishSystem
 
         public override void Invoke(Fish fish)
         {
-            transform.position = fish.bait.transform.position;   
+            transform.position = fish.bait.transform.position;
+
+            print("challange");
         }
     }
 }
