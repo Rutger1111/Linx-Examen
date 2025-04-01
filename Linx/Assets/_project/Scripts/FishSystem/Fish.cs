@@ -23,6 +23,8 @@ namespace FishSystem
         public ICommand huntingCommand;
 
         public ICommand caught;
+
+        private bool toSkillChack;
         protected void Start()
         {
             bait = GameObject.Find("Hook");
