@@ -4,25 +4,29 @@ using Unity.Netcode;
 public class Movement : NetworkBehaviour
 {
     public float speed;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        if (IsOwner)
-        {
+        
             handleMovement();
-        }
+        
        
     }
 
     void handleMovement()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = 0f;
+        float vertical = 0f;
+            
+        if (OwnerClientId == 0)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+        }
+        else if (OwnerClientId == 1)
+        {
+            vertical = Input.GetAxis("Vertical");    
+        }
+        
 
         Vector3 movement = new Vector3(horizontal, vertical, 0) * speed * Time.deltaTime;
 
