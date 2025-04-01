@@ -5,8 +5,8 @@ namespace FishSystem
 {
     public abstract class Fish : MonoBehaviour
     {
-        [SerializeField] private float timerReset = 1;
-        [SerializeField] private float timer = 1;        
+        [SerializeField] private float _timerReset = 1;
+        [SerializeField] private float _timer = 1;        
         [SerializeField] private int alluredChance = 50;
         [SerializeField] private int roamingChance = 50;
         public float alluredDistance = 5;
@@ -30,12 +30,12 @@ namespace FishSystem
         }
         protected void Update()
         {
-            if(timer - Time.deltaTime <= 0){
-                timer = 1;
+            if(_timer - Time.deltaTime <= 0){
+                _timer = 1;
                 CheckState();
             }
             else{
-                timer -= Time.deltaTime;
+                _timer -= Time.deltaTime;
             }
             switch(state){
                 case (EStates.Roaming):
