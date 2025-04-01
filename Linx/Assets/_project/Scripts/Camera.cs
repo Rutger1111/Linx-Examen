@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class Camera : MonoBehaviour
 {
     public GameObject player;
     public float speed;
@@ -36,6 +36,12 @@ public class CameraFollow : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, 
                     new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z), speed * Time.deltaTime);
+        }
+
+        if (Mathf.Abs(direction.x) > distanceForMovement * 1.5 || Mathf.Abs(direction.y) > distanceForMovement * 1.5)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, 
+                new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z), speed + 10 * Time.deltaTime);
         }
     }
 }
