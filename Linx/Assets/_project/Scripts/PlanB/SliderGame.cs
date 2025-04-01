@@ -1,58 +1,63 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-using Image = UnityEngine.UI.Image;
 using Slider = UnityEngine.UI.Slider;
 
 namespace _project.Scripts.PlanB
 {
     public class SliderGame : MonoBehaviour
     {
-        private float _setSliderValue;
         [SerializeField] private Slider _slider;
-        [SerializeField] private Slider _image;
+        [SerializeField] private Slider _sliderValueSetter;
 
-        private bool _sliderFull;
+        private bool _sliderOn = true;
+        private int _sliderDirection = 1;
 
-        private bool _sliderOn;
-        
-        void Start()
+        private void Start()
         {
-            _sliderOn = true;
-            
+            _sliderValueSetter.value = Random.Range(0, 100);
         }
 
-        
-        void Update()
+        private void Update()
         {
-            
+            HandleInput();
+            UpdateSlider();
+        }
+
+        private void HandleInput()
+        {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _image.value = Random.Range(0, 100);
-                _setSliderValue = _slider.value;
-                _sliderOn = false;
-                Debug.Log(_setSliderValue);
+                CheckSliderMatch();
             }
+            
+            //only for testing purposes |
+            //                          v
             if (Input.GetKeyDown(KeyCode.E))
             {
                 _sliderOn = true;
             }
-            
-            if (_slider.value >= 100)
-            {
-                _sliderFull = true;
-            }
-            else if (_slider.value <= 0)
-            {
-                _sliderFull = false;
-            }
-            if (!_sliderFull && _sliderOn)
-            {
-                _slider.value++;
-            }
+        }
 
-            if (_sliderFull && _sliderOn)
+        private void CheckSliderMatch()
+        {
+            _sliderOn = false;
+            float sliderValue = _slider.value;
+
+            if (Mathf.Abs(sliderValue - _sliderValueSetter.value) <= 20f)
             {
-                _slider.value--;
+                Debug.Log("success");
+                // Add success logic here
+            }
+        }
+
+        private void UpdateSlider()
+        {
+            if (!_sliderOn) return;
+
+            _slider.value += _sliderDirection;
+
+            if (_slider.value >= 100 || _slider.value <= 0)
+            {
+                _sliderDirection *= -1;
             }
         }
     }
