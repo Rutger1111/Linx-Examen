@@ -14,8 +14,7 @@ public class SkillCheck : MonoBehaviour
     public void MiniGame()
     {
         randomNumber = Random.Range(0, _unityEvents.Count);
-
-            
+        
         _unityEvents[randomNumber].Invoke();   
     }
 }

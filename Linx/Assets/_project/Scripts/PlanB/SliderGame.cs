@@ -11,14 +11,16 @@ namespace _project.Scripts.PlanB
     {
         [SerializeField] private Slider _slider;
         [SerializeField] private Slider _sliderValueSetter;
-        public GameObject canvas;
+        [SerializeField] private GameObject canvas;
 
-        public FishList _fishList;
+        [SerializeField] private FishList _fishList;
         
         
 
         private bool _sliderOn = true;
         private int _sliderDirection = 1;
+
+        private bool SpaceWorks = false;
 
         private void Update()
         {
@@ -32,12 +34,12 @@ namespace _project.Scripts.PlanB
             
             _sliderValueSetter.value = Random.Range(0, 100);
 
-            
+            SpaceWorks = true;
         }
         
         private void HandleInput()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && SpaceWorks == true)
             {
                 CheckSliderMatch();
             }
@@ -91,8 +93,11 @@ namespace _project.Scripts.PlanB
         private void ResetMiniGame()
         {
             _sliderOn = true;
+            SpaceWorks = false;
             
             canvas.SetActive(false);
+            
+            
         }
     }
 }
