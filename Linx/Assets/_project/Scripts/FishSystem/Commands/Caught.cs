@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 namespace FishSystem
 {
@@ -11,15 +12,15 @@ namespace FishSystem
 
         
         
-        public SkillCheck _skillCheck;
-        public FishList _fishList;
+        [SerializeField] private SkillCheck _skillCheck;
+        [FormerlySerializedAs("_fishList")] [SerializeField] private FishingManager fishingManager;
 
         private bool isbool;
 
         private void Start()
         {
             _skillCheck = GameObject.Find("EventSystem").GetComponent<SkillCheck>();
-            _fishList = GameObject.Find("EventSystem").GetComponent<FishList>();
+            fishingManager = GameObject.Find("EventSystem").GetComponent<FishingManager>();
         }
 
         public override void Invoke(Fish fish)
@@ -32,7 +33,7 @@ namespace FishSystem
                 
                 isbool = true;
                 
-                _fishList.caughtFish.Add(fish.gameObject);
+                fishingManager.caughtFishList.Add(fish.gameObject);
             }
         }
     }

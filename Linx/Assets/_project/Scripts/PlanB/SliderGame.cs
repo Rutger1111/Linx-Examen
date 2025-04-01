@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 using Slider = UnityEngine.UI.Slider;
 
@@ -13,7 +14,7 @@ namespace _project.Scripts.PlanB
         [SerializeField] private Slider _sliderValueSetter;
         [SerializeField] private GameObject canvas;
 
-        [SerializeField] private FishList _fishList;
+        [FormerlySerializedAs("_fishList")] [SerializeField] private FishingManager fishingManager;
         
         
 
@@ -62,7 +63,7 @@ namespace _project.Scripts.PlanB
                 Debug.Log("success");
                 // Add success logic here
                 
-                _fishList.CaughtFish();
+                fishingManager.HandleFishCaught();
                 
                 ResetMiniGame();
             }
@@ -70,7 +71,7 @@ namespace _project.Scripts.PlanB
             {
                 Debug.Log("fail");
 
-                _fishList.FailedFish();
+                fishingManager.HandleFishFailed();
                 
                 ResetMiniGame();
             }

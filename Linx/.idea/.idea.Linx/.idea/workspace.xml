@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/CameraFollow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/Camera.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/CameraFollow.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/FishSystem/Commands/Caught.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/FishSystem/Commands/Caught.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Hengel/Reeling.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Hengel/Reeling.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/SkillCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/SkillCheck.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/netCode/Scene/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Scene/Lobby.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +21,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/FishList.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/LeftAndRIght.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Arrow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Destination.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" root0="FORCE_HIGHLIGHTING" />
@@ -129,7 +129,7 @@
       <workItem from="1742803709424" duration="14941000" />
       <workItem from="1743422163617" duration="4369000" />
       <workItem from="1743491852528" duration="4136000" />
-      <workItem from="1743497842625" duration="8755000" />
+      <workItem from="1743497842625" duration="9898000" />
     </task>
     <servers />
   </component>

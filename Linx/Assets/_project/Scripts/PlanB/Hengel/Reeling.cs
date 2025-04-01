@@ -18,8 +18,8 @@ namespace _project.Scripts.PlanB
 
         private LineRenderer _lineRenderer;
         
-        public ulong horizontalPlayerId = 0;
-        public ulong verticalPlayerId = 1;
+        private ulong horizontalPlayerId = 0;
+        private ulong verticalPlayerId = 1;
 
         private void Start()
         {
