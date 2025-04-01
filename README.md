@@ -16,17 +16,20 @@ The goal is to get as many big fishes as possible, sell them for a huge profit a
 # Member contributions
 ## Developers
 Rutger van de laar (Lead Developer)
-- Fish system
+- Fish AI [code]()
   
 Renzo Reemer (game Designer)
 - Reeling [Funcional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#fisher)[Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#Reeling)
-- Swimming [Functional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#bait)[Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#swimming)
-- Skill-check
+- Movement [Functional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#bait)[Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#swimming)
+
 
 Ruben Kossen
 - Multiplayer  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/netCode/Script/NetworkManager.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/multiplayer-explanation)
 - Dialogue System  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/StoryBased/DialogueSystem.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Dialogue-System)
 - Spawning  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/FishSpawner/FishSpawnerManager.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Spawning-Manager-explanation)
+- MiniGame Menu [code](), [code explanation]()
+- Camera [code](), [code explanation]()
+- 
   
 # Artists
 - elanora 
