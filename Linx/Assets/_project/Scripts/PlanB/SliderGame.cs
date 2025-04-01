@@ -14,19 +14,20 @@ namespace _project.Scripts.PlanB
         private bool _sliderFull;
 
         private bool _sliderOn;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        
         void Start()
         {
             _sliderOn = true;
+            
         }
 
-        // Update is called once per frame
+        
         void Update()
         {
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                //_image.value = Random.Range(0, 100);
+                _image.value = Random.Range(0, 100);
                 _setSliderValue = _slider.value;
                 _sliderOn = false;
                 Debug.Log(_setSliderValue);
