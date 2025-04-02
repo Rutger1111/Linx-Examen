@@ -17,6 +17,7 @@ namespace _project.Scripts.PlanB
         public int weightOfFish;
 
         private LineRenderer _lineRenderer;
+        private SkillCheck _skillCheck;
         
         private ulong horizontalPlayerId = 0;
         private ulong verticalPlayerId = 1;
@@ -26,6 +27,7 @@ namespace _project.Scripts.PlanB
             //_hook = GameObject.Find("HookStartLine");
             _fishingRod = GameObject.Find("LineStartPoint");
             _lineRenderer = FindAnyObjectByType<LineRenderer>();
+            _skillCheck = GetComponent<SkillCheck>();
 
             if (IsServer)
             {
@@ -46,19 +48,27 @@ namespace _project.Scripts.PlanB
             
             Vector3 moveDirection = Vector3.zero;
             ulong localClientId = NetworkManager.LocalClientId;
-            
-            if (localClientId == horizontalPlayerId)
-            {
-                if (Input.GetKey(KeyCode.W)) moveDirection.y += 10 * Time.deltaTime;
-                if (Input.GetKey(KeyCode.S)) moveDirection.y -= 10 * Time.deltaTime;
-            }
-            else if (localClientId == verticalPlayerId)
-            {
-                if (Input.GetKey(KeyCode.A)) moveDirection.x -= 10 * Time.deltaTime;
-                if (Input.GetKey(KeyCode.D)) moveDirection.x += 10 * Time.deltaTime;
 
-                ResistanceCalculation();
+            if (_skillCheck.minigame == true)
+            {
+                print("playering mini game");
             }
+            else
+            {
+                if (localClientId == horizontalPlayerId)
+                {
+                    if (Input.GetKey(KeyCode.W)) MoveToRod();
+                    if (Input.GetKey(KeyCode.S)) moveDirection.y -= 10 * Time.deltaTime;
+                }
+                else if (localClientId == verticalPlayerId)
+                {
+                    if (Input.GetKey(KeyCode.A)) moveDirection.x -= 10 * Time.deltaTime;
+                    if (Input.GetKey(KeyCode.D)) moveDirection.x += 10 * Time.deltaTime;
+
+                    ResistanceCalculation();
+                } 
+            }
+            
 
             if (moveDirection != Vector3.zero)
             {

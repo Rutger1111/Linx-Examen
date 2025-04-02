@@ -13,14 +13,14 @@ namespace FishSystem
         
         
         public SkillCheck _skillCheck;
-        public FishList _fishList;
+        public FishingManager _fishList;
 
         private bool isbool;
 
         private void Start()
         {
             _skillCheck = GameObject.Find("EventSystem").GetComponent<SkillCheck>();
-            _fishList = GameObject.Find("EventSystem").GetComponent<FishList>();
+            _fishList = GameObject.Find("EventSystem").GetComponent<FishingManager>();
         }
 
         public override void Invoke(Fish fish)
@@ -33,7 +33,7 @@ namespace FishSystem
                 
                 isbool = true;
                 
-                _fishList.caughtFish.Add(fish.gameObject);
+                _fishList._caughtFishList.Add(fish.gameObject);
                 fish.bait.GetComponent<Catch>().Invoke(fish);
             }
         }

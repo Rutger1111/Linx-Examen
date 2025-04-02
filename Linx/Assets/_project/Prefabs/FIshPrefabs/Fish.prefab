@@ -168,9 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timerReset: 1
   _timer: 1
-  alluredChance: 10
+  alluredChance: 100
   roamingChance: 50
-  alluredDistance: 3.5
+  alluredDistance: 100
   state: 0
   bait: {fileID: 0}
   fishmaxHeight: 2

@@ -2,59 +2,87 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Slider = UnityEngine.UI.Slider;
 
-public class FishingManager : MonoBehaviour
+public class FishingManager : NetworkBehaviour
 {
     
     [SerializeField] private GameObject _caughtFishUI, _failedFishUI;
 
-    [SerializeField] private List<GameObject> caughtFishList;
+    [SerializeField] public List<GameObject> _caughtFishList;
 
-    [SerializeField] private float Timer;
+    [SerializeField] private float _timer;
+
+    private SkillCheck _skillCheck;
+
+    private void Start()
+    {
+        _skillCheck = GetComponent<SkillCheck>();
+    }
 
     private void Update()
     {
-        Timer -= Time.deltaTime;
+        _timer -= Time.deltaTime;
 
-        foreach (var fish in caughtFishList)
+        foreach (var fish in _caughtFishList)
         {
             if (fish == null)
             {
-                caughtFishList.Remove(fish);
+                _caughtFishList.Remove(fish);
             } 
         }
         
-        if (Timer <= 0)
+        if (_timer <= 0)
         {
             _caughtFishUI.SetActive(false);
             _failedFishUI.SetActive(false);
         }
     }
 
-    public void HandleFishCaught()
+    [ServerRpc(RequireOwnership = false)]
+    public void HandleFishCaughtServerRpc()
     {
-        _caughtFishUI.SetActive(true);
-        Timer = 0.1f;
-        
-        Timer++;
+        HandleFishCaughtClientRpc();
+    }
 
-        foreach (var fish in caughtFishList)
+    [ClientRpc]
+    private void HandleFishCaughtClientRpc()
+    {
+        _skillCheck.minigame = false;
+        
+        _caughtFishUI.SetActive(true);
+        _timer = 0.1f;
+
+        _timer++;
+        
+        _skillCheck.minigame = false;
+
+        foreach (var fish in _caughtFishList)
         {
             Destroy(fish);
         }
     }
 
-    public void HandleFishFailed()
+    [ServerRpc(RequireOwnership = false)]
+    public void HandleFishFailedServerRpc()
     {
+        HandleFishFailedClientRpc();
+    }
+
+    [ClientRpc]
+    private void HandleFishFailedClientRpc()
+    {
+        _skillCheck.minigame = false;
+        
         _failedFishUI.SetActive(true);
-        Timer = 0.1f;
+        _timer = 0.1f;
         
-        Timer++;
+        _timer++;
         
-        foreach (var fish in caughtFishList)
+        foreach (var fish in _caughtFishList)
         {
             Destroy(fish);
         }
