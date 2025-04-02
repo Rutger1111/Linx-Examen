@@ -18,10 +18,12 @@ namespace FishSystem
             }
             
         }
+
         private void ChooseWaypoint(Fish fish){
             _waypoint = new Vector3(Random.Range(fish.fishmaxLeft, fish.fishmaxRight),Random.Range(fish.fishmaxLow, fish.fishmaxHeight),transform.position.z);
             _gotWaypoint = true;
         }
+
         void OnDrawGizmosSelected()
         {
             Gizmos.DrawSphere(_waypoint, 0.5f);
@@ -43,8 +45,6 @@ namespace FishSystem
             if(Vector3.Distance(transform.position, _waypoint) < 0.1f){
                 _gotWaypoint = false;
             }
-        }
-
-    
+        }    
     }
 }

@@ -10,9 +10,11 @@ namespace FishSystem
         [SerializeField] private int alluredChance = 50;
         [SerializeField] private int roamingChance = 50;
         [SerializeField] private int biteChance = 2;
+        
         public float alluredDistance = 5;
         public EStates state;
         public GameObject bait;
+
         public float fishmaxHeight;
         public float fishmaxLow;
         public float fishmaxLeft;
@@ -53,11 +55,15 @@ namespace FishSystem
                 case (EStates.Caught):
                     caught.Invoke(this);
                     break;
+                case (EStates.Biting):
+                    biteCommand.Invoke(this);
+                    break;
             }            
 
         }
 
-        public virtual void CheckState(){
+        public virtual void CheckState()
+        {
             if(Vector3.Distance(transform.position, bait.transform.position) < alluredDistance && state == EStates.Roaming){
                 bool rolled = P_Roll(alluredChance);
                 state = rolled == true ? EStates.Allured : EStates.Roaming;
@@ -66,11 +72,17 @@ namespace FishSystem
                     return;
                 }
             }
+
             if(state == EStates.Allured){
-                state = P_Roll(roamingChance) == true ? EStates.Allured : EStates.Roaming;
+                state = P_Roll(roamingChance) == true ? EStates.Roaming : EStates.Allured;
                 if (state == EStates.Allured){
-                    state = P_Roll(biteChance) == true ? EStates.Biting : EStates.Roaming;
+                    state = P_Roll(biteChance) == true ? EStates.Biting : EStates.Allured;
                 }
+                return;
+            }
+
+            if(state == EStates.Biting){
+                state = P_Roll(roamingChance) == true ? EStates.Roaming : EStates.Biting;
             }
         }
 

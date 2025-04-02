@@ -8,6 +8,7 @@ namespace FishSystem
         private bool _gotWaypoint = false;
         private Vector3 _waypoint;
         private Fish _thisFish;
+
         public override void Invoke(Fish fish)
         {
             _thisFish = fish;
@@ -19,15 +20,18 @@ namespace FishSystem
             }
             
         }
+
         private void ChooseWaypoint(Fish fish){
             Vector3 bait = fish.bait.transform.position;
             _waypoint = new Vector3(Random.insideUnitCircle.x * _swimRadius + bait.x,Random.insideUnitCircle.x * _swimRadius + bait.y,transform.position.z);
             _gotWaypoint = true;
         }
+
         void OnDrawGizmosSelected()
         {
             Gizmos.DrawSphere(_waypoint, 0.5f);
         }
+
         private void MoveToWaypoint(float speed){
             transform.position = Vector3.MoveTowards(transform.position ,_waypoint, speed * Time.deltaTime) ;
             Vector3 diff = _waypoint - transform.position;
@@ -46,6 +50,5 @@ namespace FishSystem
                 _gotWaypoint = false;
             }
         }
-
     }
 }

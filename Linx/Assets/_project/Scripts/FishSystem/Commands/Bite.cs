@@ -5,6 +5,7 @@ namespace FishSystem
     public class Bite : ICommand
     {
         private Fish _thisFish;
+        
         public override void Invoke(Fish fish)
         {
             _thisFish = fish;
