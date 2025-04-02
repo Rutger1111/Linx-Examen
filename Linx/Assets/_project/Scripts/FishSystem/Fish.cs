@@ -9,6 +9,7 @@ namespace FishSystem
         [SerializeField] private float _timer = 1;        
         [SerializeField] private int alluredChance = 50;
         [SerializeField] private int roamingChance = 50;
+        [SerializeField] private int biteChance = 2;
         public float alluredDistance = 5;
         public EStates state;
         public GameObject bait;
@@ -21,15 +22,15 @@ namespace FishSystem
         public ICommand roamingCommand;
         public ICommand alluredCommand;
         public ICommand huntingCommand;
-
+        public ICommand biteCommand;
         public ICommand caught;
 
-        private bool toSkillChack;
         protected void Start()
         {
             bait = GameObject.Find("Hook");
             state = EStates.Roaming;
         }
+
         protected void Update()
         {
             if(_timer - Time.deltaTime <= 0){
@@ -55,6 +56,7 @@ namespace FishSystem
             }            
 
         }
+
         public virtual void CheckState(){
             if(Vector3.Distance(transform.position, bait.transform.position) < alluredDistance && state == EStates.Roaming){
                 bool rolled = P_Roll(alluredChance);
@@ -66,8 +68,12 @@ namespace FishSystem
             }
             if(state == EStates.Allured){
                 state = P_Roll(roamingChance) == true ? EStates.Allured : EStates.Roaming;
+                if (state == EStates.Allured){
+                    state = P_Roll(biteChance) == true ? EStates.Biting : EStates.Roaming;
+                }
             }
         }
+
         protected bool P_Roll(int percentageChance){
             return Random.Range(0, 100) <= percentageChance;
         }

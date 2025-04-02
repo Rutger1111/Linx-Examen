@@ -4,18 +4,33 @@ namespace FishSystem
 {
     public class Allured : ICommand
     {
+        [SerializeField] private int _swimRadius;
+        private bool _gotWaypoint = false;
+        private Vector3 _waypoint;
         private Fish _thisFish;
         public override void Invoke(Fish fish)
         {
             _thisFish = fish;
-            MoveToBait(fish.speed, fish.bait);
+            if (_gotWaypoint){
+                MoveToWaypoint(fish.speed);
+            }
+            else{
+                ChooseWaypoint(fish); 
+            }
+            
         }
-        
-        private void MoveToBait(float speed, GameObject bait)
+        private void ChooseWaypoint(Fish fish){
+            Vector3 bait = fish.bait.transform.position;
+            _waypoint = new Vector3(Random.insideUnitCircle.x * _swimRadius + bait.x,Random.insideUnitCircle.x * _swimRadius + bait.y,transform.position.z);
+            _gotWaypoint = true;
+        }
+        void OnDrawGizmosSelected()
         {
-            Vector3 position = bait.transform.position;
-            transform.position = Vector3.MoveTowards(transform.position ,position, speed * Time.deltaTime) ;
-            Vector3 diff = position - transform.position;
+            Gizmos.DrawSphere(_waypoint, 0.5f);
+        }
+        private void MoveToWaypoint(float speed){
+            transform.position = Vector3.MoveTowards(transform.position ,_waypoint, speed * Time.deltaTime) ;
+            Vector3 diff = _waypoint - transform.position;
             float angle = Mathf.Atan2(diff.y, diff.x);
             angle *= Mathf.Rad2Deg;
             
@@ -27,9 +42,10 @@ namespace FishSystem
             }
             
             transform.rotation = Quaternion.Euler(0, 0, angle);
-            if(Vector3.Distance(transform.position, position) < 0.1f){
-                bait.GetComponent<Catch>().Invoke(_thisFish);
+            if(Vector3.Distance(transform.position, _waypoint) < 0.1f){
+                _gotWaypoint = false;
             }
         }
+
     }
 }
