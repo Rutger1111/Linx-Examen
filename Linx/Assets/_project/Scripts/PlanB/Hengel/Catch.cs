@@ -7,7 +7,6 @@ namespace PlanB
    {
         [SerializeField] private int _maxFishCapacity = 100;
         private bool _isCatching;
-        [SerializeField] private int _maxFishCapacity = 1;
         [SerializeField] private int _caughtFish = 0;
 
         public override void Invoke(Fish fish)

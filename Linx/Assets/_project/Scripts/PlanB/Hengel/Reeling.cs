@@ -49,7 +49,7 @@ namespace _project.Scripts.PlanB
             
             if (localClientId == horizontalPlayerId)
             {
-                if (Input.GetKey(KeyCode.W)) moveDirection.y += 10 * Time.deltaTime;
+                if (Input.GetKey(KeyCode.W)) MoveToRod();
                 if (Input.GetKey(KeyCode.S)) moveDirection.y -= 10 * Time.deltaTime;
             }
             /*else if (localClientId == verticalPlayerId)
@@ -83,6 +83,7 @@ namespace _project.Scripts.PlanB
         public void MoveToRod()
         {
             _hook.transform.position = Vector3.Lerp(_hook.transform.position, _fishingRod.transform.position, 0.01f);
+            
         }
 
         private void MaxLineLength()

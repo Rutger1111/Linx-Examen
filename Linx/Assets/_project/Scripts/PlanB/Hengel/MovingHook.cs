@@ -8,7 +8,7 @@ namespace _project.Scripts.PlanB
     public class MovingHook : NetworkBehaviour
     {
         public Reeling _reeling;
-        public Vector3 moveDirection;
+        private Vector3 moveDirection;
         
         void Update()
         {
