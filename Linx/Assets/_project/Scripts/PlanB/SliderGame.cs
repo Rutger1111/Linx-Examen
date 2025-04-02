@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 using Slider = UnityEngine.UI.Slider;
 
@@ -11,14 +12,16 @@ namespace _project.Scripts.PlanB
     {
         [SerializeField] private Slider _slider;
         [SerializeField] private Slider _sliderValueSetter;
-        public GameObject canvas;
+        [SerializeField] private GameObject canvas;
 
-        public FishList _fishList;
+        [FormerlySerializedAs("_fishList")] [SerializeField] private FishingManager fishingManager;
         
         
 
         private bool _sliderOn = true;
         private int _sliderDirection = 1;
+
+        private bool SpaceWorks = false;
 
         private void Update()
         {
@@ -32,12 +35,12 @@ namespace _project.Scripts.PlanB
             
             _sliderValueSetter.value = Random.Range(0, 100);
 
-            
+            SpaceWorks = true;
         }
         
         private void HandleInput()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && SpaceWorks == true)
             {
                 CheckSliderMatch();
             }
@@ -60,7 +63,7 @@ namespace _project.Scripts.PlanB
                 Debug.Log("success");
                 // Add success logic here
                 
-                _fishList.CaughtFish();
+                fishingManager.HandleFishCaught();
                 
                 ResetMiniGame();
             }
@@ -68,7 +71,7 @@ namespace _project.Scripts.PlanB
             {
                 Debug.Log("fail");
 
-                _fishList.FailedFish();
+                fishingManager.HandleFishFailed();
                 
                 ResetMiniGame();
             }
@@ -91,8 +94,11 @@ namespace _project.Scripts.PlanB
         private void ResetMiniGame()
         {
             _sliderOn = true;
+            SpaceWorks = false;
             
             canvas.SetActive(false);
+            
+            
         }
     }
 }
