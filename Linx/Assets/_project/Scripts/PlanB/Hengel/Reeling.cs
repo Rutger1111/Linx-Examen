@@ -36,35 +36,41 @@ namespace _project.Scripts.PlanB
 
         void Update()
         {
-            
-            
             _lineRenderer.SetPosition(0, _fishingRod.transform.position);
             _lineRenderer.SetPosition(1, _hook.transform.position);
-        
+
             MaxLineLength();
             ResistanceCalculation();
-            
+    
             Vector3 moveDirection = Vector3.zero;
+            Quaternion rotateDirection = Quaternion.identity; // Correct way to initialize
+    
             ulong localClientId = NetworkManager.LocalClientId;
-            
+
             if (localClientId == horizontalPlayerId)
             {
-                if (Input.GetKey(KeyCode.W)) moveDirection.y += 10 * Time.deltaTime;
-                if (Input.GetKey(KeyCode.S)) moveDirection.y -= 10 * Time.deltaTime;
-            }
-            /*else if (localClientId == verticalPlayerId)
-            {
-                if (Input.GetKey(KeyCode.A)) moveDirection.x -= 10 * Time.deltaTime;
-                if (Input.GetKey(KeyCode.D)) moveDirection.x += 10 * Time.deltaTime;
+                if (Input.GetKey(KeyCode.W))
+                {
+                    moveDirection.y += 10 * Time.deltaTime;
+                    rotateDirection = Quaternion.Euler(-180, 0, 0); // Correct way to rotate upwards
+                }
 
-                ResistanceCalculation();
-            }*/
+                if (Input.GetKey(KeyCode.S))
+                {
+                    moveDirection.y -= 10 * Time.deltaTime;
+                    rotateDirection = Quaternion.Euler(180, 0, 0); // Correct way to rotate downwards
+                }
+            }
 
             if (moveDirection != Vector3.zero)
             {
                 MoveHookServerRpc(moveDirection);
             }
-            
+
+            if (rotateDirection != Quaternion.identity) // Proper way to check for rotation changes
+            {
+                RotatePlayerServerRpc(rotateDirection);
+            }
         }
         
         [ServerRpc(RequireOwnership = false)]
@@ -73,11 +79,22 @@ namespace _project.Scripts.PlanB
             _hook.transform.position += move; 
             MoveHookClientRpc(_hook.transform.position);
         }
+        [ServerRpc(RequireOwnership = false)]
+        public void RotatePlayerServerRpc(Quaternion rotate, ServerRpcParams rpcParams = default)
+        {
+            _hook.transform.rotation = rotate; 
+            RotatePlayerClientRpc(_hook.transform.rotation);
+        }
         
         [ClientRpc]
         private void MoveHookClientRpc(Vector3 newPos)
         {
             if (!IsOwner) _hook.transform.position = newPos;
+        }
+        [ClientRpc]
+        private void RotatePlayerClientRpc(Quaternion newRot)
+        {
+            if (!IsOwner) _hook.transform.rotation = newRot;
         }
         
         public void MoveToRod()
