@@ -1,69 +1,98 @@
 using UnityEngine;
 
-namespace _project.Scripts.PlanB
+namespace _project.Scripts.PlanB.Hengel
 {
     public class Reeling : MonoBehaviour
     {
-        private GameObject _hook;
-        private GameObject _fishingRod;
-        
+        [SerializeField] private GameObject hook;
+        [SerializeField] private GameObject fishingRod;
+
         [SerializeField] private float lineLength;
-        [SerializeField] private float distance;
         [SerializeField] private float resistance;
+        [SerializeField] private float reelSpeed;
 
-        public int weightOfFish;
+        [SerializeField] private LineRenderer _lineRenderer;
+        private float _distance;
 
-        private LineRenderer _lineRenderer;
-
-        private void Start()
+        private void Awake()
         {
-            _hook = GameObject.Find("HookStartLine");
-            _fishingRod = GameObject.Find("LineStartPoint");
-            _lineRenderer = FindAnyObjectByType<LineRenderer>();
+            // Cache components to avoid expensive runtime lookups
+            if (!hook) hook = GameObject.FindWithTag("Hook");
+            if (!fishingRod) fishingRod = GameObject.FindWithTag("Rod");
+
+            //_lineRenderer = GetComponentInChildren<LineRenderer>();
+            _lineRenderer = GetComponentInChildren<LineRenderer>();
+            if (!_lineRenderer)
+            {
+                Debug.LogError("LineRenderer component missing on the GameObject.");
+            }
         }
 
-        void Update()
+        private void Update()
         {
-            _lineRenderer.SetPosition(0, _fishingRod.transform.position);
-            _lineRenderer.SetPosition(1, _hook.transform.position);
-        
-            MaxLineLength();
-            ResistanceCalculation();
+            UpdateLineRenderer();
+            ApplyMaxLineLength();
+            CalculateResistance();
 
+            HandleInput();
+        }
+
+        private void UpdateLineRenderer()
+        {
+            if (!_lineRenderer || !hook || !fishingRod) return;
+
+            _lineRenderer.SetPosition(0, fishingRod.transform.position);
+            _lineRenderer.SetPosition(1, hook.transform.position);
+        }
+
+        private void HandleInput()
+        {
             if (Input.GetKey(KeyCode.W))
             {
                 MoveToRod();
-                //_hook.transform.position += new Vector3(0, 10, 0) * Time.deltaTime;
             }
-        
+
             if (Input.GetKey(KeyCode.S))
             {
-                _hook.transform.position -= new Vector3(0, resistance, 0) * Time.deltaTime;
+                LowerHook();
             }
         }
 
         private void MoveToRod()
         {
-            _hook.transform.position = Vector3.Lerp(_hook.transform.position, _fishingRod.transform.position, 0.01f);
-        }
-
-        private void MaxLineLength()
-        {
-            var rodPosition = _fishingRod.transform.position;
-            distance = Vector3.Distance(_hook.transform.position, rodPosition);
-
-            if (distance > lineLength)
+            if (hook)
             {
-                
-                Vector3 fromOriginToObject = _hook.transform.position - rodPosition;
-                fromOriginToObject *= lineLength / distance;
-                _hook.transform.position = rodPosition + fromOriginToObject;
+                //hook.transform.position = Vector3.Lerp(hook.transform.position, fishingRod.transform.position, Time.deltaTime * reelSpeed);
+                _distance -= reelSpeed * Time.deltaTime;
             }
         }
-        //doesn't work.
-        protected void ResistanceCalculation()
+
+        private void LowerHook()
         {
-            resistance = distance + _hook.transform.position.y;
+            if (hook)
+            {
+                //hook.transform.position -= Vector3.up * (resistance * Time.deltaTime);
+                _distance += reelSpeed * Time.deltaTime;
+            }
+        }
+
+        private void ApplyMaxLineLength()
+        {
+            if (!hook || !fishingRod) return;
+
+            _distance = Vector3.Distance(hook.transform.position, fishingRod.transform.position);
+
+            if (_distance > lineLength)
+            {
+                var position = fishingRod.transform.position;
+                Vector3 direction = (hook.transform.position - position).normalized;
+                hook.transform.position = position + direction * lineLength;
+            }
+        }
+
+        private void CalculateResistance()
+        {
+            resistance = Mathf.Max(1f, _distance * 0.1f + hook.transform.position.y * 0.05f);
         }
     }
 }

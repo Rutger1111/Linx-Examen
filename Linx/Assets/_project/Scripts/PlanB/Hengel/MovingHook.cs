@@ -1,8 +1,9 @@
+using _project.Scripts.PlanB.Hengel;
 using UnityEngine;
 
 namespace _project.Scripts.PlanB
 {
-    public class MovingHook : Reeling
+    public class MovingHook : MonoBehaviour
     {
         void Update()
         {
@@ -15,7 +16,7 @@ namespace _project.Scripts.PlanB
             {
                 transform.position += new Vector3(10, 0, 0) * Time.deltaTime;
             }
-            ResistanceCalculation();
+            //ResistanceCalculation();
         }
     }
 }
