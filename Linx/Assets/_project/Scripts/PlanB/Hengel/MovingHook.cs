@@ -1,3 +1,6 @@
+using System;
+using FishSystem;
+using PlanB;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.VisualScripting;
@@ -27,6 +30,26 @@ namespace _project.Scripts.PlanB
             {
                 _reeling.MoveHookServerRpc(moveDirection);
             }
+        }
+
+        private void OnTriggerStay (Collider other)
+        {
+            if (Input.GetKeyDown(KeyCode.C) && other.CompareTag("Fish"))
+            {
+                gameObject.GetComponent<Catch>().Invoke(other.gameObject.GetComponent<Fish>());
+            }
+            
+        }
+
+        private void _Reach()
+        {
+            
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, 1);
         }
     }
 }
