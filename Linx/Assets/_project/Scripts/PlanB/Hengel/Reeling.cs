@@ -52,13 +52,13 @@ namespace _project.Scripts.PlanB
                 if (Input.GetKey(KeyCode.W)) moveDirection.y += 10 * Time.deltaTime;
                 if (Input.GetKey(KeyCode.S)) moveDirection.y -= 10 * Time.deltaTime;
             }
-            else if (localClientId == verticalPlayerId)
+            /*else if (localClientId == verticalPlayerId)
             {
                 if (Input.GetKey(KeyCode.A)) moveDirection.x -= 10 * Time.deltaTime;
                 if (Input.GetKey(KeyCode.D)) moveDirection.x += 10 * Time.deltaTime;
 
                 ResistanceCalculation();
-            }
+            }*/
 
             if (moveDirection != Vector3.zero)
             {
@@ -102,6 +102,19 @@ namespace _project.Scripts.PlanB
         protected void ResistanceCalculation()
         {
             resistance = distance + _hook.transform.position.y;
+        }
+        
+        private void OnDrawGizmos()
+        {
+            // Set the color with custom alpha.
+            Gizmos.color = new Color(1f, 0f, 0f, 0.5f); // Red with custom alpha
+
+            // Draw the sphere.
+            Gizmos.DrawWireSphere(_hook.transform.position, 5);
+
+            // Draw wire sphere outline.
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireSphere(_hook.transform.position, 10);
         }
     }
 }
