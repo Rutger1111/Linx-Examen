@@ -9,9 +9,12 @@ namespace FishSystem
         [SerializeField] private float _timer = 1;        
         [SerializeField] private int alluredChance = 50;
         [SerializeField] private int roamingChance = 50;
+        [SerializeField] private int biteChance = 2;
+        
         public float alluredDistance = 5;
         public EStates state;
         public GameObject bait;
+
         public float fishmaxHeight;
         public float fishmaxLow;
         public float fishmaxLeft;
@@ -21,15 +24,15 @@ namespace FishSystem
         public ICommand roamingCommand;
         public ICommand alluredCommand;
         public ICommand huntingCommand;
-
+        public ICommand biteCommand;
         public ICommand caught;
 
-        private bool toSkillChack;
         protected void Start()
         {
             bait = GameObject.Find("Hook");
             state = EStates.Roaming;
         }
+
         protected void Update()
         {
             if(_timer - Time.deltaTime <= 0){
@@ -52,10 +55,15 @@ namespace FishSystem
                 case (EStates.Caught):
                     caught.Invoke(this);
                     break;
+                case (EStates.Biting):
+                    biteCommand.Invoke(this);
+                    break;
             }            
 
         }
-        public virtual void CheckState(){
+
+        public virtual void CheckState()
+        {
             if(Vector3.Distance(transform.position, bait.transform.position) < alluredDistance && state == EStates.Roaming){
                 bool rolled = P_Roll(alluredChance);
                 state = rolled == true ? EStates.Allured : EStates.Roaming;
@@ -64,10 +72,20 @@ namespace FishSystem
                     return;
                 }
             }
+
             if(state == EStates.Allured){
-                state = P_Roll(roamingChance) == true ? EStates.Allured : EStates.Roaming;
+                state = P_Roll(roamingChance) == true ? EStates.Roaming : EStates.Allured;
+                if (state == EStates.Allured){
+                    state = P_Roll(biteChance) == true ? EStates.Biting : EStates.Allured;
+                }
+                return;
+            }
+
+            if(state == EStates.Biting){
+                state = P_Roll(roamingChance) == true ? EStates.Roaming : EStates.Biting;
             }
         }
+
         protected bool P_Roll(int percentageChance){
             return Random.Range(0, 100) <= percentageChance;
         }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7512003805857294034}
   - component: {fileID: 6639881183619809706}
   - component: {fileID: -173831177086647572}
+  - component: {fileID: -271393828547591291}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -172,6 +173,11 @@ MonoBehaviour:
   roamingChance: 50
   alluredDistance: 100
   state: 0
+  alluredChance: 10
+  roamingChance: 10
+  biteChance: 2
+  alluredDistance: 3.5
+  state: 2
   bait: {fileID: 0}
   fishmaxHeight: 2
   fishmaxLow: -10
@@ -179,8 +185,9 @@ MonoBehaviour:
   fishmaxRight: 10
   speed: 1
   roamingCommand: {fileID: 7512003805857294034}
-  alluredCommand: {fileID: 6639881183619809706}
+  alluredCommand: {fileID: -271393828547591291}
   huntingCommand: {fileID: 0}
+  biteCommand: {fileID: 6639881183619809706}
   caught: {fileID: -173831177086647572}
 --- !u!114 &7512003805857294034
 MonoBehaviour:
@@ -220,3 +227,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillCheck: {fileID: 0}
   _fishList: {fileID: 0}
+--- !u!114 &-271393828547591291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587830050116830086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527a11612ecc9414485c9929cc58d215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _swimRadius: 3

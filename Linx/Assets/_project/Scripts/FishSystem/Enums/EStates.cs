@@ -6,5 +6,6 @@ public enum EStates
     Distracted,
     Allured,
     Hunting,
-    Caught
+    Caught,
+    Biting
 }
