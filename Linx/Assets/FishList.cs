@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PlanB;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -50,6 +51,7 @@ public class FishList : MonoBehaviour
         {
             Destroy(CF);
         }
+        GameObject.Find("Hook").GetComponent<Catch>().isCatching = null;
     }
 
     public void FailedFish()
@@ -64,6 +66,7 @@ public class FishList : MonoBehaviour
         {
             Destroy(CF);
         }
+        GameObject.Find("Hook").GetComponent<Catch>().isCatching = null;
     }
     
     
