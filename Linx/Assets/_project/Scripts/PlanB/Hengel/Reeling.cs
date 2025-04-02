@@ -68,7 +68,7 @@ namespace _project.Scripts.PlanB
         }
         
         [ServerRpc(RequireOwnership = false)]
-        private void MoveHookServerRpc(Vector3 move, ServerRpcParams rpcParams = default)
+        public void MoveHookServerRpc(Vector3 move, ServerRpcParams rpcParams = default)
         {
             _hook.transform.position += move; 
             MoveHookClientRpc(_hook.transform.position);
