@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FishList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FishList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/FishingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/FishingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Hengel/Catch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Hengel/Catch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Linx_clone_0/.idea/.idea.Linx_clone_0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Linx_clone_0/.idea/.idea.Linx_clone_0/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +129,7 @@
       <workItem from="1743580839602" duration="4066000" />
       <workItem from="1743664614900" duration="7687000" />
       <workItem from="1743676831970" duration="494000" />
-      <workItem from="1743677475728" duration="666000" />
+      <workItem from="1743677475728" duration="2903000" />
     </task>
     <servers />
   </component>
