@@ -8,7 +8,7 @@ namespace PlanB
    {
         public GameObject isCatching;
         [SerializeField] private int _maxFishCapacity = 1;
-        [SerializeField] private int _caughtFish = 0;
+        public int _caughtFish = 0;
 
         public Reeling reeling;
         public override void Invoke(Fish fish)
@@ -16,10 +16,9 @@ namespace PlanB
             if (_caughtFish < _maxFishCapacity && isCatching == null)
             {
                 isCatching = fish.gameObject;
-                _caughtFish ++;
                 fish.state = EStates.Caught;
             }
-            else{
+            else if( isCatching != fish.gameObject) {
                 fish.state = _caughtFish < _maxFishCapacity ? EStates.Caught : EStates.Roaming;
             }
         }

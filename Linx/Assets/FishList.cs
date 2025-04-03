@@ -41,6 +41,7 @@ public class FishList : MonoBehaviour
 
     public void CaughtFish()
     {
+
         caught.SetActive(true);
 
         Timer = 0.1f;
@@ -51,11 +52,13 @@ public class FishList : MonoBehaviour
         {
             Destroy(CF);
         }
-        GameObject.Find("Hook").GetComponent<Catch>().isCatching = null;
     }
 
     public void FailedFish()
     {
+        GameObject.Find("Hook").GetComponent<Catch>().isCatching = null;
+        caught.GetComponent<Catch>().isCatching = null;
+
         fail.SetActive(true);
         
         Timer = 0.1f;
@@ -66,7 +69,6 @@ public class FishList : MonoBehaviour
         {
             Destroy(CF);
         }
-        GameObject.Find("Hook").GetComponent<Catch>().isCatching = null;
     }
     
     
