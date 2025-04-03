@@ -11,7 +11,7 @@ namespace _project.Scripts.PlanB
         //public GameObject hookposition;
         
         [SerializeField] private float lineLength;
-        [SerializeField] private float distance;
+        [SerializeField] public float distance;
         [SerializeField] public float resistance;
 
         public int weightOfFish;

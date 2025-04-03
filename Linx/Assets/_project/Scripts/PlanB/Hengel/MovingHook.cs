@@ -41,7 +41,10 @@ namespace _project.Scripts.PlanB.Hengel
 
                 // Scale animator speed based on current speed
                 float maxSpeed = 10f;  // Adjust max speed accordingly
-                _animator.speed = Mathf.Clamp(_reeling.currentSpeed / maxSpeed, 0.1f, 1f);
+                float slowdownFactor = 0.0005f;
+                float currentSpeed = maxSpeed * (1 / (1 + _reeling.distance * slowdownFactor));
+                _animator.speed = Mathf.Clamp(_reeling.currentSpeed / _reeling.distance, 0.5f, 1f);
+                //Debug.Log(_animator.speed);
             }
 
             if (moveDirection != Vector3.zero)
