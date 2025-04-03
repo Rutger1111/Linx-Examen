@@ -41,23 +41,27 @@ namespace _project.Scripts.PlanB
 
             MaxLineLength();
             ResistanceCalculation();
-    
+
             Vector3 moveDirection = Vector3.zero;
-            Quaternion rotateDirection = Quaternion.identity; // Correct way to initialize
-    
+            Quaternion rotateDirection = Quaternion.identity;
+
             ulong localClientId = NetworkManager.LocalClientId;
+    
+            float maxSpeed = 10f; // Initial speed when the hook is near
+            float slowdownFactor = 0.05f; // Adjust this to fine-tune slowdown effect
+            float currentSpeed = maxSpeed * (1 / (1 + distance * slowdownFactor));
 
             if (localClientId == horizontalPlayerId)
             {
                 if (Input.GetKey(KeyCode.W))
                 {
-                    moveDirection.y += 10 * Time.deltaTime;
-                    rotateDirection = Quaternion.AngleAxis(-10, Vector3.right); 
+                    moveDirection.y += currentSpeed * Time.deltaTime;
+                    rotateDirection = Quaternion.AngleAxis(-10, Vector3.right);
                 }
 
                 if (Input.GetKey(KeyCode.S))
                 {
-                    moveDirection.y -= 10 * Time.deltaTime;
+                    moveDirection.y -= currentSpeed * Time.deltaTime;
                     rotateDirection = Quaternion.AngleAxis(180, -Vector3.right);
                 }
             }
@@ -67,7 +71,7 @@ namespace _project.Scripts.PlanB
                 MoveHookServerRpc(moveDirection);
             }
 
-            if (rotateDirection != Quaternion.identity) // Proper way to check for rotation changes
+            if (rotateDirection != Quaternion.identity)
             {
                 RotatePlayerServerRpc(rotateDirection);
             }
