@@ -58,16 +58,11 @@ namespace _project.Scripts.PlanB
         
         private void HandleInput()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && SpaceWorks == true)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
+                print("go though");
+                
                 HandleInputServerRpc();
-            }
-            
-            //only for testing purposes |
-            //                          v
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                _sliderOn = true;
             }
         }
         
@@ -81,6 +76,8 @@ namespace _project.Scripts.PlanB
         [ClientRpc]
         void HandleInputClientRpc(ulong clientId)
         {
+            print(clientId);
+            
             if (NetworkManager.LocalClientId == clientId) 
             {
                 canvas.SetActive(false); 

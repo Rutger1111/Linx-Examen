@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Linx_clone_0/.idea/.idea.Linx_clone_0/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Hengel/Catch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/Hengel/Catch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/netCode/Scene/NetCode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Scene/NetCode.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Linx_clone_0/.idea/.idea.Linx_clone_0/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
