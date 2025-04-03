@@ -29,7 +29,6 @@ namespace PlanB
             {
                 _caughtFish = 0;
             }
-            Debug.Log(reeling.distance);
         }
    }
 }
