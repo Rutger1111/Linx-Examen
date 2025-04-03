@@ -20,6 +20,10 @@ namespace _project.Scripts.PlanB
         
         public ulong horizontalPlayerId = 0;
         public ulong verticalPlayerId = 1;
+        
+        private float maxSpeed; // Initial speed when the hook is near
+        private float slowdownFactor; // Adjust this to fine-tune slowdown effect
+        public float currentSpeed;
 
         private void Start()
         {
@@ -47,9 +51,9 @@ namespace _project.Scripts.PlanB
 
             ulong localClientId = NetworkManager.LocalClientId;
     
-            float maxSpeed = 10f; // Initial speed when the hook is near
-            float slowdownFactor = 0.05f; // Adjust this to fine-tune slowdown effect
-            float currentSpeed = maxSpeed * (1 / (1 + distance * slowdownFactor));
+            maxSpeed = 10f;
+            slowdownFactor = 0.05f;
+            currentSpeed = maxSpeed * (1 / (1 + distance * slowdownFactor));
 
             if (localClientId == horizontalPlayerId)
             {
