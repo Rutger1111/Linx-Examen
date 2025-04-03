@@ -16,6 +16,8 @@ namespace _project.Scripts.PlanB
 
         public int weightOfFish;
 
+        public float speed;
+
         private LineRenderer _lineRenderer;
         
         public ulong horizontalPlayerId = 0;
@@ -50,7 +52,7 @@ namespace _project.Scripts.PlanB
             if (localClientId == horizontalPlayerId)
             {
                 if (Input.GetKey(KeyCode.W)) MoveToRod();
-                if (Input.GetKey(KeyCode.S)) moveDirection.y -= 10 * Time.deltaTime;
+                if (Input.GetKey(KeyCode.S)) moveDirection.y -= 7 * Time.deltaTime;
             }
             /*else if (localClientId == verticalPlayerId)
             {
@@ -82,7 +84,7 @@ namespace _project.Scripts.PlanB
         
         public void MoveToRod()
         {
-            _hook.transform.position = Vector3.Lerp(_hook.transform.position, _fishingRod.transform.position, 0.01f);
+            _hook.transform.position = Vector3.Lerp(_hook.transform.position, _fishingRod.transform.position, 0.25f * Time.deltaTime);
             
         }
 
@@ -116,6 +118,8 @@ namespace _project.Scripts.PlanB
             // Draw wire sphere outline.
             Gizmos.color = Color.white;
             Gizmos.DrawWireSphere(_hook.transform.position, 10);
+            
+           
         }
     }
 }
