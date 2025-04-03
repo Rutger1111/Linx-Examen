@@ -1,6 +1,5 @@
 using FishSystem;
 using UnityEngine;
-
 namespace PlanB
 {
     public class Catch : ICommand
