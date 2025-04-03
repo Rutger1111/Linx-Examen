@@ -57,18 +57,12 @@ namespace _project.Scripts.PlanB
             slowdownFactor = 0.05f;
             currentSpeed = maxSpeed * (1 / (1 + distance * slowdownFactor));
 
+            
             if (localClientId == horizontalPlayerId)
             {
-                if (Input.GetKey(KeyCode.W)) MoveToRod();
-                if (Input.GetKey(KeyCode.S)) moveDirection.y -= 7 * Time.deltaTime;
-            }
-            /*else if (localClientId == verticalPlayerId)
-            {
-                if (Input.GetKey(KeyCode.A)) moveDirection.x -= 10 * Time.deltaTime;
-                if (Input.GetKey(KeyCode.D)) moveDirection.x += 10 * Time.deltaTime;
                 if (Input.GetKey(KeyCode.W))
                 {
-                    moveDirection.y += currentSpeed * Time.deltaTime;
+                    MoveToRod();
                     rotateDirection = Quaternion.AngleAxis(-10, Vector3.right);
                 }
 
@@ -77,7 +71,7 @@ namespace _project.Scripts.PlanB
                     moveDirection.y -= currentSpeed * Time.deltaTime;
                     rotateDirection = Quaternion.AngleAxis(180, -Vector3.right);
                 }
-            }*/
+            }
 
             if (moveDirection != Vector3.zero)
             {
