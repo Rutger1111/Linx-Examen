@@ -52,13 +52,13 @@ namespace _project.Scripts.PlanB
                 if (Input.GetKey(KeyCode.W))
                 {
                     moveDirection.y += 10 * Time.deltaTime;
-                    rotateDirection = Quaternion.Euler(-180, 0, 0); // Correct way to rotate upwards
+                    rotateDirection = Quaternion.AngleAxis(-10, Vector3.right); 
                 }
 
                 if (Input.GetKey(KeyCode.S))
                 {
                     moveDirection.y -= 10 * Time.deltaTime;
-                    rotateDirection = Quaternion.Euler(180, 0, 0); // Correct way to rotate downwards
+                    rotateDirection = Quaternion.AngleAxis(180, -Vector3.right);
                 }
             }
 
