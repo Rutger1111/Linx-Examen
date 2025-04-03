@@ -16,6 +16,8 @@ namespace _project.Scripts.PlanB
 
         public int weightOfFish;
 
+        public float speed;
+
         private LineRenderer _lineRenderer;
         
         public ulong horizontalPlayerId = 0;
@@ -55,11 +57,12 @@ namespace _project.Scripts.PlanB
             slowdownFactor = 0.05f;
             currentSpeed = maxSpeed * (1 / (1 + distance * slowdownFactor));
 
+            
             if (localClientId == horizontalPlayerId)
             {
                 if (Input.GetKey(KeyCode.W))
                 {
-                    moveDirection.y += currentSpeed * Time.deltaTime;
+                    MoveToRod();
                     rotateDirection = Quaternion.AngleAxis(-10, Vector3.right);
                 }
 
@@ -107,7 +110,8 @@ namespace _project.Scripts.PlanB
         
         public void MoveToRod()
         {
-            _hook.transform.position = Vector3.Lerp(_hook.transform.position, _fishingRod.transform.position, 0.01f);
+            _hook.transform.position = Vector3.Lerp(_hook.transform.position, _fishingRod.transform.position, 0.25f * Time.deltaTime);
+            
         }
 
         private void MaxLineLength()
@@ -140,6 +144,8 @@ namespace _project.Scripts.PlanB
             // Draw wire sphere outline.
             Gizmos.color = Color.white;
             Gizmos.DrawWireSphere(_hook.transform.position, 10);
+            
+           
         }
     }
 }

@@ -27,13 +27,13 @@ namespace _project.Scripts.PlanB.Hengel
 
             if (localClientId == _reeling.verticalPlayerId)
             {
-                if (Input.GetKey(KeyCode.LeftArrow))
+                if (Input.GetKey(KeyCode.A))
                 {
                     moveDirection.x -= _reeling.currentSpeed * Time.deltaTime;
                     rotateDirection = Quaternion.Euler(0, 0, 90);
                 }
 
-                if (Input.GetKey(KeyCode.RightArrow))
+                if (Input.GetKey(KeyCode.D))
                 {
                     moveDirection.x += _reeling.currentSpeed * Time.deltaTime;
                     rotateDirection = Quaternion.Euler(0, 0, -90);
