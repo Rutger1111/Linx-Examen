@@ -2,7 +2,6 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using Unity.Netcode;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
@@ -49,20 +48,21 @@ public class CameraFollow : NetworkBehaviour
     );
     void Update()
     {
-
+        if (!IsOwner) return;
+        
         idleTimer -= Time.deltaTime;
 
         if (center)
         {
             CenterCamera();
         }
-        if (Vector3.Distance(_playerObject.transform.position, pier.transform.position) < 3)
+        if (Vector3.Distance(_playerObject.transform.position, pier.transform.position) > 3)
         {
-            cameraZPosition = -9f;
+            cameraZPosition = -15f;
         }
-        else if (Vector3.Distance(_playerObject.transform.position, pier.transform.position) > 3)
+        else if (Vector3.Distance(_playerObject.transform.position, pier.transform.position) < 3)
         {
-            cameraZPosition = -5f;
+            cameraZPosition = -10f;
         }
         
         distanceToPlayer = Vector3.Distance(new Vector3(transform.position.x, transform.position.y, 0),new Vector3(_playerObject.transform.position.x,_playerObject.transform.position.y, 0));
@@ -121,9 +121,8 @@ public class CameraFollow : NetworkBehaviour
 
     public void follow(float speed)
     {
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(_playerObject.transform.position.x,
-            _playerObject.transform.position.y,
-            cameraZPosition), speed * Time.deltaTime);
+        Vector3 targetPosition = new Vector3(_playerObject.transform.position.x, _playerObject.transform.position.y, cameraZPosition);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
     
     

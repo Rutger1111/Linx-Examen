@@ -27,6 +27,8 @@ namespace _project.Scripts.PlanB
 
         private bool SpaceWorks = false;
         
+        public float speed = 10f;
+        
         private readonly Dictionary<ulong, bool> playerAnswers = new();
 
         private void Update()
@@ -133,8 +135,8 @@ namespace _project.Scripts.PlanB
         private void UpdateSlider()
         {
             if (!_sliderOn) return;
-
-            _slider.value += _sliderDirection;
+            
+            _slider.value += _sliderDirection * speed * Time.deltaTime;
 
             if (_slider.value >= 100 || _slider.value <= 0)
             {
