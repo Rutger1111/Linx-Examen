@@ -7,11 +7,12 @@ TagManager:
   - Hook
   - Rod
   - Fish
+  - moveAbleObject
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

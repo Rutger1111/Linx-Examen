@@ -1,7 +1,7 @@
 using UnityEngine;
-using Unity.Netcode;
 
-public class Movement : NetworkBehaviour
+
+public class Movement : MonoBehaviour
 {
     public float speed;
     
@@ -15,17 +15,14 @@ public class Movement : NetworkBehaviour
         float horizontal = 0f;
         float vertical = 0f;
             
-        if (OwnerClientId == 0)
-        {
+        
             horizontal = Input.GetAxis("Horizontal");
-        }
-        else if (OwnerClientId == 1)
-        {
+        
             vertical = Input.GetAxis("Vertical");    
-        }
+        
         
 
-        Vector3 movement = new Vector3(horizontal, vertical, 0) * speed * Time.deltaTime;
+        Vector3 movement = new Vector3(horizontal, 0, vertical) * speed * Time.deltaTime;
 
         transform.position += movement;
     }
