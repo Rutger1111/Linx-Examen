@@ -7,10 +7,7 @@ public class Movement : NetworkBehaviour
     
     void Update()
     {
-        
-            handleMovement();
-        
-       
+        handleMovement();
     }
 
     void handleMovement()

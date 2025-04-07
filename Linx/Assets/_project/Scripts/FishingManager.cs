@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PlanB;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
@@ -51,6 +52,9 @@ public class FishingManager : NetworkBehaviour
     [ClientRpc]
     private void HandleFishCaughtClientRpc()
     {
+        Debug.Log("KomtHier");
+        GameObject.Find("Hook").GetComponent<Catch>().isCatching = null;
+        GameObject.Find("Hook").GetComponent<Catch>()._caughtFish ++;
         _skillCheck.minigame = false;
         
         _caughtFishUI.SetActive(true);
@@ -75,6 +79,8 @@ public class FishingManager : NetworkBehaviour
     [ClientRpc]
     private void HandleFishFailedClientRpc()
     {
+        GameObject.Find("Hook").GetComponent<Catch>().isCatching = null;
+        
         _skillCheck.minigame = false;
         
         _failedFishUI.SetActive(true);

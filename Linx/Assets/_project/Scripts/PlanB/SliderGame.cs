@@ -27,6 +27,8 @@ namespace _project.Scripts.PlanB
 
         private bool SpaceWorks = false;
         
+        public float speed = 10f;
+        
         private readonly Dictionary<ulong, bool> playerAnswers = new();
 
         private void Update()
@@ -58,16 +60,11 @@ namespace _project.Scripts.PlanB
         
         private void HandleInput()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && SpaceWorks == true)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
+                print("go though");
+                
                 HandleInputServerRpc();
-            }
-            
-            //only for testing purposes |
-            //                          v
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                _sliderOn = true;
             }
         }
         
@@ -81,6 +78,8 @@ namespace _project.Scripts.PlanB
         [ClientRpc]
         void HandleInputClientRpc(ulong clientId)
         {
+            print(clientId);
+            
             if (NetworkManager.LocalClientId == clientId) 
             {
                 canvas.SetActive(false); 
@@ -136,8 +135,8 @@ namespace _project.Scripts.PlanB
         private void UpdateSlider()
         {
             if (!_sliderOn) return;
-
-            _slider.value += _sliderDirection;
+            
+            _slider.value += _sliderDirection * speed * Time.deltaTime;
 
             if (_slider.value >= 100 || _slider.value <= 0)
             {

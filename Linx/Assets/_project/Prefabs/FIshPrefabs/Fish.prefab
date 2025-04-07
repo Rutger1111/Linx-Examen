@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timerReset: 1
   _timer: 1
-  alluredChance: 10
+  alluredChance: 100
   roamingChance: 10
   biteChance: 2
   alluredDistance: 3.5
