@@ -8,6 +8,7 @@ TagManager:
   - Rod
   - Fish
   - moveAbleObject
+  - RopeSegment
   layers:
   - Default
   - TransparentFX
