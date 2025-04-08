@@ -365,28 +365,6 @@ Transform:
   - {fileID: 6485355767109460031}
   m_Father: {fileID: 543450651877905966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &686294939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147620727956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09f98d9ae3ccc494ab4ae09ecd025cbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cranePivot: {fileID: 2081965910}
-  craneArm: {fileID: 621470470}
-  craneHook: {fileID: 2361311354918601240}
-  baseRotationSpeed: 50
-  armRotationSpeed: 30
-  hookSpeed: 2
-  minArmAngle: -45
-  maxArmAngle: 0
-  minHookHeight: 0.5
-  maxHookHeight: 10
 --- !u!1 &1882321153
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450651877905966}
-  - component: {fileID: 686294939}
+  - component: {fileID: 919132147620727957}
   m_Layer: 0
   m_Name: hijskraan block out 001 (1)
   m_TagString: Untagged
@@ -628,6 +606,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132147620727957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147620727956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51704e6c0b652fc498e29457908921cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cranePivot: {fileID: 2081965910}
+  craneArm: {fileID: 621470470}
+  craneHook: {fileID: 972772285003939293}
+  wheelPivot: {fileID: 2081965910}
+  baseRotationSpeed: 50
+  armRotationSpeed: 30
+  hookSpeed: 2
+  minArmAngle: -45
+  maxArmAngle: 1
+  minHookHeight: 0.5
+  maxHookHeight: 10
+  speed: 20
 --- !u!4 &972772285003939293
 Transform:
   m_ObjectHideFlags: 0
