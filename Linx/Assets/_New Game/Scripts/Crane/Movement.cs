@@ -1,25 +1,31 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _New_Game.Scripts.Crane
 {
     public class Movement : MonoBehaviour
     {
+        [Header("Transforms")]
         [SerializeField] private Transform cranePivot;
         [SerializeField] private Transform craneArm;
         [SerializeField] private Transform craneHook;
         [SerializeField] private Transform wheelPivot;
 
+        [Header("Speeds")]
         [SerializeField] private float baseRotationSpeed = 50f;
         [SerializeField] private float armRotationSpeed = 30f;
         [SerializeField] private float hookSpeed = 2f;
+        [SerializeField] private float driveSpeed = 20f;
 
+        [Header("craneArm angle")]
         [SerializeField] private float minArmAngle = -45f;
         [SerializeField] private float maxArmAngle = 1f;
 
+        [Header("hook settings")]
         [SerializeField] private float minHookHeight = 0.5f;
         [SerializeField] private float maxHookHeight = 10f;
 
-        [SerializeField] private float speed = 20f;
+        
 
         void Update()
         {
@@ -37,7 +43,7 @@ namespace _New_Game.Scripts.Crane
             if (Input.GetKey(KeyCode.W)) driveInput = 1f;
             if (Input.GetKey(KeyCode.S)) driveInput = -1f;
 
-            transform.position += wheelPivot.forward * (driveInput * speed * Time.deltaTime);
+            transform.position += wheelPivot.forward * (driveInput * driveSpeed * Time.deltaTime);
         }
 
         private void Turn()

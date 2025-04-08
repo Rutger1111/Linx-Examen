@@ -497,7 +497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4308537046097412155}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.76, z: 2.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -525,11 +525,11 @@ MonoBehaviour:
   baseRotationSpeed: 50
   armRotationSpeed: 30
   hookSpeed: 2
+  driveSpeed: 20
   minArmAngle: -45
   maxArmAngle: 0
   minHookHeight: 0.5
   maxHookHeight: 10
-  speed: 5
 --- !u!1 &5500061089453958431
 GameObject:
   m_ObjectHideFlags: 0
