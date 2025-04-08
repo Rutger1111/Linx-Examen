@@ -126,7 +126,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f98d9ae3ccc494ab4ae09ecd025cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
+  cranePivot: {fileID: 0}
+  craneArm: {fileID: 0}
+  craneHook: {fileID: 0}
+  baseRotationSpeed: 50
+  armRotationSpeed: 30
+  hookSpeed: 2
+  minArmAngle: -45
+  maxArmAngle: 1
+  minHookHeight: 0.5
+  maxHookHeight: 10
   speed: 5
 --- !u!114 &7634066044823423893
 MonoBehaviour:
@@ -247,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3078406723
+  GlobalObjectIdHash: 2273214671
   InScenePlacedSourceGlobalObjectIdHash: 2273214671
   DeferredDespawnTick: 0
   Ownership: 1
@@ -401,10 +410,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca188d2c8ee60a54a9a0fe72e66699b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 117590626683026279}
-  speed: 5
-  distanceForMovement: 2
-  newPosition: {x: 0, y: 0, z: 0}
-  notmoving: 0
-  movetoPlayerPos: {x: 0, y: 0, z: 0}
-  isnotmoving: 0
+  ShowTopMostFoldoutHeaderGroup: 1
+  _playerObject: {fileID: 0}
+  pier: {fileID: 0}
+  postposesting: {fileID: 0}
+  _followSpeed: 0
+  _followSpeed2: 0
+  movementThreshold: 0
+  movementThreshold2: 9
+  idleTimeThreshold: 3
+  idleTimer: 0
+  cameraZPosition: -9
+  center: 0
+  intensityValue: 0
+  distanceToPier: 0
+  distanceToPlayer: 0
