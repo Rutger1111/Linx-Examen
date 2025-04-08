@@ -46,6 +46,7 @@ namespace _New_Game.Scripts.Crane
 
             if (Input.GetKey(KeyCode.D)) turnInput = 1f;
             if (Input.GetKey(KeyCode.A)) turnInput = -1f;
+            
             wheelPivot.Rotate(0f, turnInput * baseRotationSpeed * Time.deltaTime, 0f);
         }
 
@@ -53,8 +54,8 @@ namespace _New_Game.Scripts.Crane
         {
             float horizontal = 0f;
 
-            if (Input.GetKey(KeyCode.LeftArrow)) horizontal = 1f;
-            if (Input.GetKey(KeyCode.RightArrow)) horizontal = -1f;
+            if (Input.GetKey(KeyCode.LeftArrow)) horizontal = -1f;
+            if (Input.GetKey(KeyCode.RightArrow)) horizontal = 1f;
             
             cranePivot.Rotate(0f, horizontal * baseRotationSpeed * Time.deltaTime, 0f);
         }
