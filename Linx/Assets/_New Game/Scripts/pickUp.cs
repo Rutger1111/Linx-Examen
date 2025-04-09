@@ -5,72 +5,120 @@ using UnityEngine;
 
 public class pickUp : NetworkBehaviour
 {
-    public float range;
+    public float range = 2f;
 
     public GameObject pickUpPosition;
-    public GameObject obj;
-    
     public GameObject dropPosition;
 
     public string targetTag = "moveAbleObject";
 
-    public bool hasObjectPickup = false;
+    private NetworkObject heldObject;
 
-    public List<GameObject> pickUpAbleObjects = new List<GameObject>();
+    private List<GameObject> pickUpAbleObjects = new List<GameObject>();
 
     void Update()
     {
-        pickUpAbleObjects.Clear(); 
+        if (!IsOwner) return;
 
-        GameObject[] allObjects = GameObject.FindGameObjectsWithTag(targetTag);
+        FindNearbyObjects();
 
-        foreach (GameObject objItemInRange in allObjects)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            float distance = Vector3.Distance(pickUpPosition.transform.position, objItemInRange.transform.position);
-            
-            if (distance <= range)
+            if (heldObject == null && pickUpAbleObjects.Count > 0)
             {
-                pickUpAbleObjects.Add(objItemInRange);
+                print("heck");
+                ulong targetId = pickUpAbleObjects[0].GetComponent<NetworkObject>().NetworkObjectId;
+                RequestPickUpServerRpc(targetId);
+            }
+            else if (heldObject != null)
+            {
+                print("check");
+                ulong targetId = heldObject.NetworkObjectId;
+                RequestDropServerRpc(targetId);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && hasObjectPickup == false)
+        if (heldObject != null)
         {
-            hasObjectPickup = true;
-            
-            obj = pickUpAbleObjects[0];
-
-            pickUpAbleObjects[0].GetComponent<Gravity>().hasGravity = false;
-
+            heldObject.transform.position = pickUpPosition.transform.position;
         }
-        else if (Input.GetKeyDown(KeyCode.E) && hasObjectPickup == true)
-        {
-            hasObjectPickup = false;
-            obj = null;
-            
-            pickUpAbleObjects[0].GetComponent<Gravity>().hasGravity = true;
-            
-        }
-
-        if (hasObjectPickup)
-        {
-            obj.transform.position = pickUpPosition.transform.position;
-        }
-        
-        snapBack();
     }
 
-    public void snapBack()
+    void FindNearbyObjects()
     {
-        if (hasObjectPickup == false)
+        pickUpAbleObjects.Clear();
+        GameObject[] allObjects = GameObject.FindGameObjectsWithTag(targetTag);
+
+        foreach (GameObject obj in allObjects)
         {
-            
+            float distance = Vector3.Distance(pickUpPosition.transform.position, obj.transform.position);
+            if (distance <= range)
+            {
+                pickUpAbleObjects.Add(obj);
+            }
         }
     }
-    
+
+    [ServerRpc]
+    void RequestPickUpServerRpc(ulong objectId, ServerRpcParams rpcParams = default)
+    {
+        if (!NetworkManager.SpawnManager.SpawnedObjects.ContainsKey(objectId))
+            return;
+
+        NetworkObject objNet = NetworkManager.SpawnManager.SpawnedObjects[objectId];
+
+        // Optional: Limit pickup to unheld items
+        if (objNet.IsOwnedByServer || !objNet.IsOwnedByServer && !objNet.IsOwnershipTransferable)
+        {
+            objNet.ChangeOwnership(rpcParams.Receive.SenderClientId);
+
+            Gravity gravity = objNet.GetComponent<Gravity>();
+            if (gravity != null) gravity.hasGravity = false;
+
+            ConfirmPickUpClientRpc(objectId);
+        }
+    }
+
+    [ClientRpc]
+    void ConfirmPickUpClientRpc(ulong objectId)
+    {
+        if (IsOwner)
+        {
+            heldObject = NetworkManager.SpawnManager.SpawnedObjects[objectId];
+        }
+    }
+
+    [ServerRpc]
+    void RequestDropServerRpc(ulong objectId, ServerRpcParams rpcParams = default)
+    {
+        if (!NetworkManager.SpawnManager.SpawnedObjects.ContainsKey(objectId))
+            return;
+
+        NetworkObject objNet = NetworkManager.SpawnManager.SpawnedObjects[objectId];
+
+        Gravity gravity = objNet.GetComponent<Gravity>();
+        if (gravity != null) gravity.hasGravity = true;
+
+        objNet.RemoveOwnership();
+
+        ConfirmDropClientRpc(objectId);
+    }
+
+    [ClientRpc]
+    void ConfirmDropClientRpc(ulong objectId)
+    {
+        if (IsOwner && heldObject != null && heldObject.NetworkObjectId == objectId)
+        {
+            heldObject = null;
+        }
+    }
+
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(pickUpPosition.transform.position, range);
+        if (pickUpPosition != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(pickUpPosition.transform.position, range);
+        }
     }
 }

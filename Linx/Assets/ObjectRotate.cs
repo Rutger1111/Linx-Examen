@@ -17,8 +17,14 @@ public class ObjectRotate : MonoBehaviour
     
     void Update()
     {
+        if (hookPoint1 == null || hookPoint2 == null || box == null)
+        {
+            Debug.LogWarning("Missing reference in ObjectRotate! Check hookPoint1, hookPoint2, or box.");
+            return;
+        }
+        
         FollowHook();
-        RotateHook();
+        //RotateHook();
     }
 
     public void FollowHook()
