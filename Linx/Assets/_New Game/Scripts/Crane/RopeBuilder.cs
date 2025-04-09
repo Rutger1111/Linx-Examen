@@ -19,8 +19,7 @@ public class RopeBuilder : MonoBehaviour
         {
             Vector3 spawnPos = anchorPoint.transform.position + Vector3.down * segmentSpacing * (i + 1);
             GameObject segment = Instantiate(segmentPrefab, spawnPos, Quaternion.identity);
-
-            // 🔧 Make it a child of the anchorPoint
+            
             segment.transform.SetParent(anchorPoint);
 
             Rigidbody rb = segment.GetComponent<Rigidbody>();
