@@ -7,5 +7,8 @@ namespace FishSystem
         public virtual void Invoke(){
 
         }
+       public virtual void Invoke(Collider col){
+
+        }
     }
 }
