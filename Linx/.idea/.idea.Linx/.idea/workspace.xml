@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ObjectRotate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ObjectRotate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Art/BlockOut/Material.010.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Art/BlockOut/Material.010.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Renzo's Practice scene's/Crane.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Renzo's Practice scene's/Crane.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Prefab/PlayerCrane.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Prefab/PlayerCrane.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/pickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/pickUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Buttons.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Buttons.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/netCode/Script/NetworkManagerdsasd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Script/NetworkManagerdsasd.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +24,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/ObjectRotate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerCameraHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Buttons.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Movements.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Arrow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Destination.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@f2477a6c90fe/Runtime/Components/NetworkTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@f2477a6c90fe/Runtime/Core/NetworkBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@f2477a6c90fe/Runtime/NetworkVariable/NetworkVariable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@f2477a6c90fe/Runtime/Spawning/NetworkSpawnManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@15fef0f41df6/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
