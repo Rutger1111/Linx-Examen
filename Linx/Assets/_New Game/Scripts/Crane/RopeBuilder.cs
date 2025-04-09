@@ -13,6 +13,11 @@ public class RopeBuilder : MonoBehaviour
 
     void Start()
     {
+        BuildRope();
+    }
+
+    private void BuildRope()
+    {
         GameObject previous = anchorPoint.gameObject;
 
         for (int i = 0; i < segmentCount; i++)
