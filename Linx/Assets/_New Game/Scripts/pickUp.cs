@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class pickUp : MonoBehaviour
+public class pickUp : NetworkBehaviour
 {
     public float range;
 
@@ -25,18 +26,13 @@ public class pickUp : MonoBehaviour
 
         foreach (GameObject objItemInRange in allObjects)
         {
-            float distance = Vector3.Distance(transform.position, objItemInRange.transform.position);
+            float distance = Vector3.Distance(pickUpPosition.transform.position, objItemInRange.transform.position);
             
             if (distance <= range)
             {
                 pickUpAbleObjects.Add(objItemInRange);
-
-                
             }
         }
-        
-        
-        //float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
 
         if (Input.GetKeyDown(KeyCode.E) && hasObjectPickup == false)
         {
@@ -60,11 +56,21 @@ public class pickUp : MonoBehaviour
         {
             obj.transform.position = pickUpPosition.transform.position;
         }
+        
+        snapBack();
+    }
+
+    public void snapBack()
+    {
+        if (hasObjectPickup == false)
+        {
+            
+        }
     }
     
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(pickUpPosition.transform.position, range);
     }
 }

@@ -1,73 +1,69 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static SpawnManager Instance;
-
-    [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private string gameplaySceneName = "Game";
+
+    private HashSet<ulong> clientsToSpawn = new HashSet<ulong>();
 
     private void Awake()
     {
-        if (Instance == null)
+        NetworkManager.Singleton.OnServerStarted += OnServerStarted;
+        NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+        NetworkManager.Singleton.SceneManager.OnLoadComplete += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        if (NetworkManager.Singleton == null) return;
+
+        NetworkManager.Singleton.OnServerStarted -= OnServerStarted;
+        NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
+        NetworkManager.Singleton.SceneManager.OnLoadComplete -= OnSceneLoaded;
+    }
+
+    private void OnServerStarted()
+    {
+        if (NetworkManager.Singleton.IsHost)
         {
-            Instance = this;
+            // Host is also a client
+            clientsToSpawn.Add(NetworkManager.Singleton.LocalClientId);
         }
     }
 
-    private void OnEnable()
+    private void OnClientConnected(ulong clientId)
     {
-        if (Unity.Netcode.NetworkManager.Singleton != null)
+        if (NetworkManager.Singleton.IsServer)
         {
-            Unity.Netcode.NetworkManager.Singleton.OnClientConnectedCallback += onClientConnected;
-        }
-           
-    }
-
-    private void OnDisable()
-    {
-        if (Unity.Netcode.NetworkManager.Singleton != null)
-            Unity.Netcode.NetworkManager.Singleton.OnClientConnectedCallback -= onClientConnected;
-    }
-
-    private void onClientConnected(ulong clientid)
-    {
-        
-        if (!Unity.Netcode.NetworkManager.Singleton.IsServer) return;
-
-        
-        if (clientid == 0)
-        {
-            SpawnPlayer(clientid);
-        }
-        else
-        {
-            SpawnPlayer(clientid);
+            clientsToSpawn.Add(clientId);
         }
     }
 
-    public void SpawnPlayer(ulong clientid)
+    private void OnSceneLoaded(ulong clientId, string sceneName, LoadSceneMode loadSceneMode)
     {
-        int index = (int)(clientid % (ulong)spawnPoints.Length);
-        Transform spawnPoint = spawnPoints[index];
-        
-        if (playerPrefab == null)
-        {
-            Debug.LogError("Player prefab not assigned in SpawnManager.");
-            return;
-        }
-        
-        GameObject playerInstance = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+        if (!NetworkManager.Singleton.IsServer) return;
+        if (sceneName != gameplaySceneName) return;
 
-        
-        NetworkObject networkObject = playerInstance.GetComponent<NetworkObject>();
-
-        if (networkObject != null)
+        if (clientsToSpawn.Contains(clientId))
         {
-            networkObject.SpawnAsPlayerObject(clientid);
+            Vector3 spawnPosition = GetSpawnPositionForClient(clientId);
+            GameObject playerInstance = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+
+            NetworkObject networkObject = playerInstance.GetComponent<NetworkObject>();
+            networkObject.SpawnWithOwnership(clientId);
+
+            clientsToSpawn.Remove(clientId);
         }
-        
+    }
+
+    private Vector3 GetSpawnPositionForClient(ulong clientId)
+    {
+        // Space out players on X axis based on their client ID
+        return new Vector3(clientId * 2f, 0f, 0f);
     }
 }

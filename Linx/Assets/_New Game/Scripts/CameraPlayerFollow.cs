@@ -1,7 +1,8 @@
+using Unity.Netcode;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class CameraPlayerFollow : MonoBehaviour
+public class CameraPlayerFollow : NetworkBehaviour
 {
     public GameObject player;
     
@@ -15,13 +16,38 @@ public class CameraPlayerFollow : MonoBehaviour
     private float currentX = 0f;
     private float currentY = 0f;
     
+    
+    private void Awake()
+    {
+        if (IsOwner)
+        {
+            
+            Unity.Netcode.NetworkManager.Singleton.OnClientStarted += OnClientStarted;
+        }
+    }
+
+    private void OnClientStarted()
+    {
+       
+        if (IsOwner && Unity.Netcode.NetworkManager.Singleton.LocalClient.PlayerObject != null)
+        {
+            player = Unity.Netcode.NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
+
+            
+            transform.SetParent(player.transform);
+        }
+    }
+    
     void Update()
     {
-        currentX += Input.GetAxis("Mouse X") * sensitivity;
-        currentY -= Input.GetAxis("Mouse Y") * sensitivity;
-        currentY = Mathf.Clamp(currentY, yMin, yMax);
         
-        rotationFollow();
+        
+            currentX += Input.GetAxis("Mouse X") * sensitivity;
+            currentY -= Input.GetAxis("Mouse Y") * sensitivity;
+            currentY = Mathf.Clamp(currentY, yMin, yMax);
+
+            rotationFollow();
+        
     }
 
     public void rotationFollow()

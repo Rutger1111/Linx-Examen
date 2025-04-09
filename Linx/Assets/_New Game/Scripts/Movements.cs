@@ -1,8 +1,9 @@
+using Unity.Netcode;
 using UnityEngine;
 
-namespace _New_Game.Scripts.Crane
+namespace _New_Game.Scripts
 {
-    public class Movement : MonoBehaviour
+    public class Movements : NetworkBehaviour
     {
         [SerializeField] private Transform cranePivot;
         [SerializeField] private Transform craneArm;
@@ -21,15 +22,26 @@ namespace _New_Game.Scripts.Crane
 
         [SerializeField] private float speed = 20f;
 
+        public override void OnNetworkSpawn()
+        {
+            if (!IsOwner)
+            {
+                enabled = false;
+                return;
+            }
+        }
         void Update()
         {
-            RotateBase();
-            MoveArm();
-            MoveHook();
-            Drive();
-            Turn();
+            if (IsOwner)
+            {
+                RotateBase();
+                MoveArm();
+                MoveHook();
+                Drive();
+                Turn();
+            }
         }
-
+        
         private void Drive()
         {
             float driveInput = 0f;

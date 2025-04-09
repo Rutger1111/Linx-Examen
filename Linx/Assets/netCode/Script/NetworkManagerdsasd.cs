@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Unity.Netcode;
 
-public class NetworkManager : MonoBehaviour
+public class NetworkManagerdsasd : MonoBehaviour
 {
     
     [SerializeField] 
@@ -18,6 +18,7 @@ public class NetworkManager : MonoBehaviour
     private string _ipAddress = "0.0.0.0";
     private ushort _port = 7777;
     
+    /*
     private void Awake()
     {
         Unity.Netcode.NetworkManager.Singleton.OnServerStarted += OnServerStarted;
@@ -35,7 +36,7 @@ public class NetworkManager : MonoBehaviour
     private void OnServerStarted()
     {
         Unity.Netcode.NetworkManager.Singleton.NetworkConfig.PlayerPrefab = null;
-    }
+    }*/
     
     ///</>summary>
     /// Start host is connectable for a button
