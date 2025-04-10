@@ -6,10 +6,11 @@ using UnityEngine;
 public class Snap : ICommand
 {
     private bool _isBuildingBlock = true;
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (_isBuildingBlock){
+        if (_isBuildingBlock && Input.GetKeyDown(KeyCode.Space)){
             Invoke(other);
+            _isBuildingBlock = false;
         }
     }
     public override void Invoke(Fish fish)
