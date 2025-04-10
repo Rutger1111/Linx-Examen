@@ -754,6 +754,7 @@ MonoBehaviour:
   maxArmAngle: 1
   minHookHeight: 0.5
   maxHookHeight: 10
+  CenterMouseTimer: 0.2
 --- !u!114 &6047190910336489198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,9 +1003,9 @@ MonoBehaviour:
   _player: {fileID: 3945215006605002847}
   _offset: {x: 0, y: 3, z: -6}
   _sensitivity: 4
-  _distance: 6
-  _yMin: -20
-  _yMax: 80
+  _distance: 5
+  _yMin: 70
+  _yMax: 120
 --- !u!1 &5626657324266840659
 GameObject:
   m_ObjectHideFlags: 0
