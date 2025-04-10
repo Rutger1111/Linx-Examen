@@ -1,11 +1,16 @@
+using System;
 using FishSystem;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Snap : ICommand
 {
+    private bool _isBuildingBlock = true;
     void OnTriggerEnter(Collider other)
     {
-        Invoke(other);
+        if (_isBuildingBlock){
+            Invoke(other);
+        }
     }
     public override void Invoke(Fish fish)
     {
@@ -28,6 +33,10 @@ public class Snap : ICommand
         {
             Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
             transform.rotation = targetRotation;
+            transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
+
         }
+        
     }
+
 }
