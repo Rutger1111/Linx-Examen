@@ -8,7 +8,6 @@ public class ShowHints : MonoBehaviour
     [SerializeField] private List<GameObject> buildingBlocks = new List<GameObject>();
 
     [SerializeField] private float hintDistance;
-    //[SerializeField] private GameObject hintPanel;
     [SerializeField] private Vector3 distance;
     private Camera _camera;
     
@@ -23,7 +22,6 @@ public class ShowHints : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         ShowHint();
@@ -32,7 +30,6 @@ public class ShowHints : MonoBehaviour
 
     private void LookAtCamera()
     {
-        //hintPanel.transform.LookAt(_camera.transform);
         foreach (GameObject block in buildingBlocks)
         {
             block.transform.GetChild(0).LookAt(_camera.transform);
