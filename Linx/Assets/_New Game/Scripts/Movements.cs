@@ -102,5 +102,6 @@ namespace _New_Game.Scripts
             localPos.y = Mathf.Clamp(localPos.y + hookInput * hookSpeed * Time.deltaTime, -maxHookHeight, -minHookHeight);
             craneHook.localPosition = localPos;
         }
+
     }
 }
