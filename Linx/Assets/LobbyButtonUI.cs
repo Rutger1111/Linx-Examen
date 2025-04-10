@@ -8,13 +8,12 @@ public class LobbyButtonUI : MonoBehaviour
     public void Setup(string playerid, string id)
     {
         lobbyId = id;
-        playerId = playerid;
     }
 
     public void OnClickJoin()
     {
         print("check");
         
-        FindObjectOfType<lobbytest>().joinLobby(lobbyId, playerId);
+        FindObjectOfType<lobbytest>().joinLobby(lobbyId);
     }
 }

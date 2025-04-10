@@ -120,19 +120,51 @@ public class lobbytest : MonoBehaviour
         }
     }
 
-    public async void joinLobby(string lobbyId, string playerId)
+    public async void joinLobby(string lobbyId)
     {
         try
         {
+            await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
+            
+            print("joined " + lobbyId);
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+        /*
+        try
+        {
+            string playerId = Guid.NewGuid().ToString();
+            
             var joinedLobbies = await LobbyService.Instance.GetJoinedLobbiesAsync();
 
+            bool isInlobby = false;
+            
             foreach (var lobby in joinedLobbies)
             {
                 if (lobby == lobbyId)
                 {
-                    Debug.Log("player is already in this lobby");
-                    return;
-                }  
+                    isInlobby = true;
+                    
+                    break;
+                }
+            }
+
+            if (isInlobby)
+            {
+                Debug.Log("player in already in this lobby");
+                return;
+            }
+
+            var lobbyDetails = await LobbyService.Instance.GetLobbyAsync(lobbyId);
+
+            string lobbyhostId = lobbyDetails.HostId;
+
+            if (lobbyhostId != AuthenticationService.Instance.PlayerId)
+            {
+                Debug.Log("you are not the host");
+                return;
             }
             
             if (joinedLobbies.Count > 0)
@@ -148,7 +180,7 @@ public class lobbytest : MonoBehaviour
         catch (LobbyServiceException e)
         {
             Debug.Log(e);
-        }
+        }*/
     }
 
     public void playersJoined()
