@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Blueprint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Blueprint.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +140,7 @@
       <workItem from="1744030983255" duration="2299000" />
       <workItem from="1744095705338" duration="8392000" />
       <workItem from="1744182712544" duration="536000" />
+      <workItem from="1744269075724" duration="311000" />
     </task>
     <servers />
   </component>
