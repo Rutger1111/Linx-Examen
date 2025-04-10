@@ -1,23 +1,21 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ObjectRotate : MonoBehaviour
 {
-    public GameObject hookPoint1, hookPoint2;
+    [SerializeField] private GameObject _hookPoint1;
+    [SerializeField] private GameObject _hookPoint2;
+    [SerializeField] private GameObject _box;
 
-    public GameObject box;
-
-    public float rotationSpeed = 5f;
-    public float followSpeed = 5f;
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float _rotationSpeed = 5f;
+    [SerializeField] private float _followSpeed = 5f;
+    
 
     
     void Update()
     {
-        if (hookPoint1 == null || hookPoint2 == null || box == null)
+        if (_hookPoint1 == null || _hookPoint2 == null || _box == null)
         {
             Debug.LogWarning("Missing reference in ObjectRotate! Check hookPoint1, hookPoint2, or box.");
             return;
@@ -29,20 +27,20 @@ public class ObjectRotate : MonoBehaviour
 
     public void FollowHook()
     {
-        Vector3 midpoint = (hookPoint1.transform.position + hookPoint2.transform.position) / 2f;
+        Vector3 midpoint = (_hookPoint1.transform.position + _hookPoint2.transform.position) / 2f;
         
-        box.transform.position = Vector3.Lerp(box.transform.position, midpoint, followSpeed * Time.deltaTime);
+        _box.transform.position = Vector3.Lerp(_box.transform.position, midpoint, _followSpeed * Time.deltaTime);
     }
     
     public void RotateHook()
     {
-        float yDiff = hookPoint2.transform.position.y - hookPoint1.transform.position.y;
+        float yDiff = _hookPoint2.transform.position.y - _hookPoint1.transform.position.y;
 
         float targetAngle = yDiff * 10f;
 
         Quaternion targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
         
-        box.transform.rotation =
-            Quaternion.Slerp(box.transform.rotation, targetRotation,rotationSpeed * Time.deltaTime);
+        _box.transform.rotation =
+            Quaternion.Slerp(_box.transform.rotation, targetRotation,_rotationSpeed * Time.deltaTime);
     }
 }

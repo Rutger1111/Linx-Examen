@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public class Buttons : MonoBehaviour
 {
-    public GameObject startScreen;
-    public GameObject UIMultiplayer;
+    [SerializeField] private GameObject _UIStartScreen;
+    [SerializeField] private GameObject _UIMultiplayer;
 
     private void Start()
     {
@@ -19,7 +18,7 @@ public class Buttons : MonoBehaviour
     
     public void multiplayer()
     {
-        UIMultiplayer.SetActive(true);
+        _UIMultiplayer.SetActive(true);
     }
 
     public void Quit()
@@ -29,7 +28,7 @@ public class Buttons : MonoBehaviour
 
     public void back()
     {
-        startScreen.SetActive(true);
-        UIMultiplayer.SetActive(false);
+        _UIStartScreen.SetActive(true);
+        _UIMultiplayer.SetActive(false);
     }
 }

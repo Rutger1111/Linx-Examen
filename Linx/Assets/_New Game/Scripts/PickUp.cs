@@ -2,19 +2,22 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class pickUp : NetworkBehaviour
+public class PickUp : NetworkBehaviour
 {
-    public float range = 2f;
+    [SerializeField] 
+    private float _range = 2f;
 
-    public GameObject pickUpPosition;
-    public GameObject dropPosition;
+    [SerializeField] 
+    private GameObject _pickUpPosition;
 
-    public string targetTag = "moveAbleObject";
+    [SerializeField] 
+    private string _targetTag = "moveAbleObject";
 
-    private NetworkObject heldObject;
+    private NetworkObject _heldObject;
 
-    private List<GameObject> pickUpAbleObjects = new List<GameObject>();
+    private List<GameObject> _pickUpAbleObjects = new List<GameObject>();
 
     void Update()
     {
@@ -24,37 +27,37 @@ public class pickUp : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (heldObject == null && pickUpAbleObjects.Count > 0)
+            if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
                 print("heck");
-                ulong targetId = pickUpAbleObjects[0].GetComponent<NetworkObject>().NetworkObjectId;
+                ulong targetId = _pickUpAbleObjects[0].GetComponent<NetworkObject>().NetworkObjectId;
                 RequestPickUpServerRpc(targetId);
             }
-            else if (heldObject != null)
+            else if (_heldObject != null)
             {
                 print("check");
-                ulong targetId = heldObject.NetworkObjectId;
+                ulong targetId = _heldObject.NetworkObjectId;
                 RequestDropServerRpc(targetId);
             }
         }
 
-        if (heldObject != null)
+        if (_heldObject != null)
         {
-            heldObject.transform.position = pickUpPosition.transform.position;
+            _heldObject.transform.position = _pickUpPosition.transform.position;
         }
     }
 
     void FindNearbyObjects()
     {
-        pickUpAbleObjects.Clear();
-        GameObject[] allObjects = GameObject.FindGameObjectsWithTag(targetTag);
+        _pickUpAbleObjects.Clear();
+        GameObject[] allObjects = GameObject.FindGameObjectsWithTag(_targetTag);
 
         foreach (GameObject obj in allObjects)
         {
-            float distance = Vector3.Distance(pickUpPosition.transform.position, obj.transform.position);
-            if (distance <= range)
+            float distance = Vector3.Distance(_pickUpPosition.transform.position, obj.transform.position);
+            if (distance <= _range)
             {
-                pickUpAbleObjects.Add(obj);
+                _pickUpAbleObjects.Add(obj);
             }
         }
     }
@@ -84,7 +87,7 @@ public class pickUp : NetworkBehaviour
     {
         if (IsOwner)
         {
-            heldObject = NetworkManager.SpawnManager.SpawnedObjects[objectId];
+            _heldObject = NetworkManager.SpawnManager.SpawnedObjects[objectId];
         }
     }
 
@@ -107,18 +110,18 @@ public class pickUp : NetworkBehaviour
     [ClientRpc]
     void ConfirmDropClientRpc(ulong objectId)
     {
-        if (IsOwner && heldObject != null && heldObject.NetworkObjectId == objectId)
+        if (IsOwner && _heldObject != null && _heldObject.NetworkObjectId == objectId)
         {
-            heldObject = null;
+            _heldObject = null;
         }
     }
 
     void OnDrawGizmosSelected()
     {
-        if (pickUpPosition != null)
+        if (_pickUpPosition != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(pickUpPosition.transform.position, range);
+            Gizmos.DrawWireSphere(_pickUpPosition.transform.position, _range);
         }
     }
 }

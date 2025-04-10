@@ -6,10 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buttons.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buttons.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/netCode/Script/NetworkManagerdsasd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Script/NetworkManagerdsasd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Prefab/PlayerCrane.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Prefab/PlayerCrane.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Buttons.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Buttons.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/CameraPlayerFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/CameraPlayerFollow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Gravity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Gravity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/ObjectRotate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/ObjectRotate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/pickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/pickUp.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/netCode/Script/NetworkManagerdsasd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Script/NetworkController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/netCode/Script/NetworkManagerdsasd.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Script/NetworkController.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +28,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Bitgem/StylisedWater/URP/Scripts/Bitgem/VFX/StylisedWater/WaterVolumeTransforms.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ObjectRotate.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PlayerCameraHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/SpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Buttons.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Movements.cs" root0="FORCE_HIGHLIGHTING" />
