@@ -6,17 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Prefab/PlayerCrane.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Prefab/PlayerCrane.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Buttons.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Buttons.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/CameraPlayerFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/CameraPlayerFollow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Gravity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Gravity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/ObjectRotate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/ObjectRotate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/pickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/pickUp.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/netCode/Script/NetworkManagerdsasd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Script/NetworkController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/netCode/Script/NetworkManagerdsasd.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Script/NetworkController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/netCode/Script/NetworkController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/netCode/Script/NetworkController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.services.core/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.services.core/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.services.vivox/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.services.vivox/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +26,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Bitgem/StylisedWater/URP/Scripts/Bitgem/VFX/StylisedWater/WaterVolumeTransforms.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/LobbyButtonUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Buttons.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Movements.cs" root0="FORCE_HIGHLIGHTING" />
@@ -39,6 +38,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@f2477a6c90fe/Runtime/NetworkVariable/NetworkVariable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@f2477a6c90fe/Runtime/Spawning/NetworkSpawnManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@15fef0f41df6/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Linx_clone_0/Assets/lobbytest.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -52,30 +52,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;origin/feature/Rope&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ReSpellerSettingsId&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "origin/feature/Rope",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "ReSpellerSettingsId",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\reeme\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\reeme\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\reeme\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\ruben\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\ruben\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\ruben\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../../build\Linx.exe" />
@@ -155,6 +155,7 @@
       <workItem from="1744030983255" duration="2299000" />
       <workItem from="1744095705338" duration="8392000" />
       <workItem from="1744182712544" duration="536000" />
+      <workItem from="1744272135083" duration="8126000" />
     </task>
     <servers />
   </component>
