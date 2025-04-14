@@ -781,9 +781,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityForce: 20
+  groundCheckDistance: 2
   hasGravity: 1
   isGrounded: 0
-  groundCheckDistance: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -827,10 +827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  range: 2
-  pickUpPosition: {fileID: 2104343000588708407}
-  dropPosition: {fileID: 2104343000588708407}
-  targetTag: moveAbleObject
+  _range: 2
+  _pickUpPosition: {fileID: 2104343000588708407}
+  _targetTag: moveAbleObject
 --- !u!1 &4457912180978190871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,12 +999,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  player: {fileID: 3945215006605002847}
-  offset: {x: 0, y: 3, z: -6}
-  sensitivity: 4
-  distance: 6
-  yMin: 80
-  yMax: 120
+  _player: {fileID: 3945215006605002847}
+  _offset: {x: 0, y: 3, z: -6}
+  _sensitivity: 4
+  _distance: 6
+  _yMin: -20
+  _yMax: 80
 --- !u!1 &5626657324266840659
 GameObject:
   m_ObjectHideFlags: 0

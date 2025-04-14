@@ -3,14 +3,15 @@ using UnityEngine.Serialization;
 
 public class Gravity : MonoBehaviour
 {
-    public float _gravityForce = 20f;
-
-    public bool hasGravity = true;
-
-    public bool isGrounded;
+    [SerializeField] private float _gravityForce = 20f;
     
-    public float groundCheckDistance = 0.1f; 
-    public LayerMask groundLayer;
+    [SerializeField] private float groundCheckDistance = 0.1f; 
+    
+    [SerializeField] public bool hasGravity = true;
+    
+    [SerializeField] private bool isGrounded;
+
+    [SerializeField] private LayerMask groundLayer;
     void Update()
     {
         CheckIfGrounded();
@@ -18,10 +19,6 @@ public class Gravity : MonoBehaviour
         if (hasGravity == true && isGrounded == false)
         {
             gravity();
-        }
-        else
-        {
-            
         }
     }
 
