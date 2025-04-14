@@ -28,12 +28,22 @@ public class lobbytest : MonoBehaviour
     {
         await UnityServices.InitializeAsync();
 
-        AuthenticationService.Instance.SignedIn += () =>
+        string playerId;
+    
+        if (PlayerPrefs.HasKey("PlayerCustomID"))
         {
-            Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
-        };
+            playerId = PlayerPrefs.GetString("PlayerCustomID");
+        }
+        else
+        {
+            playerId = "esc" + UnityEngine.Random.Range(0, 100);
+            PlayerPrefs.SetString("PlayerCustomID", playerId);
+        }
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+        Debug.Log("Signed in anonymously.");
+        Debug.Log("Custom Player ID: " + playerId);
     }
 
     private void Update()
