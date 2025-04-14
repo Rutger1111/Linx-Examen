@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using Unity.Netcode;
 
 namespace _New_Game.Scripts.Crane
 {
-    public class Movement : MonoBehaviour
+    public class Movement : NetworkBehaviour
     {
         [Header("Transforms")]
         [SerializeField] private Transform cranePivot;
@@ -25,7 +26,7 @@ namespace _New_Game.Scripts.Crane
         [SerializeField] private float minHookHeight = 0.5f;
         [SerializeField] private float maxHookHeight = 10f;
 
-        
+        [SerializeField] private float CenterMouseTimer = 0.4f;
 
         void Update()
         {
