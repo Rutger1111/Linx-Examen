@@ -14,9 +14,9 @@ namespace _New_Game.Scripts
 
         [Header("Speeds")]
         [SerializeField] private float baseRotationSpeed = 50f;
+        [SerializeField] private float driveSpeed = 5f;
         [SerializeField] private float armRotationSpeed = 30f;
         [SerializeField] private float hookSpeed = 2f;
-        [SerializeField] private float driveSpeed = 20f;
 
         [Header("craneArm angle")]
         [SerializeField] private float minArmAngle = -45f;
@@ -45,6 +45,12 @@ namespace _New_Game.Scripts
             {
                 Screen.lockCursor = false;
             }
+            RotateBase();
+            MoveArm();
+            Drive();
+            Turn();
+            //MoveHook();
+        }
 
             CenterMouseTimer -= Time.deltaTime;
             
@@ -92,8 +98,8 @@ namespace _New_Game.Scripts
         {
             float armInput = 0f;
 
-            if (Input.GetKey(KeyCode.F)) armInput = 1f;
-            if (Input.GetKey(KeyCode.C)) armInput = -1f;
+            if (Input.GetKey(KeyCode.UpArrow)) armInput = 1f;
+            if (Input.GetKey(KeyCode.DownArrow)) armInput = -1f;
 
             float currentX = craneArm.localEulerAngles.x;
             if (currentX > 180f) currentX -= 360f;
@@ -105,8 +111,8 @@ namespace _New_Game.Scripts
         private void MoveHook()
         {
             float hookInput = 0f;
-            if (Input.GetKey(KeyCode.G)) hookInput = 1f;
-            if (Input.GetKey(KeyCode.V)) hookInput = -1f;
+            if (Input.GetKey(KeyCode.F)) hookInput = 1f;
+            if (Input.GetKey(KeyCode.C)) hookInput = -1f;
 
             Vector3 localPos = craneHook.localPosition;
             localPos.y = Mathf.Clamp(localPos.y + hookInput * hookSpeed * Time.deltaTime, -maxHookHeight, -minHookHeight);
