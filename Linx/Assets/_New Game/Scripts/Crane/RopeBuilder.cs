@@ -12,6 +12,11 @@ public class RopeBuilder : MonoBehaviour
 
     void Start()
     {
+        BuildRope();
+    }
+
+    private void BuildRope()
+    {
         GameObject previous = anchorPoint.gameObject;
 
         for (int i = 0; i < segmentCount; i++)
@@ -40,8 +45,8 @@ public class RopeBuilder : MonoBehaviour
 
             SoftJointLimitSpring angularSpring = new SoftJointLimitSpring
             {
-                spring = 10f,
-                damper = 1f
+                spring = 0f,
+                damper = 0f
             };
             joint.angularXLimitSpring = angularSpring;
             joint.angularYZLimitSpring = angularSpring;

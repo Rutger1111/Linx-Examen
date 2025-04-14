@@ -18,7 +18,7 @@ public class Buttons : MonoBehaviour
     
     public void multiplayer()
     {
-        _UIMultiplayer.SetActive(true);
+        turnOn();
     }
 
     public void Quit()
@@ -30,5 +30,11 @@ public class Buttons : MonoBehaviour
     {
         _UIStartScreen.SetActive(true);
         _UIMultiplayer.SetActive(false);
+    }
+
+    private void turnOn()
+    {
+        _UIMultiplayer.SetActive(true);
+        _UIStartScreen.SetActive(false);
     }
 }

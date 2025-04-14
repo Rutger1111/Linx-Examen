@@ -26,6 +26,7 @@ namespace _New_Game.Scripts
         [SerializeField] private float minHookHeight = 0.5f;
         [SerializeField] private float maxHookHeight = 10f;
 
+        [SerializeField] private float CenterMouseTimer = 0.2f;
         
 
         public override void OnNetworkSpawn()
@@ -35,9 +36,18 @@ namespace _New_Game.Scripts
                 enabled = false;
                 return;
             }
+            
+            Screen.lockCursor = true;
         }
         void Update()
         {
+            if (CenterMouseTimer <= 0)
+            {
+                Screen.lockCursor = false;
+            }
+
+            CenterMouseTimer -= Time.deltaTime;
+            
             if (IsOwner)
             {
                 RotateBase();

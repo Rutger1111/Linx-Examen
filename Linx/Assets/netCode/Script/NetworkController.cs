@@ -18,11 +18,8 @@ public class NetworkController : NetworkBehaviour
         _hostButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartHost();
-            NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
-        });
-        _clientButton.onClick.AddListener(() =>
-        {
             NetworkManager.Singleton.StartClient();
+            NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
         });
     }
 
