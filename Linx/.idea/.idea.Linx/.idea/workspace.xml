@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/Movement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +20,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Bitgem/StylisedWater/URP/Scripts/Bitgem/VFX/StylisedWater/WaterVolumeTransforms.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/Menu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/ShowHints.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Arrow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Destination.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" root0="FORCE_HIGHLIGHTING" />
@@ -140,7 +144,8 @@
       <workItem from="1744030983255" duration="2299000" />
       <workItem from="1744095705338" duration="8392000" />
       <workItem from="1744182712544" duration="536000" />
-      <workItem from="1744269075724" duration="311000" />
+      <workItem from="1744269075725" duration="9291000" />
+      <workItem from="1744614294669" duration="80000" />
     </task>
     <servers />
   </component>
