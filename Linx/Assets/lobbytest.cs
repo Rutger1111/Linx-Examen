@@ -1,49 +1,57 @@
 using System;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class lobbytest : MonoBehaviour
+public class lobbytest : NetworkBehaviour
 {
 
+    [SerializeField] private string _gameplayScene = "Game";
+    
     private Lobby hostlobby;
 
     private float heartBeatTimer;
 
-    public GameObject Button;
+    public GameObject Buttons;
+    public GameObject playersJoinedListPrefab;
 
-    public GameObject parent;
+    public GameObject parent, parent2;
 
     public GameObject InLobby;
 
     public GameObject player;
 
-    public GameObject servers;
+    public GameObject serverContainer;
 
-    public GameObject ll;
+    public GameObject HostUI;
+    public GameObject StartButtonUI;
+
+    public GameObject playersInServerContainer;
+
+    
+    
+    public bool HasCreatedLobby = false;
+    
+    private void Awake()
+    {
+        
+    }
+    
     private async void Start()
     {
         await UnityServices.InitializeAsync();
-
-        string playerId;
-    
-        if (PlayerPrefs.HasKey("PlayerCustomID"))
-        {
-            playerId = PlayerPrefs.GetString("PlayerCustomID");
-        }
-        else
-        {
-            playerId = "esc" + UnityEngine.Random.Range(0, 100);
-            PlayerPrefs.SetString("PlayerCustomID", playerId);
-        }
-
+        
+        AuthenticationService.Instance.ClearSessionToken();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
-        Debug.Log("Signed in anonymously.");
-        Debug.Log("Custom Player ID: " + playerId);
+        
+        Debug.Log("Signed in anonymously. Player ID: " + AuthenticationService.Instance.PlayerId);
     }
 
     private void Update()
@@ -72,6 +80,8 @@ public class lobbytest : MonoBehaviour
     {
         try
         {
+            NetworkManager.Singleton.StartHost();
+            
             string lobbyName = "myLobby";
             int maxPlayers = 2;
             
@@ -81,8 +91,12 @@ public class lobbytest : MonoBehaviour
 
             InLobby.SetActive(false);
             
-            ll.SetActive(true);
+            StartButtonUI.SetActive(true);
+            HostUI.SetActive(true);
             
+            
+            playersJoined();
+
             Debug.Log("created lobby! " + lobby.Name + " " + lobby.MaxPlayers);
         }
         catch (LobbyServiceException e)
@@ -116,11 +130,11 @@ public class lobbytest : MonoBehaviour
 
             Debug.Log("Lobbies found: " + queryResponse.Results.Count);
             
-            servers.SetActive(true);
+            serverContainer.SetActive(true);
             
             foreach (Lobby lobby in queryResponse.Results)
             {
-                GameObject lobbyButton = Instantiate(Button, parent.transform);
+                GameObject lobbyButton = Instantiate(Buttons, parent.transform);
                 lobbyButton.GetComponent<LobbyButtonUI>().Setup(lobby.Name, lobby.Id);
             }
         }
@@ -134,67 +148,53 @@ public class lobbytest : MonoBehaviour
     {
         try
         {
+            NetworkManager.Singleton.StartClient();
+            
             await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
             
+            InLobby.SetActive(false);
+            
+            HostUI.SetActive(true);
+            StartButtonUI.SetActive(true);
+            
+            serverContainer.SetActive(false);
+
             print("joined " + lobbyId);
+            
+            playersJoined();
+            
         }
         catch (LobbyServiceException e)
         {
             Debug.Log(e);
         }
-        /*
-        try
-        {
-            string playerId = Guid.NewGuid().ToString();
-            
-            var joinedLobbies = await LobbyService.Instance.GetJoinedLobbiesAsync();
-
-            bool isInlobby = false;
-            
-            foreach (var lobby in joinedLobbies)
-            {
-                if (lobby == lobbyId)
-                {
-                    isInlobby = true;
-                    
-                    break;
-                }
-            }
-
-            if (isInlobby)
-            {
-                Debug.Log("player in already in this lobby");
-                return;
-            }
-
-            var lobbyDetails = await LobbyService.Instance.GetLobbyAsync(lobbyId);
-
-            string lobbyhostId = lobbyDetails.HostId;
-
-            if (lobbyhostId != AuthenticationService.Instance.PlayerId)
-            {
-                Debug.Log("you are not the host");
-                return;
-            }
-            
-            if (joinedLobbies.Count > 0)
-            {
-                await LobbyService.Instance.RemovePlayerAsync(lobbyId, playerId);
-            } 
-            
-            await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
-            
-            servers.SetActive(false);
-            ll.SetActive(true);
-        }
-        catch (LobbyServiceException e)
-        {
-            Debug.Log(e);
-        }*/
     }
 
-    public void playersJoined()
+    public async void playersJoined()
     {
         
+            try
+            {
+                QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync();
+
+                Debug.Log("Players in lobby: " + queryResponse.Results.Count);
+            
+                playersInServerContainer.SetActive(true);
+            
+                foreach (Lobby lobby in queryResponse.Results)
+                {
+                    Instantiate(playersJoinedListPrefab, parent2.transform);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        
+    }
+
+    public void startGame()
+    {
+        NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
     }
 }
