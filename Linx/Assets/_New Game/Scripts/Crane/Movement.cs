@@ -13,9 +13,9 @@ namespace _New_Game.Scripts.Crane
 
         [Header("Speeds")]
         [SerializeField] private float baseRotationSpeed = 50f;
+        [SerializeField] private float driveSpeed = 5f;
         [SerializeField] private float armRotationSpeed = 30f;
         [SerializeField] private float hookSpeed = 2f;
-        [SerializeField] private float driveSpeed = 5f;
 
         [Header("craneArm angle")]
         [SerializeField] private float minArmAngle = -45f;
