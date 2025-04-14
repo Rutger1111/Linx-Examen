@@ -476,7 +476,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -741,7 +741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51704e6c0b652fc498e29457908921cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
   cranePivot: {fileID: 8466794584890562069}
   craneArm: {fileID: 1546520020699549499}
   craneHook: {fileID: 5472056451577894788}
@@ -754,7 +753,6 @@ MonoBehaviour:
   maxArmAngle: 1
   minHookHeight: 0.5
   maxHookHeight: 10
-  CenterMouseTimer: 0.2
 --- !u!114 &6047190910336489198
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,10 +1,9 @@
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace _New_Game.Scripts
+namespace _New_Game.Scripts.Crane
 {
-    public class Movements : NetworkBehaviour
+    public class Movement : MonoBehaviour
     {
         [Header("Transforms")]
         [SerializeField] private Transform cranePivot;
@@ -26,19 +25,8 @@ namespace _New_Game.Scripts
         [SerializeField] private float minHookHeight = 0.5f;
         [SerializeField] private float maxHookHeight = 10f;
 
-        [SerializeField] private float CenterMouseTimer = 0.2f;
         
 
-        public override void OnNetworkSpawn()
-        {
-            if (!IsOwner)
-            {
-                enabled = false;
-                return;
-            }
-            
-            Screen.lockCursor = true;
-        }
         void Update()
         {
             if (CenterMouseTimer <= 0)
@@ -112,6 +100,5 @@ namespace _New_Game.Scripts
             localPos.y = Mathf.Clamp(localPos.y + hookInput * hookSpeed * Time.deltaTime, -maxHookHeight, -minHookHeight);
             craneHook.localPosition = localPos;
         }
-
     }
 }
