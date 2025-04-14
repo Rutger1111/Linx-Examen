@@ -45,20 +45,14 @@ namespace _New_Game.Scripts
             {
                 Screen.lockCursor = false;
             }
-            RotateBase();
-            MoveArm();
-            Drive();
-            Turn();
-            //MoveHook();
-        }
-
+            
             CenterMouseTimer -= Time.deltaTime;
             
             if (IsOwner)
             {
                 RotateBase();
                 MoveArm();
-                MoveHook();
+                //MoveHook();
                 Drive();
                 Turn();
             }
