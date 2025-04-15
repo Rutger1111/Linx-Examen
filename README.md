@@ -18,6 +18,7 @@ Rutger van de laar (Lead Developer)
 Renzo Reemer (game Designer)
 - Crane movement [code]()
 - Rope [Visual sheet]()
+
 Ruben Kossen
 - Multiplayer  [code](), [code explanation]()
 - Dialogue System  [code](), [code explanation]()
