@@ -273,10 +273,13 @@ public class lobbytest : MonoBehaviour
     {
         if (NetworkManager.Singleton.IsServer)
         {
+            print("host");
             NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
+            StartGameRequestServerRpc();
         }
         else
         {
+            print("client");
             StartGameRequestServerRpc();
         }
     }
@@ -284,6 +287,7 @@ public class lobbytest : MonoBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void StartGameRequestServerRpc(ServerRpcParams rpcParams = default)
     {
+        print("client server load");
         
         NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
     }

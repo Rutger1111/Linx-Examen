@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Widgets/Scenes/WidgetsQuickstart.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Widgets/Scenes/WidgetsQuickstart.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/lobbytest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/lobbytest.cs" afterDir="false" />
-    </list>
+    <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,7 +151,7 @@
       <workItem from="1744614294669" duration="80000" />
       <workItem from="1744700411524" duration="12686000" />
       <workItem from="1744714061188" duration="931000" />
-      <workItem from="1744715469296" duration="2029000" />
+      <workItem from="1744715469296" duration="2866000" />
     </task>
     <servers />
   </component>
