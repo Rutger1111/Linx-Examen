@@ -5,11 +5,15 @@ namespace _New_Game.Scripts.Crane
 {
     public class Movement : MonoBehaviour
     {
+        [SerializeField] private GameObject supportArm;
+        
         [Header("Transforms")]
         [SerializeField] private Transform cranePivot;
         [SerializeField] private Transform craneArm;
         [SerializeField] private Transform craneHook;
         [SerializeField] private Transform wheelPivot;
+        [SerializeField] private Transform startSupport;
+        [SerializeField] private Transform finishSupport;
 
         [Header("Speeds")]
         [SerializeField] private float baseRotationSpeed = 50f;
@@ -33,6 +37,7 @@ namespace _New_Game.Scripts.Crane
             MoveArm();
             Drive();
             Turn();
+            UpdateArmSupport();
             //MoveHook();
         }
 
@@ -89,6 +94,34 @@ namespace _New_Game.Scripts.Crane
             Vector3 localPos = craneHook.localPosition;
             localPos.y = Mathf.Clamp(localPos.y + hookInput * hookSpeed * Time.deltaTime, -maxHookHeight, -minHookHeight);
             craneHook.localPosition = localPos;
+        }
+
+        private void UpdateArmSupport()
+        {
+            Vector3 startPos = startSupport.position;
+            Vector3 endPos = finishSupport.position;
+
+            // Direction and distance between the points
+            Vector3 direction = endPos - startPos;
+            float distance = direction.magnitude;
+
+            // Midpoint becomes the position of the arm
+            Vector3 midPoint = startPos + (direction * 0.5f);
+            supportArm.transform.position = midPoint;
+
+            // Rotation to face from start to finish
+            supportArm.transform.rotation = Quaternion.LookRotation(direction);
+
+            // Scale the arm to match the distance (only along Z)
+            Vector3 newScale = supportArm.transform.localScale;
+            newScale.z = distance;
+            supportArm.transform.localScale = newScale;
+        }
+        
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(startSupport.position, finishSupport.position);
         }
     }
 }

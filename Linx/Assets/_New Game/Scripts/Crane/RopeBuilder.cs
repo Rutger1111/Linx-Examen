@@ -4,16 +4,18 @@ using System.Collections.Generic;
 
 public class RopeBuilder : MonoBehaviour
 {
-    public GameObject segmentPrefab;     // Your rope segment prefab
-    public int segmentCount = 10;        // How many links in the rope
-    public float segmentSpacing = 0.5f;  // Distance between links
-    public Transform anchorPoint;        // Starting point of the rope
+    public GameObject segmentPrefab;     // Rope segment prefab
+    public int segmentCount = 10;        // Number of segments
+    public float segmentSpacing = 0.5f;  // Distance between segments
+    public Transform anchorPoint;        // Where the rope starts
+    public GameObject magnetPrefab;      // Magnet prefab to instantiate
 
     private List<GameObject> segments = new List<GameObject>();
 
     void Start()
     {
         BuildRope();
+        SpawnAndAttachMagnet();
     }
 
     private void BuildRope()
@@ -22,9 +24,9 @@ public class RopeBuilder : MonoBehaviour
 
         for (int i = 0; i < segmentCount; i++)
         {
-            Vector3 spawnPos = anchorPoint.transform.position + Vector3.down * segmentSpacing * (i + 1);
+            Vector3 spawnPos = anchorPoint.position + Vector3.down * segmentSpacing * (i + 1);
             GameObject segment = Instantiate(segmentPrefab, spawnPos, Quaternion.identity);
-            
+
             segment.transform.SetParent(anchorPoint);
 
             Rigidbody rb = segment.GetComponent<Rigidbody>();
@@ -55,5 +57,46 @@ public class RopeBuilder : MonoBehaviour
             segments.Add(segment);
             previous = segment;
         }
+    }
+
+    private void SpawnAndAttachMagnet()
+    {
+        if (magnetPrefab == null || segments.Count == 0) return;
+
+        GameObject lastSegment = segments[segments.Count - 1];
+        Vector3 spawnPos = lastSegment.transform.position + Vector3.down * segmentSpacing;
+
+        GameObject magnet = Instantiate(magnetPrefab, spawnPos, Quaternion.identity);
+        magnet.transform.SetParent(anchorPoint);
+
+        Rigidbody magnetRb = magnet.GetComponent<Rigidbody>();
+        if (magnetRb == null)
+        {
+            magnetRb = magnet.AddComponent<Rigidbody>();
+        }
+
+        magnetRb.mass = 1f;
+
+        // Add and configure joint
+        ConfigurableJoint joint = magnet.GetComponent<ConfigurableJoint>();
+        if (joint == null)
+        {
+            joint = magnet.AddComponent<ConfigurableJoint>();
+        }
+
+        joint.connectedBody = lastSegment.GetComponent<Rigidbody>();
+        joint.autoConfigureConnectedAnchor = true;
+
+        joint.xMotion = ConfigurableJointMotion.Locked;
+        joint.yMotion = ConfigurableJointMotion.Limited;
+        joint.zMotion = ConfigurableJointMotion.Locked;
+
+        joint.angularXMotion = ConfigurableJointMotion.Free;
+        joint.angularYMotion = ConfigurableJointMotion.Free;
+        joint.angularZMotion = ConfigurableJointMotion.Free;
+
+        SoftJointLimit limit = joint.linearLimit;
+        limit.limit = segmentSpacing;
+        joint.linearLimit = limit;
     }
 }
