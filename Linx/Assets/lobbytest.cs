@@ -193,45 +193,39 @@ public class lobbytest : MonoBehaviour
 
             hostlobby = joinedLobby;
             
-            JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
-
-            RelayServerData  relayserverdata = AllocationUtils.ToRelayServerData(allocation, "dtls");
-            
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayserverdata);
-            
-            
-            FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
-            
             if (joinedLobby.Data.TryGetValue("joinCode", out var joinCodeData))
             {
-                print("fuck");
                 
-                hostIP = joinCodeData.Value;
+                
+                joinCode = joinCodeData.Value;
+
+                if (string.IsNullOrWhiteSpace(joinCode))
+                {
+                    Debug.LogError("Invalid join code received!");
+                    return;
+                }
                 
                 Debug.Log("Joining host at IP: " + hostIP);
+                
+                JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+
+                RelayServerData  relayserverdata = AllocationUtils.ToRelayServerData(allocation, "dtls");
+            
+                NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayserverdata);
+            
+            
+                FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
+
+                NetworkManager.Singleton.StartClient();
+                
             }
             else
             {
                 Debug.LogWarning("Host IP not found in lobby data.");
             }
             
-            if (transport == null)
-            {
-                transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
-            }
-
-            if (transport != null)
-            {
-                transport.ConnectionData.Address = hostIP;
-                Debug.Log("Joining host at IP: " + hostIP);
-            }
-            else
-            {
-                Debug.LogError("UnityTransport not found on NetworkManager!");
-            }
 
 
-            NetworkManager.Singleton.StartClient();
             
             InLobby.SetActive(false);
             
