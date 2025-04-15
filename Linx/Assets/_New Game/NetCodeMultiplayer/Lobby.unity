@@ -203,7 +203,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 896737910}
         m_TargetAssemblyTypeName: lobbytest, Assembly-CSharp
         m_MethodName: startGame
         m_Mode: 1
@@ -2218,7 +2218,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 896737910}
         m_TargetAssemblyTypeName: lobbytest, Assembly-CSharp
         m_MethodName: ListLobbies
         m_Mode: 1
@@ -3255,7 +3255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 896737910}
         m_TargetAssemblyTypeName: lobbytest, Assembly-CSharp
         m_MethodName: createLobby
         m_Mode: 1
