@@ -275,6 +275,17 @@ public class lobbytest : MonoBehaviour
         {
             NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
         }
+        else
+        {
+            StartGameRequestServerRpc();
+        }
+    }
+    
+    [ServerRpc(RequireOwnership = false)]
+    private void StartGameRequestServerRpc(ServerRpcParams rpcParams = default)
+    {
+        
+        NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
     }
 
     private string GetLocalIpAdress()
