@@ -33,6 +33,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@d8bc8d81f1fa/Editor/NetworkBehaviourEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@15fef0f41df6/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@124598b145d4/Runtime/Lobbies/Http/ResponseHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Linx_clone_0/Assets/lobbytest.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -157,7 +158,8 @@
       <workItem from="1744714061188" duration="931000" />
       <workItem from="1744715469296" duration="3919000" />
       <workItem from="1744733404086" duration="222000" />
-      <workItem from="1744734120092" duration="104000" />
+      <workItem from="1744734113367" duration="3225000" />
+      <workItem from="1744739371316" duration="5721000" />
     </task>
     <servers />
   </component>

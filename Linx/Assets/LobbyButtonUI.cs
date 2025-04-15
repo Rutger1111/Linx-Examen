@@ -13,7 +13,7 @@ public class LobbyButtonUI : MonoBehaviour
     public void OnClickJoin()
     {
         print("check");
-        
+
         FindObjectOfType<lobbytest>().joinLobby(lobbyId);
     }
 }
