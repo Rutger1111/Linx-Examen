@@ -64,9 +64,6 @@ public class lobbytest : NetworkBehaviour
     {
         handleLobbyHeartBeat();
         
-        QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync();
-        
-        Debug.Log("Players in lobby: " + queryResponse.Results.Count);
     }
 
     private async void handleLobbyHeartBeat()
