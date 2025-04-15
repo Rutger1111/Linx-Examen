@@ -768,6 +768,7 @@ GameObject:
   - component: {fileID: 728580662}
   - component: {fileID: 728580666}
   - component: {fileID: 728580667}
+  - component: {fileID: 728580668}
   m_Layer: 0
   m_Name: wallRoof
   m_TagString: Untagged
@@ -949,6 +950,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.6819206, z: 0.034539368}
   m_Center: {x: 0.009660176, y: -0.00000002976634, z: 0.0072696973}
+--- !u!114 &728580668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728580660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &759698680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2676,6 +2689,7 @@ GameObject:
   - component: {fileID: 1550331728}
   - component: {fileID: 1550331729}
   - component: {fileID: 1550331730}
+  - component: {fileID: 1550331731}
   m_Layer: 0
   m_Name: wall
   m_TagString: Untagged
@@ -2874,6 +2888,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.020000001, y: 0.2, z: 0.02}
   m_Center: {x: 0, y: 0.0000009536743, z: 0.000000007450581}
+--- !u!114 &1550331731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550331722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1614757650
 GameObject:
   m_ObjectHideFlags: 0
@@ -5398,6 +5424,7 @@ GameObject:
   - component: {fileID: 2915662304387506769}
   - component: {fileID: 2915662304387506770}
   - component: {fileID: 2915662304387506771}
+  - component: {fileID: 2915662304387506772}
   m_Layer: 0
   m_Name: wall
   m_TagString: Untagged
@@ -5553,9 +5580,10 @@ GameObject:
   - component: {fileID: 5825314085190699558}
   - component: {fileID: 3809352424033577478}
   - component: {fileID: 5825314085190699559}
+  - component: {fileID: 5825314085190699560}
   m_Layer: 3
   m_Name: pCube65
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6130,6 +6158,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.020000001, y: 0.2, z: 0.02}
   m_Center: {x: 0.000000007450581, y: 0, z: -0.0000000037252903}
+--- !u!114 &2915662304387506772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081874982856485126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2933955945132107430
 Transform:
   m_ObjectHideFlags: 0
@@ -7348,6 +7388,7 @@ GameObject:
   - component: {fileID: 6294897700408530755}
   - component: {fileID: 6294897700408530756}
   - component: {fileID: 6294897700408530757}
+  - component: {fileID: 6294897700408530758}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -7739,6 +7780,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2729196615450270115, guid: f8658107c998b8345a44045dd2fdc05f, type: 3}
+--- !u!65 &5825314085190699560
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306709154137056375}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009999999, y: 0.123828195, z: 0.01}
+  m_Center: {x: 0, y: 0.06191401, z: 0}
 --- !u!4 &5855056899939676744
 Transform:
   m_ObjectHideFlags: 0
@@ -7949,6 +8011,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.28, z: 0.02}
   m_Center: {x: 0, y: 0.0000021457672, z: -0.000000014901161}
+--- !u!114 &6294897700408530758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094964564934587678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6300517521569140360
 GameObject:
   m_ObjectHideFlags: 0
@@ -8217,6 +8291,7 @@ GameObject:
   - component: {fileID: 6897723348942429218}
   - component: {fileID: 6897723348942429219}
   - component: {fileID: 6897723348942429220}
+  - component: {fileID: 6897723348942429221}
   m_Layer: 0
   m_Name: wallRoof
   m_TagString: Untagged
@@ -8308,6 +8383,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.6819206, z: 0.034539368}
   m_Center: {x: 0.009660176, y: -0.00000014897563, z: 0.0072696973}
+--- !u!114 &6897723348942429221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897723348942429217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6956268688704579885
 GameObject:
   m_ObjectHideFlags: 0
@@ -8661,6 +8748,7 @@ GameObject:
   - component: {fileID: 5158780464403640955}
   - component: {fileID: 2468531075963008517}
   - component: {fileID: 7451353719697381803}
+  - component: {fileID: 7451353719697381804}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -8704,6 +8792,18 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &7451353719697381804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7451353719697381802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7493796142832543304
 Transform:
   m_ObjectHideFlags: 0
