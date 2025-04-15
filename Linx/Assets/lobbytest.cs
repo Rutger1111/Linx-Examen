@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Multiplayer.Widgets;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
@@ -14,7 +15,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class lobbytest : NetworkBehaviour
+public class lobbytest : MonoBehaviour
 {
 
     [SerializeField] private string _gameplayScene = "Game";
@@ -31,6 +32,8 @@ public class lobbytest : NetworkBehaviour
     public GameObject InLobby;
 
     public GameObject player;
+    
+    public string hostIP;
 
     public GameObject serverContainer;
 
@@ -44,7 +47,9 @@ public class lobbytest : NetworkBehaviour
     public bool HasCreatedLobby = false;
 
     public UnityTransport transport;
-    
+
+
+    public string joinCode;
     private void Awake()
     {
         
@@ -87,14 +92,23 @@ public class lobbytest : NetworkBehaviour
     {
         try
         {
+            int maxPlayers = 2;
+            
+            Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
+
+            joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+
+            RelayServerData relayServerData = AllocationUtils.ToRelayServerData(allocation, "dtls");
+            
             NetworkManager.Singleton.StartHost();
             
-            int maxPlayers = 2;
-
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+            
             InLobby.SetActive(false);
             
             StartButtonUI.SetActive(true);
             HostUI.SetActive(true);
+            
             
             string hostIP = GetLocalIpAdress();
 
@@ -106,6 +120,11 @@ public class lobbytest : NetworkBehaviour
                         "hostIP", new DataObject(
                             visibility: DataObject.VisibilityOptions.Member, 
                             value: hostIP)
+                    },
+                    {
+                        "joinCode", new DataObject(
+                            visibility: DataObject.VisibilityOptions.Member,
+                            value: joinCode)
                     }
                 }
             };
@@ -118,6 +137,8 @@ public class lobbytest : NetworkBehaviour
             playersJoined();
 
             Debug.Log("created lobby! " + lobby.Name + " " + lobby.MaxPlayers);
+            
+            
         }
         catch (LobbyServiceException e)
         {
@@ -163,8 +184,7 @@ public class lobbytest : NetworkBehaviour
             Debug.Log(e);
         }
     }
-
-    public string hostIP;
+    
     public async void joinLobby(string lobbyId)
     {
         try
@@ -173,16 +193,20 @@ public class lobbytest : NetworkBehaviour
 
             hostlobby = joinedLobby;
             
+            JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+
+            RelayServerData  relayserverdata = AllocationUtils.ToRelayServerData(allocation, "dtls");
+            
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayserverdata);
+            
+            
             FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
             
-            print(hostlobby.Data);
-            print(joinedLobby.Data);
-            
-            if (joinedLobby.Data.TryGetValue("hostIP", out var ipData))
+            if (joinedLobby.Data.TryGetValue("joinCode", out var joinCodeData))
             {
                 print("fuck");
                 
-                hostIP = ipData.Value;
+                hostIP = joinCodeData.Value;
                 
                 Debug.Log("Joining host at IP: " + hostIP);
             }
