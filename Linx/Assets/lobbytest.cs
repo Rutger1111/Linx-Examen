@@ -15,7 +15,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class lobbytest : MonoBehaviour
+public class lobbytest : NetworkBehaviour
 {
 
     [SerializeField] private string _gameplayScene = "Game";
@@ -189,6 +189,8 @@ public class lobbytest : MonoBehaviour
     {
         try
         {
+            print(lobbyId);
+            
             Lobby joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
 
             hostlobby = joinedLobby;
@@ -275,7 +277,7 @@ public class lobbytest : MonoBehaviour
         {
             print("host");
             NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
-            StartGameRequestServerRpc();
+            
         }
         else
         {
