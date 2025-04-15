@@ -6,12 +6,19 @@ using UnityEngine;
 public class Snap : ICommand
 {
     private bool _isBuildingBlock = true;
+    private int placed;
     void OnTriggerStay(Collider other)
     {
-        if (_isBuildingBlock && Input.GetKeyDown(KeyCode.Space)){
+        if (_isBuildingBlock && Input.GetKeyDown(KeyCode.E)){
             Invoke(other);
             _isBuildingBlock = false;
+            placed ++;
         }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        placed --;
+        _isBuildingBlock = true;
     }
     public override void Invoke(Fish fish)
     {
@@ -34,8 +41,16 @@ public class Snap : ICommand
         {
             Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
             transform.rotation = targetRotation;
-            transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
-
+            if (col.tag != "Ground" ){
+                print("came here 1");
+                transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
+            }
+            else if (col.tag == "Ground"){
+                print("came here 2");
+                col.tag = "Untagged";
+                col.enabled = false;
+            }
+            GetComponent<Rigidbody>().isKinematic = true;
         }
         
     }
