@@ -60,9 +60,13 @@ public class lobbytest : NetworkBehaviour
         Debug.Log("Signed in anonymously. Player ID: " + AuthenticationService.Instance.PlayerId);
     }
 
-    private void Update()
+    private async void Update()
     {
         handleLobbyHeartBeat();
+        
+        QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync();
+        
+        Debug.Log("Players in lobby: " + queryResponse.Results.Count);
     }
 
     private async void handleLobbyHeartBeat()
@@ -252,7 +256,10 @@ public class lobbytest : NetworkBehaviour
 
     public void startGame()
     {
-        NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
+        if (NetworkManager.Singleton.IsServer)
+        {
+            NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
+        }
     }
 
     private string GetLocalIpAdress()

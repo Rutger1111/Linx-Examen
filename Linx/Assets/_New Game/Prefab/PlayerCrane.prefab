@@ -620,7 +620,6 @@ GameObject:
   - component: {fileID: 4184059030762954024}
   - component: {fileID: 6047190910336489198}
   - component: {fileID: 8577794383427935018}
-  - component: {fileID: 452579059595184123}
   - component: {fileID: 1282314968460333310}
   m_Layer: 0
   m_Name: PlayerCrane
@@ -776,45 +775,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3945215006605002847}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 361c081857b2ae349bc0e8b7f3b8aa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityForce: 20
-  groundCheckDistance: 2
+  groundCheckDistance: 1
   hasGravity: 1
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
---- !u!54 &452579059595184123
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3945215006605002847}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!114 &1282314968460333310
 MonoBehaviour:
   m_ObjectHideFlags: 0

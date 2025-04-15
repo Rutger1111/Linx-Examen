@@ -34,7 +34,7 @@ public class SceneManagers : NetworkBehaviour
         {
             foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
             {
-                // Check if this client already has a spawned player
+                print(NetworkManager.Singleton.ConnectedClientsList.Count);
                 bool alreadySpawned = PlayersSpawned.Exists(p =>
                 {
                     var info = p.GetComponent<PlayerInfo>();
@@ -58,7 +58,7 @@ public class SceneManagers : NetworkBehaviour
         }
 
         GameObject playerInstance = Instantiate(PrefabToSpawn);
-        playerInstance.transform.position = new Vector3(0, 0, 0); // You can customize this later
+        playerInstance.transform.position = new Vector3(0, 0, 0);
 
         var netObj = playerInstance.GetComponent<NetworkObject>();
         if (netObj != null)

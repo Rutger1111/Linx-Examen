@@ -691,7 +691,7 @@ Transform:
   m_GameObject: {fileID: 634974314}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -4.440892e-16, w: 1}
-  m_LocalPosition: {x: -4.08, y: 22.6, z: 14.97}
+  m_LocalPosition: {x: -4.08, y: 25.37, z: 14.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -767,6 +767,7 @@ GameObject:
   - component: {fileID: 728580663}
   - component: {fileID: 728580662}
   - component: {fileID: 728580666}
+  - component: {fileID: 728580667}
   m_Layer: 0
   m_Name: wallRoof
   m_TagString: Untagged
@@ -927,6 +928,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &728580667
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728580660}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2, y: 0.6819206, z: 0.034539368}
+  m_Center: {x: 0.009660176, y: -0.00000002976634, z: 0.0072696973}
 --- !u!1 &759698680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,6 +2675,7 @@ GameObject:
   - component: {fileID: 1550331724}
   - component: {fileID: 1550331728}
   - component: {fileID: 1550331729}
+  - component: {fileID: 1550331730}
   m_Layer: 0
   m_Name: wall
   m_TagString: Untagged
@@ -2830,6 +2853,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1550331730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550331722}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000001, y: 0.2, z: 0.02}
+  m_Center: {x: 0, y: 0.0000009536743, z: 0.000000007450581}
 --- !u!1 &1614757650
 GameObject:
   m_ObjectHideFlags: 0
@@ -4460,8 +4504,8 @@ Transform:
   m_GameObject: {fileID: 679645450782205885}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: -36.2, z: 19.14}
-  m_LocalScale: {x: 1000, y: 1000, z: 1000}
+  m_LocalPosition: {x: -0.28, y: -48.5, z: 19.14}
+  m_LocalScale: {x: 1500, y: 1500, z: 1500}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5140537018901232276}
@@ -5353,6 +5397,7 @@ GameObject:
   - component: {fileID: 2915662304387506768}
   - component: {fileID: 2915662304387506769}
   - component: {fileID: 2915662304387506770}
+  - component: {fileID: 2915662304387506771}
   m_Layer: 0
   m_Name: wall
   m_TagString: Untagged
@@ -5508,7 +5553,7 @@ GameObject:
   - component: {fileID: 5825314085190699558}
   - component: {fileID: 3809352424033577478}
   - component: {fileID: 5825314085190699559}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pCube65
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6064,6 +6109,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2915662304387506771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081874982856485126}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000001, y: 0.2, z: 0.02}
+  m_Center: {x: 0.000000007450581, y: 0, z: -0.0000000037252903}
 --- !u!4 &2933955945132107430
 Transform:
   m_ObjectHideFlags: 0
@@ -6698,7 +6764,7 @@ Transform:
   m_GameObject: {fileID: 8155343147435399663}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.9847364, z: -0, w: -0.17405237}
-  m_LocalPosition: {x: -1, y: -31.52, z: 26.9}
+  m_LocalPosition: {x: -1, y: -31.2, z: 26.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7281,6 +7347,7 @@ GameObject:
   - component: {fileID: 6294897700408530754}
   - component: {fileID: 6294897700408530755}
   - component: {fileID: 6294897700408530756}
+  - component: {fileID: 6294897700408530757}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -7573,7 +7640,7 @@ GameObject:
   - component: {fileID: 5243107636887827636}
   - component: {fileID: 8445153124557996906}
   - component: {fileID: 8445153124557996907}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pCylinder8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7861,6 +7928,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6294897700408530757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094964564934587678}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0.28, z: 0.02}
+  m_Center: {x: 0, y: 0.0000021457672, z: -0.000000014901161}
 --- !u!1 &6300517521569140360
 GameObject:
   m_ObjectHideFlags: 0
@@ -8128,6 +8216,7 @@ GameObject:
   - component: {fileID: 2629305786063070645}
   - component: {fileID: 6897723348942429218}
   - component: {fileID: 6897723348942429219}
+  - component: {fileID: 6897723348942429220}
   m_Layer: 0
   m_Name: wallRoof
   m_TagString: Untagged
@@ -8198,6 +8287,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6897723348942429220
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897723348942429217}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2, y: 0.6819206, z: 0.034539368}
+  m_Center: {x: 0.009660176, y: -0.00000014897563, z: 0.0072696973}
 --- !u!1 &6956268688704579885
 GameObject:
   m_ObjectHideFlags: 0
@@ -9061,6 +9171,7 @@ GameObject:
   - component: {fileID: 7907132655596417506}
   - component: {fileID: 7907132655596417507}
   - component: {fileID: 7907132655596417508}
+  - component: {fileID: 7907132655596417509}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -9148,6 +9259,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7907132655596417509
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907132655596417505}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000003, y: 0.28, z: 0.020000001}
+  m_Center: {x: 0, y: 0.0000047683716, z: 0.0000000018626451}
 --- !u!4 &7946126080581366472
 Transform:
   m_ObjectHideFlags: 0
