@@ -60,8 +60,8 @@ namespace _New_Game.Scripts.Crane
         {
             float horizontal = 0f;
 
-            if (Input.GetKey(KeyCode.LeftArrow)) horizontal = -1f;
-            if (Input.GetKey(KeyCode.RightArrow)) horizontal = 1f;
+            if (Input.GetKey(KeyCode.Mouse0)) horizontal = -1f;
+            if (Input.GetKey(KeyCode.Mouse1)) horizontal = 1f;
             
             cranePivot.Rotate(0f, horizontal * baseRotationSpeed * Time.deltaTime, 0f);
         }
@@ -70,8 +70,8 @@ namespace _New_Game.Scripts.Crane
         {
             float armInput = 0f;
 
-            if (Input.GetKey(KeyCode.UpArrow)) armInput = 1f;
-            if (Input.GetKey(KeyCode.DownArrow)) armInput = -1f;
+            if (Input.mouseScrollDelta.y >= 0.1) armInput = 4f;
+            if (Input.mouseScrollDelta.y <= -0.1) armInput = -4f;
 
             float currentX = craneArm.localEulerAngles.x;
             if (currentX > 180f) currentX -= 360f;
