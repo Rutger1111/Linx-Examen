@@ -17,7 +17,7 @@ public class PlayerCameraHandler : NetworkBehaviour
     {
         yield return new WaitForEndOfFrame(); 
 
-        if (!IsLocalPlayer)
+        if (!IsOwner)
         {
             
             Debug.Log("Not Local Player, skipping camera enable.");

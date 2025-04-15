@@ -534,7 +534,6 @@ GameObject:
   m_Component:
   - component: {fileID: 78472160}
   - component: {fileID: 78472161}
-  - component: {fileID: 78472162}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -582,24 +581,6 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!114 &78472162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78472159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 302a1e58922e93841956bc0c77e6c336, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  player: {fileID: 3945215006605002847, guid: 6f5c380658de2564793dd62309121325, type: 3}
-  currentScene:
-    m_Handle: 0
-  PrefabToSpawn: {fileID: 3945215006605002847, guid: 6f5c380658de2564793dd62309121325, type: 3}
-  DestroyWithSpawner: 0
 --- !u!1 &78687821
 GameObject:
   m_ObjectHideFlags: 0
@@ -4423,9 +4404,11 @@ GameObject:
   - component: {fileID: 2073773314}
   - component: {fileID: 2073773313}
   - component: {fileID: 2073773312}
-  - component: {fileID: 2073773316}
   - component: {fileID: 2073773315}
+  - component: {fileID: 2073773319}
   - component: {fileID: 2073773318}
+  - component: {fileID: 2073773320}
+  - component: {fileID: 2073773321}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4508,31 +4491,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _UIStartScreen: {fileID: 612801983}
   _UIMultiplayer: {fileID: 433582927}
---- !u!114 &2073773316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073773311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1545034000
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
 --- !u!114 &2073773318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4558,6 +4516,81 @@ MonoBehaviour:
   StartButtonUI: {fileID: 55104003}
   playersInServerContainer: {fileID: 862136633}
   HasCreatedLobby: 0
+  transport: {fileID: 2073773320}
+  hostIP: 
+--- !u!114 &2073773319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073773311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1234498050
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 7
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &2073773320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073773311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6960e84d07fb87f47956e7a81d71c4e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ProtocolType: 0
+  m_UseWebSockets: 0
+  m_UseEncryption: 0
+  m_MaxPacketQueueSize: 128
+  m_MaxPayloadSize: 6144
+  m_HeartbeatTimeoutMS: 500
+  m_ConnectTimeoutMS: 1000
+  m_MaxConnectAttempts: 60
+  m_DisconnectTimeoutMS: 30000
+  ConnectionData:
+    Address: 127.0.0.1
+    Port: 7777
+    ServerListenAddress: 127.0.0.1
+  DebugSimulator:
+    PacketDelayMS: 0
+    PacketJitterMS: 0
+    PacketDropRate: 0
+--- !u!114 &2073773321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073773311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a1e58922e93841956bc0c77e6c336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  currentScene:
+    m_Handle: 0
+  destroyWIthSpawner: 0
+  PrefabToSpawn: {fileID: 3945215006605002847, guid: 6f5c380658de2564793dd62309121325, type: 3}
+  DestroyWithSpawner: 0
+  PlayersSpawned: []
 --- !u!1 &2139353874
 GameObject:
   m_ObjectHideFlags: 0

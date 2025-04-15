@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
+using Unity.Networking.Transport.Relay;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
+using Unity.Services.Relay;
+using Unity.Services.Relay.Models;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -38,6 +42,8 @@ public class lobbytest : NetworkBehaviour
     
     
     public bool HasCreatedLobby = false;
+
+    public UnityTransport transport;
     
     private void Awake()
     {
@@ -61,7 +67,7 @@ public class lobbytest : NetworkBehaviour
 
     private async void handleLobbyHeartBeat()
     {
-        if (hostlobby != null)
+        if (hostlobby != null && hostlobby.HostId == AuthenticationService.Instance.PlayerId)
         {
             heartBeatTimer -= Time.deltaTime;
 
@@ -82,19 +88,32 @@ public class lobbytest : NetworkBehaviour
         {
             NetworkManager.Singleton.StartHost();
             
-            string lobbyName = "myLobby";
             int maxPlayers = 2;
-            
-            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers);
-
-            hostlobby = lobby;
 
             InLobby.SetActive(false);
             
             StartButtonUI.SetActive(true);
             HostUI.SetActive(true);
             
+            string hostIP = GetLocalIpAdress();
+
+            CreateLobbyOptions options = new CreateLobbyOptions
+            {
+                Data = new Dictionary<string, DataObject>
+                {
+                    {
+                        "hostIP", new DataObject(
+                            visibility: DataObject.VisibilityOptions.Member, 
+                            value: hostIP)
+                    }
+                }
+            };
             
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync("lobbyName", maxPlayers, options);
+            
+            hostlobby = lobby;
+            
+            FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
             playersJoined();
 
             Debug.Log("created lobby! " + lobby.Name + " " + lobby.MaxPlayers);
@@ -144,13 +163,50 @@ public class lobbytest : NetworkBehaviour
         }
     }
 
+    public string hostIP;
     public async void joinLobby(string lobbyId)
     {
         try
         {
-            NetworkManager.Singleton.StartClient();
+            Lobby joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
+
+            hostlobby = joinedLobby;
             
-            await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
+            FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
+            
+            print(hostlobby.Data);
+            print(joinedLobby.Data);
+            
+            if (joinedLobby.Data.TryGetValue("hostIP", out var ipData))
+            {
+                print("fuck");
+                
+                hostIP = ipData.Value;
+                
+                Debug.Log("Joining host at IP: " + hostIP);
+            }
+            else
+            {
+                Debug.LogWarning("Host IP not found in lobby data.");
+            }
+            
+            if (transport == null)
+            {
+                transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            }
+
+            if (transport != null)
+            {
+                transport.ConnectionData.Address = hostIP;
+                Debug.Log("Joining host at IP: " + hostIP);
+            }
+            else
+            {
+                Debug.LogError("UnityTransport not found on NetworkManager!");
+            }
+
+
+            NetworkManager.Singleton.StartClient();
             
             InLobby.SetActive(false);
             
@@ -162,6 +218,7 @@ public class lobbytest : NetworkBehaviour
             print("joined " + lobbyId);
             
             playersJoined();
+            
             
         }
         catch (LobbyServiceException e)
@@ -196,5 +253,19 @@ public class lobbytest : NetworkBehaviour
     public void startGame()
     {
         NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
+    }
+
+    private string GetLocalIpAdress()
+    {
+        var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+        foreach (var ip in host.AddressList)
+        {
+            if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            {
+                return ip.ToString();
+            }
+        }
+
+        throw new Exception("No network adapters with an IPv4 address in the system!");
     }
 }

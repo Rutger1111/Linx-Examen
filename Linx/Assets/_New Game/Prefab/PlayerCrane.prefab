@@ -741,18 +741,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51704e6c0b652fc498e29457908921cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   cranePivot: {fileID: 8466794584890562069}
   craneArm: {fileID: 1546520020699549499}
   craneHook: {fileID: 5472056451577894788}
   wheelPivot: {fileID: 4808014794802768939}
   baseRotationSpeed: 50
+  driveSpeed: 20
   armRotationSpeed: 30
   hookSpeed: 2
-  driveSpeed: 20
   minArmAngle: -45
   maxArmAngle: 1
   minHookHeight: 0.5
   maxHookHeight: 10
+  CenterMouseTimer: 0.4
 --- !u!114 &6047190910336489198
 MonoBehaviour:
   m_ObjectHideFlags: 0
