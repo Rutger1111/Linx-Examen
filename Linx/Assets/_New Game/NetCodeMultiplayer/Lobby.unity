@@ -203,7 +203,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2073773318}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: lobbytest, Assembly-CSharp
         m_MethodName: startGame
         m_Mode: 1
@@ -272,7 +272,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -550,63 +550,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &78472159
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 78472160}
-  - component: {fileID: 78472161}
-  m_Layer: 0
-  m_Name: SpawnManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &78472160
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78472159}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 975.5415, y: 509.6227, z: -6.800481}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &78472161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78472159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1810922527
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
 --- !u!1 &78687821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,6 +2013,7 @@ GameObject:
   - component: {fileID: 896737906}
   - component: {fileID: 896737909}
   - component: {fileID: 896737908}
+  - component: {fileID: 896737910}
   m_Layer: 0
   m_Name: NetWorkManager
   m_TagString: Untagged
@@ -2148,7 +2092,7 @@ MonoBehaviour:
     EnableTimeResync: 0
     TimeResyncInterval: 30
     EnsureNetworkVariableLengthSafety: 0
-    EnableSceneManagement: 1
+    EnableSceneManagement: 0
     ForceSamePrefabs: 1
     RecycleNetworkIds: 1
     NetworkIdRecycleDelay: 120
@@ -2164,6 +2108,33 @@ MonoBehaviour:
     OldPrefabList: []
   RunInBackground: 1
   LogLevel: 1
+--- !u!114 &896737910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896737904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a940c2ef550f5ac479ec15c5c6943734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameplayScene: Multiplayer
+  Buttons: {fileID: 5799280727003146908, guid: 8ea2abcb2c4ca6948b69c0d2d450dff2, type: 3}
+  playersJoinedListPrefab: {fileID: 7079073244858360777, guid: a6f225ef7dadca14ea20bc9ee4e0f3f9, type: 3}
+  parent: {fileID: 756392298}
+  parent2: {fileID: 400330705}
+  InLobby: {fileID: 433582927}
+  player: {fileID: 4396163831410909464, guid: b056bf736257f98488eb4d369b6dac72, type: 3}
+  hostIP: 
+  serverContainer: {fileID: 1693774772}
+  HostUI: {fileID: 862136633}
+  StartButtonUI: {fileID: 55104003}
+  playersInServerContainer: {fileID: 862136633}
+  HasCreatedLobby: 0
+  transport: {fileID: 2073773320}
+  joinCode: 
 --- !u!1 &939812241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2247,7 +2218,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2073773318}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: lobbytest, Assembly-CSharp
         m_MethodName: ListLobbies
         m_Mode: 1
@@ -3284,7 +3255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2073773318}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: lobbytest, Assembly-CSharp
         m_MethodName: createLobby
         m_Mode: 1
@@ -4432,7 +4403,6 @@ GameObject:
   - component: {fileID: 2073773312}
   - component: {fileID: 2073773315}
   - component: {fileID: 2073773319}
-  - component: {fileID: 2073773318}
   - component: {fileID: 2073773320}
   - component: {fileID: 2073773321}
   m_Layer: 0
@@ -4517,33 +4487,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _UIStartScreen: {fileID: 612801983}
   _UIMultiplayer: {fileID: 433582927}
---- !u!114 &2073773318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073773311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a940c2ef550f5ac479ec15c5c6943734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _gameplayScene: Multiplayer
-  Buttons: {fileID: 5799280727003146908, guid: 8ea2abcb2c4ca6948b69c0d2d450dff2, type: 3}
-  playersJoinedListPrefab: {fileID: 7079073244858360777, guid: a6f225ef7dadca14ea20bc9ee4e0f3f9, type: 3}
-  parent: {fileID: 756392298}
-  parent2: {fileID: 400330705}
-  InLobby: {fileID: 433582927}
-  player: {fileID: 4396163831410909464, guid: b056bf736257f98488eb4d369b6dac72, type: 3}
-  serverContainer: {fileID: 1693774772}
-  HostUI: {fileID: 862136633}
-  StartButtonUI: {fileID: 55104003}
-  playersInServerContainer: {fileID: 862136633}
-  HasCreatedLobby: 0
-  transport: {fileID: 2073773320}
-  hostIP: 
 --- !u!114 &2073773319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4563,7 +4506,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -4759,4 +4702,3 @@ SceneRoots:
   - {fileID: 868433592}
   - {fileID: 2073773314}
   - {fileID: 896737906}
-  - {fileID: 78472160}

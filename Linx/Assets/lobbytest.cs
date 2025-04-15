@@ -15,7 +15,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class lobbytest : NetworkBehaviour
+public class lobbytest : MonoBehaviour
 {
 
     [SerializeField] private string _gameplayScene = "Game";
@@ -282,17 +282,10 @@ public class lobbytest : NetworkBehaviour
         else
         {
             print("client");
-            StartGameRequestServerRpc();
         }
     }
     
-    [ServerRpc(RequireOwnership = false)]
-    private void StartGameRequestServerRpc(ServerRpcParams rpcParams = default)
-    {
-        print("client server load");
-        
-        NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
-    }
+    
 
     private string GetLocalIpAdress()
     {
