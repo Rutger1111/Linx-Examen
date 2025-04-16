@@ -19,58 +19,41 @@ public class lobbytest : NetworkBehaviour
 {
 
     [SerializeField] private string _gameplayScene = "Game";
-    
-    private Lobby hostlobby;
 
+    private Lobby hostlobby;
     private float heartBeatTimer;
 
     public GameObject Buttons;
     public GameObject playersJoinedListPrefab;
-
     public GameObject parent, parent2;
-
     public GameObject InLobby;
-
     public GameObject player;
-    
     public string hostIP;
-
     public GameObject serverContainer;
-
     public GameObject HostUI;
     public GameObject StartButtonUI;
-
     public GameObject playersInServerContainer;
-
     public bool HasCreatedLobby = false;
-
     public UnityTransport transport;
-
     public string joinCode;
 
-    private void Awake()
-    {
-        
-    }
-    
     private async void Start()
     {
         await UnityServices.InitializeAsync();
-        
         AuthenticationService.Instance.ClearSessionToken();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
-        
+
         Debug.Log("Signed in anonymously. Player ID: " + AuthenticationService.Instance.PlayerId);
     }
 
-    private async void Update()
+    private void Update()
     {
         handleLobbyHeartBeat();
 
         if (IsLocalPlayer)
         {
             int connectedPlayersCount = NetworkManager.Singleton.ConnectedClientsList.Count;
-            Debug.Log("Number of players in the lobby: " + connectedPlayersCount);    
+            Debug.Log("Number of players in the lobby: " + connectedPlayersCount);
         }
     }
 
@@ -83,7 +66,6 @@ public class lobbytest : NetworkBehaviour
             if (heartBeatTimer < 0)
             {
                 float heartBeatTimerMax = 15;
-                
                 heartBeatTimer = heartBeatTimerMax;
 
                 await LobbyService.Instance.SendHeartbeatPingAsync(hostlobby.Id);
@@ -96,18 +78,17 @@ public class lobbytest : NetworkBehaviour
         try
         {
             int maxPlayers = 2;
-            
+
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
             joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
-            Debug.Log("Join code generated: " + joinCode); // Debugging the join code
-            
+            Debug.Log("Join code generated: " + joinCode);
+
             RelayServerData relayServerData = AllocationUtils.ToRelayServerData(allocation, "dtls");
-            
-            NetworkManager.Singleton.StartHost();
-            
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+
             
+
             InLobby.SetActive(false);
             StartButtonUI.SetActive(true);
             HostUI.SetActive(true);
@@ -126,12 +107,15 @@ public class lobbytest : NetworkBehaviour
 
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync("lobbyName", maxPlayers, options);
             hostlobby = lobby;
-            
-            FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
-            playersJoined();
 
-            Debug.Log("Created lobby: " + lobby.Name + " with MaxPlayers: " + lobby.MaxPlayers);
+            FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
             
+
+            NetworkManager.Singleton.StartHost();
+            
+            playersJoined();
+            
+            Debug.Log("Created lobby: " + lobby.Name + " with MaxPlayers: " + lobby.MaxPlayers);
         }
         catch (LobbyServiceException e)
         {
@@ -147,25 +131,24 @@ public class lobbytest : NetworkBehaviour
             {
                 Destroy(child.gameObject);
             }
-            
+
             QueryLobbiesOptions queryLobbiesOptions = new QueryLobbiesOptions()
             {
                 Filters = new List<QueryFilter>
                 {
-                    new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT)    
+                    new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT)
                 },
                 Order = new List<QueryOrder>
                 {
                     new QueryOrder(false, QueryOrder.FieldOptions.Created)
                 }
             };
-            
-            QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync(queryLobbiesOptions);
 
+            QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync(queryLobbiesOptions);
             Debug.Log("Lobbies found: " + queryResponse.Results.Count);
-            
+
             serverContainer.SetActive(true);
-            
+
             foreach (Lobby lobby in queryResponse.Results)
             {
                 GameObject lobbyButton = Instantiate(Buttons, parent.transform);
@@ -183,10 +166,10 @@ public class lobbytest : NetworkBehaviour
         try
         {
             Debug.Log("Attempting to join lobby with ID: " + lobbyId);
-            
+
             Lobby joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
             hostlobby = joinedLobby;
-            
+
             if (joinedLobby.Data.TryGetValue("joinCode", out var joinCodeData))
             {
                 joinCode = joinCodeData.Value;
@@ -198,28 +181,19 @@ public class lobbytest : NetworkBehaviour
                     return;
                 }
 
-                Debug.Log("Attempting to join Relay with join code...");
                 JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
-                Debug.Log("Relay allocation successful");
-
                 RelayServerData relayServerData = AllocationUtils.ToRelayServerData(allocation, "dtls");
-                
+
                 UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
                 transport.SetRelayServerData(relayServerData);
-                
-                bool result = NetworkManager.Singleton.StartClient();
 
-                if (!result)
-                {
-                    Debug.LogError("Failed to start client!");
-                    return;
-                }
-            
+                NetworkManager.Singleton.StartClient(); // ✅ transport already set
+
                 FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
             }
             else
             {
-                Debug.LogWarning("Host IP not found in lobby data.");
+                Debug.LogWarning("Join code not found in lobby data.");
             }
 
             InLobby.SetActive(false);
@@ -245,12 +219,10 @@ public class lobbytest : NetworkBehaviour
 
         playersInServerContainer.SetActive(true);
 
-        // Loop through all connected clients
         foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
         {
             GameObject entry = Instantiate(playersJoinedListPrefab, parent2.transform);
 
-            // Optional: Show client ID or something else
             var text = entry.GetComponentInChildren<Text>();
             if (text != null)
             {
@@ -274,14 +246,16 @@ public class lobbytest : NetworkBehaviour
 
     private void HandleClientConnected(ulong clientId)
     {
+        Debug.Log($"Client connected: {clientId}");
         playersJoined();
     }
 
     private void HandleClientDisconnected(ulong clientId)
     {
+        Debug.Log($"Client disconnected: {clientId}");
         playersJoined();
     }
-    
+
     public void startGame()
     {
         if (NetworkManager.Singleton.IsServer)

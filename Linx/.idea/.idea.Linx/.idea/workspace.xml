@@ -105,6 +105,9 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -115,6 +118,9 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -154,6 +160,7 @@
       <workItem from="1744733404086" duration="222000" />
       <workItem from="1744734113367" duration="3225000" />
       <workItem from="1744739371316" duration="5721000" />
+      <workItem from="1744782497328" duration="304000" />
     </task>
     <servers />
   </component>
