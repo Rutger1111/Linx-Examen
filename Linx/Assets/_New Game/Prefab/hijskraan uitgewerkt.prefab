@@ -224,7 +224,6 @@ GameObject:
   - component: {fileID: -4515133138937933607}
   - component: {fileID: -1402156888912639599}
   - component: {fileID: 7869268840386322585}
-  - component: {fileID: -5096180726237881390}
   - component: {fileID: -7508650836271574612}
   m_Layer: 0
   m_Name: hijskraan uitgewerkt
@@ -384,22 +383,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &-5096180726237881390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184267464181747295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e5e6edad7995641aff9804da0135d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _range: 2
-  _pickUpPosition: {fileID: 2312781165733396935}
-  _targetTag: moveAbleObject
 --- !u!65 &-7508650836271574612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1087,7 +1070,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2829445185526600001}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
