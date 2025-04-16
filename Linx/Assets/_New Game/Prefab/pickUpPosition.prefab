@@ -121,8 +121,8 @@ GameObject:
   - component: {fileID: -4307505744137230574}
   - component: {fileID: 6144027428027404101}
   m_Layer: 0
-  m_Name: MagnetConnectingPoint
-  m_TagString: Untagged
+  m_Name: pickUpPosition
+  m_TagString: Hook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,8 +137,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 37.134995, y: 3.4489, z: 46.633}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 10.3, y: 10.3, z: 10.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2255338433343629800}
   m_Father: {fileID: 0}
