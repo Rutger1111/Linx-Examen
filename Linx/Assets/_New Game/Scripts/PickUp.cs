@@ -9,7 +9,7 @@ public class PickUp : NetworkBehaviour
     private float _range = 2f;
 
     [SerializeField] 
-    private GameObject _pickUpPosition;
+    public  GameObject _pickUpPosition;
 
     [SerializeField] 
     private string _targetTag = "moveAbleObject";
@@ -26,7 +26,6 @@ public class PickUp : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            _pickUpPosition = GameObject.Find("pickUpPosition(Clone)");
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
                 print("heck");

@@ -1657,6 +1657,7 @@ MonoBehaviour:
   segmentSpacing: 0.29
   anchorPoint: {fileID: 391217588958779915}
   magnetPrefab: {fileID: 7390170494152827878, guid: 213228c50b16be542a4cf89c35eb0ca2, type: 3}
+  MagnetParent: {fileID: 1851347971523537077}
 --- !u!54 &7178251015621107390
 Rigidbody:
   m_ObjectHideFlags: 0
