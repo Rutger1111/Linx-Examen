@@ -26,6 +26,7 @@ public class PickUp : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            _pickUpPosition = GameObject.Find("pickUpPosition(Clone)");
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
                 print("heck");
