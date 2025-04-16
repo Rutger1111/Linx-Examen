@@ -2033,7 +2033,6 @@ GameObject:
   - component: {fileID: 4184059030762954024}
   - component: {fileID: 6047190910336489198}
   - component: {fileID: 8577794383427935018}
-  - component: {fileID: 1282314968460333310}
   m_Layer: 0
   m_Name: PlayerCrane
   m_TagString: Untagged
@@ -2211,22 +2210,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &1282314968460333310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3945215006605002847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e5e6edad7995641aff9804da0135d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _range: 2
-  _pickUpPosition: {fileID: 2104343000588708407}
-  _targetTag: moveAbleObject
 --- !u!1 &4395231613694042086
 GameObject:
   m_ObjectHideFlags: 0

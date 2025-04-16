@@ -378,12 +378,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityForce: 20
-  groundCheckDistance: 0.1
+  groundCheckDistance: 0.2
   hasGravity: 0
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &-5096180726237881390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   _range: 2
-  _pickUpPosition: {fileID: 7390170494152827878, guid: 213228c50b16be542a4cf89c35eb0ca2, type: 3}
+  _pickUpPosition: {fileID: 2312781165733396935}
   _targetTag: moveAbleObject
 --- !u!65 &-7508650836271574612
 BoxCollider:
