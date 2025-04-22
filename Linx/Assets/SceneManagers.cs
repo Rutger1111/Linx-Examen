@@ -12,7 +12,6 @@ public class SceneManagers : NetworkBehaviour
 
     public Lobby ActiveLobby;
     
-    public bool destroyWIthSpawner;
     public GameObject PrefabToSpawn;
     public bool DestroyWithSpawner;
     private GameObject m_PrefabInstance;
