@@ -96,7 +96,7 @@ public class MultiplayerSystem : NetworkBehaviour
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync("lobbyName", maxPlayers, options);
             _hostLobby = lobby;
 
-            FindObjectOfType<SceneManagers>().ActiveLobby = _hostLobby;
+            FindObjectOfType<SpawnManager>()._activeLobby = _hostLobby;
             
 
             NetworkManager.Singleton.StartHost();
@@ -176,7 +176,7 @@ public class MultiplayerSystem : NetworkBehaviour
 
                 NetworkManager.Singleton.StartClient();
 
-                FindObjectOfType<SceneManagers>().ActiveLobby = _hostLobby;
+                FindObjectOfType<SpawnManager>()._activeLobby = _hostLobby;
             }
             else
             {

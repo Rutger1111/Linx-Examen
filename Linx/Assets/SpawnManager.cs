@@ -1,24 +1,20 @@
-using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.Services.Lobbies.Models;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
-public class SceneManagers : NetworkBehaviour
+public class SpawnManager : NetworkBehaviour
 {
-    public Scene currentScene;
+    [SerializeField] private GameObject _prefabToSpawn;
+    [SerializeField] private List<GameObject> _playerSpawned = new List<GameObject>();
 
-    public Lobby ActiveLobby;
-    
-    public GameObject PrefabToSpawn;
-    public bool DestroyWithSpawner;
-    private GameObject m_PrefabInstance;
-    private NetworkObject m_SpawnedNetworkObject;
-
-    public List<GameObject> PlayersSpawned = new List<GameObject>();
-
+    private bool _hasDestroyedWithSpawner;
+    public Lobby _activeLobby;
+    private Scene _currentScene;
+    private GameObject _prefabInstance;
+    private NetworkObject _spawnedNetworkObject;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -26,15 +22,14 @@ public class SceneManagers : NetworkBehaviour
 
     private void Update()
     {
-        currentScene = SceneManager.GetActiveScene();
-
-        // Server-side: make sure we only spawn once per player
-        if (IsServer && currentScene.name == "Multiplayer" && PlayersSpawned.Count < ActiveLobby.Players.Count)
+        _currentScene = SceneManager.GetActiveScene();
+        
+        if (IsServer && _currentScene.name == "Multiplayer" && _playerSpawned.Count < _activeLobby.Players.Count)
         {
             foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
             {
                 print(NetworkManager.Singleton.ConnectedClientsList.Count);
-                bool alreadySpawned = PlayersSpawned.Exists(p =>
+                bool alreadySpawned = _playerSpawned.Exists(p =>
                 {
                     var info = p.GetComponent<PlayerInfo>();
                     return info != null && info.OwnerClientId == client.ClientId;
@@ -50,22 +45,21 @@ public class SceneManagers : NetworkBehaviour
 
     private void SpawnPlayer(ulong clientId)
     {
-        if (PrefabToSpawn == null)
+        if (_prefabToSpawn == null)
         {
             Debug.LogError("Player Prefab is not assigned.");
             return;
         }
 
-        GameObject playerInstance = Instantiate(PrefabToSpawn);
+        GameObject playerInstance = Instantiate(_prefabToSpawn);
         playerInstance.transform.position = new Vector3(0, 0, 0);
 
         var netObj = playerInstance.GetComponent<NetworkObject>();
         if (netObj != null)
         {
             netObj.SpawnWithOwnership(clientId);
-            PlayersSpawned.Add(playerInstance);
-
-            // Assign the owner ID to a custom script
+            _playerSpawned.Add(playerInstance);
+            
             var info = playerInstance.GetComponent<PlayerInfo>();
             if (info != null)
             {
@@ -82,9 +76,9 @@ public class SceneManagers : NetworkBehaviour
     {
         base.OnNetworkDespawn();
 
-        if (IsServer && DestroyWithSpawner && m_SpawnedNetworkObject != null && m_SpawnedNetworkObject.IsSpawned)
+        if (IsServer && _hasDestroyedWithSpawner && _spawnedNetworkObject != null && _spawnedNetworkObject.IsSpawned)
         {
-            m_SpawnedNetworkObject.Despawn();
+            _spawnedNetworkObject.Despawn();
         }
     }
 }

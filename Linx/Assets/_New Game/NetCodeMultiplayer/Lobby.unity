@@ -3511,12 +3511,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  currentScene:
-    m_Handle: 0
-  destroyWIthSpawner: 0
-  PrefabToSpawn: {fileID: 1184267464181747295, guid: 0d38e462430f41b4a9d8820df2a8b278, type: 3}
-  DestroyWithSpawner: 0
-  PlayersSpawned: []
+  _prefabToSpawn: {fileID: 3945215006605002847, guid: 6f5c380658de2564793dd62309121325, type: 3}
+  _playerSpawned: []
 --- !u!114 &2073773322
 MonoBehaviour:
   m_ObjectHideFlags: 0
