@@ -21,8 +21,8 @@ Renzo Reemer (game Designer)
 
 Ruben Kossen
 - Multiplayer  [code](), [code explanation]()
-- Dialogue System  [code](), [code explanation]()
-- Camera [code](), [code explanation]()
+- Third-Person Camera [code](), [code explanation]()
+- Player Spawner [code](), [code explanation]()
   
 # Artists
 - elanora 
@@ -60,7 +60,6 @@ Ruben Kossen
 - Spawning  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/FishSpawner/FishSpawnerManager.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Spawning-Manager-explanation)
 - MiniGame Menu [code](), [code explanation]()
 - Camera [code](), [code explanation]()
-- 
   
 # Artists
 - elanora 
