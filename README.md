@@ -20,10 +20,10 @@ Renzo Reemer (game Designer)
 - Rope [Visual sheet]()
 
 Ruben Kossen
-- Multiplayer  [code](), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer)
-- Third-Person Camera [code](), [code explanation]()
-- Player Spawner [code](), [code explanation]()
-- Pick Up [code](), [code explanation]()
+- Multiplayer  [code](), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer-Explanation)
+- Third-Person Camera [code](), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Third‐Person-camera)
+- Player Spawner [code](), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Player-Spawning)
+- Pick Up [code](), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Pick-Up)
   
 # Artists
 - elanora 
