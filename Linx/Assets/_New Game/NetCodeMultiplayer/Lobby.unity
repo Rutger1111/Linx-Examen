@@ -4527,15 +4527,10 @@ MonoBehaviour:
   parent: {fileID: 756392298}
   parent2: {fileID: 400330705}
   InLobby: {fileID: 433582927}
-  player: {fileID: 4396163831410909464, guid: b056bf736257f98488eb4d369b6dac72, type: 3}
-  hostIP: 
   serverContainer: {fileID: 1693774772}
   HostUI: {fileID: 862136633}
   StartButtonUI: {fileID: 55104003}
   playersInServerContainer: {fileID: 862136633}
-  HasCreatedLobby: 0
-  transport: {fileID: 2073773320}
-  joinCode: 
 --- !u!1 &2139353874
 GameObject:
   m_ObjectHideFlags: 0
