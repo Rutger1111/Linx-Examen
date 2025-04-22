@@ -137,6 +137,7 @@ MonoBehaviour:
   segmentSpacing: 0.035
   anchorPoint: {fileID: 1406170643928866127}
   magnetPrefab: {fileID: 7390170494152827878, guid: 213228c50b16be542a4cf89c35eb0ca2, type: 3}
+  MagnetParent: {fileID: 0}
 --- !u!54 &2035459275291970944
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2049,7 +2050,7 @@ Transform:
   m_GameObject: {fileID: 3945215006605002847}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 12.6, z: 0}
   m_LocalScale: {x: 50.33, y: 50.33, z: 50.33}
   m_ConstrainProportionsScale: 1
   m_Children:
