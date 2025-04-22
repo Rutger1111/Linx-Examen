@@ -22,7 +22,8 @@ Renzo Reemer (game Designer)
 Ruben Kossen
 - Multiplayer  [code](), [code explanation]()
 - Third-Person Camera [code](), [code explanation]()
-- Player Spawner [code](), [code explanation]()
+- Player Spawner [code](), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer)
+- Pick Up [code](), [code explanation]()
   
 # Artists
 - elanora 
