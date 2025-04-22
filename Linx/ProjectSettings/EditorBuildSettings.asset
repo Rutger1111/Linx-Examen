@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/netCode/Scene/NetCode.unity
     guid: 6d7436e0309bc54448cfb332155881e0
-  - enabled: 1
+  - enabled: 0
     path: Assets/_New Game/NetCodeMultiplayer/WaitingScene.unity
     guid: 811567ed2ec9dc545b15bd1ddce73c0b
   - enabled: 1

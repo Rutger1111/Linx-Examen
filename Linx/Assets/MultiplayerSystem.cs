@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Multiplayer.Widgets;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
@@ -11,55 +10,42 @@ using Unity.Services.Lobbies.Models;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class lobbytest : NetworkBehaviour
+public class MultiplayerSystem : NetworkBehaviour
 {
 
     [SerializeField] private string _gameplayScene = "Game";
-
-    private Lobby hostlobby;
+    
+    [SerializeField] private GameObject Buttons;
+    [SerializeField] private GameObject playersJoinedListPrefab;
+    [SerializeField] private GameObject parent, parent2;
+    [SerializeField] private GameObject InLobby;
+    [SerializeField] private GameObject serverContainer;
+    [SerializeField] private GameObject HostUI;
+    [SerializeField] private GameObject StartButtonUI;
+    [SerializeField] private GameObject playersInServerContainer;
+    
+    private string joinCode;
+    private Lobby _hostLobby;
     private float heartBeatTimer;
-
-    public GameObject Buttons;
-    public GameObject playersJoinedListPrefab;
-    public GameObject parent, parent2;
-    public GameObject InLobby;
-    public GameObject player;
-    public string hostIP;
-    public GameObject serverContainer;
-    public GameObject HostUI;
-    public GameObject StartButtonUI;
-    public GameObject playersInServerContainer;
-    public bool HasCreatedLobby = false;
-    public UnityTransport transport;
-    public string joinCode;
 
     private async void Start()
     {
         await UnityServices.InitializeAsync();
         AuthenticationService.Instance.ClearSessionToken();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
-        Debug.Log("Signed in anonymously. Player ID: " + AuthenticationService.Instance.PlayerId);
     }
 
     private void Update()
     {
         handleLobbyHeartBeat();
-
-        if (IsLocalPlayer)
-        {
-            int connectedPlayersCount = NetworkManager.Singleton.ConnectedClientsList.Count;
-            Debug.Log("Number of players in the lobby: " + connectedPlayersCount);
-        }
     }
 
     private async void handleLobbyHeartBeat()
     {
-        if (hostlobby != null && hostlobby.HostId == AuthenticationService.Instance.PlayerId)
+        if (_hostLobby != null && _hostLobby.HostId == AuthenticationService.Instance.PlayerId)
         {
             heartBeatTimer -= Time.deltaTime;
 
@@ -68,7 +54,7 @@ public class lobbytest : NetworkBehaviour
                 float heartBeatTimerMax = 15;
                 heartBeatTimer = heartBeatTimerMax;
 
-                await LobbyService.Instance.SendHeartbeatPingAsync(hostlobby.Id);
+                await LobbyService.Instance.SendHeartbeatPingAsync(_hostLobby.Id);
             }
         }
     }
@@ -81,18 +67,11 @@ public class lobbytest : NetworkBehaviour
 
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
             joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
-
-            Debug.Log("Join code generated: " + joinCode);
+            
 
             RelayServerData relayServerData = AllocationUtils.ToRelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-
             
-
-            InLobby.SetActive(false);
-            StartButtonUI.SetActive(true);
-            HostUI.SetActive(true);
-
             CreateLobbyOptions options = new CreateLobbyOptions
             {
                 Data = new Dictionary<string, DataObject>
@@ -106,16 +85,20 @@ public class lobbytest : NetworkBehaviour
             };
 
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync("lobbyName", maxPlayers, options);
-            hostlobby = lobby;
+            _hostLobby = lobby;
 
-            FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
+            FindObjectOfType<SceneManagers>().ActiveLobby = _hostLobby;
             
 
             NetworkManager.Singleton.StartHost();
             
             playersJoined();
             
-            Debug.Log("Created lobby: " + lobby.Name + " with MaxPlayers: " + lobby.MaxPlayers);
+            
+            
+            InLobby.SetActive(false);
+            StartButtonUI.SetActive(true);
+            HostUI.SetActive(true);
         }
         catch (LobbyServiceException e)
         {
@@ -145,7 +128,6 @@ public class lobbytest : NetworkBehaviour
             };
 
             QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync(queryLobbiesOptions);
-            Debug.Log("Lobbies found: " + queryResponse.Results.Count);
 
             serverContainer.SetActive(true);
 
@@ -165,15 +147,12 @@ public class lobbytest : NetworkBehaviour
     {
         try
         {
-            Debug.Log("Attempting to join lobby with ID: " + lobbyId);
-
             Lobby joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
-            hostlobby = joinedLobby;
+            _hostLobby = joinedLobby;
 
             if (joinedLobby.Data.TryGetValue("joinCode", out var joinCodeData))
             {
                 joinCode = joinCodeData.Value;
-                Debug.Log("Join code received: " + joinCode);
 
                 if (string.IsNullOrWhiteSpace(joinCode))
                 {
@@ -189,19 +168,19 @@ public class lobbytest : NetworkBehaviour
 
                 NetworkManager.Singleton.StartClient(); // ✅ transport already set
 
-                FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
+                FindObjectOfType<SceneManagers>().ActiveLobby = _hostLobby;
             }
             else
             {
                 Debug.LogWarning("Join code not found in lobby data.");
             }
 
+            
             InLobby.SetActive(false);
             HostUI.SetActive(true);
             StartButtonUI.SetActive(true);
             serverContainer.SetActive(false);
-
-            Debug.Log("Joined lobby " + lobbyId);
+            
             playersJoined();
         }
         catch (LobbyServiceException e)
@@ -246,13 +225,11 @@ public class lobbytest : NetworkBehaviour
 
     private void HandleClientConnected(ulong clientId)
     {
-        Debug.Log($"Client connected: {clientId}");
         playersJoined();
     }
 
     private void HandleClientDisconnected(ulong clientId)
     {
-        Debug.Log($"Client disconnected: {clientId}");
         playersJoined();
     }
 
@@ -260,26 +237,11 @@ public class lobbytest : NetworkBehaviour
     {
         if (NetworkManager.Singleton.IsServer)
         {
-            Debug.Log("Host starting the game...");
             NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
         }
         else
         {
             Debug.Log("Client is ready.");
         }
-    }
-
-    private string GetLocalIpAdress()
-    {
-        var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
-        foreach (var ip in host.AddressList)
-        {
-            if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-            {
-                return ip.ToString();
-            }
-        }
-
-        throw new Exception("No network adapters with an IPv4 address in the system!");
     }
 }
