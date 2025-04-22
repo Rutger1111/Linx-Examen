@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -7659219714157563757}
   - component: {fileID: 4947931680860342464}
   - component: {fileID: 1825273555561419373}
+  - component: {fileID: 1115281619577172072}
   m_Layer: 0
   m_Name: RopeSegment 1
   m_TagString: Untagged
@@ -286,3 +287,20 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &1115281619577172072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8767393605386507629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 1
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
