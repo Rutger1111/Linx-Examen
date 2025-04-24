@@ -91,17 +91,9 @@ public class RopeBuilder : MonoBehaviour
 
         // Add and configure joint
         ConfigurableJoint joint = null;
-        if (joint == null)
-        {
-            //joint = magnet.AddComponent<ConfigurableJoint>();
-        }
-        else
-        {
-            joint = magnet.GetComponent<ConfigurableJoint>();
-        }
 
         lastSegment.GetComponent<ConfigurableJoint>().connectedBody = magnet.GetComponent<Rigidbody>();
-        joint.autoConfigureConnectedAnchor = true;
+        //joint.autoConfigureConnectedAnchor = true;
 
         joint.xMotion = ConfigurableJointMotion.Limited;
         joint.yMotion = ConfigurableJointMotion.Limited;
