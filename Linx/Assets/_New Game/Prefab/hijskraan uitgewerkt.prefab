@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: -1402156888912639599}
   - component: {fileID: 7869268840386322585}
   - component: {fileID: -7508650836271574612}
+  - component: {fileID: -3582524670761141496}
   m_Layer: 0
   m_Name: hijskraan uitgewerkt
   m_TagString: Untagged
@@ -404,6 +405,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.10514802, z: 0.37605566}
   m_Center: {x: 0, y: -0.008783969, z: -0.023693955}
+--- !u!114 &-3582524670761141496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184267464181747295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e5e6edad7995641aff9804da0135d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _range: 2
+  _pickUpPosition: {fileID: 0}
+  _targetTag: moveAbleObject
 --- !u!1 &1197651323454141437
 GameObject:
   m_ObjectHideFlags: 0

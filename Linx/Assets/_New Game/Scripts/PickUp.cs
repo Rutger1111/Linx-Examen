@@ -52,20 +52,23 @@ public class PickUp : NetworkBehaviour
     {
         if (_heldObject != null)
         {
-            if (_joint == null)
-            {
+            print("heeftobject");
+            if (_joint == null){
                 _heldObject.transform.position = _pickUpPosition.transform.position;
                 _joint = _pickUpPosition.AddComponent<ConfigurableJoint>();
                 _joint.connectedBody = _heldObject.GetComponent<Rigidbody>();
                 _joint.xMotion = ConfigurableJointMotion.Limited;
                 _joint.yMotion = ConfigurableJointMotion.Limited;
                 _joint.zMotion = ConfigurableJointMotion.Limited;
+                _joint.breakForce = 1;
             }
+            
         }
-        else if (_joint != null)
-        {
-            Destroy(_joint);
-            _joint = null;
+        else{
+            if (_joint != null){
+                Destroy(_joint);
+                _joint = null;
+            }
         }
     }
 

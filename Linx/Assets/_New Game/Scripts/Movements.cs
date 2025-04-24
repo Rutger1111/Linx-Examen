@@ -36,7 +36,7 @@ namespace _New_Game.Scripts.Crane
         {
             if (CenterMouseTimer <= 0)
             {
-                Screen.lockCursor = false;
+                Screen.lockCursor = true;
             }
             
             CenterMouseTimer -= Time.deltaTime;
