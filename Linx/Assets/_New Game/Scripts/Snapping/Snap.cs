@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Snap : ICommand
 {
-    private bool _isBuildingBlock = true;
-    private int placed;
+    public bool _isBuildingBlock = true;
+    public int placed;
     void OnTriggerStay(Collider other)
     {
         if (_isBuildingBlock && Input.GetKeyDown(KeyCode.E)){
