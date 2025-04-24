@@ -43,7 +43,7 @@ public class Snap : ICommand
             {
                 Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
                 transform.rotation = targetRotation;
-                transform.rotation = new quaternion(transform.rotation.x,transform.rotation.y,transform.rotation.z + 90,0);
+                transform.rotation = new quaternion(transform.rotation.x,transform.rotation.y + 90,transform.rotation.z + 90,0);
                 if (col.tag != "Ground" ){
                     print("came here 1");
                     transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
