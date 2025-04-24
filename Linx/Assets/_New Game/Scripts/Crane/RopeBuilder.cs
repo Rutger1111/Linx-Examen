@@ -79,6 +79,7 @@ public class RopeBuilder : MonoBehaviour
         Vector3 spawnPos = lastSegment.transform.position + Vector3.down * segmentSpacing;
 
         GameObject magnet = Instantiate(magnetPrefab, spawnPos, Quaternion.identity, anchorPoint);
+        print("parent name = " + magnet);
         transform.parent.parent.parent.parent.GetComponent<PickUp>()._pickUpPosition = magnet;
         Rigidbody magnetRb = magnet.GetComponent<Rigidbody>();
         if (magnetRb == null)
@@ -89,10 +90,14 @@ public class RopeBuilder : MonoBehaviour
         magnetRb.mass = 1f;
 
         // Add and configure joint
-        ConfigurableJoint joint = magnet.GetComponent<ConfigurableJoint>();
+        ConfigurableJoint joint = null;
         if (joint == null)
         {
             //joint = magnet.AddComponent<ConfigurableJoint>();
+        }
+        else
+        {
+            joint = magnet.GetComponent<ConfigurableJoint>();
         }
 
         lastSegment.GetComponent<ConfigurableJoint>().connectedBody = magnet.GetComponent<Rigidbody>();
