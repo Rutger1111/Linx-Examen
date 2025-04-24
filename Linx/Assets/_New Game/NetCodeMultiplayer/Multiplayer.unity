@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
+  NetworkTransformExpanded: 1
   AutoOwnerAuthorityTickOffset: 1
   PositionInterpolationType: 0
   RotationInterpolationType: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -884,7 +884,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -984,7 +984,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -1350,7 +1350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
+  NetworkTransformExpanded: 1
   AutoOwnerAuthorityTickOffset: 1
   PositionInterpolationType: 0
   RotationInterpolationType: 0
@@ -1362,7 +1362,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -2166,7 +2166,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -3479,7 +3479,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -3775,7 +3775,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -6120,7 +6120,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -6470,7 +6470,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -6602,7 +6602,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -6849,7 +6849,7 @@ MonoBehaviour:
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
