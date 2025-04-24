@@ -22,10 +22,13 @@ public class PickUp : NetworkBehaviour
         {
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
+               
                 TryPickUp();
+                _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp++;
             }
             else if (_heldObject != null)
             {
+                _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp--;
                 ulong targetId = _heldObject.NetworkObjectId;
                 RequestDropServerRpc(targetId);
             }
