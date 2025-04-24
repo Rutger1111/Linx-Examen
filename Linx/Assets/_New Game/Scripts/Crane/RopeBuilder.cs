@@ -25,6 +25,10 @@ public class RopeBuilder : MonoBehaviour
 
         for (int i = 0; i < segmentCount; i++)
         {
+            GameObject lastSegment = this.gameObject;
+            if(segments.Count > 0){
+                lastSegment = segments[segments.Count - 1];
+            }
             Vector3 spawnPos = anchorPoint.position + Vector3.down * segmentSpacing * (i + 1);
             GameObject segment = Instantiate(segmentPrefab, spawnPos, Quaternion.identity);
 
@@ -35,9 +39,9 @@ public class RopeBuilder : MonoBehaviour
 
             joint.connectedBody = previous.GetComponent<Rigidbody>();
 
-            joint.xMotion = ConfigurableJointMotion.Locked;
+            joint.xMotion = ConfigurableJointMotion.Limited;
             joint.yMotion = ConfigurableJointMotion.Limited;
-            joint.zMotion = ConfigurableJointMotion.Locked;
+            joint.zMotion = ConfigurableJointMotion.Limited;
 
             SoftJointLimit limit = joint.linearLimit;
             limit.limit = segmentSpacing;
@@ -54,7 +58,12 @@ public class RopeBuilder : MonoBehaviour
             };
             joint.angularXLimitSpring = angularSpring;
             joint.angularYZLimitSpring = angularSpring;
-
+            
+            lastSegment.GetComponent<ConfigurableJoint>().connectedBody = segment.GetComponent<Rigidbody>();
+            if(segments.Count == 0){
+                print("hiero");
+                segment.GetComponent<Rigidbody>().isKinematic = true;
+            }
             segments.Add(segment);
             previous = segment;
         }
@@ -83,15 +92,15 @@ public class RopeBuilder : MonoBehaviour
         ConfigurableJoint joint = magnet.GetComponent<ConfigurableJoint>();
         if (joint == null)
         {
-            joint = magnet.AddComponent<ConfigurableJoint>();
+            //joint = magnet.AddComponent<ConfigurableJoint>();
         }
 
-        joint.connectedBody = lastSegment.GetComponent<Rigidbody>();
+        lastSegment.GetComponent<ConfigurableJoint>().connectedBody = magnet.GetComponent<Rigidbody>();
         joint.autoConfigureConnectedAnchor = true;
 
-        joint.xMotion = ConfigurableJointMotion.Locked;
+        joint.xMotion = ConfigurableJointMotion.Limited;
         joint.yMotion = ConfigurableJointMotion.Limited;
-        joint.zMotion = ConfigurableJointMotion.Locked;
+        joint.zMotion = ConfigurableJointMotion.Limited;
 
         joint.angularXMotion = ConfigurableJointMotion.Free;
         joint.angularYMotion = ConfigurableJointMotion.Free;
