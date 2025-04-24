@@ -346,8 +346,8 @@ MonoBehaviour:
   driveSpeed: 5
   armRotationSpeed: 30
   hookSpeed: 2
-  minArmAngle: -45
-  maxArmAngle: 1
+  minArmAngle: -25
+  maxArmAngle: 20
   minHookHeight: 0.5
   maxHookHeight: 10
   CenterMouseTimer: 0.4
@@ -1702,7 +1702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 8767393605386507629, guid: d5729c09c5898024a9272b41eaa2dbbe, type: 3}
-  segmentCount: 10
+  segmentCount: 5
   segmentSpacing: 0.29
   anchorPoint: {fileID: 391217588958779915}
   magnetPrefab: {fileID: 7390170494152827878, guid: 213228c50b16be542a4cf89c35eb0ca2, type: 3}
