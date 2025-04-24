@@ -1,5 +1,6 @@
 using System;
 using FishSystem;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -42,6 +43,7 @@ public class Snap : ICommand
             {
                 Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
                 transform.rotation = targetRotation;
+                transform.rotation = new quaternion(transform.rotation.x,transform.rotation.y,90,0);
                 if (col.tag != "Ground" ){
                     print("came here 1");
                     transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
