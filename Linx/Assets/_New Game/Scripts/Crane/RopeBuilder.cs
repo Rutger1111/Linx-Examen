@@ -9,6 +9,8 @@ public class RopeBuilder : MonoBehaviour
     public Transform anchorPoint;        // Where the rope starts
     public GameObject magnetPrefab;      // Magnet prefab to instantiate
 
+    public Transform MagnetParent;
+
     private List<GameObject> segments = new List<GameObject>();
 
     void Start()
@@ -60,14 +62,15 @@ public class RopeBuilder : MonoBehaviour
 
     private void SpawnAndAttachMagnet()
     {
+        print("Comeshere");
+
         if (magnetPrefab == null || segments.Count == 0) return;
 
         GameObject lastSegment = segments[segments.Count - 1];
         Vector3 spawnPos = lastSegment.transform.position + Vector3.down * segmentSpacing;
 
-        GameObject magnet = Instantiate(magnetPrefab, spawnPos, Quaternion.identity);
-        magnet.transform.SetParent(anchorPoint);
-
+        GameObject magnet = Instantiate(magnetPrefab, spawnPos, Quaternion.identity, anchorPoint);
+        transform.parent.parent.parent.parent.GetComponent<PickUp>()._pickUpPosition = magnet;
         Rigidbody magnetRb = magnet.GetComponent<Rigidbody>();
         if (magnetRb == null)
         {

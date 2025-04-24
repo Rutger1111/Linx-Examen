@@ -9,7 +9,7 @@ public class PickUp : NetworkBehaviour
     private float _range = 2f;
 
     [SerializeField] 
-    private GameObject _pickUpPosition;
+    public  GameObject _pickUpPosition;
 
     [SerializeField] 
     private string _targetTag = "moveAbleObject";

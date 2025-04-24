@@ -14,6 +14,6 @@ public class LobbyButtonUI : MonoBehaviour
     {
         print("check");
 
-        FindObjectOfType<lobbytest>().joinLobby(lobbyId);
+        FindObjectOfType<MultiplayerSystem>().JoinLobby(lobbyId);
     }
 }

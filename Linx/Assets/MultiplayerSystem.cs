@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Unity.Multiplayer.Widgets;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
@@ -11,88 +9,78 @@ using Unity.Services.Lobbies.Models;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
-public class lobbytest : NetworkBehaviour
+public class MultiplayerSystem : NetworkBehaviour
 {
-
+    [Header("Scenes")]
     [SerializeField] private string _gameplayScene = "Game";
-
-    private Lobby hostlobby;
-    private float heartBeatTimer;
-
-    public GameObject Buttons;
-    public GameObject playersJoinedListPrefab;
-    public GameObject parent, parent2;
-    public GameObject InLobby;
-    public GameObject player;
-    public string hostIP;
-    public GameObject serverContainer;
-    public GameObject HostUI;
-    public GameObject StartButtonUI;
-    public GameObject playersInServerContainer;
-    public bool HasCreatedLobby = false;
-    public UnityTransport transport;
-    public string joinCode;
+    
+    
+    [Header("Prefabs")]
+    [SerializeField] private GameObject _joinButtonsPrefab;
+    [SerializeField] private GameObject _joinButtonParent;
+    
+    
+    [SerializeField] private GameObject _playersJoinedPrefab;
+    [SerializeField] private GameObject _playersJoinedParent;
+    
+    
+    [Header("UI")]
+    [SerializeField] private GameObject _multiplayerUI;
+    [SerializeField] private GameObject _lobbyList;
+    [SerializeField] private GameObject _GameUI;
+    [SerializeField] private GameObject _startGameButtonUI;
+    
+    
+    private string _joinCode;
+    private Lobby _hostLobby;
+    private float _heartBeatTimer;
 
     private async void Start()
     {
         await UnityServices.InitializeAsync();
         AuthenticationService.Instance.ClearSessionToken();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
-        Debug.Log("Signed in anonymously. Player ID: " + AuthenticationService.Instance.PlayerId);
     }
 
     private void Update()
     {
-        handleLobbyHeartBeat();
-
-        if (IsLocalPlayer)
-        {
-            int connectedPlayersCount = NetworkManager.Singleton.ConnectedClientsList.Count;
-            Debug.Log("Number of players in the lobby: " + connectedPlayersCount);
-        }
+        HandleLobbyHeartBeat();
     }
 
-    private async void handleLobbyHeartBeat()
+    private async void HandleLobbyHeartBeat()
     {
-        if (hostlobby != null && hostlobby.HostId == AuthenticationService.Instance.PlayerId)
+        if (_hostLobby != null && _hostLobby.HostId == AuthenticationService.Instance.PlayerId)
         {
-            heartBeatTimer -= Time.deltaTime;
+            _heartBeatTimer -= Time.deltaTime;
 
-            if (heartBeatTimer < 0)
+            if (_heartBeatTimer < 0)
             {
                 float heartBeatTimerMax = 15;
-                heartBeatTimer = heartBeatTimerMax;
+                _heartBeatTimer = heartBeatTimerMax;
 
-                await LobbyService.Instance.SendHeartbeatPingAsync(hostlobby.Id);
+                await LobbyService.Instance.SendHeartbeatPingAsync(_hostLobby.Id);
             }
         }
     }
 
-    public async void createLobby()
+    public async void CreateLobby()
     {
         try
         {
             int maxPlayers = 2;
 
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
-            joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
-
-            Debug.Log("Join code generated: " + joinCode);
+            _joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+            
 
             RelayServerData relayServerData = AllocationUtils.ToRelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-
             
-
-            InLobby.SetActive(false);
-            StartButtonUI.SetActive(true);
-            HostUI.SetActive(true);
-
+            
             CreateLobbyOptions options = new CreateLobbyOptions
             {
                 Data = new Dictionary<string, DataObject>
@@ -100,22 +88,24 @@ public class lobbytest : NetworkBehaviour
                     {
                         "joinCode", new DataObject(
                             visibility: DataObject.VisibilityOptions.Member,
-                            value: joinCode)
+                            value: _joinCode)
                     }
                 }
             };
 
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync("lobbyName", maxPlayers, options);
-            hostlobby = lobby;
+            _hostLobby = lobby;
 
-            FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
+            FindObjectOfType<SpawnManager>()._activeLobby = _hostLobby;
             
 
             NetworkManager.Singleton.StartHost();
             
-            playersJoined();
+            PlayersJoined();
             
-            Debug.Log("Created lobby: " + lobby.Name + " with MaxPlayers: " + lobby.MaxPlayers);
+            _multiplayerUI.SetActive(false);
+            _startGameButtonUI.SetActive(true);
+            _GameUI.SetActive(true);
         }
         catch (LobbyServiceException e)
         {
@@ -127,7 +117,7 @@ public class lobbytest : NetworkBehaviour
     {
         try
         {
-            foreach (Transform child in parent.transform)
+            foreach (Transform child in _joinButtonParent.transform)
             {
                 Destroy(child.gameObject);
             }
@@ -145,13 +135,13 @@ public class lobbytest : NetworkBehaviour
             };
 
             QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync(queryLobbiesOptions);
-            Debug.Log("Lobbies found: " + queryResponse.Results.Count);
 
-            serverContainer.SetActive(true);
+            _multiplayerUI.SetActive(false);
+            _lobbyList.SetActive(true);
 
             foreach (Lobby lobby in queryResponse.Results)
             {
-                GameObject lobbyButton = Instantiate(Buttons, parent.transform);
+                GameObject lobbyButton = Instantiate(_joinButtonsPrefab, _joinButtonParent.transform);
                 lobbyButton.GetComponent<LobbyButtonUI>().Setup(lobby.Name, lobby.Id);
             }
         }
@@ -161,48 +151,44 @@ public class lobbytest : NetworkBehaviour
         }
     }
 
-    public async void joinLobby(string lobbyId)
+    public async void JoinLobby(string lobbyId)
     {
         try
         {
-            Debug.Log("Attempting to join lobby with ID: " + lobbyId);
-
             Lobby joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
-            hostlobby = joinedLobby;
+            _hostLobby = joinedLobby;
 
             if (joinedLobby.Data.TryGetValue("joinCode", out var joinCodeData))
             {
-                joinCode = joinCodeData.Value;
-                Debug.Log("Join code received: " + joinCode);
+                _joinCode = joinCodeData.Value;
 
-                if (string.IsNullOrWhiteSpace(joinCode))
+                if (string.IsNullOrWhiteSpace(_joinCode))
                 {
                     Debug.LogError("Invalid join code received!");
                     return;
                 }
 
-                JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+                JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(_joinCode);
                 RelayServerData relayServerData = AllocationUtils.ToRelayServerData(allocation, "dtls");
 
                 UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
                 transport.SetRelayServerData(relayServerData);
 
-                NetworkManager.Singleton.StartClient(); // ✅ transport already set
+                NetworkManager.Singleton.StartClient();
 
-                FindObjectOfType<SceneManagers>().ActiveLobby = hostlobby;
+                FindObjectOfType<SpawnManager>()._activeLobby = _hostLobby;
             }
             else
             {
                 Debug.LogWarning("Join code not found in lobby data.");
             }
 
-            InLobby.SetActive(false);
-            HostUI.SetActive(true);
-            StartButtonUI.SetActive(true);
-            serverContainer.SetActive(false);
-
-            Debug.Log("Joined lobby " + lobbyId);
-            playersJoined();
+            
+            _multiplayerUI.SetActive(false);
+            _lobbyList.SetActive(false);
+            _GameUI.SetActive(true);
+            
+            PlayersJoined();
         }
         catch (LobbyServiceException e)
         {
@@ -210,18 +196,16 @@ public class lobbytest : NetworkBehaviour
         }
     }
 
-    public void playersJoined()
+    public void PlayersJoined()
     {
-        foreach (Transform child in parent2.transform)
+        foreach (Transform child in _playersJoinedParent.transform)
         {
             Destroy(child.gameObject);
         }
-
-        playersInServerContainer.SetActive(true);
-
+        
         foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
         {
-            GameObject entry = Instantiate(playersJoinedListPrefab, parent2.transform);
+            GameObject entry = Instantiate(_playersJoinedPrefab, _playersJoinedParent.transform);
 
             var text = entry.GetComponentInChildren<Text>();
             if (text != null)
@@ -246,40 +230,23 @@ public class lobbytest : NetworkBehaviour
 
     private void HandleClientConnected(ulong clientId)
     {
-        Debug.Log($"Client connected: {clientId}");
-        playersJoined();
+        PlayersJoined();
     }
 
     private void HandleClientDisconnected(ulong clientId)
     {
-        Debug.Log($"Client disconnected: {clientId}");
-        playersJoined();
+        PlayersJoined();
     }
 
-    public void startGame()
+    public void StartGame()
     {
         if (NetworkManager.Singleton.IsServer)
         {
-            Debug.Log("Host starting the game...");
             NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
         }
         else
         {
             Debug.Log("Client is ready.");
         }
-    }
-
-    private string GetLocalIpAdress()
-    {
-        var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
-        foreach (var ip in host.AddressList)
-        {
-            if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-            {
-                return ip.ToString();
-            }
-        }
-
-        throw new Exception("No network adapters with an IPv4 address in the system!");
     }
 }
