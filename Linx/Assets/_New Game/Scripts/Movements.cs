@@ -45,6 +45,7 @@ namespace _New_Game.Scripts.Crane
             {
                 RotateBase();
                 MoveArm();
+                UpdateArmSupport();
                 //MoveHook();
                 Drive();
                 Turn();
