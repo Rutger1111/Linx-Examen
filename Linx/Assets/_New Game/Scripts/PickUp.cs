@@ -28,7 +28,6 @@ public class PickUp : NetworkBehaviour
             }
             else if (_heldObject != null)
             {
-                _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp--;
                 ulong targetId = _heldObject.NetworkObjectId;
                 RequestDropServerRpc(targetId);
             }
@@ -145,6 +144,7 @@ public class PickUp : NetworkBehaviour
     {
         if (IsOwner && _heldObject != null && _heldObject.NetworkObjectId == objectId)
         {
+            _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp--;
             _heldObject = null;
         }
     }
