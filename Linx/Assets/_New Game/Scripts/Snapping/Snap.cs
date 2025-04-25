@@ -10,6 +10,10 @@ public class Snap : ICommand
     public bool _isBuildingBlock = true;
     public int placed;
     public int isPickedUp;
+    void Start()
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
     void OnTriggerStay(Collider other)
     {
         if(_isBuildingBlock)
