@@ -56,6 +56,7 @@ public class Snap : ICommand
         //placed --;
         _isBuildingBlock = true;
         _myMaterial.color = Color.yellow;
+        UIplace.SetActive(false);
     }
     public override void Invoke(Fish fish)
     {
