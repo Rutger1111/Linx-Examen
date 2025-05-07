@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="" />
+    <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Art/UI/RawImage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Art/UI/RawImage.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Snapping/Snap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Snapping/Snap.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
