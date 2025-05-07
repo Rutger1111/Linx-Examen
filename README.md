@@ -20,10 +20,10 @@ Renzo Reemer (game Designer)
 - Rope [Visual sheet]()
 
 Ruben Kossen
-- Multiplayer  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/MultiplayerSystem.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer-System)
-- Third-Person Camera [code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/_New%20Game/Scripts/Camera), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Third‐Person-camera)
-- Player Spawner [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/SpawnManager.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Player-Spawning)
-- Pick Up [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/PickUp.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Pick-Up)
+- Multiplayer  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/MultiplayerSystem.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer-System)
+- Third-Person Camera [Code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/_New%20Game/Scripts/Camera), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Third‐Person-camera)
+- Player Spawner [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/SpawnManager.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Player-Spawning)
+- Pick Up [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/PickUp.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Pick-Up)
   
 # Artists
 - elanora 
