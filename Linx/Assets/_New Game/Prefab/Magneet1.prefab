@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6960218537346557454, guid: 4185d0286c0f6a1458db89b3cb45ea89, type: 3}
+  - {fileID: 2100000, guid: 21a99ce5249ee5c4484fccb190c39c97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 369387411140460301}
   - component: {fileID: -4307505744137230574}
   m_Layer: 0
-  m_Name: pickUpPosition
+  m_Name: Magneet1
   m_TagString: Hook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
