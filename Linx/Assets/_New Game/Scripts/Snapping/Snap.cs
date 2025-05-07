@@ -18,6 +18,15 @@ public class Snap : ICommand
     {
         GetComponent<Rigidbody>().isKinematic = false;
     }
+
+    private void Update()
+    {
+        if (_isBuildingBlock == false)
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "BuildPosition")
@@ -30,7 +39,6 @@ public class Snap : ICommand
             {
                 if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
                 {
-                    print("fuck");
                     Invoke(other);
                     _isBuildingBlock = false;
                     _snapPosition.setTrue(true);
