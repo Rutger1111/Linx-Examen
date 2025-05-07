@@ -6,11 +6,23 @@ using UnityEngine;
 
 public class Snap : ICommand
 {
+    [SerializeField] private Material _myMaterial;
     public bool _isBuildingBlock = true;
     public int placed;
     public int isPickedUp;
+    void Start()
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
     void OnTriggerStay(Collider other)
     {
+        if(_isBuildingBlock)
+        {
+            _myMaterial.color = Color.blue;
+        }
+        else{
+            _myMaterial.color = Color.yellow;
+        }
         if (_isBuildingBlock && Input.GetKeyDown(KeyCode.E)){
             Invoke(other);
             _isBuildingBlock = false;
@@ -19,8 +31,9 @@ public class Snap : ICommand
     }
     void OnTriggerExit(Collider other)
     {
-        placed --;
+        //placed --;
         _isBuildingBlock = true;
+        _myMaterial.color = Color.green;
     }
     public override void Invoke(Fish fish)
     {
@@ -28,9 +41,10 @@ public class Snap : ICommand
     }
     public override void Invoke(Collider col)
     {
-        if(isPickedUp > 0){
+        if(GetComponent<Snap>().isPickedUp > 0){
+            print("is hierrr");
             GameObject referenceObject = col.gameObject.transform.parent.gameObject;
-
+            print("is hier ook");
             // Get the forward direction in the horizontal plane
             Vector3 refForward = referenceObject.transform.forward;
             refForward.y = 0;
