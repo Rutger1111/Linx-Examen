@@ -1,22 +1,16 @@
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PickUp : NetworkBehaviour
 {
-    [SerializeField] 
-    private float _range = 2f;
-
-    [SerializeField] 
-    public  GameObject _pickUpPosition;
-
-    [SerializeField] 
-    private string _targetTag = "moveAbleObject";
+    [SerializeField] private float _range = 2f;
+    [SerializeField] public GameObject _pickUpPosition;
+    [SerializeField] private string _targetTag = "moveAbleObject";
 
     private NetworkObject _heldObject;
-
     private List<GameObject> _pickUpAbleObjects = new List<GameObject>();
+    private ConfigurableJoint _joint;
 
     void Update()
     {
@@ -28,21 +22,55 @@ public class PickUp : NetworkBehaviour
         {
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
-                print("heck");
-                ulong targetId = _pickUpAbleObjects[0].GetComponent<NetworkObject>().NetworkObjectId;
-                RequestPickUpServerRpc(targetId);
+               
+                TryPickUp();
+                _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp++;
             }
             else if (_heldObject != null)
             {
-                print("check");
                 ulong targetId = _heldObject.NetworkObjectId;
                 RequestDropServerRpc(targetId);
             }
         }
 
+        UpdateJointLogic();
+    }
+
+    void TryPickUp()
+    {
+        foreach (var obj in _pickUpAbleObjects)
+        {
+            var pickupable = obj.GetComponent<PickUpItem>();
+            if (pickupable != null && !pickupable.IsHeld.Value)
+            {
+                ulong targetId = obj.GetComponent<NetworkObject>().NetworkObjectId;
+                RequestPickUpServerRpc(targetId, NetworkObjectId);
+                break;
+            }
+        }
+    }
+
+    void UpdateJointLogic()
+    {
         if (_heldObject != null)
         {
-            _heldObject.transform.position = _pickUpPosition.transform.position;
+            print("heeftobject");
+            if (_joint == null){
+                _heldObject.transform.position = _pickUpPosition.transform.position;
+                _joint = _pickUpPosition.AddComponent<ConfigurableJoint>();
+                _joint.connectedBody = _heldObject.GetComponent<Rigidbody>();
+                _joint.xMotion = ConfigurableJointMotion.Limited;
+                _joint.yMotion = ConfigurableJointMotion.Limited;
+                _joint.zMotion = ConfigurableJointMotion.Limited;
+                _joint.breakForce = 1;
+            }
+            
+        }
+        else{
+            if (_joint != null){
+                Destroy(_joint);
+                _joint = null;
+            }
         }
     }
 
@@ -62,41 +90,46 @@ public class PickUp : NetworkBehaviour
     }
 
     [ServerRpc]
-    void RequestPickUpServerRpc(ulong objectId, ServerRpcParams rpcParams = default)
+    void RequestPickUpServerRpc(ulong targetId, ulong playerId, ServerRpcParams rpcParams = default)
     {
-        if (!NetworkManager.SpawnManager.SpawnedObjects.ContainsKey(objectId))
-            return;
+        if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(targetId, out NetworkObject targetObject)) return;
+        if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(playerId, out NetworkObject playerObject)) return;
 
-        NetworkObject objNet = NetworkManager.SpawnManager.SpawnedObjects[objectId];
+        var pickupable = targetObject.GetComponent<PickUpItem>();
+        if (pickupable == null || pickupable.IsHeld.Value) return;
 
-        // Optional: Limit pickup to unheld items
-        if (objNet.IsOwnedByServer || !objNet.IsOwnedByServer && !objNet.IsOwnershipTransferable)
+        pickupable.IsHeld.Value = true;
+
+        if (targetObject.IsOwnedByServer || targetObject.IsOwnershipTransferable)
         {
-            objNet.ChangeOwnership(rpcParams.Receive.SenderClientId);
+            targetObject.ChangeOwnership(rpcParams.Receive.SenderClientId);
 
-            Gravity gravity = objNet.GetComponent<Gravity>();
+            Gravity gravity = targetObject.GetComponent<Gravity>();
             if (gravity != null) gravity.hasGravity = false;
 
-            ConfirmPickUpClientRpc(objectId);
+            ConfirmPickUpClientRpc(targetId);
         }
     }
 
     [ClientRpc]
     void ConfirmPickUpClientRpc(ulong objectId)
     {
-        if (IsOwner)
+        if (IsOwner && NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(objectId, out NetworkObject obj))
         {
-            _heldObject = NetworkManager.SpawnManager.SpawnedObjects[objectId];
+            _heldObject = obj;
         }
     }
 
     [ServerRpc]
     void RequestDropServerRpc(ulong objectId, ServerRpcParams rpcParams = default)
     {
-        if (!NetworkManager.SpawnManager.SpawnedObjects.ContainsKey(objectId))
-            return;
+        if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(objectId, out NetworkObject objNet)) return;
 
-        NetworkObject objNet = NetworkManager.SpawnManager.SpawnedObjects[objectId];
+        var pickupable = objNet.GetComponent<PickUpItem>();
+        if (pickupable != null)
+        {
+            pickupable.IsHeld.Value = false;
+        }
 
         Gravity gravity = objNet.GetComponent<Gravity>();
         if (gravity != null) gravity.hasGravity = true;
@@ -111,6 +144,7 @@ public class PickUp : NetworkBehaviour
     {
         if (IsOwner && _heldObject != null && _heldObject.NetworkObjectId == objectId)
         {
+            _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp--;
             _heldObject = null;
         }
     }

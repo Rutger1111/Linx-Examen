@@ -36,7 +36,7 @@ namespace _New_Game.Scripts.Crane
         {
             if (CenterMouseTimer <= 0)
             {
-                Screen.lockCursor = false;
+                Screen.lockCursor = true;
             }
             
             CenterMouseTimer -= Time.deltaTime;
@@ -45,6 +45,7 @@ namespace _New_Game.Scripts.Crane
             {
                 RotateBase();
                 MoveArm();
+                StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
                 //MoveHook();
                 Drive();
                 Turn();
@@ -106,26 +107,25 @@ namespace _New_Game.Scripts.Crane
             craneHook.localPosition = localPos;
         }
 
-        private void UpdateArmSupport()
+        public void StretchBetweenPoints(Transform obj, Transform startPoint, Transform endPoint)
         {
-            Vector3 startPos = startSupport.position;
-            Vector3 endPos = finishSupport.position;
+            Vector3 startPos = startPoint.position;
+            Vector3 endPos = endPoint.position;
 
-            // Direction and distance between the points
+            // Direction and distance
             Vector3 direction = endPos - startPos;
-            float distance = direction.magnitude;
+            float distance = direction.magnitude * 0.1f;
 
-            // Midpoint becomes the position of the arm
-            Vector3 midPoint = startPos + (direction * 0.5f);
-            supportArm.transform.position = midPoint;
+            // Move to midpoint
+            obj.position = startPos + direction * 0.5f;
 
-            // Rotation to face from start to finish
-            supportArm.transform.rotation = Quaternion.LookRotation(direction);
+            // Rotate to face the target
+            obj.rotation = Quaternion.LookRotation(direction);
 
-            // Scale the arm to match the distance (only along Z)
-            Vector3 newScale = supportArm.transform.localScale;
+            // Stretch along Z (assuming original length is 1 unit)
+            Vector3 newScale = obj.localScale;
             newScale.z = distance;
-            supportArm.transform.localScale = newScale;
+            obj.localScale = newScale;
         }
         
         private void OnDrawGizmos()

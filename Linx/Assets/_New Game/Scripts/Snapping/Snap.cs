@@ -1,14 +1,28 @@
 using System;
 using FishSystem;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Snap : ICommand
 {
-    private bool _isBuildingBlock = true;
-    private int placed;
+    [SerializeField] private Material _myMaterial;
+    public bool _isBuildingBlock = true;
+    public int placed;
+    public int isPickedUp;
+    void Start()
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
     void OnTriggerStay(Collider other)
     {
+        if(_isBuildingBlock)
+        {
+            _myMaterial.color = Color.blue;
+        }
+        else{
+            _myMaterial.color = Color.yellow;
+        }
         if (_isBuildingBlock && Input.GetKeyDown(KeyCode.E)){
             Invoke(other);
             _isBuildingBlock = false;
@@ -17,8 +31,9 @@ public class Snap : ICommand
     }
     void OnTriggerExit(Collider other)
     {
-        placed --;
+        //placed --;
         _isBuildingBlock = true;
+        _myMaterial.color = Color.green;
     }
     public override void Invoke(Fish fish)
     {
@@ -26,33 +41,35 @@ public class Snap : ICommand
     }
     public override void Invoke(Collider col)
     {
+        if(GetComponent<Snap>().isPickedUp > 0){
+            print("is hierrr");
+            GameObject referenceObject = col.gameObject.transform.parent.gameObject;
+            print("is hier ook");
+            // Get the forward direction in the horizontal plane
+            Vector3 refForward = referenceObject.transform.forward;
+            refForward.y = 0;
+            refForward.Normalize();
 
-        GameObject referenceObject = col.gameObject;
+            // Get 90° perpendicular direction (right turn)
+            Vector3 perpDirection = new Vector3(-refForward.z, 0, refForward.x);
 
-        // Get the forward direction in the horizontal plane
-        Vector3 refForward = referenceObject.transform.forward;
-        refForward.y = 0;
-        refForward.Normalize();
-
-        // Get 90° perpendicular direction (right turn)
-        Vector3 perpDirection = new Vector3(-refForward.z, 0, refForward.x);
-
-        if (perpDirection != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
-            transform.rotation = targetRotation;
-            if (col.tag != "Ground" ){
-                print("came here 1");
-                transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
-            }
-            else if (col.tag == "Ground"){
-                print("came here 2");
-                col.tag = "Untagged";
-                col.enabled = false;
-            }
-            GetComponent<Rigidbody>().isKinematic = true;
+            if (perpDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
+                transform.rotation = targetRotation;
+                transform.rotation = new quaternion(transform.rotation.x,transform.rotation.y + 90,transform.rotation.z + 90,0);
+                if (col.tag != "Ground" ){
+                    print("came here 1");
+                    transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
+                }
+                else if (col.tag == "Ground"){
+                    print("came here 2");
+                    col.tag = "Untagged";
+                    col.enabled = false;
+                }
+                GetComponent<Rigidbody>().isKinematic = true;
+            }            
         }
-        
     }
 
 }

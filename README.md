@@ -20,9 +20,10 @@ Renzo Reemer (game Designer)
 - Rope [Visual sheet]()
 
 Ruben Kossen
-- Multiplayer  [code](), [code explanation]()
-- Dialogue System  [code](), [code explanation]()
-- Camera [code](), [code explanation]()
+- Multiplayer  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/MultiplayerSystem.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer-System)
+- Third-Person Camera [Code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/_New%20Game/Scripts/Camera), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Third‐Person-camera)
+- Player Spawner [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/SpawnManager.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Player-Spawning)
+- Pick Up [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/PickUp.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Pick-Up)
   
 # Artists
 - elanora 
@@ -55,12 +56,10 @@ Renzo Reemer (game Designer)
 
 
 Ruben Kossen
-- Multiplayer  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/netCode/Script/NetworkManager.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/multiplayer-explanation)
 - Dialogue System  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/StoryBased/DialogueSystem.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Dialogue-System)
 - Spawning  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/FishSpawner/FishSpawnerManager.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Spawning-Manager-explanation)
 - MiniGame Menu [code](), [code explanation]()
 - Camera [code](), [code explanation]()
-- 
   
 # Artists
 - elanora 
