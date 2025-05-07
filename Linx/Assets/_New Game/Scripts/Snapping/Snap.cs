@@ -11,7 +11,7 @@ public class Snap : ICommand
     public int isPickedUp;
     void OnTriggerStay(Collider other)
     {
-        if (_isBuildingBlock && Input.GetKeyDown(KeyCode.E)){
+        if (_isBuildingBlock){
             Invoke(other);
             _isBuildingBlock = false;
             placed ++;
