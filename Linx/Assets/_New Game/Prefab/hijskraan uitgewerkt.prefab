@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  _range: 2
+  _range: 4
   _pickUpPosition: {fileID: 0}
   _targetTag: moveAbleObject
 --- !u!1 &1197651323454141437
@@ -3198,7 +3198,7 @@ MonoBehaviour:
   _player: {fileID: 1184267464181747295}
   _offset: {x: 0, y: 3, z: -6}
   _sensitivity: 4
-  _distance: 5
+  _distance: 8.89
   _yMin: 70
   _yMax: 120
 --- !u!114 &5552999345273728052

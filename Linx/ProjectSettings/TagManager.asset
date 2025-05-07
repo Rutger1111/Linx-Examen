@@ -11,6 +11,7 @@ TagManager:
   - RopeSegment
   - BuildingBlock
   - Ground
+  - BuildPosition
   layers:
   - Default
   - TransparentFX

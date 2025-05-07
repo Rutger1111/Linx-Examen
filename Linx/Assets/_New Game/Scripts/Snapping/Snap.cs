@@ -10,31 +10,52 @@ public class Snap : ICommand
     public bool _isBuildingBlock = true;
     public int placed;
     public int isPickedUp;
+
+    public GameObject UIplace;
+
+    public SnapPosition _snapPosition;
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
     }
     void OnTriggerStay(Collider other)
     {
-        if (_isBuildingBlock){
-        if(_isBuildingBlock)
+        if (other.gameObject.tag == "BuildPosition")
         {
-            _myMaterial.color = Color.blue;
+            _snapPosition = other.GetComponent<SnapPosition>();
+            
+            Debug.Log(_snapPosition.gameObject);
+            
+            if (_snapPosition.hasObjectsInHere == false)
+            {
+                if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
+                {
+                    print("fuck");
+                    Invoke(other);
+                    _isBuildingBlock = false;
+                    _snapPosition.setTrue(true);
+                    placed ++;
+                }
+
+                if (_isBuildingBlock)
+                {
+                    _myMaterial.color = Color.green;
+                    UIplace.SetActive(true);
+                }
+                else
+                {
+                    _myMaterial.color = Color.yellow;
+                    UIplace.SetActive(false);
+                }
+            }
         }
-        else{
-            _myMaterial.color = Color.yellow;
-        }
-        if (_isBuildingBlock && Input.GetKeyDown(KeyCode.E)){
-            Invoke(other);
-            _isBuildingBlock = false;
-            placed ++;
-        }
+        
     }
     void OnTriggerExit(Collider other)
     {
         //placed --;
         _isBuildingBlock = true;
-        _myMaterial.color = Color.green;
+        _myMaterial.color = Color.yellow;
     }
     public override void Invoke(Fish fish)
     {
@@ -43,9 +64,9 @@ public class Snap : ICommand
     public override void Invoke(Collider col)
     {
         if(GetComponent<Snap>().isPickedUp > 0){
-            print("is hierrr");
+            
             GameObject referenceObject = col.gameObject.transform.parent.gameObject;
-            print("is hier ook");
+            
             // Get the forward direction in the horizontal plane
             Vector3 refForward = referenceObject.transform.forward;
             refForward.y = 0;

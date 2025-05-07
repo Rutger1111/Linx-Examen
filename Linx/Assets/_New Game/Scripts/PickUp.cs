@@ -54,7 +54,6 @@ public class PickUp : NetworkBehaviour
     {
         if (_heldObject != null)
         {
-            print("heeftobject");
             if (_joint == null){
                 _heldObject.transform.position = _pickUpPosition.transform.position;
                 _joint = _pickUpPosition.AddComponent<ConfigurableJoint>();
