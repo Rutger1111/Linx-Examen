@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -49,7 +50,7 @@ public class Snap : ICommand
                     Invoke(other);
                     _isBuildingBlock = false;
                     _snapPosition.setTrue(true);
-                    placed ++;
+                    placed++;
                 }
 
                 if (_isBuildingBlock)
@@ -83,22 +84,16 @@ public class Snap : ICommand
         {
             Vector3 colPosition = col.transform.position;
             string coltag = col.tag;
-            ulong colnetid = 0;
-
-            NetworkObject colnetobj = col.GetComponent<NetworkObject>();
-
-            if (colnetobj !=  null)
-            {
-                colnetid = colnetobj.NetworkObjectId;
-            }
-            RequestSnapping(colPosition, coltag, colnetid);
+            
+            
+            RequestSnapping(colPosition, coltag );
         }
         
         
     }
     
     [ServerRpc(RequireOwnership = false)]
-    void RequestSnapping(Vector3 colposition, string coltag, ulong colnetid)
+    void RequestSnapping(Vector3 colposition, string coltag)
     {
         GameObject referenceObject = transform.parent != null ? transform.parent.gameObject : gameObject;
         
@@ -107,7 +102,6 @@ public class Snap : ICommand
         refForward.Normalize();
         
         Vector3 perpDirection = new Vector3(-refForward.z, 0, refForward.x);
-
         Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
 
         Vector3 newposition = (coltag != "Ground")
@@ -116,16 +110,18 @@ public class Snap : ICommand
 
         if (coltag == "Ground")
         {
-            if (NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(colnetid, out NetworkObject groundNetobj))
-            {
-                Collider groundcollider = groundNetobj.GetComponent<Collider>();
+
+            Collider groundcollider =
+                Physics.OverlapSphere(_snapPosition.transform.position, 0.1f).FirstOrDefault(c => c.CompareTag("Ground"));
+            
 
                 if (groundcollider != null)
                 {
                     groundcollider.enabled = false;
-                    groundNetobj.gameObject.tag = "untagged";
+                    groundcollider.gameObject.tag = "BuildPosition";
+
                 }
-            }
+            
         }
         ClientRequestSnapping(newposition, targetRotation);
                       
