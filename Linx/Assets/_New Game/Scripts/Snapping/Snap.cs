@@ -18,21 +18,15 @@ public class Snap : ICommand
     public GameObject UIplace;
 
     public SnapPosition _snapPosition;
+    public Rigidbody rb;
 
-    private NetworkObject netobj;
+    public NetworkVariable<bool> iskinematicnet = new NetworkVariable<bool>(true,
+        NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
 
-        netobj = GetComponent<NetworkObject>();
-    }
-
-    private void Update()
-    {
-        if (_isBuildingBlock == false)
-        {
-            GetComponent<Rigidbody>().isKinematic = true;
-        }
+        rb = GetComponent<Rigidbody>();
     }
 
     void OnTriggerStay(Collider other)
@@ -40,8 +34,6 @@ public class Snap : ICommand
         if (other.gameObject.tag == "BuildPosition")
         {
             _snapPosition = other.GetComponent<SnapPosition>();
-            
-            Debug.Log(_snapPosition.gameObject);
             
             if (_snapPosition.hasObjectsInHere == false)
             {
@@ -83,17 +75,18 @@ public class Snap : ICommand
         if (isPickedUp > 0)
         {
             Vector3 colPosition = col.transform.position;
+            Quaternion colRotation = col.transform.rotation;
             string coltag = col.tag;
             
             
-            RequestSnapping(colPosition, coltag );
+            RequestSnappingServerRpc(colPosition, coltag, colRotation );
         }
         
         
     }
     
     [ServerRpc(RequireOwnership = false)]
-    void RequestSnapping(Vector3 colposition, string coltag)
+    void RequestSnappingServerRpc(Vector3 colposition, string coltag, Quaternion colRotation)
     {
         GameObject referenceObject = transform.parent != null ? transform.parent.gameObject : gameObject;
         
@@ -102,11 +95,13 @@ public class Snap : ICommand
         refForward.Normalize();
         
         Vector3 perpDirection = new Vector3(-refForward.z, 0, refForward.x);
-        Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
+        Quaternion targetRotation = Quaternion.LookRotation(colRotation * perpDirection, Vector3.up);
 
         Vector3 newposition = (coltag != "Ground")
             ? new Vector3(colposition.z, transform.position.y, colposition.z)
             : transform.position;
+        
+        iskinematicnet.Value = true;
 
         if (coltag == "Ground")
         {
@@ -123,17 +118,33 @@ public class Snap : ICommand
                 }
             
         }
-        ClientRequestSnapping(newposition, targetRotation);
+        ClientRequestSnappingClientRpc(newposition, targetRotation);
                       
         
     }
 
     [ClientRpc]
-    void ClientRequestSnapping(Vector3 newposition, Quaternion newRotation)
+    void ClientRequestSnappingClientRpc(Vector3 newposition, Quaternion newRotation)
     {
         transform.position = newposition;
         transform.rotation = newRotation;
-        GetComponent<Rigidbody>().isKinematic = true;
     }
 
+    private void OnEnable()
+    {
+        print("check");
+        iskinematicnet.OnValueChanged += OnKinematicChanged;
+    }
+
+    private void OnDisable()
+    {
+        print("heck");
+        iskinematicnet.OnValueChanged -= OnKinematicChanged;
+    }
+
+    private void OnKinematicChanged(bool OldValue, bool newValue)
+    {
+        print("fuck");
+        rb.isKinematic = newValue;
+    }
 }
