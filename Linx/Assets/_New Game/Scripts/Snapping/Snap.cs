@@ -19,7 +19,7 @@ public class Snap : ICommand
 
     public SnapPosition _snapPosition;
     public Rigidbody rb;
-
+    
     public NetworkVariable<bool> iskinematicnet = new NetworkVariable<bool>(true,
         NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     void Start()
@@ -39,6 +39,7 @@ public class Snap : ICommand
             {
                 if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
                 {
+                    
                     Invoke(other);
                     _isBuildingBlock = false;
                     _snapPosition.setTrue(true);

@@ -18,7 +18,7 @@ public class PickUp : NetworkBehaviour
 
         FindNearbyObjects();
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && IsOwner)
         {
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
