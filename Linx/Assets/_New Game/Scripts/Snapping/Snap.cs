@@ -15,7 +15,7 @@ public class Snap : ICommand
 
     public GameObject UIplace;
     private Vector3 _pos;
-    private quaternion _rot;
+    private Quaternion _rot;
     private Vector3 _hook1Pos;
     private quaternion _hook1Rot;
     private Vector3 _hook2Pos;
@@ -30,12 +30,14 @@ public class Snap : ICommand
     void OnTriggerStay(Collider other)
     {
         if(placed >= 1){
+            transform.rotation = new Quaternion(0,0,0,0);
             transform.position = _pos;
-            transform.rotation = _rot;
-            _hookObject1.transform.position = _hook1Pos;
-            _hookObject1.transform.rotation = _hook1Rot;
-            _hookObject1.transform.position = _hook2Pos;
-            _hookObject1.transform.rotation = _hook2Rot;
+            // transform.parent.rotation.eulerAngles.Set(_rot.x,_rot.y,_rot.z);
+            print("komtookhier");
+            // _hookObject1.transform.position = _hook1Pos;
+            // _hookObject1.transform.rotation = _hook1Rot;
+            // _hookObject1.transform.position = _hook2Pos;
+            // _hookObject1.transform.rotation = _hook2Rot;
         }
         if (other.gameObject.tag == "BuildPosition")
         {
@@ -82,16 +84,19 @@ public class Snap : ICommand
     public override void Invoke(Collider col)
     {
         if(GetComponent<Snap>().isPickedUp > 0){
-            
-            print("werktteeee");
-            transform.rotation = new quaternion(col.transform.rotation.x,col.transform.rotation.y,col.transform.rotation.z,0);
-            _pos = col.transform.position;
-            _rot = new quaternion(col.gameObject.transform.rotation.x ,col.gameObject.transform.rotation.y,col.gameObject.transform.rotation.z,col.transform.rotation.w);
-            _hook1Pos = _hookObject1.transform.position;
-            _hook1Rot = _hookObject1.transform.rotation;
-            _hook2Pos = _hookObject1.transform.position;
-            _hook2Rot = _hookObject1.transform.rotation;
-                    
+            Quaternion _colRot = col.gameObject.transform.rotation;
+            print(transform.parent.name);
+            transform.parent.rotation.Set(-90,144,90,0);
+            transform.parent.position = col.gameObject.transform.position;
+            transform.rotation.eulerAngles.Set(0,0,0);
+            _pos = col.gameObject.transform.position;
+            _rot = transform.rotation;
+            _hookObject1.SetActive(false);
+            _hookObject2.SetActive(false);
+            // _hook1Pos = _hookObject1.transform.position;
+            // _hook1Rot = _hookObject1.transform.rotation;
+            // _hook2Pos = _hookObject1.transform.position;
+            // _hook2Rot = _hookObject1.transform.rotation;
         }
     }
 
