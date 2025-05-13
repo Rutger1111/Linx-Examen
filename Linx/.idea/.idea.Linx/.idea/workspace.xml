@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Art/UI/RawImage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Art/UI/RawImage.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Snapping/Snap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Snapping/Snap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/SpawnManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Bitgem/StylisedWater/URP/Scripts/Bitgem/VFX/StylisedWater/WaterVolumeTransforms.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SnapPosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Camera/CameraPlayerFollow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/GameStatesUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/Menu.cs" root0="FORCE_HIGHLIGHTING" />
@@ -29,8 +31,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/DdrGame/Destination.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_project/Scripts/PlanB/SliderGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@d8bc8d81f1fa/Editor/NetworkBehaviourEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@d8bc8d81f1fa/Runtime/Core/NetworkBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@d8bc8d81f1fa/Runtime/Messaging/Messages/RpcMessages.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@15fef0f41df6/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@124598b145d4/Runtime/Lobbies/Http/ResponseHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@911117698220/Editor/Generation/Targets/BuiltIn/Editor/AssetPostProcessors/MaterialPostprocessor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
