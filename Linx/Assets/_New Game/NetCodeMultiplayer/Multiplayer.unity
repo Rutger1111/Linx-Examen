@@ -2085,7 +2085,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -2410,7 +2410,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -2955,7 +2955,7 @@ Transform:
   m_GameObject: {fileID: 1030076888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.92, y: 27.69, z: 122.05}
+  m_LocalPosition: {x: 36.78, y: 26.2, z: 121.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3100,7 +3100,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -3327,7 +3327,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -3620,6 +3620,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068714546}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1119990524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 226103025895190649, guid: 6b70e271d966d0541a6f17b6c4ed1b0c, type: 3}
+  m_PrefabInstance: {fileID: 788851986325858277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1119990526
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119990524}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6810606194074719695, guid: 7dff0157435355a45ba10a2b3b249d9f, type: 3}
 --- !u!1001 &1163011098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3989,7 +4016,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -4638,8 +4665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2313102891efe468453b9ef1282474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 2146787089312322411, guid: 4c553ce5269f82e4b9792d8adab28b9f, type: 3}
-  gameplaySceneName: Game
 --- !u!4 &1478471090
 Transform:
   m_ObjectHideFlags: 0
@@ -4649,7 +4674,7 @@ Transform:
   m_GameObject: {fileID: 1478471088}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9372516, y: 4.1157174, z: -2.3634212}
+  m_LocalPosition: {x: 28.14, y: 26.58, z: 162.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4676,7 +4701,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -5326,7 +5351,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -5552,7 +5577,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -5779,7 +5804,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -6244,7 +6269,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -6578,7 +6603,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -6838,7 +6863,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -7094,7 +7119,7 @@ Transform:
   m_GameObject: {fileID: 2118383423}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.22, y: 27.79, z: 120.95}
+  m_LocalPosition: {x: 34.08, y: 26.3, z: 120.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7239,7 +7264,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -7411,7 +7436,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 226103025895190649, guid: 6b70e271d966d0541a6f17b6c4ed1b0c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1119990526}
   m_SourcePrefab: {fileID: 100100000, guid: 6b70e271d966d0541a6f17b6c4ed1b0c, type: 3}
 --- !u!64 &1224533511568177264
 MeshCollider:
@@ -7511,7 +7539,7 @@ Transform:
   m_GameObject: {fileID: 7907132655596417505}
   serializedVersion: 2
   m_LocalRotation: {x: -0.15832035, y: 0.40911496, z: 0.8957292, w: 0.07231116}
-  m_LocalPosition: {x: 35.12, y: 26.79, z: 120.65}
+  m_LocalPosition: {x: 35.98, y: 25.3, z: 120.57}
   m_LocalScale: {x: 182.9117, y: 1, z: 152.43938}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8532,6 +8560,7 @@ GameObject:
   - component: {fileID: 7907132655596417508}
   - component: {fileID: 7907132655596417509}
   - component: {fileID: 7907132655596417511}
+  - component: {fileID: 7907132655596417512}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -8667,6 +8696,24 @@ MonoBehaviour:
   UseRigidBodyForMotion: 1
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &7907132655596417512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907132655596417505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myMaterial: {fileID: 0}
+  _isBuildingBlock: 1
+  placed: 0
+  isPickedUp: 0
+  UIplace: {fileID: 469361009}
+  _snapPosition: {fileID: 0}
 --- !u!1 &8155343147435399663
 GameObject:
   m_ObjectHideFlags: 0
