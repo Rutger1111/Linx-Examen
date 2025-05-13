@@ -267,6 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1851347971523537077}
   - component: {fileID: -8028780014751700733}
+  - component: {fileID: 2618152940350647021}
   - component: {fileID: -1714528698639330460}
   - component: {fileID: -1402156888912639599}
   - component: {fileID: 7869268840386322585}
@@ -322,6 +323,36 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &2618152940350647021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184267464181747295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: f4235d8868768dc4f89ad83944f75074, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Driving
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &-1714528698639330460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +415,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  pb: 0
 --- !u!65 &-7508650836271574612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -418,9 +450,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  _range: 4
+  _range: 1.5
   _pickUpPosition: {fileID: 0}
   _targetTag: moveAbleObject
+  gravity: {fileID: 0}
 --- !u!1 &1197651323454141437
 GameObject:
   m_ObjectHideFlags: 0
