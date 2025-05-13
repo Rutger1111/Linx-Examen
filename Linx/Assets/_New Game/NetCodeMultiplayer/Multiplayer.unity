@@ -5029,6 +5029,8 @@ GameObject:
   - component: {fileID: 1398252609}
   - component: {fileID: 1398252608}
   - component: {fileID: 1398252607}
+  - component: {fileID: 1398252611}
+  - component: {fileID: 1398252610}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -5097,6 +5099,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1398252610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398252606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 4177629428
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &1398252611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398252606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a1e58922e93841956bc0c77e6c336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  redPlayer: {fileID: 0}
+  bluePlayer: {fileID: 0}
+  spawnPointRed: {fileID: 0}
+  spawnPointBlue: {fileID: 0}
+  _playerSpawned: []
 --- !u!1 &1415331157
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,15 +5154,15 @@ GameObject:
   - component: {fileID: 1415331160}
   - component: {fileID: 1415331159}
   - component: {fileID: 1415331158}
-  - component: {fileID: 1415331162}
   - component: {fileID: 1415331163}
+  - component: {fileID: 1415331162}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1415331158
 MonoBehaviour:
   m_ObjectHideFlags: 0

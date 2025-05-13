@@ -26,7 +26,7 @@ public class SpawnManager : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Update()
+    private void Start()
     {
         _currentScene = SceneManager.GetActiveScene();
         
