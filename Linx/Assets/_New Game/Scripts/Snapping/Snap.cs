@@ -3,6 +3,7 @@ using FishSystem;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Snap : ICommand
 {
@@ -12,7 +13,8 @@ public class Snap : ICommand
     public int isPickedUp;
 
     public GameObject UIplace;
-
+    private Vector3 pos;
+    private quaternion rot;
     public SnapPosition _snapPosition;
     void Start()
     {
@@ -20,6 +22,10 @@ public class Snap : ICommand
     }
     void OnTriggerStay(Collider other)
     {
+        if(placed >= 1){
+            transform.position = pos;
+            transform.rotation = rot;
+        }
         if (other.gameObject.tag == "BuildPosition")
         {
             _snapPosition = other.GetComponent<SnapPosition>();
@@ -90,7 +96,8 @@ public class Snap : ICommand
                     col.tag = "Untagged";
                     col.enabled = false;
                 }
-                GetComponent<Rigidbody>().isKinematic = true;
+                pos = transform.position;
+                rot = transform.rotation;
             }            
         }
     }
