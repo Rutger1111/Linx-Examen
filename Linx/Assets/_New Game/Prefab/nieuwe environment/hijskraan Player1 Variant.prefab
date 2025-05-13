@@ -68,6 +68,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3082363636270556845, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: maxArmAngle
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082363636270556845, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: minArmAngle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4026451506231998755, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

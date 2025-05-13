@@ -127,11 +127,26 @@ namespace _New_Game.Scripts.Crane
         {
             float grabInput = _craneMovement.Driving.Grab.ReadValue<float>();
 
-            craneArm.localEulerAngles += new Vector3(minArmAngle * -grabInput * Time.deltaTime, 0, 0); 
-            if (_craneMovement.Driving.Grab.ReadValue<float>() == 0)
+            Vector3 currentAngles = craneArm.localEulerAngles;
+
+            float currentX = currentAngles.x;
+            if (currentX > 180) currentX -= 360;
+
+            float speed = 20f;
+
+            float newX = currentX;
+
+            if (grabInput > 0)
             {
-                craneArm.localEulerAngles += new Vector3(minArmAngle * Time.deltaTime, 0, 0);
+                newX += speed * Time.deltaTime;
             }
+            else
+            {
+                newX -= speed * Time.deltaTime;
+            }
+            newX = Mathf.Clamp(newX, minArmAngle, maxArmAngle);
+
+            craneArm.localEulerAngles = new Vector3(newX, currentAngles.y, currentAngles.z);
         }
 
         private void MoveHook()

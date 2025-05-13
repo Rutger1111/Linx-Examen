@@ -3697,8 +3697,8 @@ MonoBehaviour:
   driveSpeed: 5
   armRotationSpeed: 30
   hookSpeed: 2
-  minArmAngle: -25
-  maxArmAngle: 20
+  minArmAngle: 1
+  maxArmAngle: 35
   minHookHeight: 0.5
   maxHookHeight: 10
   CenterMouseTimer: 0.4
