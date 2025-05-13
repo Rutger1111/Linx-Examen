@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,9 +11,13 @@ public class ObjectRotate : MonoBehaviour
 
     [SerializeField] private float _rotationSpeed = 5f;
     [SerializeField] private float _followSpeed = 5f;
-    
 
-    
+    private Gravity gravity;
+    private void Start()
+    {
+        gravity = GetComponent<Gravity>();
+    }
+
     void Update()
     {
         if (_hookPoint1 == null || _hookPoint2 == null || _box == null)
@@ -22,7 +27,7 @@ public class ObjectRotate : MonoBehaviour
         }
         
         FollowHook();
-        //RotateHook();
+        RotateHook();
     }
 
     public void FollowHook()

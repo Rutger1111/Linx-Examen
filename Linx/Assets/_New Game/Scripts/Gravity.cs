@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,11 +13,19 @@ public class Gravity : MonoBehaviour
     [SerializeField] private bool isGrounded;
 
     [SerializeField] private LayerMask groundLayer;
+
+    public bool pb;
+    private void Start()
+    {
+        rotation();
+        pb = false;
+    }
+
     void Update()
     {
         CheckIfGrounded();
         
-        if (hasGravity == true && isGrounded == false)
+        if (hasGravity == true && isGrounded == false && pb == false)
         {
             gravity();
         }
@@ -26,7 +35,29 @@ public class Gravity : MonoBehaviour
     {
         transform.position += Vector3.down * _gravityForce * Time.deltaTime;
     }
-    
+
+    public void rotation()
+    {
+        Vector3 euler = transform.rotation.eulerAngles;
+
+        float xRot = NormalizeAngle(euler.x);
+        float yRot = NormalizeAngle(euler.y);
+
+        bool needsCorrection = xRot !> 90f || xRot !< -90f || yRot !> 90f || yRot !< -90f;
+
+        if (needsCorrection)
+        {
+            Quaternion targetRotation = Quaternion.Euler(90f, 90f, 0);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100f * Time.deltaTime);
+        }
+    }
+
+    float NormalizeAngle(float angle)
+    {
+        if (angle > 180f)
+            angle -= 360f;
+        return angle;
+    }
     void CheckIfGrounded()
     {
         
@@ -40,5 +71,19 @@ public class Gravity : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 start = transform.position;
+
+        Vector3 end = transform.position + Vector3.down * groundCheckDistance;
+        
+        Gizmos.DrawLine(start, end);
+    }
+
+    public void PickUp()
+    {
+        pb = true;
     }
 }
