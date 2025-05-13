@@ -8,7 +8,7 @@ using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
-public class Snap : ICommand
+public class Snap : NetworkBehaviour
 {
     [SerializeField] private Material _myMaterial;
     public bool _isBuildingBlock = true;
@@ -19,9 +19,11 @@ public class Snap : ICommand
 
     public SnapPosition _snapPosition;
     public Rigidbody rb;
+
+    public bool isplaced;
     
-    public NetworkVariable<bool> iskinematicnet = new NetworkVariable<bool>(true,
-        NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    private HashSet<ulong> playersConfirmed = new HashSet<ulong>();
+    
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
@@ -31,121 +33,76 @@ public class Snap : ICommand
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "BuildPosition")
-        {
-            _snapPosition = other.GetComponent<SnapPosition>();
-            
-            if (_snapPosition.hasObjectsInHere == false)
-            {
-                if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
-                {
-                    
-                    Invoke(other);
-                    _isBuildingBlock = false;
-                    _snapPosition.setTrue(true);
-                    placed++;
-                }
+        if (!other.CompareTag("BuildPosition")) return;
 
-                if (_isBuildingBlock)
-                {
-                    _myMaterial.color = Color.green;
-                    UIplace.SetActive(true);
-                }
-                else
-                {
-                    _myMaterial.color = Color.yellow;
-                    UIplace.SetActive(false);
-                }
-            }
-        }
+        _snapPosition = other.GetComponent<SnapPosition>();
+        if (_snapPosition == null || _snapPosition.hasObjectsInHere || isplaced) return;
+
+       
         
+            ulong clientId= NetworkManager.Singleton.LocalClientId;
+            
+
+            if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F) && isPickedUp > 0)
+            {
+                print("duck");
+                    ConfirmPressedServerRpc(clientId);
+                
+            }
+
+            _myMaterial.color = _isBuildingBlock ? Color.green : Color.yellow;
+            UIplace.SetActive(_isBuildingBlock);
+        
+
     }
     void OnTriggerExit(Collider other)
     {
-        //placed --;
+        placed --;
         _isBuildingBlock = true;
         _myMaterial.color = Color.yellow;
         UIplace.SetActive(false);
     }
-    public override void Invoke(Fish fish)
-    {
-        throw new System.NotImplementedException();
-    }
-    public override void Invoke(Collider col)
-    {
-        if (isPickedUp > 0)
-        {
-            Vector3 colPosition = col.transform.position;
-            Quaternion colRotation = col.transform.rotation;
-            string coltag = col.tag;
-            
-            
-            RequestSnappingServerRpc(colPosition, coltag, colRotation );
-        }
-        
-        
-    }
     
     [ServerRpc(RequireOwnership = false)]
-    void RequestSnappingServerRpc(Vector3 colposition, string coltag, Quaternion colRotation)
+    void ConfirmPressedServerRpc(ulong clientId)
     {
-        GameObject referenceObject = transform.parent != null ? transform.parent.gameObject : gameObject;
+        print("fuck");
         
-        Vector3 refForward = referenceObject.transform.forward;
-        refForward.y = 0;
-        refForward.Normalize();
-        
-        Vector3 perpDirection = new Vector3(-refForward.z, 0, refForward.x);
-        Quaternion targetRotation = Quaternion.LookRotation(colRotation * perpDirection, Vector3.up);
+        if (!playersConfirmed.Contains(clientId))
+            playersConfirmed.Add(clientId);
 
-        Vector3 newposition = (coltag != "Ground")
-            ? new Vector3(colposition.z, transform.position.y, colposition.z)
-            : transform.position;
-        
-        iskinematicnet.Value = true;
-
-        if (coltag == "Ground")
+        if (playersConfirmed.Count >= 2)
         {
+            Vector3 newPosition = _snapPosition.transform.position;
+            Quaternion newRotation = _snapPosition.transform.rotation;
 
-            Collider groundcollider =
-                Physics.OverlapSphere(_snapPosition.transform.position, 0.1f).FirstOrDefault(c => c.CompareTag("Ground"));
+            print("check");
             
+            rb.isKinematic = true;
 
-                if (groundcollider != null)
-                {
-                    groundcollider.enabled = false;
-                    groundcollider.gameObject.tag = "BuildPosition";
+            Collider groundCollider = Physics.OverlapSphere(_snapPosition.transform.position, 0.1f)
+                .FirstOrDefault(c => c.CompareTag("Ground"));
+            if (groundCollider != null)
+            {
+                groundCollider.enabled = false;
+                groundCollider.gameObject.tag = "BuildPosition";
+            }
 
-                }
-            
+            _snapPosition.setTrue(true);
+            isplaced = true;
+            placed++;
+
+            FinalizeSnapClientRpc(newPosition, newRotation);
         }
-        ClientRequestSnappingClientRpc(newposition, targetRotation);
-                      
-        
     }
 
     [ClientRpc]
-    void ClientRequestSnappingClientRpc(Vector3 newposition, Quaternion newRotation)
-    {
-        transform.position = newposition;
-        transform.rotation = newRotation;
-    }
-
-    private void OnEnable()
-    {
-        print("check");
-        iskinematicnet.OnValueChanged += OnKinematicChanged;
-    }
-
-    private void OnDisable()
+    void FinalizeSnapClientRpc(Vector3 newposition, Quaternion newrotation)
     {
         print("heck");
-        iskinematicnet.OnValueChanged -= OnKinematicChanged;
-    }
-
-    private void OnKinematicChanged(bool OldValue, bool newValue)
-    {
-        print("fuck");
-        rb.isKinematic = newValue;
+        
+        transform.position = newposition;
+        transform.rotation = newrotation;
+        rb.isKinematic = true;
     }
 }
