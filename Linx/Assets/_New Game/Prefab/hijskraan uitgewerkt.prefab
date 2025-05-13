@@ -384,6 +384,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  pb: 0
 --- !u!65 &-7508650836271574612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -418,9 +419,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  _range: 4
+  _range: 1.5
   _pickUpPosition: {fileID: 0}
   _targetTag: moveAbleObject
+  gravity: {fileID: 0}
 --- !u!1 &1197651323454141437
 GameObject:
   m_ObjectHideFlags: 0
