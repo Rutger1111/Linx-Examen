@@ -110,9 +110,9 @@ public partial class @CraneMovement: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""TurnBase"",
+                    ""name"": ""Grab"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""5897efe8-923b-4dbc-8600-b46aaaeef763"",
+                    ""id"": ""24b33048-dcc5-413f-a4b5-1fcd5276d4f7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -187,37 +187,15 @@ public partial class @CraneMovement: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""8a78a29b-f70a-42fb-9a23-33fc3031b226"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnBase"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""0e288093-5445-41ff-9f7b-6533cab1e138"",
+                    ""name"": """",
+                    ""id"": ""cd3e8fdb-95c4-434c-b6f2-644d404b2564"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TurnBase"",
+                    ""action"": ""Grab"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""f086dbac-3fe1-4015-b28f-37d8b3be91a2"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TurnBase"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -228,7 +206,7 @@ public partial class @CraneMovement: IInputActionCollection2, IDisposable
         m_Driving = asset.FindActionMap("Driving", throwIfNotFound: true);
         m_Driving_drive = m_Driving.FindAction("drive", throwIfNotFound: true);
         m_Driving_TurnWheels = m_Driving.FindAction("TurnWheels", throwIfNotFound: true);
-        m_Driving_TurnBase = m_Driving.FindAction("TurnBase", throwIfNotFound: true);
+        m_Driving_Grab = m_Driving.FindAction("Grab", throwIfNotFound: true);
     }
 
     ~@CraneMovement()
@@ -311,7 +289,7 @@ public partial class @CraneMovement: IInputActionCollection2, IDisposable
     private List<IDrivingActions> m_DrivingActionsCallbackInterfaces = new List<IDrivingActions>();
     private readonly InputAction m_Driving_drive;
     private readonly InputAction m_Driving_TurnWheels;
-    private readonly InputAction m_Driving_TurnBase;
+    private readonly InputAction m_Driving_Grab;
     /// <summary>
     /// Provides access to input actions defined in input action map "Driving".
     /// </summary>
@@ -332,9 +310,9 @@ public partial class @CraneMovement: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @TurnWheels => m_Wrapper.m_Driving_TurnWheels;
         /// <summary>
-        /// Provides access to the underlying input action "Driving/TurnBase".
+        /// Provides access to the underlying input action "Driving/Grab".
         /// </summary>
-        public InputAction @TurnBase => m_Wrapper.m_Driving_TurnBase;
+        public InputAction @Grab => m_Wrapper.m_Driving_Grab;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -367,9 +345,9 @@ public partial class @CraneMovement: IInputActionCollection2, IDisposable
             @TurnWheels.started += instance.OnTurnWheels;
             @TurnWheels.performed += instance.OnTurnWheels;
             @TurnWheels.canceled += instance.OnTurnWheels;
-            @TurnBase.started += instance.OnTurnBase;
-            @TurnBase.performed += instance.OnTurnBase;
-            @TurnBase.canceled += instance.OnTurnBase;
+            @Grab.started += instance.OnGrab;
+            @Grab.performed += instance.OnGrab;
+            @Grab.canceled += instance.OnGrab;
         }
 
         /// <summary>
@@ -387,9 +365,9 @@ public partial class @CraneMovement: IInputActionCollection2, IDisposable
             @TurnWheels.started -= instance.OnTurnWheels;
             @TurnWheels.performed -= instance.OnTurnWheels;
             @TurnWheels.canceled -= instance.OnTurnWheels;
-            @TurnBase.started -= instance.OnTurnBase;
-            @TurnBase.performed -= instance.OnTurnBase;
-            @TurnBase.canceled -= instance.OnTurnBase;
+            @Grab.started -= instance.OnGrab;
+            @Grab.performed -= instance.OnGrab;
+            @Grab.canceled -= instance.OnGrab;
         }
 
         /// <summary>
@@ -445,11 +423,11 @@ public partial class @CraneMovement: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTurnWheels(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "TurnBase" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Grab" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnTurnBase(InputAction.CallbackContext context);
+        void OnGrab(InputAction.CallbackContext context);
     }
 }
