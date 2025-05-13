@@ -10,8 +10,8 @@ public class SpawnManager : NetworkBehaviour
     [SerializeField] private GameObject redPlayer;
     [SerializeField] private GameObject bluePlayer;
 
-    [SerializeField] private GameObject spawnPointRed;
-    [SerializeField] private GameObject spawnPointBlue;
+    [SerializeField] private Vector3 spawnPointRed;
+    [SerializeField] private Vector3 spawnPointBlue;
     
     
     [SerializeField] private List<GameObject> _playerSpawned = new List<GameObject>();
@@ -26,7 +26,7 @@ public class SpawnManager : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
+    private void Update()
     {
         _currentScene = SceneManager.GetActiveScene();
         
@@ -64,8 +64,8 @@ public class SpawnManager : NetworkBehaviour
 
     public void RedPlayerSpawn(ulong clientId)
     {
-        GameObject playerInstance = Instantiate(redPlayer, spawnPointRed.transform);
-        
+        GameObject playerInstance = Instantiate(redPlayer);
+        playerInstance.transform.position = spawnPointRed;
         var netObj = playerInstance.GetComponent<NetworkObject>();
         if (netObj != null)
         {
@@ -86,8 +86,9 @@ public class SpawnManager : NetworkBehaviour
 
     public void BluePlayerSpawn(ulong clientId)
     {
-        GameObject playerInstance = Instantiate(bluePlayer, spawnPointBlue.transform);
-
+        GameObject playerInstance = Instantiate(bluePlayer);
+        playerInstance.transform.position = spawnPointBlue;
+        
         var netObj = playerInstance.GetComponent<NetworkObject>();
         if (netObj != null)
         {
