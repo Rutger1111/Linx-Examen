@@ -290,8 +290,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -13.778, z: 24.407}
-  m_LocalScale: {x: 10.85831, y: 10.85831, z: 10.85831}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 9, y: 9, z: 9}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8978168338645848619}
   - {fileID: 3606199187244040089}
@@ -415,6 +415,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  pb: 0
 --- !u!65 &-7508650836271574612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -449,9 +450,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  _range: 4
+  _range: 1.5
   _pickUpPosition: {fileID: 0}
   _targetTag: moveAbleObject
+  gravity: {fileID: 0}
 --- !u!1 &1197651323454141437
 GameObject:
   m_ObjectHideFlags: 0

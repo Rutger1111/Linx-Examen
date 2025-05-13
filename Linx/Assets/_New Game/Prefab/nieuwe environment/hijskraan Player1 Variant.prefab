@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6534866330297080163
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 132.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026451506231998755, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a4faf2dc956790049a66eb58af7c3ee1, type: 2}
+    - target: {fileID: 4236910056249713781, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_Name
+      value: hijskraan Player1 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236910056249713781, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383837694362997178, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a4faf2dc956790049a66eb58af7c3ee1, type: 2}
+    - target: {fileID: 5224460199853752182, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1831064247
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224460199853752182, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 718865961
+      objectReference: {fileID: 0}
+    - target: {fileID: 5920574792258105419, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a4faf2dc956790049a66eb58af7c3ee1, type: 2}
+    - target: {fileID: 6815838405196905331, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: _range
+      value: 1.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}

@@ -3,9 +3,7 @@ using FishSystem;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections.Generic;
-using Unity.Netcode;
-using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Snap : ICommand
 {
@@ -15,27 +13,19 @@ public class Snap : ICommand
     public int isPickedUp;
 
     public GameObject UIplace;
-
+    private Vector3 pos;
+    private quaternion rot;
     public SnapPosition _snapPosition;
-
-    private NetworkObject netobj;
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
-
-        netobj = GetComponent<NetworkObject>();
     }
-
-    private void Update()
-    {
-        if (_isBuildingBlock == false)
-        {
-            GetComponent<Rigidbody>().isKinematic = true;
-        }
-    }
-
     void OnTriggerStay(Collider other)
     {
+        if(placed >= 1){
+            transform.position = pos;
+            transform.rotation = rot;
+        }
         if (other.gameObject.tag == "BuildPosition")
         {
             _snapPosition = other.GetComponent<SnapPosition>();
@@ -46,6 +36,7 @@ public class Snap : ICommand
             {
                 if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
                 {
+                    print("fuck");
                     Invoke(other);
                     _isBuildingBlock = false;
                     _snapPosition.setTrue(true);
@@ -68,6 +59,7 @@ public class Snap : ICommand
     }
     void OnTriggerExit(Collider other)
     {
+        //keep these these
         //placed --;
         _isBuildingBlock = true;
         _myMaterial.color = Color.yellow;
@@ -79,65 +71,36 @@ public class Snap : ICommand
     }
     public override void Invoke(Collider col)
     {
-        if (isPickedUp > 0)
-        {
-            Vector3 colPosition = col.transform.position;
-            string coltag = col.tag;
-            ulong colnetid = 0;
+        if(GetComponent<Snap>().isPickedUp > 0){
+            
+            GameObject referenceObject = col.gameObject.transform.parent.gameObject;
+            
+            // Get the forward direction in the horizontal plane
+            Vector3 refForward = referenceObject.transform.forward;
+            refForward.y = 0;
+            refForward.Normalize();
 
-            NetworkObject colnetobj = col.GetComponent<NetworkObject>();
+            // Get 90° perpendicular direction (right turn)
+            Vector3 perpDirection = new Vector3(-refForward.z, 0, refForward.x);
 
-            if (colnetobj !=  null)
+            if (perpDirection != Vector3.zero)
             {
-                colnetid = colnetobj.NetworkObjectId;
-            }
-            RequestSnapping(colPosition, coltag, colnetid);
-        }
-        
-        
-    }
-    
-    [ServerRpc(RequireOwnership = false)]
-    void RequestSnapping(Vector3 colposition, string coltag, ulong colnetid)
-    {
-        GameObject referenceObject = transform.parent != null ? transform.parent.gameObject : gameObject;
-        
-        Vector3 refForward = referenceObject.transform.forward;
-        refForward.y = 0;
-        refForward.Normalize();
-        
-        Vector3 perpDirection = new Vector3(-refForward.z, 0, refForward.x);
-
-        Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
-
-        Vector3 newposition = (coltag != "Ground")
-            ? new Vector3(colposition.z, transform.position.y, colposition.z)
-            : transform.position;
-
-        if (coltag == "Ground")
-        {
-            if (NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(colnetid, out NetworkObject groundNetobj))
-            {
-                Collider groundcollider = groundNetobj.GetComponent<Collider>();
-
-                if (groundcollider != null)
-                {
-                    groundcollider.enabled = false;
-                    groundNetobj.gameObject.tag = "untagged";
+                Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
+                transform.rotation = targetRotation;
+                transform.rotation = new quaternion(transform.rotation.x,transform.rotation.y + 90,transform.rotation.z + 90,0);
+                if (col.tag != "Ground" ){
+                    print("came here 1");
+                    transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
                 }
-            }
+                else if (col.tag == "Ground"){
+                    print("came here 2");
+                    col.tag = "Untagged";
+                    col.enabled = false;
+                }
+                pos = transform.position;
+                rot = transform.rotation;
+            }            
         }
-        ClientRequestSnapping(newposition, targetRotation);
-                      
-        
-    }
-
-    [ClientRpc]
-    void ClientRequestSnapping(Vector3 newposition, Quaternion newRotation)
-    {
-        transform.position = newposition;
-        transform.rotation = newRotation;
-        GetComponent<Rigidbody>().isKinematic = true;
     }
 
 }

@@ -4085,7 +4085,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  _prefabToSpawn: {fileID: 1184267464181747295, guid: 0d38e462430f41b4a9d8820df2a8b278, type: 3}
+  redPlayer: {fileID: 6952437913549274390, guid: 90f24c7598c2d874e8d31fe3541b8580, type: 3}
+  bluePlayer: {fileID: 8696367415222924769, guid: 707f57c6196cb3f4f8e39ea7ff5c566d, type: 3}
+  spawnPointRed: {x: 10, y: -0.5, z: 0}
+  spawnPointBlue: {x: -10, y: -0.5, z: 0}
   _playerSpawned: []
 --- !u!114 &2073773322
 MonoBehaviour:
