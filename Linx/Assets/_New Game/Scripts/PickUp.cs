@@ -24,7 +24,6 @@ public class PickUp : NetworkBehaviour
         {
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
-               gravity.PickUp();
                 TryPickUp();
                 _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp++;
             }

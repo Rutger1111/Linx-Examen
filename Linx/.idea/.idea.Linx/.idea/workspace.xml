@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
