@@ -66,13 +66,12 @@ namespace _New_Game.Scripts.Crane
             
             if (IsOwner)
             {
-                //RotateBase();
-                //MoveArm();
-                //MoveHook();
+                RotateBase();
+                MoveArm();
                 StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
+                //MoveHook();
                 Drive();
                 Turn();
-                Grab();
             }
         }
         
@@ -98,7 +97,7 @@ namespace _New_Game.Scripts.Crane
             wheelPivot.Rotate(0f, turnInput * baseRotationSpeed * Time.deltaTime, 0f);
         }
 
-        /*private void RotateBase()
+        private void RotateBase()
         {
             //float horizontal = 0f;
             float horizontal = _craneMovement.Driving.TurnBase.ReadValue<float>();
@@ -107,7 +106,7 @@ namespace _New_Game.Scripts.Crane
             //if (Input.GetKey(KeyCode.Mouse1)) horizontal = 1f;
             
             cranePivot.Rotate(0f, horizontal * baseRotationSpeed * Time.deltaTime, 0f);
-        }*/
+        }
 
         private void MoveArm()
         {
@@ -121,17 +120,6 @@ namespace _New_Game.Scripts.Crane
 
             float newX = Mathf.Clamp(currentX - armInput * armRotationSpeed * Time.deltaTime, -maxArmAngle, -minArmAngle);
             craneArm.localEulerAngles = new Vector3(newX, 0f, 0f);
-        }
-
-        private void Grab()
-        {
-            float grabInput = _craneMovement.Driving.Grab.ReadValue<float>();
-
-            craneArm.localEulerAngles += new Vector3(minArmAngle * -grabInput * Time.deltaTime, 0, 0); 
-            if (_craneMovement.Driving.Grab.ReadValue<float>() == 0)
-            {
-                craneArm.localEulerAngles += new Vector3(minArmAngle * Time.deltaTime, 0, 0);
-            }
         }
 
         private void MoveHook()
