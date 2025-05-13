@@ -80,7 +80,7 @@ public class RopeBuilder : MonoBehaviour
 
         GameObject magnet = Instantiate(magnetPrefab, spawnPos, Quaternion.identity, anchorPoint);
         print("parent name = " + magnet);
-        transform.parent.parent.parent.parent.GetComponent<PickUp>()._pickUpPosition = magnet;
+        transform.parent.parent.parent.parent.parent.GetComponent<PickUp>()._pickUpPosition = magnet;
         Rigidbody magnetRb = magnet.GetComponent<Rigidbody>();
         if (magnetRb == null)
         {
