@@ -1,10 +1,13 @@
 using System;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour
+public class Menu : NetworkBehaviour
 {
     [SerializeField] private GameObject pausePanel;
+    
+    
     private void Update()
     {
         InputHandler();
@@ -31,6 +34,7 @@ public class Menu : MonoBehaviour
 
     public void ToMainMenu()
     {
+        NetworkManager.Singleton.Shutdown();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
     }
 }

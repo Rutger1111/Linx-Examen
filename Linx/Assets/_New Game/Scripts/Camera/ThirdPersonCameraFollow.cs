@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class CameraPlayerFollow : NetworkBehaviour
+public class ThirdPersonCameraFollow : NetworkBehaviour
 {
     [SerializeField] private GameObject _player;
 
@@ -15,7 +15,8 @@ public class CameraPlayerFollow : NetworkBehaviour
 
     private float currentX = 0f;
     private float currentY = 0f;
-    
+
+   
     
     private void Awake()
     {
@@ -36,14 +37,16 @@ public class CameraPlayerFollow : NetworkBehaviour
             transform.SetParent(_player.transform);
         }
     }
-    
+
     void Update()
     {
-        currentX += Input.GetAxis("Mouse X") * _sensitivity;
-        currentY -= Input.GetAxis("Mouse Y") * _sensitivity;
-        currentY = Mathf.Clamp(currentY, _yMin, _yMax);
         
-        rotationFollow();
+            currentX += Input.GetAxis("Mouse X") * _sensitivity;
+            currentY -= Input.GetAxis("Mouse Y") * _sensitivity;
+            currentY = Mathf.Clamp(currentY, _yMin, _yMax);
+        
+            rotationFollow();
+        
     }
 
     public void rotationFollow()
@@ -53,4 +56,6 @@ public class CameraPlayerFollow : NetworkBehaviour
         transform.position = disiredPosition + new Vector3(0, _offset.y, 0);
         transform.LookAt(_player.transform.position + Vector3.up * _offset.y);
     }
+
+    
 }
