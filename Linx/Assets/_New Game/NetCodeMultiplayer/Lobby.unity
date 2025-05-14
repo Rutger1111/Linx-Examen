@@ -2056,9 +2056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_Text
-      value: 'drive forward
-
-'
+      value: drive
       objectReference: {fileID: 0}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_Color.b
@@ -4087,8 +4085,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   redPlayer: {fileID: 6952437913549274390, guid: 90f24c7598c2d874e8d31fe3541b8580, type: 3}
   bluePlayer: {fileID: 8696367415222924769, guid: 707f57c6196cb3f4f8e39ea7ff5c566d, type: 3}
-  spawnPointRed: {x: 10, y: -0.5, z: 0}
-  spawnPointBlue: {x: -10, y: -0.5, z: 0}
+  spawnPointRed: {x: -10, y: -0.5, z: 0}
+  spawnPointBlue: {x: 10, y: -0.5, z: 0}
   _playerSpawned: []
 --- !u!114 &2073773322
 MonoBehaviour:
