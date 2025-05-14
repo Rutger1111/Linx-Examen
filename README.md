@@ -36,7 +36,7 @@ Renzo Reemer (game Designer)
 
 
 Ruben Kossen
-- Dialogue System  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/StoryBased/DialogueSystem.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Dialogue-System)
+- Dialogue System  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/StoryBased/DialogueSystem.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Dialogue-System)
 - Spawning  [code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/FishSpawner/FishSpawnerManager.cs), [code explanation](https://github.com/Rutger1111/Linx-Examen/wiki/Spawning-Manager-explanation)
 - MiniGame Menu [code](), [code explanation]()
 - Camera [code](), [code explanation]()
