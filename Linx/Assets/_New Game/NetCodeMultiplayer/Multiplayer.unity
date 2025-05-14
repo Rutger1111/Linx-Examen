@@ -1317,6 +1317,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   Redhook: {fileID: 1647971422}
   BlueHook: {fileID: 1888464544}
+<<<<<<< HEAD
 --- !u!1001 &549204023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1451,6 +1452,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3811222081689623461, guid: 8220920d208884d4c9d2f6cadfe016fe, type: 3}
   m_PrefabInstance: {fileID: 549204023}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of 51ae1895 (Merge pull request #10 from Rutger1111/fix/snap)
 --- !u!1001 &608478670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4727,7 +4730,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398252609}
+<<<<<<< HEAD
   - component: {fileID: 1457461179}
+=======
+>>>>>>> parent of 51ae1895 (Merge pull request #10 from Rutger1111/fix/snap)
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4735,6 +4741,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!114 &1457461179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4748,6 +4755,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 549204024}
+=======
+>>>>>>> parent of 51ae1895 (Merge pull request #10 from Rutger1111/fix/snap)
 --- !u!1 &1472135702
 GameObject:
   m_ObjectHideFlags: 0
@@ -9060,4 +9069,7 @@ SceneRoots:
   - {fileID: 788851986325858277}
   - {fileID: 1058170252}
   - {fileID: 3560890314194622888}
+<<<<<<< HEAD
   - {fileID: 549204023}
+=======
+>>>>>>> parent of 51ae1895 (Merge pull request #10 from Rutger1111/fix/snap)
