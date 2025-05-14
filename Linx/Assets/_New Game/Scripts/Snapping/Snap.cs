@@ -72,6 +72,7 @@ public class Snap : ICommand
     }
     void OnTriggerExit(Collider other)
     {
+        //keep these these
         //placed --;
         _isBuildingBlock = true;
         _myMaterial.color = Color.yellow;
