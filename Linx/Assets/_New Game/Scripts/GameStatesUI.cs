@@ -3,17 +3,9 @@ using UnityEngine;
 
 public class GameStatesUI : MonoBehaviour
 {
-    [SerializeField] private GameObject _UIStartScreen;
     [SerializeField] private GameObject _UIMultiplayer;
     [SerializeField] private GameObject _UIStopLooking;
     [SerializeField] private GameObject _stopServerUI;
-    
-    
-    private void Start()
-    {
-        Back();
-    }
-    
     public void Multiplayer()
     {
         TurnOnUI();
@@ -23,12 +15,7 @@ public class GameStatesUI : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void Back()
-    {
-        _UIStartScreen.SetActive(true);
-        _UIMultiplayer.SetActive(false);
-    }
+    
 
     public void StopLook()
     {
@@ -47,6 +34,5 @@ public class GameStatesUI : MonoBehaviour
     private void TurnOnUI()
     {
         _UIMultiplayer.SetActive(true);
-        _UIStartScreen.SetActive(false);
     }
 }
