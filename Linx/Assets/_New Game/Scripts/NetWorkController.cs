@@ -3,7 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class SpellerController : NetworkBehaviour
+public class NetWorkController : NetworkBehaviour
 {
     public NetworkObject Redhook;
     public NetworkObject BlueHook;

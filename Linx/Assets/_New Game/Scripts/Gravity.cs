@@ -13,19 +13,14 @@ public class Gravity : MonoBehaviour
     [SerializeField] private bool isGrounded;
 
     [SerializeField] private LayerMask groundLayer;
-
-    public bool pb;
-    private void Start()
-    {
-        rotation();
-        pb = false;
-    }
+    
+    
 
     void Update()
     {
         CheckIfGrounded();
         
-        if (hasGravity == true && isGrounded == false && pb == false)
+        if (hasGravity == true && isGrounded == false)
         {
             gravity();
         }
@@ -81,9 +76,5 @@ public class Gravity : MonoBehaviour
         
         Gizmos.DrawLine(start, end);
     }
-
-    public void PickUp()
-    {
-        pb = true;
-    }
+    
 }
