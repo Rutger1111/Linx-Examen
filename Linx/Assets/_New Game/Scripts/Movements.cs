@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Unity.Netcode;
 
 namespace _New_Game.Scripts.Crane

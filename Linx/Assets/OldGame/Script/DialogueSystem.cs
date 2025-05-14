@@ -82,7 +82,5 @@ public class DialogueSystem : MonoBehaviour
             textUITMPText.text = TextLines[index];
             
         }
-        
-       
     }
 }
