@@ -53,6 +53,7 @@ namespace FishSystem
                     huntingCommand.Invoke(this);
                     break;
                 case (EStates.Caught):
+                    
                     caught.Invoke(this);
                     break;
                 case (EStates.Biting):

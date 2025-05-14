@@ -5,8 +5,6 @@ namespace _New_Game.Scripts.Crane
 {
     public class Movement : NetworkBehaviour
     {
-        private CraneMovement _craneMovement;
-        
         [SerializeField] private GameObject supportArm;
         
         [Header("Transforms")]
@@ -33,26 +31,6 @@ namespace _New_Game.Scripts.Crane
 
         [SerializeField] private float CenterMouseTimer = 0.4f;
 
-        private void Awake()
-        {
-            _craneMovement = new CraneMovement();
-        }
-
-        private void Start()
-        {
-            _craneMovement = GetComponent<CraneMovement>();
-        }
-
-        private void OnEnable()
-        {
-            _craneMovement.Enable();
-        }
-
-        private void OnDisable()
-        {
-            _craneMovement.Disable();
-        }
-
         void Update()
         {
             if (CenterMouseTimer <= 0)
@@ -64,48 +42,44 @@ namespace _New_Game.Scripts.Crane
             
             if (IsOwner)
             {
-                //RotateBase();
-                //MoveArm();
-                //MoveHook();
+                RotateBase();
+                MoveArm();
                 StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
+                //MoveHook();
                 Drive();
                 Turn();
-                Grab();
             }
         }
         
         private void Drive()
         {
-            //float driveInput = 0f;
-            float driveInput = _craneMovement.Driving.drive.ReadValue<float>();
+            float driveInput = 0f;
 
-            //if (Input.GetKey(KeyCode.W)) driveInput = 1f;
-            //if (Input.GetKey(KeyCode.S)) driveInput = -1f;
+            if (Input.GetKey(KeyCode.W)) driveInput = 1f;
+            if (Input.GetKey(KeyCode.S)) driveInput = -1f;
 
             transform.position += wheelPivot.forward * (driveInput * driveSpeed * Time.deltaTime);
         }
 
         private void Turn()
         {
-            //float turnInput = 0f;
-            float turnInput = _craneMovement.Driving.TurnWheels.ReadValue<float>();
+            float turnInput = 0f;
 
-            //if (Input.GetKey(KeyCode.D)) turnInput = 1f;
-            //if (Input.GetKey(KeyCode.A)) turnInput = -1f;
+            if (Input.GetKey(KeyCode.D)) turnInput = 1f;
+            if (Input.GetKey(KeyCode.A)) turnInput = -1f;
             
             wheelPivot.Rotate(0f, turnInput * baseRotationSpeed * Time.deltaTime, 0f);
         }
 
-        /*private void RotateBase()
+        private void RotateBase()
         {
-            //float horizontal = 0f;
-            float horizontal = _craneMovement.Driving.TurnBase.ReadValue<float>();
+            float horizontal = 0f;
 
-            //if (Input.GetKey(KeyCode.Mouse0)) horizontal = -1f;
-            //if (Input.GetKey(KeyCode.Mouse1)) horizontal = 1f;
+            if (Input.GetKey(KeyCode.Mouse0)) horizontal = -1f;
+            if (Input.GetKey(KeyCode.Mouse1)) horizontal = 1f;
             
             cranePivot.Rotate(0f, horizontal * baseRotationSpeed * Time.deltaTime, 0f);
-        }*/
+        }
 
         private void MoveArm()
         {
@@ -119,32 +93,6 @@ namespace _New_Game.Scripts.Crane
 
             float newX = Mathf.Clamp(currentX - armInput * armRotationSpeed * Time.deltaTime, -maxArmAngle, -minArmAngle);
             craneArm.localEulerAngles = new Vector3(newX, 0f, 0f);
-        }
-
-        private void Grab()
-        {
-            float grabInput = _craneMovement.Driving.Grab.ReadValue<float>();
-
-            Vector3 currentAngles = craneArm.localEulerAngles;
-
-            float currentX = currentAngles.x;
-            if (currentX > 180) currentX -= 360;
-
-            float speed = 20f;
-
-            float newX = currentX;
-
-            if (grabInput > 0)
-            {
-                newX += speed * Time.deltaTime;
-            }
-            else
-            {
-                newX -= speed * Time.deltaTime;
-            }
-            newX = Mathf.Clamp(newX, minArmAngle, maxArmAngle);
-
-            craneArm.localEulerAngles = new Vector3(newX, currentAngles.y, currentAngles.z);
         }
 
         private void MoveHook()

@@ -8,8 +8,6 @@ public class PickUp : NetworkBehaviour
     [SerializeField] public GameObject _pickUpPosition;
     [SerializeField] private string _targetTag = "moveAbleObject";
 
-    public Gravity gravity;
-    
     private NetworkObject _heldObject;
     private List<GameObject> _pickUpAbleObjects = new List<GameObject>();
     private ConfigurableJoint _joint;
@@ -20,10 +18,11 @@ public class PickUp : NetworkBehaviour
 
         FindNearbyObjects();
 
-        if (Input.GetKeyDown(KeyCode.E) && IsOwner)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
+               
                 TryPickUp();
                 _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp++;
             }

@@ -21,9 +21,9 @@ Renzo Reemer (game Designer)
 
 Ruben Kossen
 - Multiplayer  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/MultiplayerSystem.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer-System)
-- Third-Person Camera [Code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/_New%20Game/Scripts/Camera), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Third-Person-Camera-System)
+- Third-Person Camera [Code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/_New%20Game/Scripts/Camera), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Third‐Person-camera)
 - Player Spawner [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/SpawnManager.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Player-Spawning)
-- Pick Up [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/PickUp.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_PickUp-System)
+- Pick Up [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/PickUp.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Pick-Up)
   
 
 ## Old Game Scripts
@@ -36,10 +36,10 @@ Renzo Reemer (game Designer)
 
 
 Ruben Kossen
-- Dialogue System  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/StoryBased/DialogueSystem.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Dialogue-System)
-- Spawning  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/FishSpawner/FishSpawnerManager.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-Spawning-Manager)
-- MiniGame Menu [Code](), [Code BreakDown]()
-- Camera [Code](), [Code BreakDown]()
+- Dialogue System  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/DialogueSystem.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Dialogue-System)
+- Fish Spawner  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/FishSpawnerManager.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-Spawning-Manager)
+- MiniGame Menu [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/SkillCheck.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_MiniGame-Menu)
+- Camera Follow [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/cameraPlayerFollow.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Camera-Follow-2D)
 
 
 # Artists
