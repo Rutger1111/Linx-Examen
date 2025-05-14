@@ -30,6 +30,7 @@ public class Snap : ICommand
     void OnTriggerStay(Collider other)
     {
         if(placed >= 1){
+
             transform.rotation = new Quaternion(0,0,0,0);
             transform.position = _pos;
             // transform.parent.rotation.eulerAngles.Set(_rot.x,_rot.y,_rot.z);
@@ -86,17 +87,21 @@ public class Snap : ICommand
         if(GetComponent<Snap>().isPickedUp > 0){
             Quaternion _colRot = col.gameObject.transform.rotation;
             print(transform.parent.name);
-            transform.parent.rotation.Set(-90,144,90,0);
+
             transform.parent.position = col.gameObject.transform.position;
-            transform.rotation.eulerAngles.Set(0,0,0);
+            transform.rotation.eulerAngles.Set(0, 0, 0);
             _pos = col.gameObject.transform.position;
             _rot = transform.rotation;
             _hookObject1.SetActive(false);
             _hookObject2.SetActive(false);
+            print("wordtgeroepen");
             // _hook1Pos = _hookObject1.transform.position;
             // _hook1Rot = _hookObject1.transform.rotation;
             // _hook2Pos = _hookObject1.transform.position;
             // _hook2Rot = _hookObject1.transform.rotation;
+            transform.parent.rotation = col.transform.rotation;
+            Debug.Log("Euler na instellen: " + transform.rotation.eulerAngles);
+            Debug.DrawRay(transform.position, transform.forward * 2, Color.red, 5f);
         }
     }
 
