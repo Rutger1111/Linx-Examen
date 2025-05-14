@@ -25,6 +25,23 @@ Ruben Kossen
 - Player Spawner [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/SpawnManager.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Player-Spawning)
 - Pick Up [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/PickUp.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Pick-Up)
   
+
+## Old Game Scripts
+Rutger van de laar (Lead Developer)
+- Fish AI [code]()
+  
+Renzo Reemer (game Designer)
+- Reeling [Funcional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#fisher)[Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#Reeling)
+- Movement [Functional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#bait)[Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#swimming)
+
+
+Ruben Kossen
+- Dialogue System  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/DialogueSystem.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Dialogue-System)
+- Fish Spawner  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/FishSpawnerManager.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-Spawning-Manager)
+- MiniGame Menu [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/SkillCheck.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_MiniGame-Menu)
+- Camera Follow [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/cameraPlayerFollow.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Camera-Follow-2D)
+
+
 # Artists
 - elanora 
 - ly

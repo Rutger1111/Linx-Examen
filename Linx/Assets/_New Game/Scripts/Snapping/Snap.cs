@@ -26,6 +26,8 @@ public class Snap : ICommand
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
+        
+        _myMaterial.color = Color.yellow;
     }
     void OnTriggerStay(Collider other)
     {
@@ -50,7 +52,7 @@ public class Snap : ICommand
             {
                 if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
                 {
-                    print("fuck");
+                    UIplace.SetActive(true);
                     Invoke(other);
                     _isBuildingBlock = false;
                     _snapPosition.setTrue(true);

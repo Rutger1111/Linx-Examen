@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Art/UI/RawImage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Art/UI/RawImage.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Snapping/Snap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Snapping/Snap.cs" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +20,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Bitgem/StylisedWater/URP/Scripts/Bitgem/VFX/StylisedWater/WaterVolumeTransforms.cs" root0="FORCE_HIGHLIGHTING" />
+
     <setting file="file://$PROJECT_DIR$/Assets/SnapPosition.cs" root0="FORCE_HIGHLIGHTING" />
+
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/GameStatesUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/Menu.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,7 +69,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../Build\Linx.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../build\Linx.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ruben\Desktop\build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -155,6 +158,8 @@
       <workItem from="1745306407575" duration="6940000" />
       <workItem from="1745483038765" duration="716000" />
       <workItem from="1746566825231" duration="2202000" />
+      <workItem from="1747126111711" duration="4284000" />
+      <workItem from="1747217508162" duration="1000" />
     </task>
     <servers />
   </component>

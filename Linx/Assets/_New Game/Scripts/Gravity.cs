@@ -12,6 +12,7 @@ public class Gravity : MonoBehaviour
     [SerializeField] private bool isGrounded;
 
     [SerializeField] private LayerMask groundLayer;
+
     void Update()
     {
         CheckIfGrounded();
@@ -41,4 +42,14 @@ public class Gravity : MonoBehaviour
             isGrounded = false;
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 start = transform.position;
+
+        Vector3 end = transform.position + Vector3.down * groundCheckDistance;
+        
+        Gizmos.DrawLine(start, end);
+    }
+    
 }
