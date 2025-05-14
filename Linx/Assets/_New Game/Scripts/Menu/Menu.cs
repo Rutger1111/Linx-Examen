@@ -12,10 +12,10 @@ public class Menu : MonoBehaviour
 
     private void InputHandler()
     {
-        bool hoi = pausePanel.activeSelf == true ? false : true;
+        bool menuActive = pausePanel.activeSelf != true;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pausePanel.SetActive(hoi);
+            pausePanel.SetActive(menuActive);
         }
     }
 
