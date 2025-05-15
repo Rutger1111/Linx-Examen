@@ -58,11 +58,7 @@ namespace _New_Game.Scripts.Crane
 
         void Update()
         {
-            if (CenterMouseTimer <= 0)
-            {
-                Screen.lockCursor = true;
-            }
-            
+
             CenterMouseTimer -= Time.deltaTime;
             
             if (IsOwner)
@@ -71,7 +67,7 @@ namespace _New_Game.Scripts.Crane
                 //MoveArm();
                 //MoveHook();
                 
-                if (hasMovementOptions == false)
+                if (hasMovementOptions == true)
                 {
                     StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
                     Drive();

@@ -21,6 +21,11 @@ public class Menu : MonoBehaviour
     [SerializeField] private List<GameObject> tutorialPanel = new List<GameObject>();
     [SerializeField] private GameObject tutorialPanel1;
     private bool TutoActive = true;
+    public bool menuActive = false;
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
@@ -73,35 +78,39 @@ public class Menu : MonoBehaviour
     {
         tutorialPanel1.SetActive(false);
         TutoActive = false;
+        
+        foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
+        {
+            Cameras.CameraDissable(menuActive);
+        }
+        foreach (Movement movement in movementList)
+        {
+            movement.MovementDisable(menuActive);
+        }
     }
 
     private void InputHandler()
     {
         bool menuActive = pausePanel.activeSelf != true;
+        
+        
+        menuActive = pausePanel.activeSelf != true;
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            print(menuActive);
+            
             pausePanel.SetActive(menuActive);
             
-            
             Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = menuActive;
-            
-            
-            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
-            {
-                Cameras.CameraDissable(menuActive);
-            }
-            
-            foreach (Movement movement in movementList)
-            {
-                movement.MovementDisable(menuActive);
-            }
+            Cursor.visible = true;
         }
     }
 
     public void Continue()
     {
         pausePanel.SetActive(false);
+        menuActive = true;
     }
 
     public void Retry()

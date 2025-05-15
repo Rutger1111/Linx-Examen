@@ -1,5 +1,6 @@
 using System;
 using FishSystem;
+using ParrelSync.NonCore;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,101 +8,91 @@ using UnityEngine.UIElements;
 
 public class Snap : ICommand
 {
-    [SerializeField] private Material _myMaterial;
     public bool _isBuildingBlock = true;
     public int placed;
     public int isPickedUp;
-
+    [SerializeField] private bool isWallRoof = false;
     public GameObject UIplace;
-    private Vector3 pos;
-    private quaternion rot;
+    private Vector3 _pos;
+    private quaternion _hook2Rot;
     public SnapPosition _snapPosition;
+    public GameObject _hookObject1;
+    public GameObject _hookObject2;
+    
+    private bool isInValidTrigger = false;
+    private bool isplaced = false;
+    public Vector3 colposition;
+    public Quaternion colRotation;
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
-        
-        _myMaterial.color = Color.yellow;
+        UIplace.SetActive(false);
     }
+
+    private void Update()
+    {
+        if (isInValidTrigger && _isBuildingBlock && Input.GetKeyDown(KeyCode.F))
+        {
+            Invoke();
+            _isBuildingBlock = false;
+            _snapPosition.setTrue(true);
+            placed++;
+        }
+
+        if (isplaced == true)
+        {
+            transform.position = colposition;
+            quaternion inverse =  Quaternion.Inverse(colRotation);
+
+            transform.rotation = inverse;
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
-        if(placed >= 1){
-            transform.position = pos;
-            transform.rotation = rot;
-        }
-        if (other.gameObject.tag == "BuildPosition")
-        {
-            _snapPosition = other.GetComponent<SnapPosition>();
-            
-            Debug.Log(_snapPosition.gameObject);
-            
-            if (_snapPosition.hasObjectsInHere == false)
-            {
-                if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
-                {
-                    UIplace.SetActive(true);
-                    Invoke(other);
-                    _isBuildingBlock = false;
-                    _snapPosition.setTrue(true);
-                    placed ++;
-                }
+        if (placed >= 1) return;
 
-                if (_isBuildingBlock)
-                {
-                    _myMaterial.color = Color.green;
-                    UIplace.SetActive(true);
-                }
-                else
-                {
-                    _myMaterial.color = Color.yellow;
-                    UIplace.SetActive(false);
-                }
+        if (other.CompareTag("BuildPosition"))
+        {
+            SnapPosition pos = other.GetComponent<SnapPosition>();
+
+            if (pos != null && !pos.hasObjectsInHere)
+            {
+                _snapPosition = pos;
+                UIplace.SetActive(true);
+                isInValidTrigger = true;
+
+                // Save the exact position and rotation of the collider
+                colposition = other.transform.position;
+                colRotation = other.transform.rotation;
+            }
+            else
+            {
+                UIplace.SetActive(false);
+                isInValidTrigger = false;
             }
         }
-        
     }
     void OnTriggerExit(Collider other)
     {
-        //keep these these
-        //placed --;
         _isBuildingBlock = true;
-        _myMaterial.color = Color.yellow;
         UIplace.SetActive(false);
     }
     public override void Invoke(Fish fish)
     {
         throw new System.NotImplementedException();
     }
-    public override void Invoke(Collider col)
+    public void Invoke()
     {
-        if(GetComponent<Snap>().isPickedUp > 0){
-            
-            GameObject referenceObject = col.gameObject.transform.parent.gameObject;
-            
-            // Get the forward direction in the horizontal plane
-            Vector3 refForward = referenceObject.transform.forward;
-            refForward.y = 0;
-            refForward.Normalize();
+        if (isPickedUp > 0)
+        {
+            isplaced = true;
 
-            // Get 90° perpendicular direction (right turn)
-            Vector3 perpDirection = new Vector3(-refForward.z, 0, refForward.x);
+            // Use the already passed position/rotation directly
+            _hookObject1.SetActive(false);
+            _hookObject2.SetActive(false);
 
-            if (perpDirection != Vector3.zero)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
-                transform.rotation = targetRotation;
-                transform.rotation = new quaternion(transform.rotation.x,transform.rotation.y + 90,transform.rotation.z + 90,0);
-                if (col.tag != "Ground" ){
-                    print("came here 1");
-                    transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
-                }
-                else if (col.tag == "Ground"){
-                    print("came here 2");
-                    col.tag = "Untagged";
-                    col.enabled = false;
-                }
-                pos = transform.position;
-                rot = transform.rotation;
-            }            
+            Debug.Log("Snap placement invoked");
         }
     }
 

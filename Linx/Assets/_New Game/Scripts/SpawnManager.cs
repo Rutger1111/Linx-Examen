@@ -34,7 +34,6 @@ public class SpawnManager : NetworkBehaviour
         {
             foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
             {
-                print(NetworkManager.Singleton.ConnectedClientsList.Count);
                 bool alreadySpawned = _playerSpawned.Exists(p =>
                 {
                     var info = p.GetComponent<PlayerInfo>();
@@ -43,22 +42,28 @@ public class SpawnManager : NetworkBehaviour
 
                 if (!alreadySpawned)
                 {
-                    SpawnPlayer();
+                    SpawnPlayer(client.ClientId);
                 }
             }
         }
     }
 
-    private void SpawnPlayer()
+    private void SpawnPlayer(ulong clientId)
     {
-        if (redPlayer == null || bluePlayer == null)
-        {
-            Debug.LogError("Player Prefab is not assigned.");
-            return;
-        }
+        int spawnIndex = _playerSpawned.Count;
 
-        RedPlayerSpawn(0);
-        BluePlayerSpawn(1);
+        if (spawnIndex == 0)
+        {
+            RedPlayerSpawn(clientId);
+        }
+        else if (spawnIndex == 1)
+        {
+            BluePlayerSpawn(clientId);
+        }
+        else
+        {
+            Debug.LogWarning($"No spawn logic for player index {spawnIndex}. Add more prefabs if needed.");
+        }
        
     }
 
