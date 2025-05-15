@@ -50,6 +50,14 @@ public class Menu : MonoBehaviour
                 movement.MovementDisable(TutoActive);
             }
         }
+        foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList) 
+        {
+            Cameras.CameraDissable(menuActive);
+        }
+        foreach (Movement movement in movementList)
+        {
+            movement.MovementDisable(menuActive);
+        }
     }
     
     public void NextPanel(int direction)
@@ -79,14 +87,7 @@ public class Menu : MonoBehaviour
         tutorialPanel1.SetActive(false);
         TutoActive = false;
         
-        foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
-        {
-            Cameras.CameraDissable(menuActive);
-        }
-        foreach (Movement movement in movementList)
-        {
-            movement.MovementDisable(menuActive);
-        }
+        
     }
 
     private void InputHandler()
@@ -104,6 +105,7 @@ public class Menu : MonoBehaviour
             
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            
         }
     }
 
