@@ -42,9 +42,9 @@ public class Snap : ICommand
         if (isplaced == true)
         {
             transform.position = colposition;
-            quaternion inverse =  Quaternion.Inverse(colRotation);
+            Quaternion inverse =  Quaternion.Inverse(colRotation);
 
-            transform.rotation = inverse;
+            transform.rotation = colRotation;
         }
     }
 
