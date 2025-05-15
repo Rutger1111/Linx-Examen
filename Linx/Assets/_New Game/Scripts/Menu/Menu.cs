@@ -1,21 +1,49 @@
 using System;
+using System.Collections.Generic;
+using _New_Game.Scripts.Crane;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    
     [SerializeField] private GameObject pausePanel;
+
+    [SerializeField] private List<ThirdPersonCameraPlayerFollow> camerasList;
+    [SerializeField] private List<Movement> movementList;
+    
+
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
+
         InputHandler();
+        
+        FindingCamera();
     }
 
     private void InputHandler()
     {
+        
+        
         bool menuActive = pausePanel.activeSelf != true;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pausePanel.SetActive(menuActive);
+            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
+            {
+                Cameras.CameraDissable(menuActive);
+            }
+            
+            foreach (Movement movement in movementList)
+            {
+                movement.MovementDisable(menuActive);
+            }
         }
     }
 
@@ -32,5 +60,32 @@ public class Menu : MonoBehaviour
     public void ToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+    }
+
+    public void FindingCamera()
+    {
+        camerasList.Clear();
+
+        ThirdPersonCameraPlayerFollow[] foundCameras = FindObjectsOfType<ThirdPersonCameraPlayerFollow>();
+
+        foreach (ThirdPersonCameraPlayerFollow cam in foundCameras)
+        {
+            if (!camerasList.Contains(cam))
+            {
+                camerasList.Add(cam);
+            }
+        }
+        
+        movementList.Clear();
+
+        Movement[] FoundMovement = FindObjectsOfType<Movement>();
+
+        foreach (Movement mov in FoundMovement)
+        {
+            if (!movementList.Contains(mov))
+            {
+                movementList.Add(mov);
+            }
+        }
     }
 }
