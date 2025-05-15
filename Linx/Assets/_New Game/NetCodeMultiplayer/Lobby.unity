@@ -3238,8 +3238,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   redPlayer: {fileID: 6952437913549274390, guid: 90f24c7598c2d874e8d31fe3541b8580, type: 3}
   bluePlayer: {fileID: 8696367415222924769, guid: d07edf000be25494a97e98529a48297f, type: 3}
-  spawnPointRed: {x: -10, y: 1, z: 0}
-  spawnPointBlue: {x: 10, y: 1, z: 0}
+  spawnPointRed: {x: -10, y: 10, z: 0}
+  spawnPointBlue: {x: 10, y: 10, z: 0}
   _playerSpawned: []
 --- !u!114 &2073773322
 MonoBehaviour:

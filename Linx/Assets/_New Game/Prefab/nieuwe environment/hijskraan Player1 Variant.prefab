@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3528417148423746958, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: isGrounded
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3528417148423746958, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: groundCheckDistance
@@ -111,6 +111,30 @@ PrefabInstance:
     - target: {fileID: 5224460199853752182, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 718865961
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465684745625996316, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.30746692
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465684745625996316, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2520754
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465684745625996316, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_Size.z
+      value: 0.4022861
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465684745625996316, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0020297368
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465684745625996316, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0028831693
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465684745625996316, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_Center.z
+      value: -0.0018225776
       objectReference: {fileID: 0}
     - target: {fileID: 5920574792258105419, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
