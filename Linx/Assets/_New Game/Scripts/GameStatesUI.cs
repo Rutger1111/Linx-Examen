@@ -10,21 +10,12 @@ public class GameStatesUI : MonoBehaviour
     
    
     
-    public void Multiplayer()
-    {
-        TurnOnUI();
-    }
 
     public void Quit()
     {
         Application.Quit();
     }
-
-    public void Back()
-    {
-        _UIMultiplayer.SetActive(false);
-    }
-
+    
     public void StopLook()
     {
         _UIStopLooking.SetActive(false);
@@ -39,8 +30,4 @@ public class GameStatesUI : MonoBehaviour
         _stopServerUI.SetActive(false);
     }
     
-    private void TurnOnUI()
-    {
-        _UIMultiplayer.SetActive(true);
-    }
 }
