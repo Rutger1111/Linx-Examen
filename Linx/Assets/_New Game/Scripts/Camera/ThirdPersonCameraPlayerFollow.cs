@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class CameraPlayerFollow : NetworkBehaviour
+public class ThirdPersonCameraPlayerFollow : NetworkBehaviour
 {
     [SerializeField] private GameObject _player;
 
@@ -15,8 +15,8 @@ public class CameraPlayerFollow : NetworkBehaviour
 
     private float currentX = 0f;
     private float currentY = 0f;
-    
-    
+
+    private bool hasTurnedOffCamera = false;
     private void Awake()
     {
         if (IsOwner)
@@ -27,7 +27,7 @@ public class CameraPlayerFollow : NetworkBehaviour
 
     private void OnClientStarted()
     {
-       
+        
         if (IsOwner && Unity.Netcode.NetworkManager.Singleton.LocalClient.PlayerObject != null)
         {
             _player = Unity.Netcode.NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
@@ -39,11 +39,14 @@ public class CameraPlayerFollow : NetworkBehaviour
     
     void Update()
     {
-        currentX += Input.GetAxis("Mouse X") * _sensitivity;
-        currentY -= Input.GetAxis("Mouse Y") * _sensitivity;
-        currentY = Mathf.Clamp(currentY, _yMin, _yMax);
+        if (hasTurnedOffCamera == false)
+        {
+            currentX += Input.GetAxis("Mouse X") * _sensitivity;
+            currentY -= Input.GetAxis("Mouse Y") * _sensitivity;
+            currentY = Mathf.Clamp(currentY, _yMin, _yMax);
         
-        rotationFollow();
+            rotationFollow();    
+        }
     }
 
     public void rotationFollow()
@@ -52,5 +55,11 @@ public class CameraPlayerFollow : NetworkBehaviour
         Vector3 disiredPosition = _player.transform.position + rotation * new Vector3(0, 0 - _distance);
         transform.position = disiredPosition + new Vector3(0, _offset.y, 0);
         transform.LookAt(_player.transform.position + Vector3.up * _offset.y);
+    }
+
+
+    public void CameraDissable(bool disable)
+    {
+        hasTurnedOffCamera = disable;
     }
 }

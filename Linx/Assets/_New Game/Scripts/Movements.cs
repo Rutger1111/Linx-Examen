@@ -35,6 +35,7 @@ namespace _New_Game.Scripts.Crane
 
         [SerializeField] private float CenterMouseTimer = 0.4f;
 
+        private bool hasMovementOptions;
         private void Awake()
         {
             _craneMovement = new CraneMovement();
@@ -69,13 +70,22 @@ namespace _New_Game.Scripts.Crane
                 //RotateBase();
                 //MoveArm();
                 //MoveHook();
-                StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
-                Drive();
-                Turn();
-                Grab();
+                
+                if (hasMovementOptions == false)
+                {
+                    StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
+                    Drive();
+                    Turn();
+                    Grab();
+                }
             }
         }
-        
+
+
+        public void MovementDisable(bool CanMove)
+        {
+            hasMovementOptions = CanMove;
+        }
         private void Drive()
         {
             //float driveInput = 0f;
