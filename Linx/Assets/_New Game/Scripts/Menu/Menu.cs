@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _New_Game.Scripts.Crane;
 using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,6 +36,12 @@ public class Menu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pausePanel.SetActive(menuActive);
+            
+            
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = menuActive;
+            
+            
             foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
             {
                 Cameras.CameraDissable(menuActive);
