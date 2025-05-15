@@ -38,17 +38,6 @@ public class Menu : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = TutoActive;
-            
-            
-            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
-            {
-                Cameras.CameraDissable(TutoActive);
-            }
-            
-            foreach (Movement movement in movementList)
-            {
-                movement.MovementDisable(TutoActive);
-            }
         }
         foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList) 
         {
@@ -57,6 +46,15 @@ public class Menu : MonoBehaviour
         foreach (Movement movement in movementList)
         {
             movement.MovementDisable(menuActive);
+        }
+        foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
+        {
+            Cameras.CameraDissable(!TutoActive);
+        }
+            
+        foreach (Movement movement in movementList)
+        {
+            movement.MovementDisable(!TutoActive);
         }
     }
     
@@ -87,7 +85,8 @@ public class Menu : MonoBehaviour
         tutorialPanel1.SetActive(false);
         TutoActive = false;
         
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void InputHandler()
