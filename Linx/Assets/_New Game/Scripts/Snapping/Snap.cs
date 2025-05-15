@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 
 public class Snap : ICommand
 {
-    [SerializeField] private Material _myMaterial;
     public bool _isBuildingBlock = true;
     public int placed;
     public int isPickedUp;
@@ -23,6 +22,7 @@ public class Snap : ICommand
     {
         GetComponent<Rigidbody>().isKinematic = false;
     }
+    
     void OnTriggerStay(Collider other)
     {
         if(placed >= 1){
@@ -40,7 +40,6 @@ public class Snap : ICommand
         {
             _snapPosition = other.GetComponent<SnapPosition>();
             
-            Debug.Log(_snapPosition.gameObject);
             
             if (_snapPosition.hasObjectsInHere == false)
             {
@@ -52,17 +51,6 @@ public class Snap : ICommand
                     _snapPosition.setTrue(true);
                     placed ++;
                 }
-
-                if (_isBuildingBlock)
-                {
-                    _myMaterial.color = Color.green;
-                    UIplace.SetActive(true);
-                }
-                else
-                {
-                    _myMaterial.color = Color.yellow;
-                    UIplace.SetActive(false);
-                }
             }
         }
         
@@ -71,7 +59,6 @@ public class Snap : ICommand
     {
         //placed --;
         _isBuildingBlock = true;
-        _myMaterial.color = Color.yellow;
         UIplace.SetActive(false);
     }
     public override void Invoke(Fish fish)

@@ -13,8 +13,8 @@ public class Menu : MonoBehaviour
 
     [SerializeField] private List<ThirdPersonCameraPlayerFollow> camerasList;
     [SerializeField] private List<Movement> movementList;
-    
 
+    public bool menuActive = false;
     private void Start()
     {
         
@@ -26,37 +26,39 @@ public class Menu : MonoBehaviour
         InputHandler();
         
         FindingCamera();
+        
+        
+        foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
+        {
+            Cameras.CameraDissable(menuActive);
+        }
+        foreach (Movement movement in movementList)
+        {
+            movement.MovementDisable(menuActive);
+        }
     }
 
     private void InputHandler()
     {
         
         
-        bool menuActive = pausePanel.activeSelf != true;
+        menuActive = pausePanel.activeSelf != true;
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            print(menuActive);
+            
             pausePanel.SetActive(menuActive);
             
-            
             Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = menuActive;
-            
-            
-            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
-            {
-                Cameras.CameraDissable(menuActive);
-            }
-            
-            foreach (Movement movement in movementList)
-            {
-                movement.MovementDisable(menuActive);
-            }
+            Cursor.visible = true;
         }
     }
 
     public void Continue()
     {
         pausePanel.SetActive(false);
+        menuActive = true;
     }
 
     public void Retry()
