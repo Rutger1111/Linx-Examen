@@ -76,6 +76,18 @@ PrefabInstance:
       propertyPath: minArmAngle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3528417148423746958, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: hasGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528417148423746958, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: isGrounded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528417148423746958, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: groundCheckDistance
+      value: 1.07
+      objectReference: {fileID: 0}
     - target: {fileID: 4026451506231998755, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
