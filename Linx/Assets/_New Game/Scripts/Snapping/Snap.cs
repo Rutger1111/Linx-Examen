@@ -18,46 +18,63 @@ public class Snap : ICommand
     public SnapPosition _snapPosition;
     public GameObject _hookObject1;
     public GameObject _hookObject2;
+    
+    private bool isInValidTrigger = false;
+    private bool isplaced = false;
+    public Vector3 colposition;
+    public Quaternion colRotation;
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
+        UIplace.SetActive(false);
     }
-    
+
+    private void Update()
+    {
+        if (isInValidTrigger && _isBuildingBlock && Input.GetKeyDown(KeyCode.F))
+        {
+            Invoke();
+            _isBuildingBlock = false;
+            _snapPosition.setTrue(true);
+            placed++;
+        }
+
+        if (isplaced == true)
+        {
+            transform.position = colposition;
+            quaternion inverse =  Quaternion.Inverse(colRotation);
+
+            transform.rotation = inverse;
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
-        if(placed >= 1){
+        if (placed >= 1) return;
 
-            transform.rotation = new Quaternion(0,0,0,0);
-            transform.position = _pos;
-            // transform.parent.rotation.eulerAngles.Set(_rot.x,_rot.y,_rot.z);
-            print("komtookhier");
-            // _hookObject1.transform.position = _hook1Pos;
-            // _hookObject1.transform.rotation = _hook1Rot;
-            // _hookObject1.transform.position = _hook2Pos;
-            // _hookObject1.transform.rotation = _hook2Rot;
-        }
-        if (other.gameObject.tag == "BuildPosition")
+        if (other.CompareTag("BuildPosition"))
         {
-            _snapPosition = other.GetComponent<SnapPosition>();
-            
-            
-            if (_snapPosition.hasObjectsInHere == false)
+            SnapPosition pos = other.GetComponent<SnapPosition>();
+
+            if (pos != null && !pos.hasObjectsInHere)
             {
-                if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
-                {
-                    print("fuck");
-                    Invoke(other);
-                    _isBuildingBlock = false;
-                    _snapPosition.setTrue(true);
-                    placed ++;
-                }
+                _snapPosition = pos;
+                UIplace.SetActive(true);
+                isInValidTrigger = true;
+
+                // Save the exact position and rotation of the collider
+                colposition = other.transform.position;
+                colRotation = other.transform.rotation;
+            }
+            else
+            {
+                UIplace.SetActive(false);
+                isInValidTrigger = false;
             }
         }
-        
     }
     void OnTriggerExit(Collider other)
     {
-        //placed --;
         _isBuildingBlock = true;
         UIplace.SetActive(false);
     }
@@ -65,17 +82,17 @@ public class Snap : ICommand
     {
         throw new System.NotImplementedException();
     }
-    public override void Invoke(Collider col)
+    public void Invoke()
     {
-        if(GetComponent<Snap>().isPickedUp > 0){
-            print(transform.parent.name);
-            transform.parent.rotation = col.transform.rotation;
-            transform.parent.position = col.gameObject.transform.position;
+        if (isPickedUp > 0)
+        {
+            isplaced = true;
 
-            _pos = col.gameObject.transform.position;
+            // Use the already passed position/rotation directly
             _hookObject1.SetActive(false);
             _hookObject2.SetActive(false);
-            print("wordtgeroepen");
+
+            Debug.Log("Snap placement invoked");
         }
     }
 
