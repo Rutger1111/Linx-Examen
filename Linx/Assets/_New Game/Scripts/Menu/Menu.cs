@@ -70,7 +70,7 @@ public class Menu : MonoBehaviour
         else
         {
             tutorialPanel[index].SetActive(false);
-            index += 1;
+            index += direction;
             tutorialPanel[index].SetActive(true);
         }
 
