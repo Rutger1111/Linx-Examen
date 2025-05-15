@@ -1,5 +1,6 @@
 using System;
 using FishSystem;
+using ParrelSync.NonCore;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,22 +12,29 @@ public class Snap : ICommand
     public bool _isBuildingBlock = true;
     public int placed;
     public int isPickedUp;
-
+    [SerializeField] private bool isWallRoof = false;
     public GameObject UIplace;
-    private Vector3 pos;
-    private quaternion rot;
+    private Vector3 _pos;
+    private quaternion _hook2Rot;
     public SnapPosition _snapPosition;
+    public GameObject _hookObject1;
+    public GameObject _hookObject2;
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
-        
-        _myMaterial.color = Color.yellow;
     }
     void OnTriggerStay(Collider other)
     {
         if(placed >= 1){
-            transform.position = pos;
-            transform.rotation = rot;
+
+            transform.rotation = new Quaternion(0,0,0,0);
+            transform.position = _pos;
+            // transform.parent.rotation.eulerAngles.Set(_rot.x,_rot.y,_rot.z);
+            print("komtookhier");
+            // _hookObject1.transform.position = _hook1Pos;
+            // _hookObject1.transform.rotation = _hook1Rot;
+            // _hookObject1.transform.position = _hook2Pos;
+            // _hookObject1.transform.rotation = _hook2Rot;
         }
         if (other.gameObject.tag == "BuildPosition")
         {
@@ -38,7 +46,7 @@ public class Snap : ICommand
             {
                 if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
                 {
-                    UIplace.SetActive(true);
+                    print("fuck");
                     Invoke(other);
                     _isBuildingBlock = false;
                     _snapPosition.setTrue(true);
@@ -61,7 +69,6 @@ public class Snap : ICommand
     }
     void OnTriggerExit(Collider other)
     {
-        //keep these these
         //placed --;
         _isBuildingBlock = true;
         _myMaterial.color = Color.yellow;
@@ -74,34 +81,14 @@ public class Snap : ICommand
     public override void Invoke(Collider col)
     {
         if(GetComponent<Snap>().isPickedUp > 0){
-            
-            GameObject referenceObject = col.gameObject.transform.parent.gameObject;
-            
-            // Get the forward direction in the horizontal plane
-            Vector3 refForward = referenceObject.transform.forward;
-            refForward.y = 0;
-            refForward.Normalize();
+            print(transform.parent.name);
+            transform.parent.rotation = col.transform.rotation;
+            transform.parent.position = col.gameObject.transform.position;
 
-            // Get 90° perpendicular direction (right turn)
-            Vector3 perpDirection = new Vector3(-refForward.z, 0, refForward.x);
-
-            if (perpDirection != Vector3.zero)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(perpDirection, Vector3.up);
-                transform.rotation = targetRotation;
-                transform.rotation = new quaternion(transform.rotation.x,transform.rotation.y + 90,transform.rotation.z + 90,0);
-                if (col.tag != "Ground" ){
-                    print("came here 1");
-                    transform.position = new Vector3(col.transform.position.x, transform.position.y, col.transform.position.z);
-                }
-                else if (col.tag == "Ground"){
-                    print("came here 2");
-                    col.tag = "Untagged";
-                    col.enabled = false;
-                }
-                pos = transform.position;
-                rot = transform.rotation;
-            }            
+            _pos = col.gameObject.transform.position;
+            _hookObject1.SetActive(false);
+            _hookObject2.SetActive(false);
+            print("wordtgeroepen");
         }
     }
 
