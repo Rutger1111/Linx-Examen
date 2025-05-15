@@ -41,6 +41,8 @@ public class ThirdPersonCameraPlayerFollow : NetworkBehaviour
     {
         if (hasTurnedOffCamera == false)
         {
+            Cursor.lockState = CursorLockMode.None;
+            
             currentX += Input.GetAxis("Mouse X") * _sensitivity;
             currentY -= Input.GetAxis("Mouse Y") * _sensitivity;
             currentY = Mathf.Clamp(currentY, _yMin, _yMax);
