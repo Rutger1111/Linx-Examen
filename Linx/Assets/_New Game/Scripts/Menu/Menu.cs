@@ -13,12 +13,14 @@ public class Menu : MonoBehaviour
 
     [SerializeField] private List<ThirdPersonCameraPlayerFollow> camerasList;
     [SerializeField] private List<Movement> movementList;
-    
 
-    private void Start()
-    {
-        
-    }
+    [Header("Tutorial")] 
+    
+    private int index;
+    
+    [SerializeField] private List<GameObject> tutorialPanel = new List<GameObject>();
+    [SerializeField] private GameObject tutorialPanel1;
+    private bool TutoActive = true;
 
     private void Update()
     {
@@ -26,12 +28,55 @@ public class Menu : MonoBehaviour
         InputHandler();
         
         FindingCamera();
+        
+        if (TutoActive)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = TutoActive;
+            
+            
+            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
+            {
+                Cameras.CameraDissable(TutoActive);
+            }
+            
+            foreach (Movement movement in movementList)
+            {
+                movement.MovementDisable(TutoActive);
+            }
+        }
+    }
+    
+    public void NextPanel(int direction)
+    {
+        if (index >= tutorialPanel.Count || index < 0)
+        {
+            index = 0;
+            CloseTutorial();
+        }
+        else
+        {
+            tutorialPanel[index].SetActive(false);
+            index += 1;
+            tutorialPanel[index].SetActive(true);
+        }
+
+    }
+
+    public void OpenTutorial()
+    {
+        tutorialPanel1.SetActive(true);
+        TutoActive = true;
+    }
+
+    public void CloseTutorial()
+    {
+        tutorialPanel1.SetActive(false);
+        TutoActive = false;
     }
 
     private void InputHandler()
     {
-        
-        
         bool menuActive = pausePanel.activeSelf != true;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
