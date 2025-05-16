@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using FishSystem;
+using NUnit.Framework;
 using ParrelSync.NonCore;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -15,7 +17,8 @@ public class Snap : ICommand
     public GameObject UIplace;
     private Vector3 _pos;
     private quaternion _hook2Rot;
-    public SnapPosition _snapPosition;
+    
+    public List<SnapPosition> _snapPosition = new List<SnapPosition>();
     public GameObject _hookObject1;
     public GameObject _hookObject2;
     
@@ -23,6 +26,7 @@ public class Snap : ICommand
     private bool isplaced = false;
     public Vector3 colposition;
     public Quaternion colRotation;
+    public int snapId;
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
@@ -31,50 +35,56 @@ public class Snap : ICommand
 
     private void Update()
     {
+        if (_snapPosition.Count > 0)
+        {
+            foreach (var snapPos in _snapPosition)
+            {
+                if (!snapPos.hasObjectsInHere && snapPos.snapId == snapId)
+                {
+                    colposition = snapPos.transform.position;
+                    colRotation = snapPos.transform.rotation;
+                    isInValidTrigger = true;
+                    UIplace.SetActive(true);
+                    break;
+                }
+                else
+                {
+                    isInValidTrigger = false;
+                    UIplace.SetActive(false);
+                }
+            }
+        }
+
         if (isInValidTrigger && _isBuildingBlock && Input.GetKeyDown(KeyCode.F))
         {
             Invoke();
             _isBuildingBlock = false;
-            _snapPosition.setTrue(true);
             placed++;
+            UIplace.SetActive(false);
         }
 
-        if (isplaced == true)
+        if (isplaced)
         {
             transform.position = colposition;
-            Quaternion inverse =  Quaternion.Inverse(colRotation);
-
             transform.rotation = colRotation;
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (placed >= 1) return;
-
         if (other.CompareTag("BuildPosition"))
         {
-            SnapPosition pos = other.GetComponent<SnapPosition>();
-
-            if (pos != null && !pos.hasObjectsInHere)
+            SnapPosition snap = other.GetComponent<SnapPosition>();
+            
+            if (snap != null && !_snapPosition.Contains(snap))
             {
-                _snapPosition = pos;
-                UIplace.SetActive(true);
-                isInValidTrigger = true;
-
-                // Save the exact position and rotation of the collider
-                colposition = other.transform.position;
-                colRotation = other.transform.rotation;
-            }
-            else
-            {
-                UIplace.SetActive(false);
-                isInValidTrigger = false;
+                _snapPosition.Add(snap);
             }
         }
     }
     void OnTriggerExit(Collider other)
     {
+        _snapPosition.Clear();
         _isBuildingBlock = true;
         UIplace.SetActive(false);
     }

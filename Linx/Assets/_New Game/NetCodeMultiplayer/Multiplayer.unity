@@ -362,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
+  snapId: 0
 --- !u!224 &51982133 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7704987793805995979, guid: 8220920d208884d4c9d2f6cadfe016fe, type: 3}
@@ -777,27 +778,45 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7486283344480467384, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 155001180}
+    - targetCorrespondingSourceObject: {fileID: 7486283344480467384, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 155001184}
     - targetCorrespondingSourceObject: {fileID: -2045257923548263128, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 155001179}
+    - targetCorrespondingSourceObject: {fileID: -2045257923548263128, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 155001181}
     - targetCorrespondingSourceObject: {fileID: 8485173162082002552, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 690079476}
     - targetCorrespondingSourceObject: {fileID: 8485173162082002552, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 156922818}
+    - targetCorrespondingSourceObject: {fileID: 8485173162082002552, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 690079477}
     - targetCorrespondingSourceObject: {fileID: 5946469138397959680, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 155001182}
+    - targetCorrespondingSourceObject: {fileID: 5946469138397959680, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 155001183}
     - targetCorrespondingSourceObject: {fileID: 3070440721791402131, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1906633186}
+    - targetCorrespondingSourceObject: {fileID: 3070440721791402131, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1906633187}
     - targetCorrespondingSourceObject: {fileID: 316566652372531472, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1443149396}
     - targetCorrespondingSourceObject: {fileID: 316566652372531472, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1443149398}
+    - targetCorrespondingSourceObject: {fileID: 316566652372531472, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1443149399}
   m_SourcePrefab: {fileID: 100100000, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
 --- !u!1 &155001169 stripped
 GameObject:
@@ -842,6 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
+  snapId: 5
 --- !u!114 &155001180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,6 +875,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
+  snapId: 1
+--- !u!65 &155001181
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155001174}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.01005745, y: 0.08, z: 0.01967272}
+  m_Center: {x: 0, y: 0, z: 1.1641532e-10}
 --- !u!65 &155001182
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -874,8 +916,43 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.01858938, y: 0.020057539, z: 0.020018395}
+  m_Size: {x: 0.01858938, y: 0.03, z: 0.020018395}
   m_Center: {x: -0.0016271544, y: 0.000000049176215, z: -9.313226e-10}
+--- !u!114 &155001183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155001171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4082e46bbfa47e440a29f09b70ca71ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasObjectsInHere: 0
+  snapId: 0
+--- !u!65 &155001184
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155001175}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.018572204, y: 0.03, z: 0.02001243}
+  m_Center: {x: -0.0016210879, y: -0.000000023439945, z: 0}
 --- !u!222 &156922818
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1108,6 +1185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
+  snapId: 0
 --- !u!1 &288736882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,6 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
+  snapId: 0
 --- !u!1 &318352423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2691,8 +2770,22 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010293166, y: 0.022030545, z: 0.019672712}
+  m_Size: {x: 0.010293166, y: 0.08, z: 0.019672712}
   m_Center: {x: 0.0000000013981949, y: -0.00065008644, z: -3.4924597e-10}
+--- !u!114 &690079477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155001173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4082e46bbfa47e440a29f09b70ca71ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasObjectsInHere: 0
+  snapId: 4
 --- !u!1 &759698680
 GameObject:
   m_ObjectHideFlags: 0
@@ -5806,6 +5899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
+  snapId: 3
 --- !u!65 &1443149398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5825,8 +5919,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010574521, y: 0.019206174, z: 0.019605488}
+  m_Size: {x: 0.010574521, y: 0.1, z: 0.019605488}
   m_Center: {x: -9.313226e-10, y: 9.313227e-10, z: 2.9103836e-10}
+--- !u!65 &1443149399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155001169}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.010574519, y: 0.019206172, z: 0.019605486}
+  m_Center: {x: -1.1641535e-10, y: 9.313226e-10, z: 0}
 --- !u!1 &1457461178
 GameObject:
   m_ObjectHideFlags: 0
@@ -8648,6 +8763,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
+  snapId: 2
+--- !u!65 &1906633187
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155001170}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.010574519, y: 0.1, z: 0.019605486}
+  m_Center: {x: -1.1641535e-10, y: 0.000000060070306, z: 5.820766e-11}
 --- !u!1 &2118383423
 GameObject:
   m_ObjectHideFlags: 0
@@ -9187,7 +9324,8 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: -876546973899608171, guid: 30bab3f8c3f9ff1468bac2b597ed0b4c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9678,6 +9816,7 @@ MonoBehaviour:
   _hookObject2: {fileID: 1888464538}
   colposition: {x: 0, y: 0, z: 0}
   colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapId: 0
 --- !u!65 &5979793143815403350
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9697,7 +9836,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.019054875, y: 0.020057624, z: 0.020018404}
+  m_Size: {x: 0.019054875, y: 0.13, z: 0.020018404}
   m_Center: {x: -0.0018599015, y: 0.000000009021027, z: -9.313231e-10}
 --- !u!54 &5979793143815403351
 Rigidbody:
@@ -9857,6 +9996,7 @@ MonoBehaviour:
   _hookObject2: {fileID: 1777301788}
   colposition: {x: 0, y: 0, z: 0}
   colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapId: 3
 --- !u!54 &6347416601045652357
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10025,7 +10165,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4308697756648215138}
-  m_Mesh: {fileID: 3002832294595162888, guid: 30bab3f8c3f9ff1468bac2b597ed0b4c, type: 3}
+  m_Mesh: {fileID: 3002832294595162888, guid: c8de47f22689d4d4eb9a01248741d0f7, type: 3}
 --- !u!114 &7170858214147908075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10049,6 +10189,7 @@ MonoBehaviour:
   _hookObject2: {fileID: 1777301788}
   colposition: {x: 0, y: 0, z: 0}
   colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapId: 2
 --- !u!54 &7170858214147908076
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10237,6 +10378,7 @@ MonoBehaviour:
   _hookObject2: {fileID: 1777301788}
   colposition: {x: 0, y: 0, z: 0}
   colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapId: 4
 --- !u!54 &7248139386458223755
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10456,6 +10598,7 @@ MonoBehaviour:
   _hookObject2: {fileID: 1777301788}
   colposition: {x: 0, y: 0, z: 0}
   colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapId: 5
 --- !u!54 &8271490286116741083
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10644,6 +10787,7 @@ MonoBehaviour:
   _hookObject2: {fileID: 1777301788}
   colposition: {x: 0, y: 0, z: 0}
   colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapId: 1
 --- !u!54 &8553298176703015755
 Rigidbody:
   m_ObjectHideFlags: 0
