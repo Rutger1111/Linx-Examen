@@ -1,14 +1,24 @@
-using System;
 using UnityEngine;
 
-public class Respawn : MonoBehaviour
+namespace _New_Game.Scripts.Crane
 {
-    [SerializeField] private Transform respawnPoint;
-    private void OnTriggerEnter(Collider other)
+    public class Respawn : MonoBehaviour
     {
-        if (other.CompareTag("Dead"))
+        private Transform _lowestFallPoint;
+        private Transform _respawnPoint;
+
+        private void Start()
         {
-            transform.position = respawnPoint.position;
+            _respawnPoint = GameObject.FindWithTag("Respawn").transform;
+            _lowestFallPoint = GameObject.FindWithTag("LowestFallPoint").transform;
+        }
+
+        private void Update()
+        {
+            if (transform.position.y <= _lowestFallPoint.transform.position.y)
+            {
+                transform.position = _respawnPoint.position;
+            }
         }
     }
 }
