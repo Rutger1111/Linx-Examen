@@ -112,7 +112,6 @@ namespace _New_Game.Scripts.Crane
 
         private void Grab()
         {
-            Debug.Log("Grab");
             float grabInput = 0f;
 
             if (Input.GetKey(KeyCode.Mouse0)) grabInput = 1f;

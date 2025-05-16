@@ -21,11 +21,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private List<GameObject> tutorialPanel = new List<GameObject>();
     [SerializeField] private GameObject tutorialPanel1;
     private bool TutoActive = false;
-    public bool menuActive = false;
-    private void Start()
-    {
-        
-    }
+    public bool menuActive = true;
 
     private void Update()
     {
@@ -43,11 +39,11 @@ public class Menu : MonoBehaviour
         {
             foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList) 
             {
-                Cameras.CameraDissable(true);
+                Cameras.CameraDissable(menuActive);
             }
             foreach (Movement movement in movementList)
             {
-                movement.MovementDisable(true);
+                movement.MovementDisable(menuActive);
             }
 
         

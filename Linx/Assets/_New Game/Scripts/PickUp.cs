@@ -12,6 +12,9 @@ public class PickUp : NetworkBehaviour
     private List<GameObject> _pickUpAbleObjects = new List<GameObject>();
     private ConfigurableJoint _joint;
 
+    [SerializeField] private GameObject UIPickup;
+    
+
     void Update()
     {
         if (!IsOwner) return;
@@ -83,6 +86,8 @@ public class PickUp : NetworkBehaviour
             if (distance <= _range)
             {
                 _pickUpAbleObjects.Add(obj);
+                
+                //UIPickup.SetActive(true);
             }
         }
     }
