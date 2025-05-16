@@ -3624,6 +3624,7 @@ GameObject:
   - component: {fileID: 167516401860856485}
   - component: {fileID: 8357856322979174207}
   - component: {fileID: 2683937289725875806}
+  - component: {fileID: -3314732610107591805}
   m_Layer: 0
   m_Name: GroenHijstkraan
   m_TagString: Untagged
@@ -3772,6 +3773,18 @@ MonoBehaviour:
   _range: 1.5
   _pickUpPosition: {fileID: 0}
   _targetTag: moveAbleObject
+--- !u!114 &-3314732610107591805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8696367415222924769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552b4bc268eea6643bcb4f20cc3fb563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8819465701490982139
 GameObject:
   m_ObjectHideFlags: 0
