@@ -18,6 +18,7 @@ namespace _New_Game.Scripts.Crane
             if (transform.position.y <= _lowestFallPoint.transform.position.y)
             {
                 transform.position = _respawnPoint.position;
+                transform.rotation = _respawnPoint.rotation;
             }
         }
     }

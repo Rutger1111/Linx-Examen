@@ -9,7 +9,7 @@ public class PickUp : NetworkBehaviour
     [SerializeField] private string _targetTag = "moveAbleObject";
     
     private NetworkObject _heldObject;
-    private List<GameObject> _pickUpAbleObjects = new List<GameObject>();
+    public List<GameObject> _pickUpAbleObjects = new List<GameObject>();
     private ConfigurableJoint _joint;
 
     void Update()
