@@ -15,8 +15,8 @@ public class Snap : ICommand
     [SerializeField] private bool isWallRoof = false;
     public GameObject UIplace;
     private Vector3 _pos;
+    private Quaternion _rot;
     private quaternion _hook2Rot;
-    
     public List<SnapPosition> _snapPosition = new List<SnapPosition>();
     public GameObject _hookObject1;
     public GameObject _hookObject2;
@@ -31,12 +31,21 @@ public class Snap : ICommand
     public GameObject decoratedWall;
     void Start()
     {
+        _rot = transform.rotation;
+        _pos = transform.position;
         GetComponent<Rigidbody>().isKinematic = false;
         UIplace.SetActive(false);
     }
 
     private void Update()
     {
+        if (_hookObject1.GetComponent<PickUpItem>().IsHeld.Value == false || _hookObject2.GetComponent<PickUpItem>().IsHeld.Value == false)
+        {
+            print("goeiemorgen" + _hookObject1.GetComponent<PickUpItem>().IsHeld.Value);
+            print("doei" + _hookObject2.GetComponent<PickUpItem>().IsHeld.Value);
+            transform.position = _pos;
+            transform.rotation = _rot;
+        }
         if (_snapPosition.Count > 0)
         {
             foreach (var snapPos in _snapPosition)
@@ -55,10 +64,11 @@ public class Snap : ICommand
             }
         }
 
+
         if (isInValidTrigger && _isBuildingBlock == true)
         {
             UIplace.SetActive(true);
-            
+
             if (Input.GetKeyDown(KeyCode.F))
             {
                 Invoke();
@@ -69,13 +79,14 @@ public class Snap : ICommand
                 gameObject.SetActive(this.gameObject);
             }
         }
-        
+
 
         if (isplaced)
         {
             transform.position = colposition;
             transform.rotation = colRotation;
         }
+
     }
 
     void OnTriggerStay(Collider other)
