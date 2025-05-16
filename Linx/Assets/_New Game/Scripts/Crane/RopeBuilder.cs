@@ -17,10 +17,14 @@ namespace _New_Game.Scripts.Crane
 
         void Start()
         {
+            anchorPoint.GetComponent<Rigidbody>().isKinematic = true;
             BuildRope();
             SpawnAndAttachMagnet();
         }
-
+        void Update()
+        {
+            anchorPoint.GetComponent<Rigidbody>().isKinematic = true;
+        }
         private void BuildRope()
         {
             GameObject previous = anchorPoint.gameObject;
@@ -63,9 +67,9 @@ namespace _New_Game.Scripts.Crane
             
                 lastSegment.GetComponent<ConfigurableJoint>().connectedBody = segment.GetComponent<Rigidbody>();
                 if(segments.Count == 0){
-                    print("hiero");
-                    segment.GetComponent<Rigidbody>().isKinematic = true;
+                    segment.GetComponent<Rigidbody>().isKinematic = false;
                 }
+                segment.GetComponent<Rigidbody>().isKinematic = false;
                 segments.Add(segment);
                 previous = segment;
             }
@@ -73,15 +77,12 @@ namespace _New_Game.Scripts.Crane
 
         private void SpawnAndAttachMagnet()
         {
-            print("Comeshere");
-
             if (magnetPrefab == null || segments.Count == 0) return;
 
             GameObject lastSegment = segments[segments.Count - 1];
             Vector3 spawnPos = lastSegment.transform.position + Vector3.down * segmentSpacing;
 
             GameObject magnet = Instantiate(magnetPrefab, spawnPos, Quaternion.identity, anchorPoint);
-            print("parent name = " + magnet);
             transform.parent.parent.parent.parent.parent.GetComponent<PickUp>()._pickUpPosition = magnet;
             Rigidbody magnetRb = magnet.GetComponent<Rigidbody>();
             if (magnetRb == null)
