@@ -26,6 +26,9 @@ public class Snap : ICommand
     public Vector3 colposition;
     public Quaternion colRotation;
     public int snapId;
+
+    public GameObject invisableWall;
+    public GameObject decoratedWall;
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = false;
@@ -43,7 +46,6 @@ public class Snap : ICommand
                     colposition = snapPos.transform.position;
                     colRotation = snapPos.transform.rotation;
                     isInValidTrigger = true;
-                    print("check");
                 }
                 else if (_isBuildingBlock == false)
                 {
@@ -62,7 +64,8 @@ public class Snap : ICommand
                 Invoke();
                 _isBuildingBlock = false;
                 placed++;
-            
+                invisableWall.SetActive(false);
+                decoratedWall.SetActive(true);
             }
         }
         
