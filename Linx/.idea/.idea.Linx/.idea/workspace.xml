@@ -6,15 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Prefab/nieuwe environment/GroenHijstkraan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Prefab/nieuwe environment/GroenHijstkraan.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Prefab/nieuwe environment/hijskraan Player1 Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Prefab/nieuwe environment/hijskraan Player1 Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/Respawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/Respawn.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/Menu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Movements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Movements.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/NetWorkController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/NetWorkController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +64,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "justtotest",
+    "git-widget-placeholder": "AddRespawn",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,9 +75,9 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\ruben\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\ruben\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\ruben\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\reeme\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
+      "C:\\Users\\reeme\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\reeme\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -179,7 +176,7 @@
       <workItem from="1747217508162" duration="1000" />
       <workItem from="1747292887033" duration="2233000" />
       <workItem from="1747299744709" duration="5361000" />
-      <workItem from="1747373210427" duration="5501000" />
+      <workItem from="1747373210427" duration="2603000" />
     </task>
     <servers />
   </component>

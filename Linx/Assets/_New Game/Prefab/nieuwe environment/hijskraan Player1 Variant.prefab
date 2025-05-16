@@ -120,21 +120,20 @@ PrefabInstance:
       propertyPath: _distance
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5224460199853752182, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4236910056249713781, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 3630650914158888945}
+      insertIndex: -1
+      addedObject: {fileID: -5545018791796530041}
   m_SourcePrefab: {fileID: 100100000, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
 --- !u!1 &6952437913549274390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4236910056249713781, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
   m_PrefabInstance: {fileID: 6534866330297080163}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3630650914158888945
+--- !u!114 &-5545018791796530041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,19 +142,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6952437913549274390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 552b4bc268eea6643bcb4f20cc3fb563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2929110615
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
+  lowestFallPoint: {fileID: 0}
+  respawnPoint: {fileID: 0}

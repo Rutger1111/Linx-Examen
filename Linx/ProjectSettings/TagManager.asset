@@ -12,6 +12,10 @@ TagManager:
   - BuildingBlock
   - Ground
   - BuildPosition
+  - SpawnPoint1
+  - SpawnPoint2
+  - Dead
+  - LowestFallPoint
   layers:
   - Default
   - TransparentFX
