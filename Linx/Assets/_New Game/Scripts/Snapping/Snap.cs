@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using FishSystem;
 using NUnit.Framework;
-using ParrelSync.NonCore;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -44,10 +43,9 @@ public class Snap : ICommand
                     colposition = snapPos.transform.position;
                     colRotation = snapPos.transform.rotation;
                     isInValidTrigger = true;
-                    UIplace.SetActive(true);
-                    break;
+                    print("check");
                 }
-                else
+                else if (_isBuildingBlock == false)
                 {
                     isInValidTrigger = false;
                     UIplace.SetActive(false);
@@ -55,13 +53,19 @@ public class Snap : ICommand
             }
         }
 
-        if (isInValidTrigger && _isBuildingBlock && Input.GetKeyDown(KeyCode.F))
+        if (isInValidTrigger && _isBuildingBlock == true)
         {
-            Invoke();
-            _isBuildingBlock = false;
-            placed++;
-            UIplace.SetActive(false);
+            UIplace.SetActive(true);
+            
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Invoke();
+                _isBuildingBlock = false;
+                placed++;
+            
+            }
         }
+        
 
         if (isplaced)
         {
@@ -85,7 +89,6 @@ public class Snap : ICommand
     void OnTriggerExit(Collider other)
     {
         _snapPosition.Clear();
-        _isBuildingBlock = true;
         UIplace.SetActive(false);
     }
     public override void Invoke(Fish fish)
