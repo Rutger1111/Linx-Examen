@@ -48,8 +48,7 @@ public class Snap : ICommand
     {
         if (_hookObject1.GetComponent<PickUpItem>().IsHeld.Value == false || _hookObject2.GetComponent<PickUpItem>().IsHeld.Value == false)
         {
-            print("goeiemorgen" + _hookObject1.GetComponent<PickUpItem>().IsHeld.Value);
-            print("doei" + _hookObject2.GetComponent<PickUpItem>().IsHeld.Value);
+            GetComponent<Rigidbody>().isKinematic = true;
             transform.position = _pos;
             transform.rotation = _rot;
             _hookObject1.transform.position = _hookPos1;
