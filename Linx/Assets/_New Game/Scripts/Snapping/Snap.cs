@@ -56,6 +56,10 @@ public class Snap : ICommand
             _hookObject2.transform.position = _hookPos2;
             _hookObject2.transform.rotation = _hookRot2;
         }
+        else
+        {
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
         if (_snapPosition.Count > 0)
         {
             foreach (var snapPos in _snapPosition)
