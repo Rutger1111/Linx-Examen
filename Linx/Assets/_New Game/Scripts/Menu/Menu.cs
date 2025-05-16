@@ -98,8 +98,7 @@ public class Menu : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            print(menuActive);
-            
+
             pausePanel.SetActive(menuActive);
             
             Cursor.lockState = CursorLockMode.None;
