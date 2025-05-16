@@ -39,11 +39,15 @@ namespace _New_Game.Scripts.Crane
         private void Awake()
         {
             _craneMovement = new CraneMovement();
+            
+            
         }
 
         private void Start()
         {
             _craneMovement = GetComponent<CraneMovement>();
+            
+            
         }
 
         private void OnEnable()

@@ -20,7 +20,7 @@ public class Menu : MonoBehaviour
     
     [SerializeField] private List<GameObject> tutorialPanel = new List<GameObject>();
     [SerializeField] private GameObject tutorialPanel1;
-    private bool TutoActive = true;
+    private bool TutoActive = false;
     public bool menuActive = false;
     private void Start()
     {
@@ -34,27 +34,31 @@ public class Menu : MonoBehaviour
         
         FindingCamera();
         
-        if (TutoActive)
+        if (TutoActive == false)
         {
             Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = TutoActive;
+            Cursor.visible = true;
         }
-        foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList) 
+        else
         {
-            Cameras.CameraDissable(menuActive);
-        }
-        foreach (Movement movement in movementList)
-        {
-            movement.MovementDisable(menuActive);
-        }
-        foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
-        {
-            Cameras.CameraDissable(!TutoActive);
-        }
-            
-        foreach (Movement movement in movementList)
-        {
-            movement.MovementDisable(!TutoActive);
+            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList) 
+            {
+                Cameras.CameraDissable(true);
+            }
+            foreach (Movement movement in movementList)
+            {
+                movement.MovementDisable(true);
+            }
+
+        
+            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
+            {
+                Cameras.CameraDissable(true);
+            }
+            foreach (Movement movement in movementList)
+            {
+                movement.MovementDisable(true);
+            }   
         }
     }
     
@@ -77,13 +81,13 @@ public class Menu : MonoBehaviour
     public void OpenTutorial()
     {
         tutorialPanel1.SetActive(true);
-        TutoActive = true;
+        TutoActive = false;
     }
 
     public void CloseTutorial()
     {
         tutorialPanel1.SetActive(false);
-        TutoActive = false;
+        TutoActive = true;
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

@@ -61,7 +61,6 @@ public class RopeBuilder : MonoBehaviour
             
             lastSegment.GetComponent<ConfigurableJoint>().connectedBody = segment.GetComponent<Rigidbody>();
             if(segments.Count == 0){
-                print("hiero");
                 segment.GetComponent<Rigidbody>().isKinematic = true;
             }
             segments.Add(segment);
