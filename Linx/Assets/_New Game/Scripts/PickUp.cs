@@ -87,7 +87,7 @@ public class PickUp : NetworkBehaviour
             {
                 _pickUpAbleObjects.Add(obj);
                 
-                //UIPickup.SetActive(true);
+                UIPickup.SetActive(true);
             }
         }
     }

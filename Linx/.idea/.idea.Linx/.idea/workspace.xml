@@ -5,13 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Multiplayer.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Prefab/nieuwe environment/GroenHijstkraan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Prefab/nieuwe environment/GroenHijstkraan.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Prefab/nieuwe environment/hijskraan Player1 Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Prefab/nieuwe environment/hijskraan Player1 Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/Menu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Movements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Movements.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
