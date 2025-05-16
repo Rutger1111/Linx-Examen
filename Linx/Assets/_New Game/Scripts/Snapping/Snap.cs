@@ -16,7 +16,10 @@ public class Snap : ICommand
     public GameObject UIplace;
     private Vector3 _pos;
     private Quaternion _rot;
-    private quaternion _hook2Rot;
+    private Vector3 _hookPos1;
+    private Quaternion _hookRot1;
+    private Vector3 _hookPos2;
+    private Quaternion _hookRot2;
     public List<SnapPosition> _snapPosition = new List<SnapPosition>();
     public GameObject _hookObject1;
     public GameObject _hookObject2;
@@ -33,6 +36,10 @@ public class Snap : ICommand
     {
         _rot = transform.rotation;
         _pos = transform.position;
+        _hookPos1 = _hookObject1.transform.position;
+        _hookRot1 = _hookObject1.transform.rotation;
+        _hookPos2 = _hookObject2.transform.position;
+        _hookRot2 = _hookObject2.transform.rotation;
         GetComponent<Rigidbody>().isKinematic = false;
         UIplace.SetActive(false);
     }
@@ -41,10 +48,17 @@ public class Snap : ICommand
     {
         if (_hookObject1.GetComponent<PickUpItem>().IsHeld.Value == false || _hookObject2.GetComponent<PickUpItem>().IsHeld.Value == false)
         {
-            print("goeiemorgen" + _hookObject1.GetComponent<PickUpItem>().IsHeld.Value);
-            print("doei" + _hookObject2.GetComponent<PickUpItem>().IsHeld.Value);
+            GetComponent<Rigidbody>().isKinematic = true;
             transform.position = _pos;
             transform.rotation = _rot;
+            _hookObject1.transform.position = _hookPos1;
+            _hookObject1.transform.rotation = _hookRot1;
+            _hookObject2.transform.position = _hookPos2;
+            _hookObject2.transform.rotation = _hookRot2;
+        }
+        else
+        {
+            GetComponent<Rigidbody>().isKinematic = false;
         }
         if (_snapPosition.Count > 0)
         {

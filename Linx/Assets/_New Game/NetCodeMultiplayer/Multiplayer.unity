@@ -11753,8 +11753,8 @@ MonoBehaviour:
   UIplace: {fileID: 1893875006}
   _snapPosition:
   - {fileID: 0}
-  _hookObject1: {fileID: 1244689876}
-  _hookObject2: {fileID: 1777301788}
+  _hookObject1: {fileID: 1030996471}
+  _hookObject2: {fileID: 759698680}
   colposition: {x: 0, y: 0, z: 0}
   colRotation: {x: 0, y: 0, z: 0, w: 0}
   snapId: 3
@@ -12166,8 +12166,8 @@ MonoBehaviour:
   UIplace: {fileID: 1893875006}
   _snapPosition:
   - {fileID: 0}
-  _hookObject1: {fileID: 1244689876}
-  _hookObject2: {fileID: 1777301788}
+  _hookObject1: {fileID: 1812327451}
+  _hookObject2: {fileID: 1614757650}
   colposition: {x: 0, y: 0, z: 0}
   colRotation: {x: 0, y: 0, z: 0, w: 0}
   snapId: 4
@@ -12402,8 +12402,8 @@ MonoBehaviour:
   UIplace: {fileID: 1893875006}
   _snapPosition:
   - {fileID: 0}
-  _hookObject1: {fileID: 1244689876}
-  _hookObject2: {fileID: 1777301788}
+  _hookObject1: {fileID: 2118383423}
+  _hookObject2: {fileID: 1030076888}
   colposition: {x: 0, y: 0, z: 0}
   colRotation: {x: 0, y: 0, z: 0, w: 0}
   snapId: 5
