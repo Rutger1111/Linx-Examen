@@ -35,6 +35,7 @@ namespace FishSystem
 
         protected void Update()
         {
+            // timer to check the state each second
             if(_timer - Time.deltaTime <= 0){
                 _timer = 1;
                 CheckState();
@@ -42,6 +43,7 @@ namespace FishSystem
             else{
                 _timer -= Time.deltaTime;
             }
+            // Check what state it is in and call the state's function
             switch(state){
                 case (EStates.Roaming):
                     roamingCommand.Invoke(this);
@@ -61,9 +63,10 @@ namespace FishSystem
             }            
 
         }
-
+        // check whether it still has to be in its current state
         public virtual void CheckState()
         {
+            // checks whether its close enaught and is roaming then checks whether it still has to be roaming
             if(Vector3.Distance(transform.position, bait.transform.position) < alluredDistance && state == EStates.Roaming){
                 bool rolled = P_Roll(alluredChance);
                 state = rolled == true ? EStates.Allured : EStates.Roaming;
@@ -72,21 +75,24 @@ namespace FishSystem
                     return;
                 }
             }
-
+            // checks if its allured
             if(state == EStates.Allured){
+                // rolls whether to make the fish roam, stay allured or bite the bait
                 state = P_Roll(roamingChance) == true ? EStates.Roaming : EStates.Allured;
                 if (state == EStates.Allured){
                     state = P_Roll(biteChance) == true ? EStates.Biting : EStates.Allured;
                 }
                 return;
             }
-
+            //checks if the state is biting
             if(state == EStates.Biting){
+                // rolls whether is has to stay in biting state
                 state = P_Roll(roamingChance) == true ? EStates.Roaming : EStates.Biting;
             }
         }
-
+        // function for rolling chances
         protected bool P_Roll(int percentageChance){
+            // returns true if number is under percentagechance
             return Random.Range(0, 100) <= percentageChance;
         }
     }
