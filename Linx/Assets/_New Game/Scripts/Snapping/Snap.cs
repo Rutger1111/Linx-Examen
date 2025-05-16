@@ -66,6 +66,7 @@ public class Snap : ICommand
                 placed++;
                 invisableWall.SetActive(false);
                 decoratedWall.SetActive(true);
+                gameObject.SetActive(this.gameObject);
             }
         }
         

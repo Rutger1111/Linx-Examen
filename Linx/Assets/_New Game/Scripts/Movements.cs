@@ -46,8 +46,6 @@ namespace _New_Game.Scripts.Crane
         private void Start()
         {
             _craneMovement = GetComponent<CraneMovement>();
-            
-            
         }
 
         private void OnEnable()
@@ -71,13 +69,12 @@ namespace _New_Game.Scripts.Crane
                 //MoveArm();
                 //MoveHook();
                 
-                if (hasMovementOptions == true)
-                {
+                
                     StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
                     Drive();
                     Turn();
                     Grab();
-                }
+                
             }
         }
 

@@ -71,10 +71,14 @@ public class SpawnManager : NetworkBehaviour
     {
         GameObject playerInstance = Instantiate(redPlayer);
         playerInstance.transform.position = spawnPointRed;
+        
         var netObj = playerInstance.GetComponent<NetworkObject>();
         if (netObj != null)
         {
             netObj.SpawnWithOwnership(clientId);
+            
+            print(netObj.IsOwner + "isowner");
+            
             _playerSpawned.Add(playerInstance);
             
             var info = playerInstance.GetComponent<PlayerInfo>();
@@ -98,6 +102,9 @@ public class SpawnManager : NetworkBehaviour
         if (netObj != null)
         {
             netObj.SpawnWithOwnership(clientId);
+            
+            print(netObj.IsOwner + "isowner");
+            
             _playerSpawned.Add(playerInstance);
             
             var info = playerInstance.GetComponent<PlayerInfo>();

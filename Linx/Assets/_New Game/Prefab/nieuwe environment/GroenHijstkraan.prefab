@@ -3625,6 +3625,7 @@ GameObject:
   - component: {fileID: 8357856322979174207}
   - component: {fileID: 2683937289725875806}
   - component: {fileID: -6231938047698638386}
+  - component: {fileID: 8861010883561907976}
   m_Layer: 0
   m_Name: GroenHijstkraan
   m_TagString: Untagged
@@ -3661,10 +3662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2301721264
+  GlobalObjectIdHash: 1335932842
   InScenePlacedSourceGlobalObjectIdHash: 1335932842
   DeferredDespawnTick: 0
-  Ownership: 1
+  Ownership: 7
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -3785,8 +3786,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552b4bc268eea6643bcb4f20cc3fb563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowestFallPoint: {fileID: 0}
-  respawnPoint: {fileID: 0}
+--- !u!114 &8861010883561907976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8696367415222924769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da52bf8bbc1de48cfb221a6ff30f7972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &8819465701490982139
 GameObject:
   m_ObjectHideFlags: 0

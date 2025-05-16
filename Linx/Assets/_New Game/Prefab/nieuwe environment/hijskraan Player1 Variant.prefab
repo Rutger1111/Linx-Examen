@@ -101,6 +101,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: a4faf2dc956790049a66eb58af7c3ee1, type: 2}
     - target: {fileID: 5224460199853752182, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: Ownership
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224460199853752182, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1831064247
       objectReference: {fileID: 0}
@@ -127,6 +131,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4236910056249713781, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       insertIndex: -1
       addedObject: {fileID: -5545018791796530041}
+    - targetCorrespondingSourceObject: {fileID: 4236910056249713781, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4279817404461599676}
   m_SourcePrefab: {fileID: 100100000, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
 --- !u!1 &6952437913549274390 stripped
 GameObject:
@@ -145,5 +152,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552b4bc268eea6643bcb4f20cc3fb563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowestFallPoint: {fileID: 0}
-  respawnPoint: {fileID: 0}
+--- !u!114 &4279817404461599676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952437913549274390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da52bf8bbc1de48cfb221a6ff30f7972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
