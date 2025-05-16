@@ -13,15 +13,16 @@ public class PickUp : NetworkBehaviour
     private ConfigurableJoint _joint;
 
     [SerializeField] private GameObject UIPickup;
-    
+
+    public GameObject[] allObjects;
+    public float distance;
 
     void Update()
     {
-        if (!IsOwner) return;
 
         FindNearbyObjects();
 
-        if (Input.GetKeyDown(KeyCode.E) && IsOwner)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
@@ -78,16 +79,24 @@ public class PickUp : NetworkBehaviour
     void FindNearbyObjects()
     {
         _pickUpAbleObjects.Clear();
-        GameObject[] allObjects = GameObject.FindGameObjectsWithTag(_targetTag);
+        allObjects = GameObject.FindGameObjectsWithTag(_targetTag);
+        
+        print("check");
 
         foreach (GameObject obj in allObjects)
         {
-            float distance = Vector3.Distance(_pickUpPosition.transform.position, obj.transform.position);
+            
+            
+            distance = Vector3.Distance(_pickUpPosition.transform.position, obj.transform.position);
+            
+            
             if (distance <= _range)
             {
+                print("fuck");
+                
                 _pickUpAbleObjects.Add(obj);
                 
-                UIPickup.SetActive(true);
+                //UIPickup.SetActive(true);
             }
         }
     }

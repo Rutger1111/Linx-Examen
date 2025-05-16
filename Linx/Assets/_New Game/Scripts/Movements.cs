@@ -62,8 +62,7 @@ namespace _New_Game.Scripts.Crane
             hasMovementOptions = CanMove;
         }
         private void Drive()
-        { 
-            Debug.Log("Drive");
+        {
             float driveInput = 0f;
             //float driveInput = _craneMovement.Driving.drive.ReadValue<float>();
 
@@ -75,7 +74,7 @@ namespace _New_Game.Scripts.Crane
 
         private void Turn()
         {
-            Debug.Log("Turn");
+            
             float turnInput = 0f;
             //float turnInput = _craneMovement.Driving.TurnWheels.ReadValue<float>();
 
