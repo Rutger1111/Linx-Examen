@@ -3643,7 +3643,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 37.98, y: 31.56, z: 132.56}
-  m_LocalScale: {x: 9, y: 9, z: 9}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2526715170905390331}
@@ -3696,7 +3696,7 @@ MonoBehaviour:
   startSupport: {fileID: 7761481365655877535}
   finishSupport: {fileID: 2203230878298430490}
   baseRotationSpeed: 50
-  driveSpeed: 5
+  driveSpeed: 8
   armRotationSpeed: 30
   hookSpeed: 2
   minArmAngle: 1
@@ -3776,6 +3776,8 @@ MonoBehaviour:
   _targetTag: moveAbleObject
   _pickUpAbleObjects: []
   UIPickup: {fileID: 0}
+  allObjects: []
+  distance: 0
 --- !u!114 &-6231938047698638386
 MonoBehaviour:
   m_ObjectHideFlags: 0
