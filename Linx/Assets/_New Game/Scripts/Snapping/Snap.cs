@@ -60,6 +60,7 @@ public class Snap : ICommand
         {
             GetComponent<Rigidbody>().isKinematic = false;
         }
+        
         if (_snapPosition.Count > 0)
         {
             foreach (var snapPos in _snapPosition)

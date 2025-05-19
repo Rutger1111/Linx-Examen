@@ -81,7 +81,6 @@ public class PickUp : NetworkBehaviour
         _pickUpAbleObjects.Clear();
         allObjects = GameObject.FindGameObjectsWithTag(_targetTag);
         
-        print("check");
 
         foreach (GameObject obj in allObjects)
         {
@@ -92,8 +91,6 @@ public class PickUp : NetworkBehaviour
             
             if (distance <= _range)
             {
-                print("fuck");
-                
                 _pickUpAbleObjects.Add(obj);
                 
                 //UIPickup.SetActive(true);

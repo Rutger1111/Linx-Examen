@@ -33,7 +33,8 @@ namespace _New_Game.Scripts.Crane
 
         [SerializeField] private float CenterMouseTimer = 0.4f;
 
-        private bool hasMovementOptions;
+        public bool hasMovementOptions;
+        private bool isGrounded;
 
         void Update()
         {
@@ -48,19 +49,6 @@ namespace _New_Game.Scripts.Crane
                 
                 if (hasMovementOptions == true)
                 {
-                    float rotX = transform.rotation.eulerAngles.x;
-                    float rotZ = transform.rotation.eulerAngles.z;
-
-                    
-                    if (rotX > 180) rotX -= 360;
-                    if (rotZ > 180) rotZ -= 360;
-
-                    
-                    if (Mathf.Abs(rotX) > 90 || Mathf.Abs(rotZ) > 90) 
-                        return;
-                        
-                        
-                    
                     StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
                     Drive();
                     Turn();
@@ -74,6 +62,7 @@ namespace _New_Game.Scripts.Crane
         public void MovementDisable(bool CanMove)
         {
             hasMovementOptions = CanMove;
+            
         }
         private void Drive()
         {
