@@ -1,4 +1,7 @@
 # Cookie construction
+
+<img align="Left" width="18%" height="18%" src="https://github.com/user-attachments/assets/5d751be2-b43f-4136-b248-6b6142d03224"></br></br></br></br></br></br>
+
 # Links to Wiki pages 
 - [PipeLine](https://github.com/Rutger1111/Linx-Examen/wiki/PipeLine)
 - [Documentations](https://github.com/Rutger1111/Linx-Examen/wiki/Agile-Planning)
