@@ -16,7 +16,6 @@
 ## Developers
 Rutger van de laar (Lead Developer)
 - Snapping [code]()
-- Game completion [code]()
   
 Renzo Reemer (game Designer)
 - Crane movement [code]()
