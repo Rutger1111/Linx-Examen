@@ -116,7 +116,6 @@ namespace _New_Game.Scripts.Crane
             float grabInput = 0f;
 
             if (Input.GetKey(KeyCode.Mouse0)) grabInput = 1f;
-            //Up(KeyCode.Mouse0)) grabInput = -1f;
 
             Vector3 currentAngles = craneArm.localEulerAngles;
 
