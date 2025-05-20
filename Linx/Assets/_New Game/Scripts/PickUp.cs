@@ -15,7 +15,6 @@ public class PickUp : NetworkBehaviour
     [SerializeField] private GameObject UIPickup;
 
     public GameObject[] allObjects;
-    public float distance;
 
     void Update()
     {
@@ -32,13 +31,17 @@ public class PickUp : NetworkBehaviour
             else if (_heldObject != null)
             {
                 ulong targetId = _heldObject.NetworkObjectId;
-                RequestDropServerRpc(targetId);
+                drop(targetId);
             }
         }
 
         UpdateJointLogic();
     }
 
+    public void drop(ulong targetId)
+    {
+        RequestDropServerRpc(targetId);
+    }
     void TryPickUp()
     {
         foreach (var obj in _pickUpAbleObjects)
@@ -80,21 +83,25 @@ public class PickUp : NetworkBehaviour
     {
         _pickUpAbleObjects.Clear();
         allObjects = GameObject.FindGameObjectsWithTag(_targetTag);
+
+        GameObject closestObject = null;
         
+        float closestDistance = Mathf.Infinity;
 
         foreach (GameObject obj in allObjects)
         {
-            
-            
-            distance = Vector3.Distance(_pickUpPosition.transform.position, obj.transform.position);
-            
-            
-            if (distance <= _range)
+            float currentDistance = Vector3.Distance(_pickUpPosition.transform.position, obj.transform.position);
+
+            if (currentDistance <= _range && currentDistance < closestDistance)
             {
-                _pickUpAbleObjects.Add(obj);
-                
-                //UIPickup.SetActive(true);
+                closestDistance = currentDistance;
+                closestObject = obj;
             }
+        }
+
+        if (closestObject != null)
+        {
+            _pickUpAbleObjects.Add(closestObject);
         }
     }
 

@@ -5,7 +5,9 @@ using NUnit.Framework;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Unity.Netcode;
 
 public class Snap : ICommand
 {
@@ -40,15 +42,17 @@ public class Snap : ICommand
         _hookRot1 = _hookObject1.transform.rotation;
         _hookPos2 = _hookObject2.transform.position;
         _hookRot2 = _hookObject2.transform.rotation;
+        
         GetComponent<Rigidbody>().isKinematic = false;
         UIplace.SetActive(false);
     }
 
     private void Update()
     {
+        /*
         if (_hookObject1.GetComponent<PickUpItem>().IsHeld.Value == false || _hookObject2.GetComponent<PickUpItem>().IsHeld.Value == false)
         {
-            GetComponent<Rigidbody>().isKinematic = true;
+            
             transform.position = _pos;
             transform.rotation = _rot;
             _hookObject1.transform.position = _hookPos1;
@@ -60,7 +64,7 @@ public class Snap : ICommand
         {
             GetComponent<Rigidbody>().isKinematic = false;
         }
-        
+        */
         if (_snapPosition.Count > 0)
         {
             foreach (var snapPos in _snapPosition)
@@ -102,6 +106,11 @@ public class Snap : ICommand
             transform.rotation = colRotation;
         }
 
+        if (placed >= 6)
+        {
+            NetworkManager.Singleton.SceneManager.LoadScene("Won", LoadSceneMode.Single);
+        }
+        
     }
 
     void OnTriggerStay(Collider other)

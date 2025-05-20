@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 82665231}
   - component: {fileID: 82665232}
   - component: {fileID: 82665233}
+  - component: {fileID: 82665234}
   m_Layer: 0
   m_Name: leftWall
   m_TagString: Untagged
@@ -841,6 +842,27 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   Redhook: {fileID: 1244689882}
   BlueHook: {fileID: 1777301794}
+--- !u!114 &82665234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82665229}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4285658c1f2f6489666448b37543eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _cookie: {fileID: 4308697756648215138}
+  _redHook: {fileID: 1244689876}
+  _greenHook: {fileID: 1777301788}
+  _maxDistance: 1
+  _assignedPickUp: {fileID: 0}
+  _cookieNetObj: {fileID: 0}
+  _lifes: 0
+  picker: {fileID: 0}
 --- !u!1001 &155001168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2102,9 +2124,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 519340722}
-  - component: {fileID: 519340724}
   - component: {fileID: 519340723}
   - component: {fileID: 519340725}
+  - component: {fileID: 519340726}
   m_Layer: 0
   m_Name: FrontWall
   m_TagString: Untagged
@@ -2177,23 +2199,6 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &519340724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519340721}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a173c65e12aa53946ade7e79b5c5cbc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hookPoint1: {fileID: 0}
-  _hookPoint2: {fileID: 0}
-  _box: {fileID: 0}
-  _rotationSpeed: 5
-  _followSpeed: 5
 --- !u!114 &519340725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,6 +2214,27 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   Redhook: {fileID: 1647971422}
   BlueHook: {fileID: 1888464544}
+--- !u!114 &519340726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519340721}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4285658c1f2f6489666448b37543eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _cookie: {fileID: 4886949280671581425}
+  _redHook: {fileID: 1647971416}
+  _greenHook: {fileID: 1888464538}
+  _maxDistance: 1
+  _assignedPickUp: {fileID: 0}
+  _cookieNetObj: {fileID: 0}
+  _lifes: 0
+  picker: {fileID: 0}
 --- !u!114 &538356574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2818,6 +2844,7 @@ GameObject:
   - component: {fileID: 616285899}
   - component: {fileID: 616285900}
   - component: {fileID: 616285901}
+  - component: {fileID: 616285902}
   m_Layer: 0
   m_Name: RoofRIght
   m_TagString: Untagged
@@ -2922,6 +2949,27 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   Redhook: {fileID: 2118383429}
   BlueHook: {fileID: 1030076894}
+--- !u!114 &616285902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616285897}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4285658c1f2f6489666448b37543eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _cookie: {fileID: 8271490286116741081}
+  _redHook: {fileID: 2118383423}
+  _greenHook: {fileID: 1030076888}
+  _maxDistance: 1
+  _assignedPickUp: {fileID: 0}
+  _cookieNetObj: {fileID: 0}
+  _lifes: 0
+  picker: {fileID: 0}
 --- !u!114 &627168971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2998,6 +3046,7 @@ GameObject:
   - component: {fileID: 634974316}
   - component: {fileID: 634974317}
   - component: {fileID: 634974318}
+  - component: {fileID: 634974319}
   m_Layer: 0
   m_Name: BackWall
   m_TagString: Untagged
@@ -3102,6 +3151,27 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   Redhook: {fileID: 1661352465}
   BlueHook: {fileID: 831368068}
+--- !u!114 &634974319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634974314}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4285658c1f2f6489666448b37543eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _cookie: {fileID: 8553298176703015753}
+  _redHook: {fileID: 1661352459}
+  _greenHook: {fileID: 831368062}
+  _maxDistance: 1
+  _assignedPickUp: {fileID: 0}
+  _cookieNetObj: {fileID: 0}
+  _lifes: 0
+  picker: {fileID: 0}
 --- !u!65 &690079476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3137,6 +3207,135 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
   snapId: 4
+--- !u!1 &692529665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 692529667}
+  - component: {fileID: 692529666}
+  m_Layer: 0
+  m_Name: BackgroundMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &692529666
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692529665}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: afc24ba0db52206459264f0c78c811e8, type: 3}
+  m_Resource: {fileID: 8300000, guid: afc24ba0db52206459264f0c78c811e8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &692529667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692529665}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.304752, y: -5.616703, z: 18.093922}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &707640948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4010,6 +4209,7 @@ GameObject:
   - component: {fileID: 848905795}
   - component: {fileID: 848905796}
   - component: {fileID: 848905798}
+  - component: {fileID: 848905799}
   m_Layer: 0
   m_Name: RoofLeft
   m_TagString: Untagged
@@ -4097,6 +4297,27 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   Redhook: {fileID: 1812327457}
   BlueHook: {fileID: 1614757656}
+--- !u!114 &848905799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848905794}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4285658c1f2f6489666448b37543eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _cookie: {fileID: 7248139386458223753}
+  _redHook: {fileID: 1812327451}
+  _greenHook: {fileID: 1614757650}
+  _maxDistance: 1
+  _assignedPickUp: {fileID: 0}
+  _cookieNetObj: {fileID: 0}
+  _lifes: 0
+  picker: {fileID: 0}
 --- !u!1 &851273909
 GameObject:
   m_ObjectHideFlags: 0
@@ -7164,6 +7385,7 @@ GameObject:
   - component: {fileID: 1472135704}
   - component: {fileID: 1472135705}
   - component: {fileID: 1472135706}
+  - component: {fileID: 1472135707}
   m_Layer: 0
   m_Name: RightWall
   m_TagString: Untagged
@@ -7268,6 +7490,27 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   Redhook: {fileID: 1030996477}
   BlueHook: {fileID: 759698686}
+--- !u!114 &1472135707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472135702}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4285658c1f2f6489666448b37543eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _cookie: {fileID: 1527670144848456673}
+  _redHook: {fileID: 1030996471}
+  _greenHook: {fileID: 759698680}
+  _maxDistance: 1
+  _assignedPickUp: {fileID: 0}
+  _cookieNetObj: {fileID: 0}
+  _lifes: 0
+  picker: {fileID: 0}
 --- !u!1 &1478471088
 GameObject:
   m_ObjectHideFlags: 0
@@ -48738,3 +48981,4 @@ SceneRoots:
   - {fileID: 1117394962}
   - {fileID: 1441260479}
   - {fileID: 8263123360798971839}
+  - {fileID: 692529667}
