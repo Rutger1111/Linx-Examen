@@ -1,136 +1,133 @@
+using System;
 using System.Collections.Generic;
-using _New_Game.Scripts.Camera;
 using _New_Game.Scripts.Crane;
+using NUnit.Framework;
 using Unity.Netcode;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace _New_Game.Scripts.Menu
+public class Menu : NetworkBehaviour
 {
-    public class Menu : NetworkBehaviour
+    
+    [SerializeField] private GameObject pausePanel;
+
+    [SerializeField] private List<ThirdPersonCameraPlayerFollow> camerasList;
+    [SerializeField] private List<Movement> movementList;
+
+    [Header("Tutorial")] 
+    
+    private int index;
+    
+    [SerializeField] private List<GameObject> tutorialPanel = new List<GameObject>();
+    [SerializeField] private GameObject tutorialPanel1;
+    public bool TutoActive = false;
+    public bool menuActive = true;
+
+    private void Update()
     {
+        InputHandler();
+        FindingCamera();
+        
+        if (TutoActive == false)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList) 
+            {
+                Cameras.CameraDissable(menuActive);
+            }
+            foreach (Movement movement in movementList)
+            {
+                movement.MovementDisable(menuActive);
+            }
+        }
+    }
     
-        [SerializeField] private GameObject pausePanel;
-
-        [SerializeField] private List<ThirdPersonCameraPlayerFollow> camerasList;
-        [SerializeField] private List<Movement> movementList;
-
-        [Header("Tutorial")] 
-    
-        private int _index;
-    
-        [SerializeField] private List<GameObject> tutorialPanel;
-        [SerializeField] private GameObject tutorialPanel1;
-        private bool _tutoActive;
-        public bool menuActive = true;
-
-        private void Update()
+    public void NextPanel(int direction)
+    {
+        if (index >= tutorialPanel.Count || index < 0)
         {
-
-            if (!IsOwner)return;
-        
-        
-            InputHandler();
-            FindingCamera();
-        
-            if (_tutoActive == false)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                foreach (ThirdPersonCameraPlayerFollow cameras in camerasList) 
-                {
-                    cameras.CameraDissable(menuActive);
-                }
-                foreach (Movement movement in movementList)
-                {
-                    movement.MovementDisable(menuActive);
-                }
-            }
+            index = 0;
+            CloseTutorial();
         }
-    
-        public void NextPanel(int direction)
+        else
         {
-            if (_index >= tutorialPanel.Count || _index < 0)
-            {
-                _index = 0;
-                CloseTutorial();
-            }
-            else
-            {
-                tutorialPanel[_index].SetActive(false);
-                _index += direction;
-                tutorialPanel[_index].SetActive(true);
-            }
-
+            tutorialPanel[index].SetActive(false);
+            index += direction;
+            tutorialPanel[index].SetActive(true);
         }
 
-        public void OpenTutorial()
-        {
-            tutorialPanel1.SetActive(true);
-            _tutoActive = false;
-        }
+    }
 
-        public void CloseTutorial()
-        {
-            tutorialPanel1.SetActive(false);
-            _tutoActive = true;
-        
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+    public void OpenTutorial()
+    {
+        tutorialPanel1.SetActive(true);
+        TutoActive = false;
+    }
 
-        private void InputHandler()
-        {
-            menuActive = pausePanel.activeSelf != true;
+    public void CloseTutorial()
+    {
+        tutorialPanel1.SetActive(false);
+        TutoActive = true;
+        menuActive = true;
         
-            if (Input.GetKeyDown(KeyCode.Escape))
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void InputHandler()
+    {
+        menuActive = pausePanel.activeSelf != true;
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pausePanel.SetActive(menuActive);
+        }
+    }
+
+    public void Continue()
+    {
+        pausePanel.SetActive(false);
+        menuActive = true;
+    }
+
+    public void Retry()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    public void ToMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+    }
+
+    public void FindingCamera()
+    {
+        camerasList.Clear();
+
+        ThirdPersonCameraPlayerFollow[] foundCameras = FindObjectsOfType<ThirdPersonCameraPlayerFollow>();
+
+        foreach (ThirdPersonCameraPlayerFollow cam in foundCameras)
+        {
+            if (!camerasList.Contains(cam))
             {
-                pausePanel.SetActive(menuActive);
+                camerasList.Add(cam);
             }
         }
-
-        public void Continue()
-        {
-            pausePanel.SetActive(false);
-            menuActive = true;
-        }
-
-        public void Retry()
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-        }
-
-        public void ToMainMenu()
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
-        }
-
-        public void FindingCamera()
-        {
-            camerasList.Clear();
-
-            ThirdPersonCameraPlayerFollow[] foundCameras = FindObjectsOfType<ThirdPersonCameraPlayerFollow>();
-
-            foreach (ThirdPersonCameraPlayerFollow cam in foundCameras)
-            {
-                if (!camerasList.Contains(cam))
-                {
-                    camerasList.Add(cam);
-                }
-            }
         
-            movementList.Clear();
+        movementList.Clear();
 
-            Movement[] foundMovement = FindObjectsOfType<Movement>();
+        Movement[] FoundMovement = FindObjectsOfType<Movement>();
 
-            foreach (Movement mov in foundMovement)
+        foreach (Movement mov in FoundMovement)
+        {
+            if (!movementList.Contains(mov))
             {
-                if (!movementList.Contains(mov))
-                {
-                    movementList.Add(mov);
-                }
+                movementList.Add(mov);
             }
         }
     }
