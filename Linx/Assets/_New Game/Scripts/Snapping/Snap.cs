@@ -8,8 +8,8 @@ namespace _New_Game.Scripts.Snapping
 {
     public class Snap : MonoBehaviour
     {
-        public bool isBuildingBlock = true;
-        public int placed;
+        private bool _isBuildingBlock = true;
+        private int _placed;
         public int isPickedUp;
         [SerializeField] private bool isWallRoof;
         private Vector3 _pos;
@@ -23,12 +23,12 @@ namespace _New_Game.Scripts.Snapping
         public GameObject hookObject2;
     
         private bool _isInValidTrigger;
-        private bool _isplaced;
-        public Vector3 colposition;
-        public Quaternion colRotation;
+        private bool _isPlaced;
+        private Vector3 _colPosition;
+        private Quaternion _colRotation;
         public int snapId;
 
-        public GameObject invisableWall;
+        public GameObject invisibleWall;
         public GameObject decoratedWall;
         public GameObject thisWall;
 
@@ -59,11 +59,11 @@ namespace _New_Game.Scripts.Snapping
                 {
                     if (!snapPos.hasObjectsInHere && snapPos.snapId == snapId)
                     {
-                        colposition = snapPos.transform.position;
-                        colRotation = snapPos.transform.rotation;
+                        _colPosition = snapPos.transform.position;
+                        _colRotation = snapPos.transform.rotation;
                         _isInValidTrigger = true;
                     }
-                    else if (isBuildingBlock == false)
+                    else if (_isBuildingBlock == false)
                     {
                         _isInValidTrigger = false;
                     }
@@ -71,7 +71,7 @@ namespace _New_Game.Scripts.Snapping
             }
 
 
-            if (_isInValidTrigger && isBuildingBlock && !blockPlaced)
+            if (_isInValidTrigger && _isBuildingBlock && !blockPlaced)
             {
 
                 if (Input.GetKeyDown(KeyCode.F))
@@ -81,10 +81,10 @@ namespace _New_Game.Scripts.Snapping
             }
 
 
-            if (_isplaced)
+            if (_isPlaced)
             {
-                transform.position = colposition;
-                transform.rotation = colRotation;
+                transform.position = _colPosition;
+                transform.rotation = _colRotation;
             }
         
             if (_firstPressTime > 0 && Time.time - _firstPressTime > _timeWindow)
@@ -114,7 +114,7 @@ namespace _New_Game.Scripts.Snapping
         {
             if (isPickedUp > 0)
             {
-                _isplaced = true;
+                _isPlaced = true;
             
                 hookObject1.SetActive(false);
                 hookObject2.SetActive(false);
@@ -150,10 +150,10 @@ namespace _New_Game.Scripts.Snapping
         private void PlaceBlockClientRpc()
         {
             blockPlaced = true;
-            _isplaced = true;
-            isBuildingBlock = false;
+            _isPlaced = true;
+            _isBuildingBlock = false;
 
-            invisableWall.SetActive(false);
+            invisibleWall.SetActive(false);
             decoratedWall.SetActive(true);
             thisWall.SetActive(false);
         

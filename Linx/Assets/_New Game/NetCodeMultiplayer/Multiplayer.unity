@@ -603,11 +603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a173c65e12aa53946ade7e79b5c5cbc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hookPoint1: {fileID: 0}
-  _hookPoint2: {fileID: 0}
-  _box: {fileID: 0}
-  _rotationSpeed: 5
-  _followSpeed: 5
+  hookPoint1: {fileID: 0}
+  hookPoint2: {fileID: 0}
+  box: {fileID: 0}
+  rotationSpeed: 5
+  followSpeed: 5
 --- !u!114 &82665232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!54 &284777767
 Rigidbody:
@@ -2465,11 +2465,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a173c65e12aa53946ade7e79b5c5cbc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hookPoint1: {fileID: 0}
-  _hookPoint2: {fileID: 0}
-  _box: {fileID: 0}
-  _rotationSpeed: 5
-  _followSpeed: 5
+  hookPoint1: {fileID: 0}
+  hookPoint2: {fileID: 0}
+  box: {fileID: 0}
+  rotationSpeed: 5
+  followSpeed: 5
 --- !u!114 &616285901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2579,11 +2579,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a173c65e12aa53946ade7e79b5c5cbc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hookPoint1: {fileID: 0}
-  _hookPoint2: {fileID: 0}
-  _box: {fileID: 0}
-  _rotationSpeed: 5
-  _followSpeed: 5
+  hookPoint1: {fileID: 0}
+  hookPoint2: {fileID: 0}
+  box: {fileID: 0}
+  rotationSpeed: 5
+  followSpeed: 5
 --- !u!114 &634974317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3388,7 +3388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!64 &767070917
 MeshCollider:
@@ -3811,7 +3811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!1 &845281154
 GameObject:
@@ -5435,7 +5435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!1 &1030996471
 GameObject:
@@ -5695,7 +5695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!108 &1058170251
 Light:
@@ -6551,7 +6551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!64 &1298697776
 MeshCollider:
@@ -7278,6 +7278,7 @@ MonoBehaviour:
   - {fileID: 1833215086}
   - {fileID: 1782978077}
   tutorialPanel1: {fileID: 954421723}
+  TutoActive: 0
   menuActive: 1
 --- !u!114 &1457461184
 MonoBehaviour:
@@ -7292,7 +7293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  PauseScreen: {fileID: 983409536}
+  pauseScreen: {fileID: 0}
 --- !u!1 &1472135702
 GameObject:
   m_ObjectHideFlags: 0
@@ -7344,11 +7345,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a173c65e12aa53946ade7e79b5c5cbc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hookPoint1: {fileID: 0}
-  _hookPoint2: {fileID: 0}
-  _box: {fileID: 0}
-  _rotationSpeed: 5
-  _followSpeed: 5
+  hookPoint1: {fileID: 0}
+  hookPoint2: {fileID: 0}
+  box: {fileID: 0}
+  rotationSpeed: 5
+  followSpeed: 5
 --- !u!114 &1472135705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8175,7 +8176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!64 &1638125097
 MeshCollider:
@@ -8439,7 +8440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!1 &1661352459
 GameObject:
@@ -8681,7 +8682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!64 &1718710391
 MeshCollider:
@@ -9091,7 +9092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!1 &1781596473
 GameObject:
@@ -9618,7 +9619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!1 &1813948432
 GameObject:
@@ -10635,7 +10636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  IsHeld:
+  isHeld:
     m_InternalValue: 0
 --- !u!1001 &1893875004
 PrefabInstance:
@@ -18452,7 +18453,6 @@ GameObject:
   - component: {fileID: 6347416601045652357}
   - component: {fileID: 6347416601045652356}
   - component: {fileID: 6347416601045652360}
-  - component: {fileID: 6347416601045652359}
   - component: {fileID: 6347416601045652361}
   m_Layer: 0
   m_Name: RightWall
@@ -29517,7 +29517,6 @@ GameObject:
   - component: {fileID: 7170858214147908076}
   - component: {fileID: 7170858214147908075}
   - component: {fileID: 7170858214147908080}
-  - component: {fileID: 7170858214147908079}
   - component: {fileID: 7170858214147908081}
   m_Layer: 0
   m_Name: LeftWall
@@ -31518,7 +31517,6 @@ GameObject:
   - component: {fileID: 1832724112177753544}
   - component: {fileID: 5979793143815403348}
   - component: {fileID: 5979793143815403353}
-  - component: {fileID: 5979793143815403352}
   - component: {fileID: 5979793143815403351}
   - component: {fileID: 5979793143815403350}
   - component: {fileID: 5979793143815403349}
@@ -35782,18 +35780,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _isBuildingBlock: 1
   placed: 0
   isPickedUp: 0
   isWallRoof: 1
-  _snapPosition: []
-  _hookObject1: {fileID: 1647971416}
-  _hookObject2: {fileID: 1888464538}
-  colposition: {x: 0, y: 0, z: 0}
-  colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapPosition: []
+  hookObject1: {fileID: 1647971416}
+  hookObject2: {fileID: 1888464538}
   snapId: 0
-  invisableWall: {fileID: 155001171}
+  invisibleWall: {fileID: 0}
   decoratedWall: {fileID: 1871264287}
   thisWall: {fileID: 4886949280671581425}
   blockPlaced: 0
@@ -35845,28 +35839,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &5979793143815403352
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4886949280671581425}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1330027262320242537, guid: 30bab3f8c3f9ff1468bac2b597ed0b4c, type: 3}
 --- !u!114 &5979793143815403353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37255,18 +37227,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _isBuildingBlock: 1
   placed: 0
   isPickedUp: 0
   isWallRoof: 0
-  _snapPosition: []
-  _hookObject1: {fileID: 1030996471}
-  _hookObject2: {fileID: 759698680}
-  colposition: {x: 0, y: 0, z: 0}
-  colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapPosition: []
+  hookObject1: {fileID: 1030996471}
+  hookObject2: {fileID: 759698680}
   snapId: 3
-  invisableWall: {fileID: 155001169}
+  invisibleWall: {fileID: 0}
   decoratedWall: {fileID: 71201669}
   thisWall: {fileID: 1527670144848456673}
   blockPlaced: 0
@@ -37343,28 +37311,6 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!64 &6347416601045652359
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527670144848456673}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8294007701151168911, guid: 30bab3f8c3f9ff1468bac2b597ed0b4c, type: 3}
 --- !u!65 &6347416601045652360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41156,18 +41102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _isBuildingBlock: 1
   placed: 0
   isPickedUp: 0
   isWallRoof: 0
-  _snapPosition: []
-  _hookObject1: {fileID: 1244689876}
-  _hookObject2: {fileID: 1777301788}
-  colposition: {x: 0, y: 0, z: 0}
-  colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapPosition: []
+  hookObject1: {fileID: 1244689876}
+  hookObject2: {fileID: 1777301788}
   snapId: 2
-  invisableWall: {fileID: 155001170}
+  invisibleWall: {fileID: 0}
   decoratedWall: {fileID: 1884847370}
   thisWall: {fileID: 4308697756648215138}
   blockPlaced: 0
@@ -41269,28 +41211,6 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!64 &7170858214147908079
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4308697756648215138}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3002832294595162888, guid: 30bab3f8c3f9ff1468bac2b597ed0b4c, type: 3}
 --- !u!65 &7170858214147908080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41780,7 +41700,6 @@ GameObject:
   - component: {fileID: 7248139386458223756}
   - component: {fileID: 7248139386458223755}
   - component: {fileID: 7248139386458223754}
-  - component: {fileID: 7248139386458223759}
   - component: {fileID: 7248139386458223758}
   - component: {fileID: 7248139386458223760}
   m_Layer: 0
@@ -41802,18 +41721,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _isBuildingBlock: 1
   placed: 0
   isPickedUp: 0
   isWallRoof: 0
-  _snapPosition: []
-  _hookObject1: {fileID: 1812327451}
-  _hookObject2: {fileID: 1614757650}
-  colposition: {x: 0, y: 0, z: 0}
-  colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapPosition: []
+  hookObject1: {fileID: 1812327451}
+  hookObject2: {fileID: 1614757650}
   snapId: 4
-  invisableWall: {fileID: 155001173}
+  invisibleWall: {fileID: 0}
   decoratedWall: {fileID: 810802649}
   thisWall: {fileID: 7248139386458223753}
   blockPlaced: 0
@@ -41936,28 +41851,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.010293165, y: 0.021222511, z: 0.019976387}
   m_Center: {x: -0.0000000027939677, y: 0, z: -0.000000007450581}
---- !u!64 &7248139386458223759
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7248139386458223753}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5741174448488666723, guid: 30bab3f8c3f9ff1468bac2b597ed0b4c, type: 3}
 --- !u!114 &7248139386458223760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45785,7 +45678,6 @@ GameObject:
   - component: {fileID: 8271490286116741083}
   - component: {fileID: 8271490286116741082}
   - component: {fileID: 8271490286116741087}
-  - component: {fileID: 8271490286116741086}
   - component: {fileID: 8271490286116741088}
   m_Layer: 0
   m_Name: RoofRight
@@ -45806,18 +45698,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _isBuildingBlock: 1
   placed: 0
   isPickedUp: 0
   isWallRoof: 0
-  _snapPosition: []
-  _hookObject1: {fileID: 2118383423}
-  _hookObject2: {fileID: 1030076888}
-  colposition: {x: 0, y: 0, z: 0}
-  colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapPosition: []
+  hookObject1: {fileID: 2118383423}
+  hookObject2: {fileID: 1030076888}
   snapId: 5
-  invisableWall: {fileID: 155001174}
+  invisibleWall: {fileID: 0}
   decoratedWall: {fileID: 1982232802}
   thisWall: {fileID: 8271490286116741081}
   blockPlaced: 0
@@ -45919,28 +45807,6 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!64 &8271490286116741086
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8271490286116741081}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2477511411847689622, guid: 30bab3f8c3f9ff1468bac2b597ed0b4c, type: 3}
 --- !u!65 &8271490286116741087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46977,7 +46843,6 @@ GameObject:
   - component: {fileID: 8553298176703015755}
   - component: {fileID: 8553298176703015754}
   - component: {fileID: 8553298176703015759}
-  - component: {fileID: 8553298176703015758}
   - component: {fileID: 8553298176703015760}
   m_Layer: 0
   m_Name: BackWall
@@ -46998,18 +46863,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _isBuildingBlock: 1
   placed: 0
   isPickedUp: 0
   isWallRoof: 0
-  _snapPosition: []
-  _hookObject1: {fileID: 1661352459}
-  _hookObject2: {fileID: 831368062}
-  colposition: {x: 0, y: 0, z: 0}
-  colRotation: {x: 0, y: 0, z: 0, w: 0}
+  snapPosition: []
+  hookObject1: {fileID: 1661352459}
+  hookObject2: {fileID: 831368062}
   snapId: 1
-  invisableWall: {fileID: 155001175}
+  invisibleWall: {fileID: 0}
   decoratedWall: {fileID: 707640950}
   thisWall: {fileID: 8553298176703015753}
   blockPlaced: 0
@@ -47111,28 +46972,6 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!64 &8553298176703015758
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8553298176703015753}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1478218505767535250, guid: 30bab3f8c3f9ff1468bac2b597ed0b4c, type: 3}
 --- !u!65 &8553298176703015759
 BoxCollider:
   m_ObjectHideFlags: 0

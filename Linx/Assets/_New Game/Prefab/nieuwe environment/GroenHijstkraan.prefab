@@ -760,7 +760,6 @@ MonoBehaviour:
   segmentSpacing: 0.29
   anchorPoint: {fileID: 8126757551746372591}
   magnetPrefab: {fileID: 7390170494152827878, guid: 213228c50b16be542a4cf89c35eb0ca2, type: 3}
-  MagnetParent: {fileID: 5748141477262539156}
 --- !u!54 &8197728311982064651
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3777,12 +3776,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  _player: {fileID: 8696367415222924769}
-  _offset: {x: 0, y: 3, z: -6}
-  _sensitivity: 4
-  _distance: 7
-  _yMin: 70
-  _yMax: 120
+  player: {fileID: 8696367415222924769}
+  offset: {x: 0, y: 3, z: -6}
+  sensitivity: 4
+  distance: 10
+  yMin: 80
+  yMax: 120
 --- !u!114 &6000574569540363903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4010,7 +4009,6 @@ MonoBehaviour:
   maxArmAngle: 35
   minHookHeight: 0.5
   maxHookHeight: 10
-  CenterMouseTimer: 0.4
   hasMovementOptions: 0
   driving: {fileID: 5462244250174373258}
   grab: {fileID: 3252020972516528437}
@@ -4027,7 +4025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  _camera: {fileID: 3209615490372382778}
+  usedCamera: {fileID: 3209615490372382778}
 --- !u!65 &8357856322979174207
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4091,7 +4089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361c081857b2ae349bc0e8b7f3b8aa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityForce: 20
+  gravityForce: 20
   groundCheckDistance: 2
   hasGravity: 1
   isGrounded: 0

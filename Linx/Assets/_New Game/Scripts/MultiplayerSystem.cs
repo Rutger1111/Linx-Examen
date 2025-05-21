@@ -204,6 +204,7 @@ public class MultiplayerSystem : NetworkBehaviour
     {
         foreach (Transform child in _playersJoinedParent.transform)
         {
+            print(child);
             Destroy(child.gameObject);
         }
         

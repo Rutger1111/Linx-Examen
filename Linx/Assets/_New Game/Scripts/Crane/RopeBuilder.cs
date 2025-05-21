@@ -91,23 +91,7 @@ namespace _New_Game.Scripts.Crane
 
             magnetRb.mass = 1f;
 
-            // Add and configure joint
-            ConfigurableJoint joint = null;
-
             lastSegment.GetComponent<ConfigurableJoint>().connectedBody = magnet.GetComponent<Rigidbody>();
-            //joint.autoConfigureConnectedAnchor = true;
-
-            joint.xMotion = ConfigurableJointMotion.Limited;
-            joint.yMotion = ConfigurableJointMotion.Limited;
-            joint.zMotion = ConfigurableJointMotion.Limited;
-
-            joint.angularXMotion = ConfigurableJointMotion.Free;
-            joint.angularYMotion = ConfigurableJointMotion.Free;
-            joint.angularZMotion = ConfigurableJointMotion.Free;
-
-            SoftJointLimit limit = joint.linearLimit;
-            limit.limit = segmentSpacing;
-            joint.linearLimit = limit;
         }
     }
 }
