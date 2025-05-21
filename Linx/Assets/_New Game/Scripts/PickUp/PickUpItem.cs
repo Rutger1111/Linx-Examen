@@ -3,6 +3,16 @@ using UnityEngine.Serialization;
 
 public class PickUpItem : NetworkBehaviour
 {
-    public NetworkVariable<bool> isHeld = new NetworkVariable<bool>(false);
+    public NetworkVariable<bool> IsHeld = new NetworkVariable<bool>(false);
     
+    void Start()
+    {
+        
+    }
+
+  
+      void Update()
+    {
+        
+    }
 }
