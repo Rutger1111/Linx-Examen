@@ -45,16 +45,6 @@ public class Menu : MonoBehaviour
             {
                 movement.MovementDisable(menuActive);
             }
-
-        
-            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
-            {
-                Cameras.CameraDissable(true);
-            }
-            foreach (Movement movement in movementList)
-            {
-                movement.MovementDisable(true);
-            }   
         }
     }
     
@@ -91,9 +81,6 @@ public class Menu : MonoBehaviour
 
     private void InputHandler()
     {
-        bool menuActive = pausePanel.activeSelf != true;
-        
-        
         menuActive = pausePanel.activeSelf != true;
         
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -101,8 +88,7 @@ public class Menu : MonoBehaviour
 
             pausePanel.SetActive(menuActive);
             
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            
             
         }
     }

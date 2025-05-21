@@ -3990,6 +3990,7 @@ MonoBehaviour:
   _UIMultiplayer: {fileID: 433582927}
   _UIStopLooking: {fileID: 1693774772}
   _stopServerUI: {fileID: 862136633}
+  _logo: {fileID: 1128383235}
 --- !u!114 &2073773319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4084,6 +4085,7 @@ MonoBehaviour:
   _lobbyList: {fileID: 1693774772}
   _GameUI: {fileID: 862136633}
   _startGameButtonUI: {fileID: 55104003}
+  _logo: {fileID: 1128383235}
 --- !u!114 &2073773323
 MonoBehaviour:
   m_ObjectHideFlags: 0

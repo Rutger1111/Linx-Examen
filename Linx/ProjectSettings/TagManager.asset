@@ -16,6 +16,12 @@ TagManager:
   - SpawnPoint2
   - Dead
   - LowestFallPoint
+  - North
+  - West
+  - East
+  - South
+  - respawnPointWall
+  - Wall
   layers:
   - Default
   - TransparentFX
