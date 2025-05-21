@@ -83,7 +83,7 @@ namespace _New_Game.Scripts.Crane
             Vector3 spawnPos = lastSegment.transform.position + Vector3.down * segmentSpacing;
 
             GameObject magnet = Instantiate(magnetPrefab, spawnPos, Quaternion.identity, anchorPoint);
-            transform.parent.parent.parent.parent.parent.GetComponent<PickUp>()._pickUpPosition = magnet;
+            transform.parent.parent.parent.parent.parent.GetComponent<PickUp>().pickUpPosition = magnet;
             Rigidbody magnetRb = magnet.GetComponent<Rigidbody>();
             if (magnetRb == null)
             {

@@ -3987,9 +3987,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95fdc2f371ba8fd4a966577ddede93c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UIMultiplayer: {fileID: 433582927}
-  _UIStopLooking: {fileID: 1693774772}
-  _stopServerUI: {fileID: 862136633}
+  uiMultiplayer: {fileID: 0}
+  uiStopLooking: {fileID: 0}
+  stopServerUI: {fileID: 0}
 --- !u!114 &2073773319
 MonoBehaviour:
   m_ObjectHideFlags: 0

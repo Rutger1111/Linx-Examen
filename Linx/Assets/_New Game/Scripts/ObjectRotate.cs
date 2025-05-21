@@ -1,51 +1,45 @@
-using System;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class ObjectRotate : MonoBehaviour
+namespace _New_Game.Scripts
 {
-    [SerializeField] private GameObject _hookPoint1;
-    [SerializeField] private GameObject _hookPoint2;
-    [SerializeField] private GameObject _box;
-
-    [SerializeField] private float _rotationSpeed = 5f;
-    [SerializeField] private float _followSpeed = 5f;
-
-    private Gravity gravity;
-    private void Start()
+    public class ObjectRotate : MonoBehaviour
     {
-        gravity = GetComponent<Gravity>();
-    }
+        [SerializeField] private GameObject hookPoint1;
+        [SerializeField] private GameObject hookPoint2;
+        [SerializeField] private GameObject box;
 
-    void Update()
-    {
-        if (_hookPoint1 == null || _hookPoint2 == null || _box == null)
+        [SerializeField] private float rotationSpeed = 5f;
+        [SerializeField] private float followSpeed = 5f;
+
+        void Update()
         {
-            Debug.LogWarning("Missing reference in ObjectRotate! Check hookPoint1, hookPoint2, or box.");
-            return;
+            if (hookPoint1 == null || hookPoint2 == null || box == null)
+            {
+                Debug.LogWarning("Missing reference in ObjectRotate! Check hookPoint1, hookPoint2, or box.");
+                return;
+            }
+        
+            FollowHook();
+            RotateHook();
         }
-        
-        FollowHook();
-        RotateHook();
-    }
 
-    public void FollowHook()
-    {
-        Vector3 midpoint = (_hookPoint1.transform.position + _hookPoint2.transform.position) / 2f;
+        public void FollowHook()
+        {
+            Vector3 midpoint = (hookPoint1.transform.position + hookPoint2.transform.position) / 2f;
         
-        _box.transform.position = Vector3.Lerp(_box.transform.position, midpoint, _followSpeed * Time.deltaTime);
-    }
+            box.transform.position = Vector3.Lerp(box.transform.position, midpoint, followSpeed * Time.deltaTime);
+        }
     
-    public void RotateHook()
-    {
-        float yDiff = _hookPoint2.transform.position.y - _hookPoint1.transform.position.y;
+        public void RotateHook()
+        {
+            float yDiff = hookPoint2.transform.position.y - hookPoint1.transform.position.y;
 
-        float targetAngle = yDiff * 10f;
+            float targetAngle = yDiff * 10f;
 
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
+            Quaternion targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
         
-        _box.transform.rotation =
-            Quaternion.Slerp(_box.transform.rotation, targetRotation,_rotationSpeed * Time.deltaTime);
+            box.transform.rotation =
+                Quaternion.Slerp(box.transform.rotation, targetRotation,rotationSpeed * Time.deltaTime);
+        }
     }
 }

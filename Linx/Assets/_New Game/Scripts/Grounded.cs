@@ -19,7 +19,6 @@ public class Grounded : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            print("hit");
             _movement.MovementDisable(true);
         }
     }

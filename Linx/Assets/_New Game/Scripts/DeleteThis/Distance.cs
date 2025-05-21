@@ -1,3 +1,4 @@
+using _New_Game.Scripts;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -54,7 +55,7 @@ public class Distance : NetworkBehaviour
         {
             print("distance");
             
-            picker.drop(_cookieNetObj.NetworkObjectId);
+            picker.Drop(_cookieNetObj.NetworkObjectId);
             _assignedPickUp = picker;
             _lifes += 1;
         }

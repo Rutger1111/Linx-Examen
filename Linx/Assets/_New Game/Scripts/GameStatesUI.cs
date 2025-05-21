@@ -1,33 +1,32 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class GameStatesUI : MonoBehaviour
+namespace _New_Game.Scripts
 {
-    [SerializeField] private GameObject _UIMultiplayer;
-    [SerializeField] private GameObject _UIStopLooking;
-    [SerializeField] private GameObject _stopServerUI;
-    
-    
-   
-    
+    public class GameStatesUI : MonoBehaviour
+    {
+        [SerializeField] private GameObject uiMultiplayer;
+        [SerializeField] private GameObject uiStopLooking;
+        [SerializeField] private GameObject stopServerUI;
 
-    public void Quit()
-    {
-        Application.Quit();
-    }
+        public void Quit()
+        {
+            Application.Quit();
+        }
     
-    public void StopLook()
-    {
-        _UIStopLooking.SetActive(false);
-        _UIMultiplayer.SetActive(true);
-    }
+        public void StopLook()
+        {
+            uiStopLooking.SetActive(false);
+            uiMultiplayer.SetActive(true);
+        }
 
-    public void DisconnectHostAndClient()
-    {
-        NetworkManager.Singleton.Shutdown();
+        public void DisconnectHostAndClient()
+        {
+            NetworkManager.Singleton.Shutdown();
         
-        _UIMultiplayer.SetActive(true);
-        _stopServerUI.SetActive(false);
-    }
+            uiMultiplayer.SetActive(true);
+            stopServerUI.SetActive(false);
+        }
     
+    }
 }

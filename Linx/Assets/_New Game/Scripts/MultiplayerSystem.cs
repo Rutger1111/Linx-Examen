@@ -244,9 +244,5 @@ public class MultiplayerSystem : NetworkBehaviour
         {
             NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
         }
-        else
-        {
-            Debug.Log("Client is ready.");
-        }
     }
 }
