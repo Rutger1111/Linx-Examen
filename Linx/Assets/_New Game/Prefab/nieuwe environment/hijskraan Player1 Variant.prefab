@@ -8,9 +8,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1776321084151750662, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094234514912913607, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5462185
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094234514912913607, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.47640464
+      objectReference: {fileID: 0}
     - target: {fileID: 2094234514912913607, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2
+      value: -0.534896
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094234514912913607, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9179219
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094234514912913607, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.085152
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094234514912913607, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.38585916
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094234514912913607, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.035794638
       objectReference: {fileID: 0}
     - target: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: m_LocalScale.x
@@ -76,6 +104,10 @@ PrefabInstance:
       propertyPath: minArmAngle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3082363636270556845, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: CenterMouseTimer
+      value: -82.27505
+      objectReference: {fileID: 0}
     - target: {fileID: 4026451506231998755, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -98,7 +130,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224460199853752182, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
-      value: 718865961
+      value: 1831064247
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354726720551145175, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5920574792258105419, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

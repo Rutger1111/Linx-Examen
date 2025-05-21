@@ -294,7 +294,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -3735,7 +3735,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  pb: 0
 --- !u!65 &8357856322979174207
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3773,7 +3772,6 @@ MonoBehaviour:
   _range: 1.5
   _pickUpPosition: {fileID: 0}
   _targetTag: moveAbleObject
-  gravity: {fileID: 0}
 --- !u!1 &8819465701490982139
 GameObject:
   m_ObjectHideFlags: 0
