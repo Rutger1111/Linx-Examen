@@ -547,11 +547,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4679705324516287344, guid: 1b27f294c29064b4f9e16ee4b9cf86d6, type: 3}
   m_PrefabInstance: {fileID: 71201667}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &71201669 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3459178175766278070, guid: 1b27f294c29064b4f9e16ee4b9cf86d6, type: 3}
-  m_PrefabInstance: {fileID: 71201667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &82665229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
-  snapId: 5
+  snapId: 0
 --- !u!114 &155001180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1084,7 +1079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
-  snapId: 1
+  snapId: 0
 --- !u!65 &155001181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1609,7 +1604,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318918452}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2832,7 +2827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
-  snapId: 4
+  snapId: 0
 --- !u!1 &692529665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,11 +3136,6 @@ PrefabInstance:
 --- !u!4 &707640949 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1668618624794249344, guid: 1108a0236283b08458c1dc1870a08141, type: 3}
-  m_PrefabInstance: {fileID: 707640948}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &707640950 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6633755741904389773, guid: 1108a0236283b08458c1dc1870a08141, type: 3}
   m_PrefabInstance: {fileID: 707640948}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &759698680
@@ -3564,11 +3554,6 @@ PrefabInstance:
 --- !u!4 &810802648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1948838715253263528, guid: 77d72951de2b32a4eb8b3849b49e3384, type: 3}
-  m_PrefabInstance: {fileID: 810802647}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &810802649 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6992282521478220791, guid: 77d72951de2b32a4eb8b3849b49e3384, type: 3}
   m_PrefabInstance: {fileID: 810802647}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &831368062
@@ -5862,7 +5847,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068714546}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7142,7 +7127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
-  snapId: 3
+  snapId: 0
 --- !u!65 &1443149398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7270,14 +7255,8 @@ MonoBehaviour:
   pausePanel: {fileID: 983409536}
   camerasList: []
   movementList: []
-  tutorialPanel:
-  - {fileID: 1803588453}
-  - {fileID: 2011011809}
-  - {fileID: 1007548337}
-  - {fileID: 1351439146}
-  - {fileID: 1833215086}
-  - {fileID: 1782978077}
-  tutorialPanel1: {fileID: 954421723}
+  tutorialPanel: []
+  tutorialPanel1: {fileID: 0}
   TutoActive: 0
   menuActive: 1
 --- !u!114 &1457461184
@@ -10265,11 +10244,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3079622940912504914, guid: facd938cd5861a743b2ce455aae6f6c3, type: 3}
   m_PrefabInstance: {fileID: 1871264285}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1871264287 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9152659960224781223, guid: facd938cd5861a743b2ce455aae6f6c3, type: 3}
-  m_PrefabInstance: {fileID: 1871264285}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1884847368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10438,11 +10412,6 @@ PrefabInstance:
 --- !u!4 &1884847369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4102139486283001194, guid: 100daa64dbd238e439159f026a00dc01, type: 3}
-  m_PrefabInstance: {fileID: 1884847368}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1884847370 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1392496506830531149, guid: 100daa64dbd238e439159f026a00dc01, type: 3}
   m_PrefabInstance: {fileID: 1884847368}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1888464538
@@ -10860,7 +10829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasObjectsInHere: 0
-  snapId: 2
+  snapId: 0
 --- !u!65 &1906633187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11066,11 +11035,6 @@ PrefabInstance:
 --- !u!4 &1982232801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6819949735480661570, guid: 21fa072713fc5514ca7e635ae9ab5c2b, type: 3}
-  m_PrefabInstance: {fileID: 1982232800}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1982232802 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1341960975089876930, guid: 21fa072713fc5514ca7e635ae9ab5c2b, type: 3}
   m_PrefabInstance: {fileID: 1982232800}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2011011809
@@ -19266,63 +19230,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &1784122895693667150
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4026566793978225793, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_Name
-      value: environment  001
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.997772
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 143.69809
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831973875891095599, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6a279cdb229b42c40b59ec71bc43bade, type: 3}
 --- !u!33 &1789939661143564068
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -35830,14 +35737,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPickedUp: 0
-  isWallRoof: 1
+  isWallRoof: 0
   snapPosition: []
-  hookObject1: {fileID: 1647971416}
-  hookObject2: {fileID: 1888464538}
+  hookObject1: {fileID: 0}
+  hookObject2: {fileID: 0}
   snapId: 0
   invisibleWall: {fileID: 0}
-  decoratedWall: {fileID: 1871264287}
-  thisWall: {fileID: 4886949280671581425}
+  decoratedWall: {fileID: 0}
+  thisWall: {fileID: 0}
   blockPlaced: 0
 --- !u!65 &5979793143815403350
 BoxCollider:
@@ -37278,12 +37185,12 @@ MonoBehaviour:
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
-  hookObject1: {fileID: 1030996471}
-  hookObject2: {fileID: 759698680}
-  snapId: 3
+  hookObject1: {fileID: 0}
+  hookObject2: {fileID: 0}
+  snapId: 0
   invisibleWall: {fileID: 0}
-  decoratedWall: {fileID: 71201669}
-  thisWall: {fileID: 1527670144848456673}
+  decoratedWall: {fileID: 0}
+  thisWall: {fileID: 0}
   blockPlaced: 0
 --- !u!54 &6347416601045652357
 Rigidbody:
@@ -41152,12 +41059,12 @@ MonoBehaviour:
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
-  hookObject1: {fileID: 1244689876}
-  hookObject2: {fileID: 1777301788}
-  snapId: 2
+  hookObject1: {fileID: 0}
+  hookObject2: {fileID: 0}
+  snapId: 0
   invisibleWall: {fileID: 0}
-  decoratedWall: {fileID: 1884847370}
-  thisWall: {fileID: 4308697756648215138}
+  decoratedWall: {fileID: 0}
+  thisWall: {fileID: 0}
   blockPlaced: 0
 --- !u!54 &7170858214147908076
 Rigidbody:
@@ -41770,12 +41677,12 @@ MonoBehaviour:
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
-  hookObject1: {fileID: 1812327451}
-  hookObject2: {fileID: 1614757650}
-  snapId: 4
+  hookObject1: {fileID: 0}
+  hookObject2: {fileID: 0}
+  snapId: 0
   invisibleWall: {fileID: 0}
-  decoratedWall: {fileID: 810802649}
-  thisWall: {fileID: 7248139386458223753}
+  decoratedWall: {fileID: 0}
+  thisWall: {fileID: 0}
   blockPlaced: 0
 --- !u!54 &7248139386458223755
 Rigidbody:
@@ -45746,12 +45653,12 @@ MonoBehaviour:
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
-  hookObject1: {fileID: 2118383423}
-  hookObject2: {fileID: 1030076888}
-  snapId: 5
+  hookObject1: {fileID: 0}
+  hookObject2: {fileID: 0}
+  snapId: 0
   invisibleWall: {fileID: 0}
-  decoratedWall: {fileID: 1982232802}
-  thisWall: {fileID: 8271490286116741081}
+  decoratedWall: {fileID: 0}
+  thisWall: {fileID: 0}
   blockPlaced: 0
 --- !u!54 &8271490286116741083
 Rigidbody:
@@ -46910,12 +46817,12 @@ MonoBehaviour:
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
-  hookObject1: {fileID: 1661352459}
-  hookObject2: {fileID: 831368062}
-  snapId: 1
+  hookObject1: {fileID: 0}
+  hookObject2: {fileID: 0}
+  snapId: 0
   invisibleWall: {fileID: 0}
-  decoratedWall: {fileID: 707640950}
-  thisWall: {fileID: 8553298176703015753}
+  decoratedWall: {fileID: 0}
+  thisWall: {fileID: 0}
   blockPlaced: 0
 --- !u!54 &8553298176703015755
 Rigidbody:
@@ -49092,5 +48999,4 @@ SceneRoots:
   - {fileID: 8263123360798971839}
   - {fileID: 692529667}
   - {fileID: 243215358}
-  - {fileID: 1784122895693667150}
   - {fileID: 1769736977}
