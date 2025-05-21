@@ -1359,7 +1359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!54 &284777767
 Rigidbody:
@@ -3378,7 +3378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!64 &767070917
 MeshCollider:
@@ -3796,7 +3796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!1 &845281154
 GameObject:
@@ -5420,7 +5420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!1 &1030996471
 GameObject:
@@ -5680,7 +5680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!108 &1058170251
 Light:
@@ -6536,7 +6536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!64 &1298697776
 MeshCollider:
@@ -7255,8 +7255,14 @@ MonoBehaviour:
   pausePanel: {fileID: 983409536}
   camerasList: []
   movementList: []
-  tutorialPanel: []
-  tutorialPanel1: {fileID: 0}
+  tutorialPanel:
+  - {fileID: 1803588453}
+  - {fileID: 2011011809}
+  - {fileID: 1007548337}
+  - {fileID: 1351439146}
+  - {fileID: 1833215086}
+  - {fileID: 1782978077}
+  tutorialPanel1: {fileID: 954421723}
   TutoActive: 0
   menuActive: 1
 --- !u!114 &1457461184
@@ -8155,7 +8161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!64 &1638125097
 MeshCollider:
@@ -8419,7 +8425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!1 &1661352459
 GameObject:
@@ -8661,7 +8667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!64 &1718710391
 MeshCollider:
@@ -9120,7 +9126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!1 &1781596473
 GameObject:
@@ -9647,7 +9653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!1 &1813948432
 GameObject:
@@ -10654,7 +10660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isHeld:
+  IsHeld:
     m_InternalValue: 0
 --- !u!1001 &1893875004
 PrefabInstance:
