@@ -31,6 +31,8 @@ namespace _New_Game.Scripts.Crane
         [SerializeField] private float minHookHeight = 0.5f;
         [SerializeField] private float maxHookHeight = 10f;
 
+        [SerializeField] private float CenterMouseTimer = 0.4f;
+
         public bool hasMovementOptions;
         private bool isGrounded;
 
@@ -39,13 +41,16 @@ namespace _New_Game.Scripts.Crane
 
         void Update()
         {
+
+            CenterMouseTimer -= Time.deltaTime;
+            
             if (IsOwner)
             {
                 //RotateBase();
                 //MoveArm();
                 //MoveHook();
                 
-                if (hasMovementOptions)
+                if (hasMovementOptions == true)
                 {
                     StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
                     Drive();
@@ -64,66 +69,75 @@ namespace _New_Game.Scripts.Crane
         private void Drive()
         {
             float driveInput = 0f;
+            //float driveInput = _craneMovement.Driving.drive.ReadValue<float>();
 
             if (Input.GetKey(KeyCode.W))
             {
                 driveInput = 1f;
-                if (!driving.isPlaying)
-                {
-                    driving.Play();    
-                }
             }
-            else
-            {
-                driving.Stop();
-            }
-            
+
             if (Input.GetKey(KeyCode.S))
             {
                 driveInput = -1f;
-                driving.Play();    
-                
-            }
-            else
-            {
-                driving.Stop();
             }
 
             transform.position += wheelPivot.forward * (driveInput * driveSpeed * Time.deltaTime);
             
-            driving.Play();
+            
+            if (driveInput != 0f)
+            {
+                if (!driving.isPlaying)
+                {
+                    driving.Play();
+                }
+            }
+            else
+            {
+                if (driving.isPlaying)
+                {
+                    driving.Stop();
+                }
+            }
+            
         }
 
         private void Turn()
         {
             
             float turnInput = 0f;
+            //float turnInput = _craneMovement.Driving.TurnWheels.ReadValue<float>();
 
             if (Input.GetKey(KeyCode.D))
             {
                 turnInput = 1f;
-                driving.Play();    
-                
             }
-            else
-            {
-                driving.Stop();
-            }
+            
 
             if (Input.GetKey(KeyCode.A))
             {
                 turnInput = -1f;
+            }
+            
+            wheelPivot.Rotate(0f, turnInput * baseRotationSpeed * Time.deltaTime, 0f);
+            
+            if (turnInput != 0f)
+            {
                 if (!driving.isPlaying)
                 {
-                    driving.Play();    
+                    driving.Play();
                 }
             }
             else
             {
-                driving.Stop();
+                if (driving.isPlaying)
+                {
+                    driving.Stop();
+                }
             }
             
-            wheelPivot.Rotate(0f, turnInput * baseRotationSpeed * Time.deltaTime, 0f);
+            
+            
+            
         }
 
         /*private void RotateBase()
@@ -153,31 +167,23 @@ namespace _New_Game.Scripts.Crane
 
         private void Grab()
         {
-            // Initialize grab input value (used to determine if grab is active)
             float grabInput = 0f;
 
-            // Check if the left mouse button is being held down
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 grabInput = 1f;
-                grab.Play();
             }
-            else
-            {
-                grab.Stop();
-            }
+            //Up(KeyCode.Mouse0)) grabInput = -1f;
 
-            // Get the current rotation of the crane arm
             Vector3 currentAngles = craneArm.localEulerAngles;
 
-            // Normalize the X angle to the range [-180, 180] to avoid issues with rotation wrapping
             float currentX = currentAngles.x;
             if (currentX > 180) currentX -= 360;
 
-            float speed = 20f; // Speed at which the crane arm moves
-            float newX = currentX; // Store current X angle to modify it
+            float speed = 20f;
 
-            // If grabbing, rotate arm upwards; otherwise, rotate it downwards
+            float newX = currentX;
+
             if (grabInput > 0)
             {
                 newX += speed * Time.deltaTime;
@@ -186,12 +192,24 @@ namespace _New_Game.Scripts.Crane
             {
                 newX -= speed * Time.deltaTime;
             }
-
-            // Clamp the new X angle to stay within defined min and max angles
             newX = Mathf.Clamp(newX, minArmAngle, maxArmAngle);
 
-            // Apply the new x rotation to the crane arm 
             craneArm.localEulerAngles = new Vector3(newX, currentAngles.y, currentAngles.z);
+
+            if (grabInput != 0f)
+            {
+                if (!driving.isPlaying)
+                {
+                    grab.Play();
+                }
+            }
+            else
+            {
+                if (driving.isPlaying)
+                {
+                    grab.Stop();
+                }
+            }
         }
 
         private void MoveHook()
@@ -219,8 +237,8 @@ namespace _New_Game.Scripts.Crane
 
             // Rotate to face the target
             obj.rotation = Quaternion.LookRotation(direction);
-            
-            // stretch from start to finish along the z-as
+
+            // Stretch along Z (assuming original length is 1 unit)
             Vector3 newScale = obj.localScale;
             newScale.z = distance;
             obj.localScale = newScale;
