@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using _New_Game.Scripts;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
@@ -34,7 +33,6 @@ public class MultiplayerSystem : NetworkBehaviour
     [SerializeField] private GameObject _lobbyList;
     [SerializeField] private GameObject _GameUI;
     [SerializeField] private GameObject _startGameButtonUI;
-    [SerializeField] private GameObject _logo;
     
     
     private string _joinCode;
@@ -98,7 +96,7 @@ public class MultiplayerSystem : NetworkBehaviour
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync("lobbyName", maxPlayers, options);
             _hostLobby = lobby;
 
-            FindObjectOfType<SpawnManager>().ActiveLobby = _hostLobby;
+            FindObjectOfType<SpawnManager>()._activeLobby = _hostLobby;
             
 
             NetworkManager.Singleton.StartHost();
@@ -108,7 +106,6 @@ public class MultiplayerSystem : NetworkBehaviour
             _multiplayerUI.SetActive(false);
             _startGameButtonUI.SetActive(true);
             _GameUI.SetActive(true);
-            _logo.SetActive(false);
         }
         catch (LobbyServiceException e)
         {
@@ -141,7 +138,6 @@ public class MultiplayerSystem : NetworkBehaviour
 
             _multiplayerUI.SetActive(false);
             _lobbyList.SetActive(true);
-            _logo.SetActive(false);
 
             foreach (Lobby lobby in queryResponse.Results)
             {
@@ -180,7 +176,7 @@ public class MultiplayerSystem : NetworkBehaviour
 
                 NetworkManager.Singleton.StartClient();
 
-                FindObjectOfType<SpawnManager>().ActiveLobby = _hostLobby;
+                FindObjectOfType<SpawnManager>()._activeLobby = _hostLobby;
             }
             else
             {
@@ -191,7 +187,7 @@ public class MultiplayerSystem : NetworkBehaviour
             _multiplayerUI.SetActive(false);
             _lobbyList.SetActive(false);
             _GameUI.SetActive(true);
-
+            
             PlayersJoined();
         }
         catch (LobbyServiceException e)
@@ -204,7 +200,6 @@ public class MultiplayerSystem : NetworkBehaviour
     {
         foreach (Transform child in _playersJoinedParent.transform)
         {
-            print(child);
             Destroy(child.gameObject);
         }
         
@@ -248,6 +243,10 @@ public class MultiplayerSystem : NetworkBehaviour
         if (NetworkManager.Singleton.IsServer)
         {
             NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
+        }
+        else
+        {
+            Debug.Log("Client is ready.");
         }
     }
 }
