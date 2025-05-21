@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _New_Game.Scripts;
 using _New_Game.Scripts.Camera;
 using _New_Game.Scripts.Crane;
 using NUnit.Framework;

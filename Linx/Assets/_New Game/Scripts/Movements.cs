@@ -1,16 +1,13 @@
-using System;
-using UnityEngine;
-using UnityEngine.Serialization;
 using Unity.Netcode;
+using UnityEngine;
 
-namespace _New_Game.Scripts.Crane
+namespace _New_Game.Scripts
 {
     public class Movement : NetworkBehaviour
     {
         [SerializeField] private GameObject supportArm;
         
         [Header("Transforms")]
-        [SerializeField] private Transform cranePivot;
         [SerializeField] private Transform craneArm;
         [SerializeField] private Transform craneHook;
         [SerializeField] private Transform wheelPivot;
@@ -31,8 +28,6 @@ namespace _New_Game.Scripts.Crane
         [SerializeField] private float minHookHeight = 0.5f;
         [SerializeField] private float maxHookHeight = 10f;
 
-        [SerializeField] private float CenterMouseTimer = 0.4f;
-
         public bool hasMovementOptions;
         private bool isGrounded;
 
@@ -41,9 +36,6 @@ namespace _New_Game.Scripts.Crane
 
         void Update()
         {
-
-            CenterMouseTimer -= Time.deltaTime;
-            
             if (IsOwner)
             {
                 //RotateBase();
@@ -61,9 +53,9 @@ namespace _New_Game.Scripts.Crane
         }
 
 
-        public void MovementDisable(bool CanMove)
+        public void MovementDisable(bool canMove)
         {
-            hasMovementOptions = CanMove;
+            hasMovementOptions = canMove;
             
         }
         private void Drive()
@@ -223,7 +215,7 @@ namespace _New_Game.Scripts.Crane
             craneHook.localPosition = localPos;
         }
 
-        public void StretchBetweenPoints(Transform obj, Transform startPoint, Transform endPoint)
+        private void StretchBetweenPoints(Transform obj, Transform startPoint, Transform endPoint)
         {
             Vector3 startPos = startPoint.position;
             Vector3 endPos = endPoint.position;
