@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using _New_Game.Scripts;
-using _New_Game.Scripts.Snapping;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -11,18 +9,16 @@ public class PickUp : NetworkBehaviour
     [SerializeField] private string _targetTag = "moveAbleObject";
     
     private NetworkObject _heldObject;
-    public List<GameObject> _pickUpAbleObjects = new List<GameObject>();
+    private List<GameObject> _pickUpAbleObjects = new List<GameObject>();
     private ConfigurableJoint _joint;
-    
 
-    public GameObject[] allObjects;
-
-    private void Update()
+    void Update()
     {
+        if (!IsOwner) return;
 
         FindNearbyObjects();
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && IsOwner)
         {
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
@@ -32,24 +28,19 @@ public class PickUp : NetworkBehaviour
             else if (_heldObject != null)
             {
                 ulong targetId = _heldObject.NetworkObjectId;
-                drop(targetId);
+                RequestDropServerRpc(targetId);
             }
         }
 
         UpdateJointLogic();
     }
 
-    public void drop(ulong targetId)
-    {
-        RequestDropServerRpc(targetId);
-    }
-
-    private void TryPickUp()
+    void TryPickUp()
     {
         foreach (var obj in _pickUpAbleObjects)
         {
             var pickupable = obj.GetComponent<PickUpItem>();
-            if (pickupable != null && !pickupable.isHeld.Value)
+            if (pickupable != null && !pickupable.IsHeld.Value)
             {
                 ulong targetId = obj.GetComponent<NetworkObject>().NetworkObjectId;
                 RequestPickUpServerRpc(targetId, NetworkObjectId);
@@ -58,7 +49,7 @@ public class PickUp : NetworkBehaviour
         }
     }
 
-    private void UpdateJointLogic()
+    void UpdateJointLogic()
     {
         if (_heldObject != null)
         {
@@ -81,42 +72,31 @@ public class PickUp : NetworkBehaviour
         }
     }
 
-    private void FindNearbyObjects()
+    void FindNearbyObjects()
     {
         _pickUpAbleObjects.Clear();
-        allObjects = GameObject.FindGameObjectsWithTag(_targetTag);
-
-        GameObject closestObject = null;
-        
-        float closestDistance = Mathf.Infinity;
+        GameObject[] allObjects = GameObject.FindGameObjectsWithTag(_targetTag);
 
         foreach (GameObject obj in allObjects)
         {
-            float currentDistance = Vector3.Distance(_pickUpPosition.transform.position, obj.transform.position);
-
-            if (currentDistance <= _range && currentDistance < closestDistance)
+            float distance = Vector3.Distance(_pickUpPosition.transform.position, obj.transform.position);
+            if (distance <= _range)
             {
-                closestDistance = currentDistance;
-                closestObject = obj;
+                _pickUpAbleObjects.Add(obj);
             }
-        }
-
-        if (closestObject != null)
-        {
-            _pickUpAbleObjects.Add(closestObject);
         }
     }
 
     [ServerRpc]
-    private void RequestPickUpServerRpc(ulong targetId, ulong playerId, ServerRpcParams rpcParams = default)
+    void RequestPickUpServerRpc(ulong targetId, ulong playerId, ServerRpcParams rpcParams = default)
     {
         if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(targetId, out NetworkObject targetObject)) return;
         if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(playerId, out NetworkObject playerObject)) return;
 
         var pickupable = targetObject.GetComponent<PickUpItem>();
-        if (pickupable == null || pickupable.isHeld.Value) return;
+        if (pickupable == null || pickupable.IsHeld.Value) return;
 
-        pickupable.isHeld.Value = true;
+        pickupable.IsHeld.Value = true;
 
         if (targetObject.IsOwnedByServer || targetObject.IsOwnershipTransferable)
         {
@@ -130,7 +110,7 @@ public class PickUp : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void ConfirmPickUpClientRpc(ulong objectId)
+    void ConfirmPickUpClientRpc(ulong objectId)
     {
         if (IsOwner && NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(objectId, out NetworkObject obj))
         {
@@ -139,14 +119,14 @@ public class PickUp : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void RequestDropServerRpc(ulong objectId, ServerRpcParams rpcParams = default)
+    void RequestDropServerRpc(ulong objectId, ServerRpcParams rpcParams = default)
     {
         if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(objectId, out NetworkObject objNet)) return;
 
         var pickupable = objNet.GetComponent<PickUpItem>();
         if (pickupable != null)
         {
-            pickupable.isHeld.Value = false;
+            pickupable.IsHeld.Value = false;
         }
 
         Gravity gravity = objNet.GetComponent<Gravity>();
@@ -158,7 +138,7 @@ public class PickUp : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void ConfirmDropClientRpc(ulong objectId)
+    void ConfirmDropClientRpc(ulong objectId)
     {
         if (IsOwner && _heldObject != null && _heldObject.NetworkObjectId == objectId)
         {
@@ -167,7 +147,7 @@ public class PickUp : NetworkBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         if (_pickUpPosition != null)
         {
