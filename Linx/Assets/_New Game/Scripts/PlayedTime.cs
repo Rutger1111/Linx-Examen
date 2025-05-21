@@ -1,17 +1,19 @@
-using System.Net.Mime;
 using TMPro;
 using UnityEngine;
 
-public class PlayedTime : MonoBehaviour
+namespace _New_Game.Scripts
 {
-    public float Timer;
-
-    public TMP_Text text;
-    
-    void Update()
+    public class PlayedTime : MonoBehaviour
     {
-        Timer += Time.deltaTime;
+        public float timer;
+
+        public TMP_Text text;
+
+        private void Update()
+        {
+            timer += Time.deltaTime;
         
-        text.text = "time : " + Timer.ToString("F2");
+            text.text = "time : " + timer.ToString("F2");
+        }
     }
 }

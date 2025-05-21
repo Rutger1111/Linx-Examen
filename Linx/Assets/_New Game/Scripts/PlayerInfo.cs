@@ -1,18 +1,21 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerInfo : NetworkBehaviour
+namespace _New_Game.Scripts
 {
-    public ulong OwnerClientId { get; private set; }
-
-    public void SetClientId(ulong id)
+    public class PlayerInfo : NetworkBehaviour
     {
-        OwnerClientId = id;
-    }
+        public ulong OwnerClientId { get; private set; }
 
-    public override void OnNetworkSpawn()
-    {
-        OwnerClientId = OwnerClientId; // Automatically handled by Netcode
-        Debug.Log($"[PlayerInfo] Player spawned with client ID: {OwnerClientId}");
+        public void SetClientId(ulong id)
+        {
+            OwnerClientId = id;
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            OwnerClientId = OwnerClientId; // Automatically handled by Netcode
+            Debug.Log($"[PlayerInfo] Player spawned with client ID: {OwnerClientId}");
+        }
     }
 }
