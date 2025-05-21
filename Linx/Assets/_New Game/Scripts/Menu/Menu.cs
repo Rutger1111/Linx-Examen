@@ -21,15 +21,11 @@ public class Menu : NetworkBehaviour
     
     [SerializeField] private List<GameObject> tutorialPanel = new List<GameObject>();
     [SerializeField] private GameObject tutorialPanel1;
-    private bool TutoActive = false;
+    public bool TutoActive = false;
     public bool menuActive = true;
 
     private void Update()
     {
-
-        if (!IsOwner)return;
-        
-        
         InputHandler();
         FindingCamera();
         
@@ -77,6 +73,7 @@ public class Menu : NetworkBehaviour
     {
         tutorialPanel1.SetActive(false);
         TutoActive = true;
+        menuActive = true;
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
