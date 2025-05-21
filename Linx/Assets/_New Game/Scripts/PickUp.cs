@@ -49,7 +49,7 @@ public class PickUp : NetworkBehaviour
         foreach (var obj in _pickUpAbleObjects)
         {
             var pickupable = obj.GetComponent<PickUpItem>();
-            if (pickupable != null && !pickupable.isHeld.Value)
+            if (pickupable != null && !pickupable.IsHeld.Value)
             {
                 ulong targetId = obj.GetComponent<NetworkObject>().NetworkObjectId;
                 RequestPickUpServerRpc(targetId, NetworkObjectId);
@@ -114,9 +114,9 @@ public class PickUp : NetworkBehaviour
         if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(playerId, out NetworkObject playerObject)) return;
 
         var pickupable = targetObject.GetComponent<PickUpItem>();
-        if (pickupable == null || pickupable.isHeld.Value) return;
+        if (pickupable == null || pickupable.IsHeld.Value) return;
 
-        pickupable.isHeld.Value = true;
+        pickupable.IsHeld.Value = true;
 
         if (targetObject.IsOwnedByServer || targetObject.IsOwnershipTransferable)
         {
@@ -146,7 +146,7 @@ public class PickUp : NetworkBehaviour
         var pickupable = objNet.GetComponent<PickUpItem>();
         if (pickupable != null)
         {
-            pickupable.isHeld.Value = false;
+            pickupable.IsHeld.Value = false;
         }
 
         Gravity gravity = objNet.GetComponent<Gravity>();
