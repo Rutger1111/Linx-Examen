@@ -1,14 +1,18 @@
 using UnityEngine;
-public class playSong : MonoBehaviour
-{
-    private AudioSource _audioSource;
-    void Start()
-    {
-        _audioSource = GetComponent<AudioSource>();
-    }
 
-    public void buttonClick()
+namespace _New_Game.Scripts
+{
+    public class PlaySong : MonoBehaviour
     {
-        _audioSource.Play();
+        private AudioSource _audioSource;
+        void Start()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
+
+        public void ButtonClick()
+        {
+            _audioSource.Play();
+        }
     }
 }

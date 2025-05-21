@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class SnapPosition : MonoBehaviour
+namespace _New_Game.Scripts
 {
-    public bool hasObjectsInHere;
-
-    public int snapId;
-    public void setTrue(bool enable)
+    public class SnapPosition : MonoBehaviour
     {
-        hasObjectsInHere = enable;
+        public bool hasObjectsInHere;
+
+        public int snapId;
+        public void SetTrue(bool enable)
+        {
+            hasObjectsInHere = enable;
+        }
     }
 }

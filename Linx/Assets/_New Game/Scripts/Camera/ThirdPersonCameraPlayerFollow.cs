@@ -1,67 +1,70 @@
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class ThirdPersonCameraPlayerFollow : NetworkBehaviour
+namespace _New_Game.Scripts.Camera
 {
-    [SerializeField] private GameObject _player;
-
-    [SerializeField] private Vector3 _offset = new Vector3(0,3,-6);
-
-    [SerializeField] private float _sensitivity = 4f;
-    [SerializeField] private float _distance = 6f;
-    [SerializeField] private float _yMin = -20f;
-    [SerializeField] private float _yMax = 80f;
-
-    private float currentX = 0f;
-    private float currentY = 0f;
-
-    private bool hasTurnedOffCamera = false;
-    private void Awake()
+    public class ThirdPersonCameraPlayerFollow : NetworkBehaviour
     {
-        if (IsOwner)
+        [SerializeField] private GameObject player;
+
+        [SerializeField] private Vector3 offset = new Vector3(0,3,-6);
+
+        [SerializeField] private float sensitivity = 4f;
+        [SerializeField] private float distance = 6f;
+        [SerializeField] private float yMin = -20f;
+        [SerializeField] private float yMax = 80f;
+
+        private float _currentX;
+        private float _currentY;
+
+        private bool _hasTurnedOffCamera;
+        private void Awake()
         {
-            Unity.Netcode.NetworkManager.Singleton.OnClientStarted += OnClientStarted;
+            if (IsOwner)
+            {
+                NetworkManager.Singleton.OnClientStarted += OnClientStarted;
+            }
         }
-    }
 
-    private void OnClientStarted()
-    {
-        
-        if (IsOwner && Unity.Netcode.NetworkManager.Singleton.LocalClient.PlayerObject != null)
+        private void OnClientStarted()
         {
-            _player = Unity.Netcode.NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
+        
+            if (IsOwner && NetworkManager.Singleton.LocalClient.PlayerObject != null)
+            {
+                player = NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
 
             
-            transform.SetParent(_player.transform);
+                transform.SetParent(player.transform);
+            }
         }
-    }
     
-    void Update()
-    {
-        if (hasTurnedOffCamera == true)
+        void Update()
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            if (_hasTurnedOffCamera)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
             
-            currentX += Input.GetAxis("Mouse X") * _sensitivity;
-            currentY -= Input.GetAxis("Mouse Y") * _sensitivity;
-            currentY = Mathf.Clamp(currentY, _yMin, _yMax);
+                _currentX += Input.GetAxis("Mouse X") * sensitivity;
+                _currentY -= Input.GetAxis("Mouse Y") * sensitivity;
+                _currentY = Mathf.Clamp(_currentY, yMin, yMax);
         
-            rotationFollow();    
+                RotationFollow();    
+            }
         }
-    }
 
-    public void rotationFollow()
-    {
-        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-        Vector3 disiredPosition = _player.transform.position + rotation * new Vector3(0, 0 - _distance);
-        transform.position = disiredPosition + new Vector3(0, _offset.y, 0);
-        transform.LookAt(_player.transform.position + Vector3.up * _offset.y);
-    }
+        private void RotationFollow()
+        {
+            Quaternion rotation = Quaternion.Euler(_currentY, _currentX, 0);
+            var position = player.transform.position;
+            Vector3 disiredPosition = position + rotation * new Vector3(0, 0 - distance);
+            transform.position = disiredPosition + new Vector3(0, offset.y, 0);
+            transform.LookAt(position + Vector3.up * offset.y);
+        }
 
 
-    public void CameraDissable(bool disable)
-    {
-        hasTurnedOffCamera = disable;
+        public void CameraDissable(bool disable)
+        {
+            _hasTurnedOffCamera = disable;
+        }
     }
 }

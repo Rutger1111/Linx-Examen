@@ -5,25 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="282eb429-5df8-4b47-a6a3-b9f0e9c6d077" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Linx/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FinishGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FinishGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/NetCodeMultiplayer/Lobby.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Blueprint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Blueprint.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Camera/PlayerCameraHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Camera/PlayerCameraHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Camera/ThirdPersonCameraPlayerFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Camera/ThirdPersonCameraPlayerFollow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/Respawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/Respawn.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Crane/RopeBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Distance.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Distance.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/GameStatesUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/GameStatesUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Gravity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Gravity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Grounded.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Grounded.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Movements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Movements.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/DeleteThis/Distance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/DeleteThis/Distance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/Menu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/ShowHints.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Menu/ShowHints.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/MultiplayerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/MultiplayerSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/ObjectRotate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/ObjectRotate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/PlayedTime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/PlayedTime.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/PlayerInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/PlayerInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp/PickUpItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/PickUp/PickUpItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/SnapPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/SnapPosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/Snapping/Snap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/Snapping/Snap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/SpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/StartGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/StartGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/UI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/UI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_New Game/Scripts/playSong.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_New Game/Scripts/playSong.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.services.vivox/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.services.vivox/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,6 +201,8 @@
       <workItem from="1747815472112" duration="2764000" />
       <workItem from="1747818280671" duration="65000" />
       <workItem from="1747818429795" duration="67000" />
+      <workItem from="1747820004728" duration="1019000" />
+      <workItem from="1747821495301" duration="1765000" />
     </task>
     <servers />
   </component>

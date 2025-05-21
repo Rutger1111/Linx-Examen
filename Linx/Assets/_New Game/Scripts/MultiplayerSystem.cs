@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _New_Game.Scripts;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
@@ -97,7 +98,7 @@ public class MultiplayerSystem : NetworkBehaviour
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync("lobbyName", maxPlayers, options);
             _hostLobby = lobby;
 
-            FindObjectOfType<SpawnManager>()._activeLobby = _hostLobby;
+            FindObjectOfType<SpawnManager>().ActiveLobby = _hostLobby;
             
 
             NetworkManager.Singleton.StartHost();
@@ -179,7 +180,7 @@ public class MultiplayerSystem : NetworkBehaviour
 
                 NetworkManager.Singleton.StartClient();
 
-                FindObjectOfType<SpawnManager>()._activeLobby = _hostLobby;
+                FindObjectOfType<SpawnManager>().ActiveLobby = _hostLobby;
             }
             else
             {

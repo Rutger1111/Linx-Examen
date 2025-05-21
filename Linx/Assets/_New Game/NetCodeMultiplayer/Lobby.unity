@@ -4062,7 +4062,7 @@ MonoBehaviour:
   bluePlayer: {fileID: 8696367415222924769, guid: d07edf000be25494a97e98529a48297f, type: 3}
   spawnPointRed: {x: 10, y: 10, z: 0}
   spawnPointBlue: {x: -10, y: 10, z: 0}
-  _playerSpawned: []
+  playerSpawned: []
 --- !u!114 &2073773322
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,171 +1,165 @@
-using System;
 using System.Collections.Generic;
 using FishSystem;
-using NUnit.Framework;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using Unity.Netcode;
+using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Snap : ICommand
+namespace _New_Game.Scripts.Snapping
 {
-    public bool _isBuildingBlock = true;
-    public int placed;
-    public int isPickedUp;
-    [SerializeField] private bool isWallRoof = false;
-    private Vector3 _pos;
-    private Quaternion _rot;
-    private Vector3 _hookPos1;
-    private Quaternion _hookRot1;
-    private Vector3 _hookPos2;
-    private Quaternion _hookRot2;
-    public List<SnapPosition> _snapPosition = new List<SnapPosition>();
-    public GameObject _hookObject1;
-    public GameObject _hookObject2;
+    public class Snap : MonoBehaviour
+    {
+        public bool isBuildingBlock = true;
+        public int placed;
+        public int isPickedUp;
+        [SerializeField] private bool isWallRoof;
+        private Vector3 _pos;
+        private Quaternion _rot;
+        private Vector3 _hookPos1;
+        private Quaternion _hookRot1;
+        private Vector3 _hookPos2;
+        private Quaternion _hookRot2;
+        public List<SnapPosition> snapPosition = new List<SnapPosition>();
+        public GameObject hookObject1;
+        public GameObject hookObject2;
     
-    private bool isInValidTrigger = false;
-    private bool isplaced = false;
-    public Vector3 colposition;
-    public Quaternion colRotation;
-    public int snapId;
+        private bool _isInValidTrigger;
+        private bool _isplaced;
+        public Vector3 colposition;
+        public Quaternion colRotation;
+        public int snapId;
 
-    public GameObject invisableWall;
-    public GameObject decoratedWall;
-    public GameObject thisWall;
+        public GameObject invisableWall;
+        public GameObject decoratedWall;
+        public GameObject thisWall;
 
-    public bool blockPlaced;
+        public bool blockPlaced;
 
 
-    private List<ulong> playersConfirmed = new List<ulong>();
-    private float firstPressTime = -1f;
-    private float timeWindow = 10f;
-    private bool placementConfirmed = false;
-    void Start()
-    {
-        _rot = transform.rotation;
-        _pos = transform.position;
-        _hookPos1 = _hookObject1.transform.position;
-        _hookRot1 = _hookObject1.transform.rotation;
-        _hookPos2 = _hookObject2.transform.position;
-        _hookRot2 = _hookObject2.transform.rotation;
-        
-        GetComponent<Rigidbody>().isKinematic = false;
-    }
-
-    private void Update()
-    {
-        if (_snapPosition.Count > 0)
+        private List<ulong> _playersConfirmed = new List<ulong>();
+        private float _firstPressTime = -1f;
+        private float _timeWindow = 10f;
+        private bool _placementConfirmed;
+        void Start()
         {
-            foreach (var snapPos in _snapPosition)
+            _rot = transform.rotation;
+            _pos = transform.position;
+            _hookPos1 = hookObject1.transform.position;
+            _hookRot1 = hookObject1.transform.rotation;
+            _hookPos2 = hookObject2.transform.position;
+            _hookRot2 = hookObject2.transform.rotation;
+        
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+        private void Update()
+        {
+            if (snapPosition.Count > 0)
             {
-                if (!snapPos.hasObjectsInHere && snapPos.snapId == snapId)
+                foreach (var snapPos in snapPosition)
                 {
-                    colposition = snapPos.transform.position;
-                    colRotation = snapPos.transform.rotation;
-                    isInValidTrigger = true;
+                    if (!snapPos.hasObjectsInHere && snapPos.snapId == snapId)
+                    {
+                        colposition = snapPos.transform.position;
+                        colRotation = snapPos.transform.rotation;
+                        _isInValidTrigger = true;
+                    }
+                    else if (isBuildingBlock == false)
+                    {
+                        _isInValidTrigger = false;
+                    }
                 }
-                else if (_isBuildingBlock == false)
+            }
+
+
+            if (_isInValidTrigger && isBuildingBlock && !blockPlaced)
+            {
+
+                if (Input.GetKeyDown(KeyCode.F))
                 {
-                    isInValidTrigger = false;
+                    ConfirmPlacementServerRpc();
+                }
+            }
+
+
+            if (_isplaced)
+            {
+                transform.position = colposition;
+                transform.rotation = colRotation;
+            }
+        
+            if (_firstPressTime > 0 && Time.time - _firstPressTime > _timeWindow)
+            {
+                _playersConfirmed.Clear();
+                _firstPressTime = -1f;
+            }
+        }
+
+        void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("BuildPosition"))
+            {
+                SnapPosition snap = other.GetComponent<SnapPosition>();
+            
+                if (snap != null && !snapPosition.Contains(snap))
+                {
+                    snapPosition.Add(snap);
                 }
             }
         }
-
-
-        if (isInValidTrigger && _isBuildingBlock && !blockPlaced)
+        void OnTriggerExit(Collider other)
         {
-
-            if (Input.GetKeyDown(KeyCode.F))
+            snapPosition.Clear();
+        }
+        public void Invoke()
+        {
+            if (isPickedUp > 0)
             {
-                confirmPlacementServerRpc();
-            }
-        }
-
-
-        if (isplaced)
-        {
-            transform.position = colposition;
-            transform.rotation = colRotation;
-        }
-        
-        if (firstPressTime > 0 && Time.time - firstPressTime > timeWindow)
-        {
-            playersConfirmed.Clear();
-            firstPressTime = -1f;
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("BuildPosition"))
-        {
-            SnapPosition snap = other.GetComponent<SnapPosition>();
+                _isplaced = true;
             
-            if (snap != null && !_snapPosition.Contains(snap))
-            {
-                _snapPosition.Add(snap);
+                hookObject1.SetActive(false);
+                hookObject2.SetActive(false);
             }
         }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        _snapPosition.Clear();
-    }
-    public override void Invoke(Fish fish)
-    {
-        throw new System.NotImplementedException();
-    }
-    public void Invoke()
-    {
-        if (isPickedUp > 0)
-        {
-            isplaced = true;
-            
-            _hookObject1.SetActive(false);
-            _hookObject2.SetActive(false);
-        }
-    }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void confirmPlacementServerRpc(ServerRpcParams rpcParams = default)
-    {
-        ulong clienId = rpcParams.Receive.SenderClientId;
-
-        if (!playersConfirmed.Contains(clienId))
+        [ServerRpc(RequireOwnership = false)]
+        public void ConfirmPlacementServerRpc(ServerRpcParams rpcParams = default)
         {
-            playersConfirmed.Add(clienId);
-            if (playersConfirmed.Count == 1)
+            ulong clienId = rpcParams.Receive.SenderClientId;
+
+            if (!_playersConfirmed.Contains(clienId))
             {
-                firstPressTime = Time.time;
-            }
-            else if (playersConfirmed.Count == 2 && Time.time - firstPressTime <= timeWindow)
-            {
-                placementConfirmed = true;
-                PlaceBlockClientRpc();
-            }
-            else if (Time.time - firstPressTime > timeWindow)
-            {
-                playersConfirmed.Clear();
-                firstPressTime = -1f;
+                _playersConfirmed.Add(clienId);
+                if (_playersConfirmed.Count == 1)
+                {
+                    _firstPressTime = Time.time;
+                }
+                else if (_playersConfirmed.Count == 2 && Time.time - _firstPressTime <= _timeWindow)
+                {
+                    _placementConfirmed = true;
+                    PlaceBlockClientRpc();
+                }
+                else if (Time.time - _firstPressTime > _timeWindow)
+                {
+                    _playersConfirmed.Clear();
+                    _firstPressTime = -1f;
+                }
             }
         }
-    }
     
-    [ClientRpc]
-    private void PlaceBlockClientRpc()
-    {
-        blockPlaced = true;
-        isplaced = true;
-        _isBuildingBlock = false;
+        [ClientRpc]
+        private void PlaceBlockClientRpc()
+        {
+            blockPlaced = true;
+            _isplaced = true;
+            isBuildingBlock = false;
 
-        invisableWall.SetActive(false);
-        decoratedWall.SetActive(true);
-        thisWall.SetActive(false);
+            invisableWall.SetActive(false);
+            decoratedWall.SetActive(true);
+            thisWall.SetActive(false);
         
-        _hookObject1.SetActive(false);
-        _hookObject2.SetActive(false);
-    }
+            hookObject1.SetActive(false);
+            hookObject2.SetActive(false);
+        }
     
+    }
 }

@@ -1,19 +1,17 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _New_Game.Scripts.Crane
 {
     public class Respawn : MonoBehaviour
     {
-        private float timer = 0.1f;
+        private float _timer = 0.1f;
         
         private Transform _lowestFallPoint;
         private Transform _respawnPoint, _respawnPointWall;
 
         private Transform _north, _south, _east, _west;
 
-        private Rigidbody rb;
+        private Rigidbody _rb;
         private void Start()
         {
             _respawnPoint = GameObject.FindWithTag("Respawn").transform;
@@ -27,7 +25,7 @@ namespace _New_Game.Scripts.Crane
 
             try
             {
-                rb = GetComponent<Rigidbody>();
+                _rb = GetComponent<Rigidbody>();
             }
             catch
             {
@@ -39,7 +37,7 @@ namespace _New_Game.Scripts.Crane
         {
             if (transform.position.y <= _lowestFallPoint.transform.position.y)
             {
-                if (this.gameObject.tag == "Wall")
+                if (gameObject.CompareTag("Wall"))
                 {
                     RespawnPointWall();
                     return;
@@ -50,7 +48,7 @@ namespace _New_Game.Scripts.Crane
 
             if (transform.position.x >= _north.transform.position.x || transform.position.x <= _south.transform.position.x)
             {
-                if (this.gameObject.tag == "Wall")
+                if (gameObject.CompareTag("Wall"))
                 {
                     RespawnPointWall();
                     return;
@@ -61,7 +59,7 @@ namespace _New_Game.Scripts.Crane
             
             if (transform.position.z >= _west.transform.position.z || transform.position.z <= _east.transform.position.z)
             {
-                if (this.gameObject.tag == "Wall")
+                if (gameObject.CompareTag("Wall"))
                 {
                     RespawnPointWall();
                     return;
@@ -70,11 +68,11 @@ namespace _New_Game.Scripts.Crane
                 RespawnPoint();
             }
 
-            timer -= Time.deltaTime;
+            _timer -= Time.deltaTime;
             
-            if (rb != null && timer <= 0)
+            if (_rb != null && _timer <= 0)
             {
-                rb.isKinematic = false;
+                _rb.isKinematic = false;
             }
         }
 
@@ -86,11 +84,11 @@ namespace _New_Game.Scripts.Crane
             
            
 
-            if (rb != null)
+            if (_rb != null)
             {
-                timer = 0.1f;
+                _timer = 0.1f;
             
-                rb.isKinematic = true;    
+                _rb.isKinematic = true;    
             }
         }
 

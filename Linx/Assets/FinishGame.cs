@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using _New_Game.Scripts.Camera;
 using _New_Game.Scripts.Crane;
+using _New_Game.Scripts.Menu;
+using _New_Game.Scripts.Snapping;
 using Unity.Netcode;
 using UnityEngine;
 using Unity.Netcode;

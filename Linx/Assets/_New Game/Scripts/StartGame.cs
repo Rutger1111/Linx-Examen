@@ -1,36 +1,26 @@
 using System;
-using System.Collections.Generic;
-using Unity.Multiplayer.Widgets;
 using Unity.Netcode;
-using Unity.Netcode.Transports.UTP;
-using Unity.Networking.Transport.Relay;
-using Unity.Services.Authentication;
-using Unity.Services.Core;
-using Unity.Services.Lobbies;
-using Unity.Services.Lobbies.Models;
-using Unity.Services.Relay;
-using Unity.Services.Relay.Models;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class StartGame : MonoBehaviour
+namespace _New_Game.Scripts
 {
-    [SerializeField] private string _gameplayScene = "Multiplayer";
-    
-    public GameObject playersJoinedListPrefab;
-
-    public GameObject parent2;
-    
-
-    private void Update()
+    public class StartGame : MonoBehaviour
     {
-        playersJoined();
-    }
+        [SerializeField] private string gameplayScene = "Multiplayer";
+    
+        public GameObject playersJoinedListPrefab;
 
-    public void playersJoined()
-    {
+        public GameObject parent2;
+    
+
+        private void Update()
+        {
+            PlayersJoined();
+        }
+
+        private void PlayersJoined()
+        {
             try
             {
                 foreach (Transform child in parent2.transform)
@@ -54,24 +44,25 @@ public class StartGame : MonoBehaviour
                 Console.WriteLine(e);
             }
         
-    }
-
-    public void startGame()
-    {
-        Debug.Log("StartGame called. IsServer: " + NetworkManager.Singleton.IsServer);
-
-        if (NetworkManager.Singleton.IsServer)
-        {
-            Debug.Log("Loading scene: " + _gameplayScene);
-            NetworkManager.Singleton.SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
         }
-        else
+
+        public void startGame()
         {
-            Debug.Log("Client tried to start game — ignored.");
+            Debug.Log("StartGame called. IsServer: " + NetworkManager.Singleton.IsServer);
+
+            if (NetworkManager.Singleton.IsServer)
+            {
+                Debug.Log("Loading scene: " + gameplayScene);
+                NetworkManager.Singleton.SceneManager.LoadScene(gameplayScene, LoadSceneMode.Single);
+            }
+            else
+            {
+                Debug.Log("Client tried to start game — ignored.");
+            }
         }
-    }
     
 
     
     
+    }
 }

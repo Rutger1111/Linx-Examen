@@ -2,32 +2,31 @@ using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerCameraHandler : NetworkBehaviour
+namespace _New_Game.Scripts.Camera
 {
-    [SerializeField] private Camera _camera;
+    public class PlayerCameraHandler : NetworkBehaviour
+    {
+        [SerializeField] private UnityEngine.Camera usedCamera;
     
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
-        
-        StartCoroutine(WaitAndEnableCamera());
-    }
-
-    private IEnumerator WaitAndEnableCamera()
-    {
-        yield return new WaitForEndOfFrame(); 
-
-        if (!IsOwner)
+        public override void OnNetworkSpawn()
         {
-            
-            Debug.Log("Not Local Player, skipping camera enable.");
-            yield break;
+            base.OnNetworkSpawn();
+        
+            StartCoroutine(WaitAndEnableCamera());
         }
 
+        private IEnumerator WaitAndEnableCamera()
+        {
+            yield return new WaitForEndOfFrame(); 
+
+            if (!IsOwner)
+            {
+                yield break;
+            }
+
         
-        _camera.enabled = true;
-        
-        Debug.Log("Local Player: Camera enabled.");
+            usedCamera.enabled = true;
+        }
     }
 }
 

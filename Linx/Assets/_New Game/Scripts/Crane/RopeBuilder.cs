@@ -1,17 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _New_Game.Scripts.Crane
 {
     public class RopeBuilder : MonoBehaviour
     {
-        public GameObject segmentPrefab;     // Rope segment prefab
-        public int segmentCount = 10;        // Number of segments
-        public float segmentSpacing = 0.5f;  // Distance between segments
-        public Transform anchorPoint;        // Where the rope starts
-        public GameObject magnetPrefab;      // Magnet prefab to instantiate
-
-        public Transform MagnetParent;
+        [SerializeField] private GameObject segmentPrefab;     // Rope segment prefab
+        [SerializeField] private int segmentCount = 10;        // Number of segments
+        [SerializeField] private float segmentSpacing = 0.5f;  // Distance between segments
+        [SerializeField] private Transform anchorPoint;        // Where the rope starts
+        [SerializeField] private GameObject magnetPrefab;      // Magnet prefab to instantiate
 
         private List<GameObject> segments = new List<GameObject>();
 
@@ -83,7 +82,7 @@ namespace _New_Game.Scripts.Crane
             Vector3 spawnPos = lastSegment.transform.position + Vector3.down * segmentSpacing;
 
             GameObject magnet = Instantiate(magnetPrefab, spawnPos, Quaternion.identity, anchorPoint);
-            transform.parent.parent.parent.parent.parent.GetComponent<PickUp>().pickUpPosition = magnet;
+            transform.parent.parent.parent.parent.parent.GetComponent<PickUp>()._pickUpPosition = magnet;
             Rigidbody magnetRb = magnet.GetComponent<Rigidbody>();
             if (magnetRb == null)
             {

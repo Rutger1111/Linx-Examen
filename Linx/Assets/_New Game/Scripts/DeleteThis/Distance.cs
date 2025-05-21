@@ -55,7 +55,7 @@ public class Distance : NetworkBehaviour
         {
             print("distance");
             
-            picker.Drop(_cookieNetObj.NetworkObjectId);
+            picker.drop(_cookieNetObj.NetworkObjectId);
             _assignedPickUp = picker;
             _lifes += 1;
         }
