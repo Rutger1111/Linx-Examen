@@ -11,8 +11,7 @@ public class PickUp : NetworkBehaviour
     private NetworkObject _heldObject;
     public List<GameObject> _pickUpAbleObjects = new List<GameObject>();
     private ConfigurableJoint _joint;
-
-    [SerializeField] private GameObject UIPickup;
+    
 
     public GameObject[] allObjects;
 

@@ -15,7 +15,6 @@ public class Snap : ICommand
     public int placed;
     public int isPickedUp;
     [SerializeField] private bool isWallRoof = false;
-    public GameObject UIplace;
     private Vector3 _pos;
     private Quaternion _rot;
     private Vector3 _hookPos1;
@@ -53,7 +52,6 @@ public class Snap : ICommand
         _hookRot2 = _hookObject2.transform.rotation;
         
         GetComponent<Rigidbody>().isKinematic = false;
-        UIplace.SetActive(false);
     }
 
     private void Update()
@@ -71,7 +69,6 @@ public class Snap : ICommand
                 else if (_isBuildingBlock == false)
                 {
                     isInValidTrigger = false;
-                    UIplace.SetActive(false);
                 }
             }
         }
@@ -79,7 +76,6 @@ public class Snap : ICommand
 
         if (isInValidTrigger && _isBuildingBlock && !blockPlaced)
         {
-            UIplace.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -116,7 +112,6 @@ public class Snap : ICommand
     void OnTriggerExit(Collider other)
     {
         _snapPosition.Clear();
-        UIplace.SetActive(false);
     }
     public override void Invoke(Fish fish)
     {
@@ -169,6 +164,8 @@ public class Snap : ICommand
         decoratedWall.SetActive(true);
         thisWall.SetActive(false);
         
+        _hookObject1.SetActive(false);
+        _hookObject2.SetActive(false);
     }
     
 }
