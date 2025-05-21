@@ -15,7 +15,6 @@ public class Snap : ICommand
     public int placed;
     public int isPickedUp;
     [SerializeField] private bool isWallRoof = false;
-    public GameObject UIplace;
     private Vector3 _pos;
     private Quaternion _rot;
     private Vector3 _hookPos1;
@@ -34,6 +33,15 @@ public class Snap : ICommand
 
     public GameObject invisableWall;
     public GameObject decoratedWall;
+    public GameObject thisWall;
+
+    public bool blockPlaced;
+
+
+    private List<ulong> playersConfirmed = new List<ulong>();
+    private float firstPressTime = -1f;
+    private float timeWindow = 10f;
+    private bool placementConfirmed = false;
     void Start()
     {
         _rot = transform.rotation;
@@ -44,27 +52,10 @@ public class Snap : ICommand
         _hookRot2 = _hookObject2.transform.rotation;
         
         GetComponent<Rigidbody>().isKinematic = false;
-        UIplace.SetActive(false);
     }
 
     private void Update()
     {
-        /*
-        if (_hookObject1.GetComponent<PickUpItem>().IsHeld.Value == false || _hookObject2.GetComponent<PickUpItem>().IsHeld.Value == false)
-        {
-            
-            transform.position = _pos;
-            transform.rotation = _rot;
-            _hookObject1.transform.position = _hookPos1;
-            _hookObject1.transform.rotation = _hookRot1;
-            _hookObject2.transform.position = _hookPos2;
-            _hookObject2.transform.rotation = _hookRot2;
-        }
-        else
-        {
-            GetComponent<Rigidbody>().isKinematic = false;
-        }
-        */
         if (_snapPosition.Count > 0)
         {
             foreach (var snapPos in _snapPosition)
@@ -78,24 +69,17 @@ public class Snap : ICommand
                 else if (_isBuildingBlock == false)
                 {
                     isInValidTrigger = false;
-                    UIplace.SetActive(false);
                 }
             }
         }
 
 
-        if (isInValidTrigger && _isBuildingBlock == true)
+        if (isInValidTrigger && _isBuildingBlock && !blockPlaced)
         {
-            UIplace.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Invoke();
-                _isBuildingBlock = false;
-                placed++;
-                invisableWall.SetActive(false);
-                decoratedWall.SetActive(true);
-                gameObject.SetActive(this.gameObject);
+                confirmPlacementServerRpc();
             }
         }
 
@@ -105,12 +89,12 @@ public class Snap : ICommand
             transform.position = colposition;
             transform.rotation = colRotation;
         }
-
-        if (placed >= 6)
-        {
-            NetworkManager.Singleton.SceneManager.LoadScene("Won", LoadSceneMode.Single);
-        }
         
+        if (firstPressTime > 0 && Time.time - firstPressTime > timeWindow)
+        {
+            playersConfirmed.Clear();
+            firstPressTime = -1f;
+        }
     }
 
     void OnTriggerStay(Collider other)
@@ -128,7 +112,6 @@ public class Snap : ICommand
     void OnTriggerExit(Collider other)
     {
         _snapPosition.Clear();
-        UIplace.SetActive(false);
     }
     public override void Invoke(Fish fish)
     {
@@ -139,13 +122,50 @@ public class Snap : ICommand
         if (isPickedUp > 0)
         {
             isplaced = true;
-
-            // Use the already passed position/rotation directly
+            
             _hookObject1.SetActive(false);
             _hookObject2.SetActive(false);
-
-            Debug.Log("Snap placement invoked");
         }
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void confirmPlacementServerRpc(ServerRpcParams rpcParams = default)
+    {
+        ulong clienId = rpcParams.Receive.SenderClientId;
+
+        if (!playersConfirmed.Contains(clienId))
+        {
+            playersConfirmed.Add(clienId);
+            if (playersConfirmed.Count == 1)
+            {
+                firstPressTime = Time.time;
+            }
+            else if (playersConfirmed.Count == 2 && Time.time - firstPressTime <= timeWindow)
+            {
+                placementConfirmed = true;
+                PlaceBlockClientRpc();
+            }
+            else if (Time.time - firstPressTime > timeWindow)
+            {
+                playersConfirmed.Clear();
+                firstPressTime = -1f;
+            }
+        }
+    }
+    
+    [ClientRpc]
+    private void PlaceBlockClientRpc()
+    {
+        blockPlaced = true;
+        isplaced = true;
+        _isBuildingBlock = false;
+
+        invisableWall.SetActive(false);
+        decoratedWall.SetActive(true);
+        thisWall.SetActive(false);
+        
+        _hookObject1.SetActive(false);
+        _hookObject2.SetActive(false);
+    }
+    
 }

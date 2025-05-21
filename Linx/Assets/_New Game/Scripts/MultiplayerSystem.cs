@@ -33,6 +33,7 @@ public class MultiplayerSystem : NetworkBehaviour
     [SerializeField] private GameObject _lobbyList;
     [SerializeField] private GameObject _GameUI;
     [SerializeField] private GameObject _startGameButtonUI;
+    [SerializeField] private GameObject _logo;
     
     
     private string _joinCode;
@@ -106,6 +107,7 @@ public class MultiplayerSystem : NetworkBehaviour
             _multiplayerUI.SetActive(false);
             _startGameButtonUI.SetActive(true);
             _GameUI.SetActive(true);
+            _logo.SetActive(false);
         }
         catch (LobbyServiceException e)
         {
@@ -138,6 +140,7 @@ public class MultiplayerSystem : NetworkBehaviour
 
             _multiplayerUI.SetActive(false);
             _lobbyList.SetActive(true);
+            _logo.SetActive(false);
 
             foreach (Lobby lobby in queryResponse.Results)
             {
@@ -187,7 +190,7 @@ public class MultiplayerSystem : NetworkBehaviour
             _multiplayerUI.SetActive(false);
             _lobbyList.SetActive(false);
             _GameUI.SetActive(true);
-            
+
             PlayersJoined();
         }
         catch (LobbyServiceException e)

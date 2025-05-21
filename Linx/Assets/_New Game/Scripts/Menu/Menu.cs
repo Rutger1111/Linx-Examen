@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using _New_Game.Scripts.Crane;
 using NUnit.Framework;
+using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour
+public class Menu : NetworkBehaviour
 {
     
     [SerializeField] private GameObject pausePanel;
@@ -26,8 +27,10 @@ public class Menu : MonoBehaviour
     private void Update()
     {
 
-        InputHandler();
+        if (!IsOwner)return;
         
+        
+        InputHandler();
         FindingCamera();
         
         if (TutoActive == false)
@@ -45,16 +48,6 @@ public class Menu : MonoBehaviour
             {
                 movement.MovementDisable(menuActive);
             }
-
-        
-            foreach (ThirdPersonCameraPlayerFollow Cameras in camerasList)
-            {
-                Cameras.CameraDissable(true);
-            }
-            foreach (Movement movement in movementList)
-            {
-                movement.MovementDisable(true);
-            }   
         }
     }
     
@@ -91,19 +84,11 @@ public class Menu : MonoBehaviour
 
     private void InputHandler()
     {
-        bool menuActive = pausePanel.activeSelf != true;
-        
-        
         menuActive = pausePanel.activeSelf != true;
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
             pausePanel.SetActive(menuActive);
-            
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            
         }
     }
 
