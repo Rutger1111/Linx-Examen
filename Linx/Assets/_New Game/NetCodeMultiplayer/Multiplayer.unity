@@ -7278,6 +7278,7 @@ MonoBehaviour:
   - {fileID: 1833215086}
   - {fileID: 1782978077}
   tutorialPanel1: {fileID: 954421723}
+  TutoActive: 0
   menuActive: 1
 --- !u!114 &1457461184
 MonoBehaviour:

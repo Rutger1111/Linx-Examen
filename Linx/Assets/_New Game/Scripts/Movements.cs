@@ -74,30 +74,31 @@ namespace _New_Game.Scripts.Crane
             if (Input.GetKey(KeyCode.W))
             {
                 driveInput = 1f;
-                if (!driving.isPlaying)
-                {
-                    driving.Play();    
-                }
             }
-            else
-            {
-                driving.Stop();
-            }
-            
+
             if (Input.GetKey(KeyCode.S))
             {
                 driveInput = -1f;
-                driving.Play();    
-                
-            }
-            else
-            {
-                driving.Stop();
             }
 
             transform.position += wheelPivot.forward * (driveInput * driveSpeed * Time.deltaTime);
             
-            driving.Play();
+            
+            if (driveInput != 0f)
+            {
+                if (!driving.isPlaying)
+                {
+                    driving.Play();
+                }
+            }
+            else
+            {
+                if (driving.isPlaying)
+                {
+                    driving.Stop();
+                }
+            }
+            
         }
 
         private void Turn()
@@ -109,28 +110,31 @@ namespace _New_Game.Scripts.Crane
             if (Input.GetKey(KeyCode.D))
             {
                 turnInput = 1f;
-                driving.Play();    
-                
             }
-            else
-            {
-                driving.Stop();
-            }
+            
 
             if (Input.GetKey(KeyCode.A))
             {
                 turnInput = -1f;
+            }
+            
+            wheelPivot.Rotate(0f, turnInput * baseRotationSpeed * Time.deltaTime, 0f);
+            
+            if (turnInput != 0f)
+            {
                 if (!driving.isPlaying)
                 {
-                    driving.Play();    
+                    driving.Play();
                 }
             }
             else
             {
-                driving.Stop();
+                if (driving.isPlaying)
+                {
+                    driving.Stop();
+                }
             }
             
-            wheelPivot.Rotate(0f, turnInput * baseRotationSpeed * Time.deltaTime, 0f);
             
             
             
@@ -168,11 +172,6 @@ namespace _New_Game.Scripts.Crane
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 grabInput = 1f;
-                grab.Play();
-            }
-            else
-            {
-                grab.Stop();
             }
             //Up(KeyCode.Mouse0)) grabInput = -1f;
 
@@ -197,7 +196,20 @@ namespace _New_Game.Scripts.Crane
 
             craneArm.localEulerAngles = new Vector3(newX, currentAngles.y, currentAngles.z);
 
-            
+            if (grabInput != 0f)
+            {
+                if (!driving.isPlaying)
+                {
+                    grab.Play();
+                }
+            }
+            else
+            {
+                if (driving.isPlaying)
+                {
+                    grab.Stop();
+                }
+            }
         }
 
         private void MoveHook()
