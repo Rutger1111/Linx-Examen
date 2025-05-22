@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 1358533294238152495}
   - component: {fileID: 3209615490372382778}
   - component: {fileID: 4643631342202391412}
+  - component: {fileID: 4406641611355774732}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -315,6 +316,15 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!45 &4406641611355774732
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666244941037161989}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: da92311cf7eca6845aedde56c774763d, type: 2}
 --- !u!1 &1383430196876721312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,6 +3712,9 @@ MonoBehaviour:
   minHookHeight: 0.5
   maxHookHeight: 10
   CenterMouseTimer: 0.4
+  hasMovementOptions: 0
+  driving: {fileID: 0}
+  grab: {fileID: 0}
 --- !u!114 &6782683197192384141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3773,7 +3786,7 @@ MonoBehaviour:
   _pickUpPosition: {fileID: 0}
   _targetTag: moveAbleObject
   _pickUpAbleObjects: []
-  UIPickup: {fileID: 0}
+  allObjects: []
 --- !u!1 &8819465701490982139
 GameObject:
   m_ObjectHideFlags: 0

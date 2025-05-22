@@ -465,6 +465,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9037152285013203517, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2853138558064332647}
+    - targetCorrespondingSourceObject: {fileID: 9037152285013203517, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3525010247853840378}
   m_SourcePrefab: {fileID: 100100000, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
 --- !u!1 &1870647564684462677 stripped
 GameObject:
@@ -581,6 +584,15 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2871863154262328158}
   m_Enabled: 1
+--- !u!45 &3525010247853840378
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871863154262328158}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: da92311cf7eca6845aedde56c774763d, type: 2}
 --- !u!1 &3301753582191442257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8602628652827435058, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
