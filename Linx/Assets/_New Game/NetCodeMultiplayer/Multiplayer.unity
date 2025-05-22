@@ -1393,6 +1393,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 0}
 --- !u!54 &284777767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3400,6 +3401,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 1527670144848456673}
 --- !u!64 &767070917
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3927,6 +3929,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 8553298176703015753}
 --- !u!1 &845281154
 GameObject:
   m_ObjectHideFlags: 0
@@ -5325,6 +5328,8 @@ GameObject:
   - component: {fileID: 1030076894}
   - component: {fileID: 1030076896}
   - component: {fileID: 1030076897}
+  - component: {fileID: 1030076899}
+  - component: {fileID: 1030076898}
   m_Layer: 0
   m_Name: hookPoints2
   m_TagString: moveAbleObject
@@ -5534,6 +5539,41 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 8271490286116741081}
+--- !u!114 &1030076898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030076888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5192a775d66cc4b9b1fd4f120430a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  IsHeld:
+    m_InternalValue: 0
+  Wall: {fileID: 0}
+--- !u!114 &1030076899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030076888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49a39397383757419c49e92f8d363ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _range: 2
+  _pickUpPosition: {fileID: 0}
+  _targetTag: moveAbleObject
+  _pickUpAbleObjects: []
+  allObjects: []
 --- !u!1 &1030996471
 GameObject:
   m_ObjectHideFlags: 0
@@ -5777,6 +5817,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 1527670144848456673}
 --- !u!108 &1058170251
 Light:
   m_ObjectHideFlags: 0
@@ -6616,6 +6657,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 4308697756648215138}
 --- !u!64 &1298697776
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8255,6 +8297,7 @@ GameObject:
   - component: {fileID: 1614757656}
   - component: {fileID: 1614757658}
   - component: {fileID: 1614757659}
+  - component: {fileID: 1614757660}
   m_Layer: 0
   m_Name: hookPoints2
   m_TagString: moveAbleObject
@@ -8464,6 +8507,23 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 8271490286116741081}
+--- !u!114 &1614757660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614757650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5192a775d66cc4b9b1fd4f120430a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  IsHeld:
+    m_InternalValue: 0
+  Wall: {fileID: 7248139386458223753}
 --- !u!64 &1638125097
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8711,6 +8771,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 4886949280671581425}
 --- !u!1 &1661352459
 GameObject:
   m_ObjectHideFlags: 0
@@ -8936,6 +8997,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 8553298176703015753}
 --- !u!64 &1718710391
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9329,6 +9391,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 4308697756648215138}
 --- !u!1 &1781596473
 GameObject:
   m_ObjectHideFlags: 0
@@ -9630,6 +9693,7 @@ GameObject:
   - component: {fileID: 1812327457}
   - component: {fileID: 1812327459}
   - component: {fileID: 1812327460}
+  - component: {fileID: 1812327461}
   m_Layer: 0
   m_Name: hookPoints1
   m_TagString: moveAbleObject
@@ -9839,6 +9903,23 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 8271490286116741081}
+--- !u!114 &1812327461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812327451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5192a775d66cc4b9b1fd4f120430a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  IsHeld:
+    m_InternalValue: 0
+  Wall: {fileID: 7248139386458223753}
 --- !u!1 &1813948432
 GameObject:
   m_ObjectHideFlags: 0
@@ -10839,6 +10920,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   IsHeld:
     m_InternalValue: 0
+  Wall: {fileID: 4886949280671581425}
 --- !u!1001 &1893875004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11630,6 +11712,8 @@ GameObject:
   - component: {fileID: 2118383429}
   - component: {fileID: 2118383431}
   - component: {fileID: 2118383432}
+  - component: {fileID: 2118383434}
+  - component: {fileID: 2118383433}
   m_Layer: 0
   m_Name: hookPoints1
   m_TagString: moveAbleObject
@@ -11836,6 +11920,40 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2118383433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118383423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5192a775d66cc4b9b1fd4f120430a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  IsHeld:
+    m_InternalValue: 0
+  Wall: {fileID: 8271490286116741081}
+--- !u!114 &2118383434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118383423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49a39397383757419c49e92f8d363ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _range: 2
+  _pickUpPosition: {fileID: 0}
+  _targetTag: moveAbleObject
+  _pickUpAbleObjects: []
+  allObjects: []
 --- !u!1 &2133574765
 GameObject:
   m_ObjectHideFlags: 0
