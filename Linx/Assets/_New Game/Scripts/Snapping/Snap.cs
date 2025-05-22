@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using Unity.Netcode;
 
-public class Snap : ICommand
+public class Snap : NetworkBehaviour
 {
     public bool _isBuildingBlock = true;
     public int placed;
@@ -39,7 +39,7 @@ public class Snap : ICommand
 
 
     public List<ulong> playersConfirmed = new List<ulong>();
-    private float firstPressTime = -1f;
+    public float firstPressTime = 0f;
     private float timeWindow = 10f;
     private bool placementConfirmed = false;
     void Start()
@@ -56,6 +56,8 @@ public class Snap : ICommand
 
     private void Update()
     {
+        firstPressTime += Time.deltaTime;
+        
         if (_snapPosition.Count > 0)
         {
             foreach (var snapPos in _snapPosition)
@@ -72,8 +74,7 @@ public class Snap : ICommand
                 }
             }
         }
-
-
+        
         if (isInValidTrigger && _isBuildingBlock && !blockPlaced)
         {
 
@@ -82,6 +83,13 @@ public class Snap : ICommand
                 confirmPlacementServerRpc();
             }
         }
+        
+        
+        
+        
+
+
+       
 
 
         if (isplaced)
@@ -90,10 +98,10 @@ public class Snap : ICommand
             transform.rotation = colRotation;
         }
         
-        if (firstPressTime > 0 && Time.time - firstPressTime > timeWindow)
+        if (firstPressTime > timeWindow)
         {
             playersConfirmed.Clear();
-            firstPressTime = -1f;
+            firstPressTime = 0f;
         }
     }
 
@@ -113,20 +121,6 @@ public class Snap : ICommand
     {
         _snapPosition.Clear();
     }
-    public override void Invoke(Fish fish)
-    {
-        throw new System.NotImplementedException();
-    }
-    public void Invoke()
-    {
-        if (isPickedUp > 0)
-        {
-            isplaced = true;
-            
-            _hookObject1.SetActive(false);
-            _hookObject2.SetActive(false);
-        }
-    }
 
     [ServerRpc(RequireOwnership = false)]
     public void confirmPlacementServerRpc(ServerRpcParams rpcParams = default)
@@ -136,19 +130,16 @@ public class Snap : ICommand
         if (!playersConfirmed.Contains(clienId))
         {
             playersConfirmed.Add(clienId);
-            if (playersConfirmed.Count == 1)
-            {
-                firstPressTime = Time.time;
-            }
-            else if (playersConfirmed.Count == 2 && Time.time - firstPressTime <= timeWindow)
+            
+            if (playersConfirmed.Count == 2 && firstPressTime <= timeWindow)
             {
                 placementConfirmed = true;
                 PlaceBlockClientRpc();
             }
-            else if (Time.time - firstPressTime > timeWindow)
+            else if (firstPressTime > timeWindow)
             {
                 playersConfirmed.Clear();
-                firstPressTime = -1f;
+                firstPressTime = 0f;
             }
         }
     }

@@ -49,7 +49,7 @@ public class PickUp : NetworkBehaviour
             if (pickupable != null && !pickupable.IsHeld.Value)
             {
                 ulong targetId = obj.GetComponent<NetworkObject>().NetworkObjectId;
-                RequestPickUpServerRpc(targetId, NetworkObjectId);
+                RequestPickUpServerRpc(targetId);
                 break;
             }
         }
@@ -105,10 +105,9 @@ public class PickUp : NetworkBehaviour
     }
 
     [ServerRpc]
-    void RequestPickUpServerRpc(ulong targetId, ulong playerId, ServerRpcParams rpcParams = default)
+    void RequestPickUpServerRpc(ulong targetId, ServerRpcParams rpcParams = default)
     {
         if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(targetId, out NetworkObject targetObject)) return;
-        if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(playerId, out NetworkObject playerObject)) return;
 
         var pickupable = targetObject.GetComponent<PickUpItem>();
         if (pickupable == null || pickupable.IsHeld.Value) return;
