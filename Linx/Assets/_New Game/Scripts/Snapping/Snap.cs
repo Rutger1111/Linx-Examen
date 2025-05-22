@@ -51,7 +51,7 @@ public class Snap : ICommand
         _hookPos2 = _hookObject2.transform.position;
         _hookRot2 = _hookObject2.transform.rotation;
         
-        GetComponent<Rigidbody>().isKinematic = false;
+//        GetComponent<Rigidbody>().isKinematic = false;
     }
 
     private void Update()

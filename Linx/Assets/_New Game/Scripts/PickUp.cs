@@ -25,7 +25,7 @@ public class PickUp : NetworkBehaviour
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
                 TryPickUp();
-                _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp++;
+                _heldObject.GetComponent<PickUpItem>().Wall.gameObject.GetComponent<Snap>().isPickedUp++;
             }
             else if (_heldObject != null)
             {
@@ -159,7 +159,7 @@ public class PickUp : NetworkBehaviour
     {
         if (IsOwner && _heldObject != null && _heldObject.NetworkObjectId == objectId)
         {
-            _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp--;
+            _heldObject.GetComponent<PickUpItem>().Wall.gameObject.GetComponent<Snap>().isPickedUp--;
             _heldObject = null;
         }
     }
