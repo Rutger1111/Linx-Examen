@@ -12,6 +12,7 @@ public class LobbyButtonUI : MonoBehaviour
 
     public void OnClickJoin()
     {
+        print("check");
 
         FindObjectOfType<MultiplayerSystem>().JoinLobby(lobbyId);
     }
