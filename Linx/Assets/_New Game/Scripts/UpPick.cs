@@ -159,7 +159,7 @@ public class UpPick : NetworkBehaviour
     {
         if (IsOwner && _heldObject != null && _heldObject.NetworkObjectId == objectId)
         {
-            _heldObject.GetComponent<PickUpItem>().gameObject.GetComponent<Snap>().isPickedUp--;
+            // _heldObject.GetComponent<PickUpItem>().gameObject.GetComponent<Snap>().isPickedUp--;
             _heldObject = null;
         }
     }
