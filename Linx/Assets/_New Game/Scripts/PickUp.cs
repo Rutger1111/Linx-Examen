@@ -9,16 +9,18 @@ public class PickUp : NetworkBehaviour
     [SerializeField] private string _targetTag = "moveAbleObject";
     
     private NetworkObject _heldObject;
-    private List<GameObject> _pickUpAbleObjects = new List<GameObject>();
+    public List<GameObject> _pickUpAbleObjects = new List<GameObject>();
     private ConfigurableJoint _joint;
+    
+
+    public GameObject[] allObjects;
 
     void Update()
     {
-        if (!IsOwner) return;
 
         FindNearbyObjects();
 
-        if (Input.GetKeyDown(KeyCode.E) && IsOwner)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
@@ -28,13 +30,17 @@ public class PickUp : NetworkBehaviour
             else if (_heldObject != null)
             {
                 ulong targetId = _heldObject.NetworkObjectId;
-                RequestDropServerRpc(targetId);
+                drop(targetId);
             }
         }
 
         UpdateJointLogic();
     }
 
+    public void drop(ulong targetId)
+    {
+        RequestDropServerRpc(targetId);
+    }
     void TryPickUp()
     {
         foreach (var obj in _pickUpAbleObjects)
@@ -75,15 +81,26 @@ public class PickUp : NetworkBehaviour
     void FindNearbyObjects()
     {
         _pickUpAbleObjects.Clear();
-        GameObject[] allObjects = GameObject.FindGameObjectsWithTag(_targetTag);
+        allObjects = GameObject.FindGameObjectsWithTag(_targetTag);
+
+        GameObject closestObject = null;
+        
+        float closestDistance = Mathf.Infinity;
 
         foreach (GameObject obj in allObjects)
         {
-            float distance = Vector3.Distance(_pickUpPosition.transform.position, obj.transform.position);
-            if (distance <= _range)
+            float currentDistance = Vector3.Distance(_pickUpPosition.transform.position, obj.transform.position);
+
+            if (currentDistance <= _range && currentDistance < closestDistance)
             {
-                _pickUpAbleObjects.Add(obj);
+                closestDistance = currentDistance;
+                closestObject = obj;
             }
+        }
+
+        if (closestObject != null)
+        {
+            _pickUpAbleObjects.Add(closestObject);
         }
     }
 

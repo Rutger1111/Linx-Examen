@@ -6,6 +6,7 @@ public class GameStatesUI : MonoBehaviour
     [SerializeField] private GameObject _UIMultiplayer;
     [SerializeField] private GameObject _UIStopLooking;
     [SerializeField] private GameObject _stopServerUI;
+    [SerializeField] private GameObject _logo;
     
     
    
@@ -28,6 +29,7 @@ public class GameStatesUI : MonoBehaviour
         
         _UIMultiplayer.SetActive(true);
         _stopServerUI.SetActive(false);
+        _logo.SetActive(true);
     }
     
 }
