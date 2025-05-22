@@ -7,23 +7,18 @@ public class NetWorkController : NetworkBehaviour
 {
     public NetworkObject Redhook;
     public NetworkObject BlueHook;
-
+    
     void Start()
     {
-        if (!IsServer) return;
+        var clientIds = NetworkManager.Singleton.ConnectedClientsIds.ToList();
         
-        var clientIds = NetworkManager.Singleton.ConnectedClientsIds.OrderBy(id => id).ToList();
+        Redhook.ChangeOwnership(clientIds[1]);
+        BlueHook.ChangeOwnership(clientIds[2]);
+    }
 
-        if (clientIds.Count >= 1)
-        {
-            Redhook.ChangeOwnership(clientIds[0]); 
-        }
-
-        if (clientIds.Count >= 2)
-        {
-            BlueHook.ChangeOwnership(clientIds[1]); 
-        }
+   
+    void Update()
+    {
+       
     }
 }
-
-

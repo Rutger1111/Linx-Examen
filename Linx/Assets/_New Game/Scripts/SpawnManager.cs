@@ -28,54 +28,48 @@ public class SpawnManager : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsServer) { return; }
-        
         _currentScene = SceneManager.GetActiveScene();
         
         if (IsServer && _currentScene.name == "Multiplayer" && _playerSpawned.Count < _activeLobby.Players.Count)
         {
             foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
             {
-                
+                print(NetworkManager.Singleton.ConnectedClientsList.Count);
                 bool alreadySpawned = _playerSpawned.Exists(p =>
                 {
-                    var info = p.GetComponent<PlayerInfo>(); 
-                    return info != null && info.OwnerClientId == client.ClientId; 
+                    var info = p.GetComponent<PlayerInfo>();
+                    return info != null && info.OwnerClientId == client.ClientId;
                 });
 
-                if (!alreadySpawned) 
-                { 
-                    SpawnPlayer(client.ClientId);
+                if (!alreadySpawned)
+                {
+                    SpawnPlayer();
                 }
-                    
             }
         }
     }
 
-    private void SpawnPlayer(ulong clientId)
+    private void SpawnPlayer()
     {
-        int spawnIndex = _playerSpawned.Count;
+        if (redPlayer == null || bluePlayer == null)
+        {
+            Debug.LogError("Player Prefab is not assigned.");
+            return;
+        }
 
-        if (spawnIndex == 0)
-        {
-            RedPlayerSpawn(clientId);
-        }
-        else if (spawnIndex == 1)
-        {
-            BluePlayerSpawn(clientId);
-        }
+        RedPlayerSpawn(0);
+        BluePlayerSpawn(1);
+       
     }
 
     public void RedPlayerSpawn(ulong clientId)
     {
         GameObject playerInstance = Instantiate(redPlayer);
         playerInstance.transform.position = spawnPointRed;
-        
         var netObj = playerInstance.GetComponent<NetworkObject>();
         if (netObj != null)
         {
             netObj.SpawnWithOwnership(clientId);
-            
             _playerSpawned.Add(playerInstance);
             
             var info = playerInstance.GetComponent<PlayerInfo>();
@@ -83,6 +77,10 @@ public class SpawnManager : NetworkBehaviour
             {
                 info.SetClientId(clientId);
             }
+        }
+        else
+        {
+            Debug.LogError("Player prefab does not have a NetworkObject attached.");
         }
     }
 
@@ -95,7 +93,6 @@ public class SpawnManager : NetworkBehaviour
         if (netObj != null)
         {
             netObj.SpawnWithOwnership(clientId);
-            
             _playerSpawned.Add(playerInstance);
             
             var info = playerInstance.GetComponent<PlayerInfo>();
@@ -103,6 +100,10 @@ public class SpawnManager : NetworkBehaviour
             {
                 info.SetClientId(clientId);
             }
+        }
+        else
+        {
+            Debug.LogError("Player prefab does not have a NetworkObject attached.");
         }
     }
     public override void OnNetworkDespawn()

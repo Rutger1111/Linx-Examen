@@ -1,171 +1,108 @@
 using System;
-using System.Collections.Generic;
 using FishSystem;
-using NUnit.Framework;
+using ParrelSync.NonCore;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using Unity.Netcode;
 
 public class Snap : ICommand
 {
+    [SerializeField] private Material _myMaterial;
     public bool _isBuildingBlock = true;
     public int placed;
     public int isPickedUp;
-    [SerializeField] private bool isWallRoof = false;
+
+    public GameObject UIplace;
     private Vector3 _pos;
     private Quaternion _rot;
-    private Vector3 _hookPos1;
-    private Quaternion _hookRot1;
-    private Vector3 _hookPos2;
-    private Quaternion _hookRot2;
-    public List<SnapPosition> _snapPosition = new List<SnapPosition>();
-    public GameObject _hookObject1;
-    public GameObject _hookObject2;
-    
-    private bool isInValidTrigger = false;
-    private bool isplaced = false;
-    public Vector3 colposition;
-    public Quaternion colRotation;
-    public int snapId;
-
-    public GameObject invisableWall;
-    public GameObject decoratedWall;
-    public GameObject thisWall;
-
-    public bool blockPlaced;
-
-
-    private List<ulong> playersConfirmed = new List<ulong>();
-    private float firstPressTime = -1f;
-    private float timeWindow = 10f;
-    private bool placementConfirmed = false;
+    private Vector3 _hook1Pos;
+    private quaternion _hook1Rot;
+    private Vector3 _hook2Pos;
+    private quaternion _hook2Rot;
+    private SnapPosition _snapPosition;
+    [SerializeField] private GameObject _hookObject1;
+    [SerializeField] private GameObject _hookObject2;
     void Start()
     {
-        _rot = transform.rotation;
-        _pos = transform.position;
-        _hookPos1 = _hookObject1.transform.position;
-        _hookRot1 = _hookObject1.transform.rotation;
-        _hookPos2 = _hookObject2.transform.position;
-        _hookRot2 = _hookObject2.transform.rotation;
-        
         GetComponent<Rigidbody>().isKinematic = false;
     }
-
-    private void Update()
-    {
-        if (_snapPosition.Count > 0)
-        {
-            foreach (var snapPos in _snapPosition)
-            {
-                if (!snapPos.hasObjectsInHere && snapPos.snapId == snapId)
-                {
-                    colposition = snapPos.transform.position;
-                    colRotation = snapPos.transform.rotation;
-                    isInValidTrigger = true;
-                }
-                else if (_isBuildingBlock == false)
-                {
-                    isInValidTrigger = false;
-                }
-            }
-        }
-
-
-        if (isInValidTrigger && _isBuildingBlock && !blockPlaced)
-        {
-
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                confirmPlacementServerRpc();
-            }
-        }
-
-
-        if (isplaced)
-        {
-            transform.position = colposition;
-            transform.rotation = colRotation;
-        }
-        
-        if (firstPressTime > 0 && Time.time - firstPressTime > timeWindow)
-        {
-            playersConfirmed.Clear();
-            firstPressTime = -1f;
-        }
-    }
-
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("BuildPosition"))
+        if(placed >= 1){
+
+            transform.rotation = new Quaternion(0,0,0,0);
+            transform.position = _pos;
+            // transform.parent.rotation.eulerAngles.Set(_rot.x,_rot.y,_rot.z);
+            print("komtookhier");
+            // _hookObject1.transform.position = _hook1Pos;
+            // _hookObject1.transform.rotation = _hook1Rot;
+            // _hookObject1.transform.position = _hook2Pos;
+            // _hookObject1.transform.rotation = _hook2Rot;
+        }
+        if (other.gameObject.tag == "BuildPosition")
         {
-            SnapPosition snap = other.GetComponent<SnapPosition>();
+            _snapPosition = other.GetComponent<SnapPosition>();
             
-            if (snap != null && !_snapPosition.Contains(snap))
+            Debug.Log(_snapPosition.gameObject);
+            
+            if (_snapPosition.hasObjectsInHere == false)
             {
-                _snapPosition.Add(snap);
+                if (_isBuildingBlock && Input.GetKeyDown(KeyCode.F))
+                {
+                    print("fuck");
+                    Invoke(other);
+                    _isBuildingBlock = false;
+                    _snapPosition.setTrue(true);
+                    placed ++;
+                }
+
+                if (_isBuildingBlock)
+                {
+                    _myMaterial.color = Color.green;
+                    UIplace.SetActive(true);
+                }
+                else
+                {
+                    _myMaterial.color = Color.yellow;
+                    UIplace.SetActive(false);
+                }
             }
         }
+        
     }
     void OnTriggerExit(Collider other)
     {
-        _snapPosition.Clear();
+        //placed --;
+        _isBuildingBlock = true;
+        _myMaterial.color = Color.yellow;
+        UIplace.SetActive(false);
     }
     public override void Invoke(Fish fish)
     {
         throw new System.NotImplementedException();
     }
-    public void Invoke()
+    public override void Invoke(Collider col)
     {
-        if (isPickedUp > 0)
-        {
-            isplaced = true;
-            
+        if(GetComponent<Snap>().isPickedUp > 0){
+            Quaternion _colRot = col.gameObject.transform.rotation;
+            print(transform.parent.name);
+
+            transform.parent.position = col.gameObject.transform.position;
+            transform.rotation.eulerAngles.Set(0, 0, 0);
+            _pos = col.gameObject.transform.position;
+            _rot = transform.rotation;
             _hookObject1.SetActive(false);
             _hookObject2.SetActive(false);
+            print("wordtgeroepen");
+            // _hook1Pos = _hookObject1.transform.position;
+            // _hook1Rot = _hookObject1.transform.rotation;
+            // _hook2Pos = _hookObject1.transform.position;
+            // _hook2Rot = _hookObject1.transform.rotation;
+            transform.parent.rotation = col.transform.rotation;
+            Debug.Log("Euler na instellen: " + transform.rotation.eulerAngles);
+            Debug.DrawRay(transform.position, transform.forward * 2, Color.red, 5f);
         }
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void confirmPlacementServerRpc(ServerRpcParams rpcParams = default)
-    {
-        ulong clienId = rpcParams.Receive.SenderClientId;
-
-        if (!playersConfirmed.Contains(clienId))
-        {
-            playersConfirmed.Add(clienId);
-            if (playersConfirmed.Count == 1)
-            {
-                firstPressTime = Time.time;
-            }
-            else if (playersConfirmed.Count == 2 && Time.time - firstPressTime <= timeWindow)
-            {
-                placementConfirmed = true;
-                PlaceBlockClientRpc();
-            }
-            else if (Time.time - firstPressTime > timeWindow)
-            {
-                playersConfirmed.Clear();
-                firstPressTime = -1f;
-            }
-        }
-    }
-    
-    [ClientRpc]
-    private void PlaceBlockClientRpc()
-    {
-        blockPlaced = true;
-        isplaced = true;
-        _isBuildingBlock = false;
-
-        invisableWall.SetActive(false);
-        decoratedWall.SetActive(true);
-        thisWall.SetActive(false);
-        
-        _hookObject1.SetActive(false);
-        _hookObject2.SetActive(false);
-    }
-    
 }

@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Unity.Netcode;
 
 namespace _New_Game.Scripts.Crane
 {
     public class Movement : NetworkBehaviour
     {
+        private CraneMovement _craneMovement;
+        
         [SerializeField] private GameObject supportArm;
         
         [Header("Transforms")]
@@ -33,15 +34,34 @@ namespace _New_Game.Scripts.Crane
 
         [SerializeField] private float CenterMouseTimer = 0.4f;
 
-        public bool hasMovementOptions;
-        private bool isGrounded;
+        private bool hasMovementOptions;
+        private void Awake()
+        {
+            _craneMovement = new CraneMovement();
+        }
 
-        public AudioSource driving;
-        public AudioSource grab;
+        private void Start()
+        {
+            _craneMovement = GetComponent<CraneMovement>();
+        }
+
+        private void OnEnable()
+        {
+            _craneMovement.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _craneMovement.Disable();
+        }
 
         void Update()
         {
-
+            if (CenterMouseTimer <= 0)
+            {
+                Screen.lockCursor = true;
+            }
+            
             CenterMouseTimer -= Time.deltaTime;
             
             if (IsOwner)
@@ -50,7 +70,7 @@ namespace _New_Game.Scripts.Crane
                 //MoveArm();
                 //MoveHook();
                 
-                if (hasMovementOptions == true)
+                if (hasMovementOptions == false)
                 {
                     StretchBetweenPoints(supportArm.transform, startSupport, finishSupport);
                     Drive();
@@ -64,80 +84,27 @@ namespace _New_Game.Scripts.Crane
         public void MovementDisable(bool CanMove)
         {
             hasMovementOptions = CanMove;
-            
         }
         private void Drive()
         {
-            float driveInput = 0f;
-            //float driveInput = _craneMovement.Driving.drive.ReadValue<float>();
+            //float driveInput = 0f;
+            float driveInput = _craneMovement.Driving.drive.ReadValue<float>();
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                driveInput = 1f;
-            }
-
-            if (Input.GetKey(KeyCode.S))
-            {
-                driveInput = -1f;
-            }
+            //if (Input.GetKey(KeyCode.W)) driveInput = 1f;
+            //if (Input.GetKey(KeyCode.S)) driveInput = -1f;
 
             transform.position += wheelPivot.forward * (driveInput * driveSpeed * Time.deltaTime);
-            
-            
-            if (driveInput != 0f)
-            {
-                if (!driving.isPlaying)
-                {
-                    driving.Play();
-                }
-            }
-            else
-            {
-                if (driving.isPlaying)
-                {
-                    driving.Stop();
-                }
-            }
-            
         }
 
         private void Turn()
         {
-            
-            float turnInput = 0f;
-            //float turnInput = _craneMovement.Driving.TurnWheels.ReadValue<float>();
+            //float turnInput = 0f;
+            float turnInput = _craneMovement.Driving.TurnWheels.ReadValue<float>();
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                turnInput = 1f;
-            }
-            
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                turnInput = -1f;
-            }
+            //if (Input.GetKey(KeyCode.D)) turnInput = 1f;
+            //if (Input.GetKey(KeyCode.A)) turnInput = -1f;
             
             wheelPivot.Rotate(0f, turnInput * baseRotationSpeed * Time.deltaTime, 0f);
-            
-            if (turnInput != 0f)
-            {
-                if (!driving.isPlaying)
-                {
-                    driving.Play();
-                }
-            }
-            else
-            {
-                if (driving.isPlaying)
-                {
-                    driving.Stop();
-                }
-            }
-            
-            
-            
-            
         }
 
         /*private void RotateBase()
@@ -167,13 +134,7 @@ namespace _New_Game.Scripts.Crane
 
         private void Grab()
         {
-            float grabInput = 0f;
-
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                grabInput = 1f;
-            }
-            //Up(KeyCode.Mouse0)) grabInput = -1f;
+            float grabInput = _craneMovement.Driving.Grab.ReadValue<float>();
 
             Vector3 currentAngles = craneArm.localEulerAngles;
 
@@ -195,21 +156,6 @@ namespace _New_Game.Scripts.Crane
             newX = Mathf.Clamp(newX, minArmAngle, maxArmAngle);
 
             craneArm.localEulerAngles = new Vector3(newX, currentAngles.y, currentAngles.z);
-
-            if (grabInput != 0f)
-            {
-                if (!driving.isPlaying)
-                {
-                    grab.Play();
-                }
-            }
-            else
-            {
-                if (driving.isPlaying)
-                {
-                    grab.Stop();
-                }
-            }
         }
 
         private void MoveHook()
@@ -242,7 +188,6 @@ namespace _New_Game.Scripts.Crane
             Vector3 newScale = obj.localScale;
             newScale.z = distance;
             obj.localScale = newScale;
-            
         }
         
         private void OnDrawGizmos()
