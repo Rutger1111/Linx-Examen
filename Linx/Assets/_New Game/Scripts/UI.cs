@@ -1,5 +1,6 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI : NetworkBehaviour
 {
@@ -10,9 +11,10 @@ public class UI : NetworkBehaviour
     {
         PauseScreen.SetActive(false);
     }
-    
+
     public void QuitGame()
     {
         NetworkManager.Singleton.Shutdown();
+        NetworkManager.SceneManager.LoadScene("Lobby", LoadSceneMode.Additive);
     }
 }
