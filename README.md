@@ -38,10 +38,8 @@ Renzo Reemer (game Designer)
 
 
 Ruben Kossen
-- Dialogue System  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/DialogueSystem.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Dialogue-System)
 - Fish Spawner  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/FishSpawnerManager.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-Spawning-Manager)
-- MiniGame Menu [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/SkillCheck.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_MiniGame-Menu)
-- Camera Follow [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/OldGame/Script/cameraPlayerFollow.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Camera-Follow-2D)
+
 
 
 # Artists
