@@ -1,18 +1,21 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class UI : NetworkBehaviour
+namespace _New_Game.Scripts
 {
-    [SerializeField] private GameObject PauseScreen;
+    public class UI : NetworkBehaviour
+    {
+        [SerializeField] private GameObject pauseScreen;
     
 
-    public void resumeGame()
-    {
-        PauseScreen.SetActive(false);
-    }
+        public void ResumeGame()
+        {
+            pauseScreen.SetActive(false);
+        }
     
-    public void QuitGame()
-    {
-        NetworkManager.Singleton.Shutdown();
+        public void QuitGame()
+        {
+            NetworkManager.Singleton.Shutdown();
+        }
     }
 }

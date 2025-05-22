@@ -12,6 +12,16 @@ TagManager:
   - BuildingBlock
   - Ground
   - BuildPosition
+  - SpawnPoint1
+  - SpawnPoint2
+  - Dead
+  - LowestFallPoint
+  - North
+  - West
+  - East
+  - South
+  - respawnPointWall
+  - Wall
   layers:
   - Default
   - TransparentFX
