@@ -410,6 +410,10 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1831064247
       objectReference: {fileID: 0}
+    - target: {fileID: 5354726720551145175, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5465684745625996316, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: m_Size.x
       value: 0.29
