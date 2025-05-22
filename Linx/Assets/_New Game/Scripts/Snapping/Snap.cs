@@ -38,7 +38,7 @@ public class Snap : ICommand
     public bool blockPlaced;
 
 
-    private List<ulong> playersConfirmed = new List<ulong>();
+    public List<ulong> playersConfirmed = new List<ulong>();
     private float firstPressTime = -1f;
     private float timeWindow = 10f;
     private bool placementConfirmed = false;
