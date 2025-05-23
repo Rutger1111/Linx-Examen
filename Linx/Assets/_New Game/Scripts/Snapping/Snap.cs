@@ -60,27 +60,29 @@ namespace _New_Game.Scripts.Snapping
         {
             _firstPressTime += Time.deltaTime;
 
-
+            _confirmCounter = _playersConfirmed.Count;
+            _textUI.text = "Press F to Place" + _confirmCounter;
+            
             foreach (var snapPos in snapPosition)
+            {
+                if (!snapPos.hasObjectsInHere && snapPos.snapId == snapId)
                 {
-                    if (!snapPos.hasObjectsInHere && snapPos.snapId == snapId)
-                    {
                         _UIPress.SetActive(true);
                         _colPosition = snapPos.transform.position;
                         _colRotation = snapPos.transform.rotation;
                         _isInValidTrigger = true;
-                    }
-                    else
-                    {
-                        _UIPress.SetActive(false);
-                    }
-                    
-                    if (_isBuildingBlock == false)
-                    {
-                        _isInValidTrigger = false;
-                    }
-                    
                 }
+                else
+                {
+                        _UIPress.SetActive(false);
+                }
+                    
+                if (_isBuildingBlock == false)
+                {
+                        _isInValidTrigger = false;
+                }
+                    
+            }
             
 
 
@@ -105,8 +107,6 @@ namespace _New_Game.Scripts.Snapping
             {
                 _playersConfirmed.Clear();
                 _firstPressTime = 0;
-                _confirmCounter = _playersConfirmed.Count;
-                _textUI.text = "Press F to Place" + _confirmCounter;
             }
         }
 
