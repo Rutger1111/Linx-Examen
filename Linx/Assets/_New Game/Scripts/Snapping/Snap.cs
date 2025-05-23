@@ -33,10 +33,11 @@ namespace _New_Game.Scripts.Snapping
         public GameObject thisWall;
 
         public bool blockPlaced;
-
+        [SerializeField] private GameObject _UIPress;
+        
 
         private List<ulong> _playersConfirmed = new List<ulong>();
-        private float _firstPressTime = -1f;
+        private float _firstPressTime = 0f;
         private float _timeWindow = 10f;
         private bool _placementConfirmed;
         void Start()
@@ -53,12 +54,15 @@ namespace _New_Game.Scripts.Snapping
 
         private void Update()
         {
+            _firstPressTime += Time.deltaTime;
+            
             if (snapPosition.Count > 0)
             {
                 foreach (var snapPos in snapPosition)
                 {
                     if (!snapPos.hasObjectsInHere && snapPos.snapId == snapId)
                     {
+                        _UIPress.SetActive(true);
                         _colPosition = snapPos.transform.position;
                         _colRotation = snapPos.transform.rotation;
                         _isInValidTrigger = true;
@@ -87,10 +91,10 @@ namespace _New_Game.Scripts.Snapping
                 transform.rotation = _colRotation;
             }
         
-            if (_firstPressTime > 0 && Time.time - _firstPressTime > _timeWindow)
+            if (_firstPressTime > _timeWindow)
             {
                 _playersConfirmed.Clear();
-                _firstPressTime = -1f;
+                _firstPressTime = 0;
             }
         }
 
@@ -129,19 +133,15 @@ namespace _New_Game.Scripts.Snapping
             if (!_playersConfirmed.Contains(clienId))
             {
                 _playersConfirmed.Add(clienId);
-                if (_playersConfirmed.Count == 1)
-                {
-                    _firstPressTime = Time.time;
-                }
-                else if (_playersConfirmed.Count == 2 && Time.time - _firstPressTime <= _timeWindow)
+                if (_playersConfirmed.Count == 2 && Time.time - _firstPressTime <= _timeWindow)
                 {
                     _placementConfirmed = true;
                     PlaceBlockClientRpc();
                 }
-                else if (Time.time - _firstPressTime > _timeWindow)
+                else if (_firstPressTime > _timeWindow)
                 {
                     _playersConfirmed.Clear();
-                    _firstPressTime = -1f;
+                    _firstPressTime = 0f;
                 }
             }
         }
@@ -152,7 +152,8 @@ namespace _New_Game.Scripts.Snapping
             blockPlaced = true;
             _isPlaced = true;
             _isBuildingBlock = false;
-
+            _UIPress.SetActive(false);
+            
             invisibleWall.SetActive(false);
             decoratedWall.SetActive(true);
             thisWall.SetActive(false);
