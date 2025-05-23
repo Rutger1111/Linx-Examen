@@ -15,17 +15,22 @@
 # Member contributions
 ## Developers
 Rutger van de laar (Lead Developer)
-- Snapping [code]()
+- Snapping [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/Snapping/Snap.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Snap-Explanation)
+- HoverInMiddle[code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/HoverInMiddle/HoverInMiddle.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_HoverInMiddle)
+- Fish AI [Code](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-System-Explanation), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-System-Explanation)
   
 Renzo Reemer (game Designer)
-- Crane movement [code]()
-- Rope [Visual sheet]()
+- Crane movement [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/Movements.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Crane-Controls)
+- Rope [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/Crane/RopeBuilder.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_RopeBuilder)
+
+- Reeling [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/PlanB/Hengel/Reeling.cs), [Funcional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#fisher), [Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#Reeling)
+- Movement [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/PlanB/Hengel/MovingHook.cs), [Functional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#bait),  [Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#swimming)
 
 Ruben Kossen
-- Multiplayer  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/MultiplayerSystem.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer-System)
-- Third-Person Camera [Code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/_New%20Game/Scripts/Camera), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Third-Person-Camera-System)
-- Player Spawner [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/SpawnManager.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Player-Spawning)
-- Pick Up [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/PickUp.cs), [Code BreakDown](https://github.com/Rutger1111/Linx-Examen/wiki/Z_PickUp-System)
+- Multiplayer  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/MultiplayerSystem.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer-System)
+- Third-Person Camera [Code](https://github.com/Rutger1111/Linx-Examen/tree/main/Linx/Assets/_New%20Game/Scripts/Camera), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Third-Person-Camera-System)
+- Player Spawner [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/SpawnManager.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Player-Spawning)
+- Pick Up [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/PickUp.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_PickUp-System)
   
 
 ## Old Game Scripts
