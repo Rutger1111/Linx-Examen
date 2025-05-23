@@ -85,11 +85,7 @@ public class Menu : NetworkBehaviour
     private void InputHandler()
     {
         menuActive = pausePanel.activeSelf != true;
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> backup
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pausePanel.SetActive(menuActive);

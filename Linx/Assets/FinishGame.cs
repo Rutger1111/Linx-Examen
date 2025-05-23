@@ -1,12 +1,8 @@
 using System.Collections.Generic;
-<<<<<<< HEAD
 using _New_Game.Scripts;
 using _New_Game.Scripts.Camera;
 using _New_Game.Scripts.Crane;
 using _New_Game.Scripts.Snapping;
-=======
-using _New_Game.Scripts.Crane;
->>>>>>> backup
 using Unity.Netcode;
 using UnityEngine;
 using Unity.Netcode;
