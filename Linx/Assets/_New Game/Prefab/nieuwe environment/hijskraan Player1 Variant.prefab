@@ -350,10 +350,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2894555100635092411, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
-      propertyPath: usedCamera
-      value: 
-      objectReference: {fileID: 4762064921240435045}
     - target: {fileID: 3082363636270556845, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: grab
       value: 
@@ -414,6 +410,10 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1831064247
       objectReference: {fileID: 0}
+    - target: {fileID: 5354726720551145175, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5465684745625996316, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: m_Size.x
       value: 0.29
@@ -443,22 +443,6 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
-      propertyPath: yMax
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
-      propertyPath: yMin
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 6952437913549274390}
-    - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
-      propertyPath: distance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: _distance
       value: 7
       objectReference: {fileID: 0}
@@ -476,6 +460,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4236910056249713781, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5407651968906324911}
+    - targetCorrespondingSourceObject: {fileID: 4236910056249713781, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 326469832478765462}
     - targetCorrespondingSourceObject: {fileID: 4847388607007363894, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3796408603980676003}
@@ -485,6 +472,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9037152285013203517, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2853138558064332647}
+    - targetCorrespondingSourceObject: {fileID: 9037152285013203517, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3525010247853840378}
   m_SourcePrefab: {fileID: 100100000, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
 --- !u!1 &1870647564684462677 stripped
 GameObject:
@@ -504,15 +494,15 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 6d8585ad85718c941927a8f8820e50a0, type: 3}
   m_Resource: {fileID: 8300000, guid: 6d8585ad85718c941927a8f8820e50a0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.361
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 15
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -601,6 +591,15 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2871863154262328158}
   m_Enabled: 1
+--- !u!45 &3525010247853840378
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871863154262328158}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: da92311cf7eca6845aedde56c774763d, type: 2}
 --- !u!1 &3301753582191442257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8602628652827435058, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
@@ -619,15 +618,15 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 93c8f0a6c1783274c91db31796ee013f, type: 3}
   m_Resource: {fileID: 8300000, guid: 93c8f0a6c1783274c91db31796ee013f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.361
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 15
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -703,9 +702,9 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!20 &4762064921240435045 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1776321084151750662, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+--- !u!1 &6463000214828652194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 216650236786249665, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
   m_PrefabInstance: {fileID: 6534866330297080163}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6952437913549274390 stripped
@@ -737,13 +736,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361c081857b2ae349bc0e8b7f3b8aa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityForce: 20
+  _gravityForce: 20
   groundCheckDistance: 2
   hasGravity: 1
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &326469832478765462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952437913549274390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49a39397383757419c49e92f8d363ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _range: 2
+  _pickUpPosition: {fileID: 6463000214828652194}
+  _targetTag: moveAbleObject
+  _pickUpAbleObjects: []
+  allObjects: []
 --- !u!4 &9057675093226689321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
