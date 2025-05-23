@@ -7,6 +7,7 @@ using NUnit.Framework;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Menu : NetworkBehaviour
@@ -84,7 +85,7 @@ public class Menu : NetworkBehaviour
     private void InputHandler()
     {
         menuActive = pausePanel.activeSelf != true;
-        
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pausePanel.SetActive(menuActive);

@@ -1,21 +1,20 @@
+using System;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace _New_Game.Scripts
+public class UI : NetworkBehaviour
 {
-    public class UI : NetworkBehaviour
+    [SerializeField] private GameObject PauseScreen;
+    
+    public void resumeGame()
     {
-        [SerializeField] private GameObject pauseScreen;
-    
+        PauseScreen.SetActive(false);
+    }
 
-        public void ResumeGame()
-        {
-            pauseScreen.SetActive(false);
-        }
-    
-        public void QuitGame()
-        {
-            NetworkManager.Singleton.Shutdown();
-        }
+    public void QuitGame()
+    {
+        NetworkManager.Singleton.Shutdown();
+        NetworkManager.SceneManager.LoadScene("Lobby", LoadSceneMode.Additive);
     }
 }

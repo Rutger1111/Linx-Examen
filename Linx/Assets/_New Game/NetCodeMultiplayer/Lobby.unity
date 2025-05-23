@@ -430,7 +430,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4450336c77caa5147b37ceab1b2a5407, type: 3}
   m_Resource: {fileID: 8300000, guid: 4450336c77caa5147b37ceab1b2a5407, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
@@ -1491,7 +1491,7 @@ MonoBehaviour:
     PlayerPrefab: {fileID: 0}
     Prefabs:
       NetworkPrefabsLists:
-      - {fileID: 11400000, guid: 41fa47d13d16bef4c8f687923c09bbb4, type: 2}
+      - {fileID: 11400000, guid: 5c41156350bc94743aa5e478bb65aa6f, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0

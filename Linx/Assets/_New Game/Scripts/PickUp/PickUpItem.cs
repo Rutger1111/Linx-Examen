@@ -1,18 +1,9 @@
 using Unity.Netcode;
-using UnityEngine.Serialization;
+using UnityEngine;
 
 public class PickUpItem : NetworkBehaviour
 {
     public NetworkVariable<bool> IsHeld = new NetworkVariable<bool>(false);
+    public GameObject Wall;
     
-    void Start()
-    {
-        
-    }
-
-  
-      void Update()
-    {
-        
-    }
 }

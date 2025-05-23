@@ -295,7 +295,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -3928,9 +3928,9 @@ GameObject:
   - component: {fileID: 851520330398076237}
   - component: {fileID: 6782683197192384141}
   - component: {fileID: 8357856322979174207}
-  - component: {fileID: 2683937289725875806}
   - component: {fileID: -6231938047698638386}
   - component: {fileID: 1201317478538839686}
+  - component: {fileID: 5323430239011925955}
   m_Layer: 0
   m_Name: GroenHijstkraan
   m_TagString: Untagged
@@ -3995,7 +3995,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   supportArm: {fileID: 7446527177806898392}
-  cranePivot: {fileID: 2560311997586130939}
   craneArm: {fileID: 6998492906601588850}
   craneHook: {fileID: 369387411140460301, guid: 213228c50b16be542a4cf89c35eb0ca2, type: 3}
   wheelPivot: {fileID: 2526715170905390331}
@@ -4047,24 +4046,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.10514802, z: 0.37605566}
   m_Center: {x: 0, y: -0.008783969, z: -0.023693955}
---- !u!114 &2683937289725875806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696367415222924769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e5e6edad7995641aff9804da0135d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  _range: 1.5
-  _pickUpPosition: {fileID: 9097428606956558442}
-  _targetTag: moveAbleObject
-  _pickUpAbleObjects: []
-  allObjects: []
 --- !u!114 &-6231938047698638386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4096,6 +4077,24 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &5323430239011925955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8696367415222924769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49a39397383757419c49e92f8d363ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _range: 2
+  _pickUpPosition: {fileID: 2224572022409811872}
+  _targetTag: moveAbleObject
+  _pickUpAbleObjects: []
+  allObjects: []
 --- !u!1 &8819465701490982139
 GameObject:
   m_ObjectHideFlags: 0
