@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 namespace _New_Game.Scripts.Snapping
 {
-    public class Snap : MonoBehaviour
+    public class Snap : NetworkBehaviour
     {
         public bool _isBuildingBlock = true;
         public int _placed;
