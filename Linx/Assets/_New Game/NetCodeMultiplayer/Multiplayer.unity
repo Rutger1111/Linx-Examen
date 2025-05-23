@@ -10931,7 +10931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
+  NetworkTransformExpanded: 1
   AutoOwnerAuthorityTickOffset: 1
   PositionInterpolationType: 0
   RotationInterpolationType: 0
@@ -36372,6 +36372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isBuildingBlock: 1
   isPickedUp: 0
   isWallRoof: 1
   snapPosition: []
@@ -36384,6 +36385,8 @@ MonoBehaviour:
   blockPlaced: 0
   _UIPress: {fileID: 1911748161}
   _textUI: {fileID: 1911748159}
+  _playersConfirmed: 
+  _firstPressTime: 0
 --- !u!65 &5979793143815403350
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36440,7 +36443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
+  NetworkTransformExpanded: 1
   AutoOwnerAuthorityTickOffset: 1
   PositionInterpolationType: 0
   RotationInterpolationType: 0
@@ -37856,6 +37859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isBuildingBlock: 1
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
@@ -37868,6 +37872,8 @@ MonoBehaviour:
   blockPlaced: 0
   _UIPress: {fileID: 1911748161}
   _textUI: {fileID: 1911748159}
+  _playersConfirmed: 
+  _firstPressTime: 0
 --- !u!114 &6347416601045652358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41768,6 +41774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isBuildingBlock: 1
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
@@ -41780,6 +41787,8 @@ MonoBehaviour:
   blockPlaced: 0
   _UIPress: {fileID: 1911748161}
   _textUI: {fileID: 1911748159}
+  _playersConfirmed: 
+  _firstPressTime: 0
 --- !u!114 &7170858214147908077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42426,6 +42435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isBuildingBlock: 1
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
@@ -42438,6 +42448,8 @@ MonoBehaviour:
   blockPlaced: 0
   _UIPress: {fileID: 1911748161}
   _textUI: {fileID: 1911748159}
+  _playersConfirmed: 
+  _firstPressTime: 0
 --- !u!114 &7248139386458223756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46442,6 +46454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isBuildingBlock: 1
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
@@ -46454,6 +46467,8 @@ MonoBehaviour:
   blockPlaced: 0
   _UIPress: {fileID: 1911748161}
   _textUI: {fileID: 1911748159}
+  _playersConfirmed: 
+  _firstPressTime: 0
 --- !u!114 &8271490286116741084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47646,6 +47661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b29ee66b7fed6d4cb3dad24b2d708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isBuildingBlock: 1
   isPickedUp: 0
   isWallRoof: 0
   snapPosition: []
@@ -47658,6 +47674,8 @@ MonoBehaviour:
   blockPlaced: 0
   _UIPress: {fileID: 1911748161}
   _textUI: {fileID: 1911748159}
+  _playersConfirmed: 
+  _firstPressTime: 0
 --- !u!114 &8553298176703015756
 MonoBehaviour:
   m_ObjectHideFlags: 0

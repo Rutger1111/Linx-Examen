@@ -9,8 +9,8 @@ namespace _New_Game.Scripts.Snapping
 {
     public class Snap : MonoBehaviour
     {
-        private bool _isBuildingBlock = true;
-        private int _placed;
+        public bool _isBuildingBlock = true;
+        public int _placed;
         public int isPickedUp;
         [SerializeField] private bool isWallRoof;
         private Vector3 _pos;
