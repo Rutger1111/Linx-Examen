@@ -61,7 +61,7 @@ namespace _New_Game.Scripts.Snapping
             _firstPressTime += Time.deltaTime;
 
             _confirmCounter = _playersConfirmed.Count;
-            _textUI.text = "Press F to Place" + _confirmCounter;
+            _textUI.text = "Press F to Place";
             
             foreach (var snapPos in snapPosition)
             {
@@ -147,7 +147,7 @@ namespace _New_Game.Scripts.Snapping
                 _playersConfirmed.Add(clienId);
                 
                 _confirmCounter = _playersConfirmed.Count;
-                _textUI.text = "Press F to Place" + _confirmCounter;
+                _textUI.text = "Press F to Place";
                 
                 
                 if (_playersConfirmed.Count == 2 && _firstPressTime <= _timeWindow)
