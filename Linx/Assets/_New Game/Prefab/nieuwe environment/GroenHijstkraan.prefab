@@ -295,7 +295,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -3931,7 +3931,10 @@ GameObject:
   - component: {fileID: 2683937289725875806}
   - component: {fileID: -6231938047698638386}
   - component: {fileID: 1201317478538839686}
+<<<<<<< HEAD
   - component: {fileID: 5323430239011925955}
+=======
+>>>>>>> backup
   m_Layer: 0
   m_Name: GroenHijstkraan
   m_TagString: Untagged
@@ -4010,6 +4013,10 @@ MonoBehaviour:
   maxArmAngle: 35
   minHookHeight: 0.5
   maxHookHeight: 10
+<<<<<<< HEAD
+=======
+  CenterMouseTimer: 0.4
+>>>>>>> backup
   hasMovementOptions: 0
   driving: {fileID: 5462244250174373258}
   grab: {fileID: 3252020972516528437}
@@ -4026,7 +4033,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+<<<<<<< HEAD
   usedCamera: {fileID: 3209615490372382778}
+=======
+  _camera: {fileID: 3209615490372382778}
+>>>>>>> backup
 --- !u!65 &8357856322979174207
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4090,13 +4101,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361c081857b2ae349bc0e8b7f3b8aa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   gravityForce: 20
+=======
+  _gravityForce: 20
+>>>>>>> backup
   groundCheckDistance: 2
   hasGravity: 1
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+<<<<<<< HEAD
 --- !u!114 &5323430239011925955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4115,6 +4131,8 @@ MonoBehaviour:
   _targetTag: moveAbleObject
   _pickUpAbleObjects: []
   allObjects: []
+=======
+>>>>>>> backup
 --- !u!1 &8819465701490982139
 GameObject:
   m_ObjectHideFlags: 0

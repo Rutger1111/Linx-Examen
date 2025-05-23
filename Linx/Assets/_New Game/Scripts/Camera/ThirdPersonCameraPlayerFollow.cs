@@ -38,11 +38,19 @@ namespace _New_Game.Scripts.Camera
             }
         }
     
+<<<<<<< HEAD
         void Update()
         {
             if (_hasTurnedOffCamera)
             {
                 Cursor.lockState = CursorLockMode.Locked;
+=======
+    void Update()
+    {
+        if (hasTurnedOffCamera == true)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+>>>>>>> backup
             
                 _currentX += Input.GetAxis("Mouse X") * sensitivity;
                 _currentY -= Input.GetAxis("Mouse Y") * sensitivity;

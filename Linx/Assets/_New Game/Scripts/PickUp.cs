@@ -14,6 +14,11 @@ public class PickUp : NetworkBehaviour
     public List<GameObject> _pickUpAbleObjects = new List<GameObject>();
     private ConfigurableJoint _joint;
     
+<<<<<<< HEAD
+=======
+
+    public GameObject[] allObjects;
+>>>>>>> backup
 
     public GameObject[] allObjects;
 
@@ -27,7 +32,7 @@ public class PickUp : NetworkBehaviour
             if (_heldObject == null && _pickUpAbleObjects.Count > 0)
             {
                 TryPickUp();
-                _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp++;
+                _heldObject.GetComponent<PickUpItem>().Wall.gameObject.GetComponent<Snap>().isPickedUp++;
             }
             else if (_heldObject != null)
             {
@@ -43,8 +48,12 @@ public class PickUp : NetworkBehaviour
     {
         RequestDropServerRpc(targetId);
     }
+<<<<<<< HEAD
 
     private void TryPickUp()
+=======
+    void TryPickUp()
+>>>>>>> backup
     {
         foreach (var obj in _pickUpAbleObjects)
         {
@@ -52,7 +61,7 @@ public class PickUp : NetworkBehaviour
             if (pickupable != null && !pickupable.IsHeld.Value)
             {
                 ulong targetId = obj.GetComponent<NetworkObject>().NetworkObjectId;
-                RequestPickUpServerRpc(targetId, NetworkObjectId);
+                RequestPickUpServerRpc(targetId);
                 break;
             }
         }
@@ -108,10 +117,13 @@ public class PickUp : NetworkBehaviour
     }
 
     [ServerRpc]
+<<<<<<< HEAD
     private void RequestPickUpServerRpc(ulong targetId, ulong playerId, ServerRpcParams rpcParams = default)
+=======
+    void RequestPickUpServerRpc(ulong targetId, ServerRpcParams rpcParams = default)
+>>>>>>> backup
     {
         if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(targetId, out NetworkObject targetObject)) return;
-        if (!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(playerId, out NetworkObject playerObject)) return;
 
         var pickupable = targetObject.GetComponent<PickUpItem>();
         if (pickupable == null || pickupable.IsHeld.Value) return;
@@ -162,7 +174,7 @@ public class PickUp : NetworkBehaviour
     {
         if (IsOwner && _heldObject != null && _heldObject.NetworkObjectId == objectId)
         {
-            _heldObject.GetComponent<FixedJoint>().connectedBody.gameObject.GetComponent<Snap>().isPickedUp--;
+            _heldObject.GetComponent<PickUpItem>().Wall.gameObject.GetComponent<Snap>().isPickedUp--;
             _heldObject = null;
         }
     }

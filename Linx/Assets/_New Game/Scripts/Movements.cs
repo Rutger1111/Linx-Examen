@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+using System;
+using UnityEngine;
+using UnityEngine.Serialization;
+>>>>>>> backup
 using Unity.Netcode;
 using UnityEngine;
 
@@ -31,11 +37,23 @@ namespace _New_Game.Scripts
         public bool hasMovementOptions;
         private bool isGrounded;
 
+<<<<<<< HEAD
+=======
+        public bool hasMovementOptions;
+        private bool isGrounded;
+
+>>>>>>> backup
         public AudioSource driving;
         public AudioSource grab;
 
         void Update()
         {
+<<<<<<< HEAD
+=======
+
+            CenterMouseTimer -= Time.deltaTime;
+            
+>>>>>>> backup
             if (IsOwner)
             {
                 //RotateBase();
@@ -55,7 +73,11 @@ namespace _New_Game.Scripts
 
         public void MovementDisable(bool canMove)
         {
+<<<<<<< HEAD
             hasMovementOptions = canMove;
+=======
+            hasMovementOptions = CanMove;
+>>>>>>> backup
             
         }
         private void Drive()

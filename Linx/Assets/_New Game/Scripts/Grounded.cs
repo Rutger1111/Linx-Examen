@@ -1,5 +1,8 @@
 using System;
+<<<<<<< HEAD
 using _New_Game.Scripts;
+=======
+>>>>>>> backup
 using _New_Game.Scripts.Crane;
 using UnityEngine;
 
@@ -20,6 +23,10 @@ public class Grounded : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
+<<<<<<< HEAD
+=======
+            print("hit");
+>>>>>>> backup
             _movement.MovementDisable(true);
         }
     }
