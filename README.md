@@ -17,14 +17,14 @@
 Rutger van de laar (Lead Developer)
 - Snapping [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/Snapping/Snap.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Snap-Explanation)
 - HoverInMiddle[code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/HoverInMiddle/HoverInMiddle.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_HoverInMiddle)
-- Fish AI [Code](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-System-Explanation), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-System-Explanation)
+- Fish AI (Old Game) [Code](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-System-Explanation), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Fish-System-Explanation)
   
 Renzo Reemer (game Designer)
 - Crane movement [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/Movements.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Crane-Controls)
 - Rope [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/Crane/RopeBuilder.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_RopeBuilder)
 
-- Reeling [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/PlanB/Hengel/Reeling.cs), [Funcional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#fisher), [Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#Reeling)
-- Movement [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/PlanB/Hengel/MovingHook.cs), [Functional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#bait),  [Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#swimming)
+- Reeling (Old Game) [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/PlanB/Hengel/Reeling.cs), [Funcional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#fisher), [Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#Reeling)
+- Movement (Old Game) [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_project/Scripts/PlanB/Hengel/MovingHook.cs), [Functional design](https://github.com/Rutger1111/Linx-Examen/wiki/Functional-Design#bait),  [Technical design](https://github.com/Rutger1111/Linx-Examen/wiki/Techical-Designs#swimming)
 
 Ruben Kossen
 - Multiplayer  [Code](https://github.com/Rutger1111/Linx-Examen/blob/main/Linx/Assets/_New%20Game/Scripts/MultiplayerSystem.cs), [Visual sheet](https://github.com/Rutger1111/Linx-Examen/wiki/Z_Multiplayer-System)
