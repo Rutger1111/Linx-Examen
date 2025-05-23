@@ -350,6 +350,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2894555100635092411, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: usedCamera
+      value: 
+      objectReference: {fileID: 4762064921240435045}
     - target: {fileID: 3082363636270556845, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: grab
       value: 
@@ -443,11 +447,28 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: yMax
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: yMin
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 6952437913549274390}
+    - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+      propertyPath: distance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387713786807393076, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
       propertyPath: _distance
       value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3528417148423746958, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+    - {fileID: 6815838405196905331, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2811321266893130314, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
@@ -702,6 +723,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!20 &4762064921240435045 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1776321084151750662, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
+  m_PrefabInstance: {fileID: 6534866330297080163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6463000214828652194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 216650236786249665, guid: 8bee0e25319305d4784b633720d6cde6, type: 3}
@@ -736,7 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361c081857b2ae349bc0e8b7f3b8aa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityForce: 20
+  gravityForce: 20
   groundCheckDistance: 2
   hasGravity: 1
   isGrounded: 0

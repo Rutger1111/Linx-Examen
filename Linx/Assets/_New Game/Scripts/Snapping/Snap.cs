@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using FishSystem;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -34,12 +35,15 @@ namespace _New_Game.Scripts.Snapping
 
         public bool blockPlaced;
         [SerializeField] private GameObject _UIPress;
+        [SerializeField] private TMP_Text _textUI;
+        
         
 
-        private List<ulong> _playersConfirmed = new List<ulong>();
-        private float _firstPressTime = 0f;
+        public List<ulong> _playersConfirmed = new List<ulong>();
+        public float _firstPressTime = 0f;
         private float _timeWindow = 10f;
         private bool _placementConfirmed;
+        private int _confirmCounter;
         void Start()
         {
             _rot = transform.rotation;
@@ -55,10 +59,9 @@ namespace _New_Game.Scripts.Snapping
         private void Update()
         {
             _firstPressTime += Time.deltaTime;
-            
-            if (snapPosition.Count > 0)
-            {
-                foreach (var snapPos in snapPosition)
+
+
+            foreach (var snapPos in snapPosition)
                 {
                     if (!snapPos.hasObjectsInHere && snapPos.snapId == snapId)
                     {
@@ -67,12 +70,18 @@ namespace _New_Game.Scripts.Snapping
                         _colRotation = snapPos.transform.rotation;
                         _isInValidTrigger = true;
                     }
-                    else if (_isBuildingBlock == false)
+                    else
+                    {
+                        _UIPress.SetActive(false);
+                    }
+                    
+                    if (_isBuildingBlock == false)
                     {
                         _isInValidTrigger = false;
                     }
+                    
                 }
-            }
+            
 
 
             if (_isInValidTrigger && _isBuildingBlock && !blockPlaced)
@@ -80,6 +89,7 @@ namespace _New_Game.Scripts.Snapping
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
+                    _firstPressTime = 0;
                     ConfirmPlacementServerRpc();
                 }
             }
@@ -95,6 +105,8 @@ namespace _New_Game.Scripts.Snapping
             {
                 _playersConfirmed.Clear();
                 _firstPressTime = 0;
+                _confirmCounter = _playersConfirmed.Count;
+                _textUI.text = "Press F to Place" + _confirmCounter;
             }
         }
 
@@ -129,19 +141,19 @@ namespace _New_Game.Scripts.Snapping
         public void ConfirmPlacementServerRpc(ServerRpcParams rpcParams = default)
         {
             ulong clienId = rpcParams.Receive.SenderClientId;
-
+            
             if (!_playersConfirmed.Contains(clienId))
             {
                 _playersConfirmed.Add(clienId);
-                if (_playersConfirmed.Count == 2 && Time.time - _firstPressTime <= _timeWindow)
+                
+                _confirmCounter = _playersConfirmed.Count;
+                _textUI.text = "Press F to Place" + _confirmCounter;
+                
+                
+                if (_playersConfirmed.Count == 2 && _firstPressTime <= _timeWindow)
                 {
                     _placementConfirmed = true;
                     PlaceBlockClientRpc();
-                }
-                else if (_firstPressTime > _timeWindow)
-                {
-                    _playersConfirmed.Clear();
-                    _firstPressTime = 0f;
                 }
             }
         }
